@@ -1,0 +1,69 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+:root {
+  --primary: #77db8f;
+  --secondary: #000;
+  --background: #F5F5F5;
+  --text: #333;
+}
+.schedule-container {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  margin: 0 auto;
+}
+
+.header {
+  margin-bottom: 20px;
+}
+
+.header h2 {
+  margin: 0 0 10px 0;
+  font-size: 1.5em;
+}
+
+.tabs {
+  display: flex;
+  gap: 10px;
+  font-size: 0.9em;
+  text-align: right !important;
+}
+
+.tabs span {
+  cursor: pointer;
+  padding: 5px;
+}
+
+.schedule-stats {
+  margin-bottom: 20px;
+  font-size: 0.9em;
+}
+
+.time-slots {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.time-slot {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+  font-size: 0.9em;
+}
+
+.time-slot:last-child {
+  border-bottom: none;
+}
+
+.time-slot.active {
+  background-color: #e6f7e6; /* Light green for active time */
+  font-weight: bold;
+}
+
+.current-time-indicator {
+  margin-top: 20px;
+  font-size: 0.9em;
+  color: #006400; /* Dark green for current time indicator */
+  font-weight: bold;
+}
