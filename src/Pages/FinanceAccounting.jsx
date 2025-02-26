@@ -22,7 +22,7 @@ function FinanceAccounting() {
 
   ];
   return (
-    <div className="w-[95%] lg:ps-10 mx-auto min-h-screen bg-white">
+    <div className="w-[95%] ps-10 mx-auto min-h-screen bg-white">
       {/* Header with Buttons */}
       <div className="flex font-medium mb-5 border-b pb-2 flex-wrap items-center gap-5">
         {/* Left Side */}
