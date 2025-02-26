@@ -3,6 +3,7 @@ import PrimaryButton from './PrimaryButton'
 import Heading from './Heading';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
+import SecondaryButton from './SecondaryButton'
 
 const BookAppointmentForm = () => {
   const navigate = useNavigate(); // Get navigation function from React Router
@@ -173,10 +174,10 @@ const BookAppointmentForm = () => {
                     ></textarea>
                   </div>
                   <div className="col-span-full flex justify-end gap-4">
-                    <PrimaryButton onClick={goBack}
+                    <SecondaryButton onClick={goBack}
                     >
                       Cancel
-                    </PrimaryButton>
+                    </SecondaryButton>
                     <PrimaryButton
                       type="submit"
                       className="px-4 py-2 bg-primary text-white rounded hover:bg-primary-dark"

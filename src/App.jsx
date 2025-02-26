@@ -18,7 +18,7 @@ const PrivateRoute = ({ element: Element, ...rest }) => {
   return isAuthenticated ? (
     <div className="flex bg-white text-black w-full h-screen">
       <Sidebar />
-      <main className="flex-1 lg:mx-4 pt-5">
+      <main className="flex-1 sm:ms-4 lg:mx-4 sm:mx-auto pt-5 ">
         <Element {...rest} />
       </main>
     </div>

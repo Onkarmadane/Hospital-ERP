@@ -1,7 +1,7 @@
 const SecondaryButton = ({ children, onClick, className = "" }) => {
     return (
       <button
-        className={`btn bg-background border-2 px-8 border-brown text-default rounded-3xl hover:bg-brown  ${className}`}
+        className={`btn border-2 px-8  text-default hover:shadow-lg  ${className}`}
         onClick={onClick}
       >
         {children}

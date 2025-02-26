@@ -267,22 +267,20 @@ function Inventory() {
   );
 
   return (
-    <div className="w-full max-w-[95%] mx-auto lg:ml-[70px] min-h-screen bg-white flex flex-col">
+    <div className="w-[95%] mx-auto ml-0 sm:ml-[70px] min-h-screen bg-white">
       {/* Header */}
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 md:gap-6 font-medium mb-6 border-b pb-3 px-2 sm:px-4 lg:px-6">
+      <div className="flex flex-col md:flex-row flex-wrap justify-between items-start md:items-center gap-4 md:gap-6 font-medium mb-6 border-b pb-3 px-2 sm:px-4 lg:px-6">
         <h5 className="text-base sm:text-lg md:text-xl font-semibold">Inventory</h5>
         <div className="flex flex-row items-center gap-2 sm:gap-3 md:gap-4">
           <PrimaryButton
             onClick={() => setActiveTab('medicine')}
-            className={`flex items-center justify-center gap-2 sm:gap-2.5 md:gap-3 whitespace-nowrap text-sm sm:text-base md:text-lg px-3 py-1.5 sm:px-4 sm:py-2 rounded-md transition-colors ${activeTab === 'medicine' ? 'bg-primary text-white ' : ' text-gray-800 hover:bg-gray-300'
-              }`}
+            className={`flex items-center justify-center gap-2 sm:gap-2.5 md:gap-3 whitespace-nowrap text-sm sm:text-base md:text-lg px-3 py-1.5 sm:px-4 sm:py-2 rounded-md transition-colors ${activeTab === 'medicine' ? 'bg-secondary' : 'text-gray-800 hover:bg-gray-300'}`}
           >
             Medicine Stock
           </PrimaryButton>
           <PrimaryButton
             onClick={() => setActiveTab('batch')}
-            className={`flex items-center justify-center gap-2 sm:gap-2.5 md:gap-3 whitespace-nowrap text-sm sm:text-base md:text-lg px-3 py-1.5 sm:px-4 sm:py-2 rounded-md transition-colors ${activeTab === 'batch' ? 'bg-primary text-white ' : ' text-gray-800 hover:bg-gray-300'
-              }`}
+            className={`flex items-center justify-center gap-2 sm:gap-2.5 md:gap-3 whitespace-nowrap text-sm sm:text-base md:text-lg px-3 py-1.5 sm:px-4 sm:py-2 rounded-md transition-colors ${activeTab === 'batch' ? 'bg-secondary text-white' : 'text-gray-800 hover:bg-gray-300'}`}
           >
             Batch
           </PrimaryButton>
@@ -290,11 +288,11 @@ function Inventory() {
       </div>
 
       {/* Button and Search */}
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 gap-4 border-b pb-3 px-2 sm:px-4">
-        <PrimaryButton className="flex items-center gap-2 sm:gap-3 whitespace-nowrap w-full sm:w-auto text-sm sm:text-base">
+      <div className="flex sm:flex-row items-start justify-between sm:items-center gap-4 mb-4 px-2 sm:px-4">
+        <PrimaryButton className="flex items-center gap-2 sm:gap-3 whitespace-nowrap  sm:w-auto text-sm sm:text-base">
           <MdOutlineAdd /> Receive Inventory
         </PrimaryButton>
-        <div className="flex items-center gap-2 w-full sm:w-auto">
+        <div className="flex items-center gap-2 sm:w-auto">
           <label className="text-xs sm:text-sm">Search:</label>
           <input
             type="search"
@@ -309,9 +307,9 @@ function Inventory() {
       {/* Table Content based on Active Tab */}
       <div className="overflow-x-auto px-2 flex-grow">
         {activeTab === 'medicine' ? (
-          <Table columns={medicineColumns} data={filteredInventory} />
+          <Table columns={medicineColumns} data={filteredInventory} className="min-w-full" />
         ) : (
-          <Table columns={batchColumns} data={filteredBatches} />
+          <Table columns={batchColumns} data={filteredBatches} className="min-w-full" />
         )}
       </div>
 
@@ -320,6 +318,7 @@ function Inventory() {
         isOpen={isViewModalOpen}
         onClose={() => setIsViewModalOpen(false)}
         title="Inventory Details"
+        className="w-full max-w-md mx-auto p-4 sm:p-6"
       >
         {selectedMedicine && (
           <div className="space-y-2 text-sm sm:text-base">
@@ -337,6 +336,7 @@ function Inventory() {
         isOpen={isEditModalOpen}
         onClose={() => setIsEditModalOpen(false)}
         title="Edit Inventory"
+        className="w-full max-w-md mx-auto p-4 sm:p-6"
       >
         {selectedMedicine && (
           <form onSubmit={handleEditSubmit} className="space-y-3 sm:space-y-4 text-sm sm:text-base">

@@ -22,27 +22,30 @@ function FinanceAccounting() {
 
   ];
   return (
-    <div className="w-[95%] lg:ms-[70px] min-h-screen bg-white flex flex-col ">
-      <div className="flex flex-wrap justify-between items-center gap-5 font-medium mb-5 border-b pb-2">
+    <div className="w-[95%] lg:ps-10 mx-auto min-h-screen bg-white">
+      {/* Header with Buttons */}
+      <div className="flex font-medium mb-5 border-b pb-2 flex-wrap items-center gap-5">
         {/* Left Side */}
-        <div className="flex-shrink-0">
-          <PrimaryButton className="flex items-center gap-3">
+        <div className="flex flex-wrap items-center gap-5 w-full lg:w-auto lg:flex-row lg:items-center">
+          <PrimaryButton className="flex items-center gap-3  lg:w-auto">
             <IoCreateOutline /> Create Bill
           </PrimaryButton>
-        </div>
+          {/* </div> */}
 
-        {/* Right Side */}
-        <div className="flex items-center gap-5 flex-wrap">
-          <PrimaryButton className="flex items-center gap-3">
+          {/* Right Side */}
+          {/* <div className="flex flex-wrap items-center gap-5 w-full lg:w-auto lg:flex-row lg:items-center"> */}
+          <PrimaryButton className="flex items-center gap-3  sm:w-auto">
             <TbInvoice /> Invoice
           </PrimaryButton>
-          <PrimaryButton className="flex items-center gap-3">
+          <PrimaryButton className="flex items-center gap-3 sm:w-auto">
             <FaMoneyCheck /> Payment Voucher
           </PrimaryButton>
         </div>
       </div>
+
+      {/* Table */}
       <div className="overflow-x-auto px-2 flex-grow">
-        <Table columns={columns} data={data} />
+        <Table columns={columns} data={data} className="min-w-full" />
       </div>
     </div>
   )

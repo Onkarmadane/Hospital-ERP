@@ -110,7 +110,7 @@ const Sidebar = () => {
 
       {/* Bottom Navbar for small screens (hidden on large screens) */}
       <nav
-        className={`fixed bottom-0 left-0 right-0 bg-white shadow-lg border-t-2 border-primary p-2 flex justify-around items-center z-50 
+        className={`fixed bottom-0 left-0 right-0 bg-white mt-[100px] shadow-lg border-t-2 border-primary p-2 flex justify-around items-center z-50 
           ${isSmallScreen ? "block" : "hidden"}`}
       >
         {navLinks.map(({ to, icon, label }, index) => (
