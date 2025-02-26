@@ -5,7 +5,7 @@ import { MdOutlineAdd } from "react-icons/md";
 import { RiDeleteBinLine, RiEditBoxLine, RiEyeLine } from "react-icons/ri";
 import Swal from 'sweetalert2';
 
-// Modal Component
+// Modal Component (unchanged)
 const Modal = ({ isOpen, onClose, children, title }) => {
   const modalRef = useRef(null);
 
@@ -15,7 +15,6 @@ const Modal = ({ isOpen, onClose, children, title }) => {
         onClose();
       }
     };
-
     document.addEventListener('keydown', handleEscape);
     return () => document.removeEventListener('keydown', handleEscape);
   }, [isOpen, onClose]);
@@ -29,19 +28,19 @@ const Modal = ({ isOpen, onClose, children, title }) => {
   if (!isOpen) return null;
 
   return (
-    <div 
-      className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+    <div
+      className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 px-2 sm:px-0"
       onClick={handleOutsideClick}
     >
-      <div 
+      <div
         ref={modalRef}
-        className="bg-white rounded-lg p-6 w-full max-w-md max-h-[80vh] overflow-y-auto"
+        className="bg-white rounded-lg p-4 sm:p-6 w-full max-w-[95%] sm:max-w-md max-h-[80vh] overflow-y-auto"
       >
         <div className="flex justify-between items-center mb-4">
-          <h3 className="text-lg font-semibold">{title}</h3>
+          <h3 className="text-base sm:text-lg font-semibold">{title}</h3>
           <PrimaryButton
             onClick={onClose}
-            className="text-gray-500 hover:text-gray-700"
+            className="text-gray-500 hover:text-gray-700 text-lg"
           >
             ×
           </PrimaryButton>
@@ -53,113 +52,134 @@ const Modal = ({ isOpen, onClose, children, title }) => {
 };
 
 function Inventory() {
+  const [activeTab, setActiveTab] = useState('medicine'); // Medicine tab active by default
+
+  // Medicine Stock Data (unchanged)
   const [inventoryData, setInventoryData] = useState([
-   
-        {
-            Medicine: "Paracetamol",
-            BatchNo: "PARA202301",
-            InwardQuantity: 1000,
-            UnitofMeasure: "Tablets",
-            ExpiryDate: "2025-12-31",
-            Price: 0.25,
-            ReceivedDate: "2024-01-15",
-            AvailableBatchQty: 850,
-            TotalAvailableQty: 1200
-        },
-        {
-            Medicine: "Ibuprofen",
-            BatchNo: "IBU202302",
-            InwardQuantity: 500,
-            UnitofMeasure: "Tablets",
-            ExpiryDate: "2025-06-30",
-            Price: 0.35,
-            ReceivedDate: "2024-02-01",
-            AvailableBatchQty: 420,
-            TotalAvailableQty: 650
-        },
-        {
-            Medicine: "Amoxicillin",
-            BatchNo: "AMO202303",
-            InwardQuantity: 200,
-            UnitofMeasure: "Capsules",
-            ExpiryDate: "2024-11-30",
-            Price: 0.85,
-            ReceivedDate: "2024-01-20",
-            AvailableBatchQty: 180,
-            TotalAvailableQty: 300
-        },
-        {
-            Medicine: "Cetirizine",
-            BatchNo: "CET202304",
-            InwardQuantity: 800,
-            UnitofMeasure: "Tablets",
-            ExpiryDate: "2026-03-31",
-            Price: 0.15,
-            ReceivedDate: "2024-02-10",
-            AvailableBatchQty: 750,
-            TotalAvailableQty: 900
-        },
-        {
-            Medicine: "Metformin",
-            BatchNo: "MET202305",
-            InwardQuantity: 600,
-            UnitofMeasure: "Tablets",
-            ExpiryDate: "2025-09-30",
-            Price: 0.45,
-            ReceivedDate: "2024-01-25",
-            AvailableBatchQty: 550,
-            TotalAvailableQty: 700
-        }
-    
-    
+    {
+      Medicine: "Paracetamol",
+      BatchNo: "PARA202301",
+      InwardQuantity: 1000,
+      UnitofMeasure: "Tablets",
+      ExpiryDate: "2025-12-31",
+      Price: 0.25,
+      ReceivedDate: "2024-01-15",
+      AvailableBatchQty: 850,
+      TotalAvailableQty: 1200
+    },
+    {
+      Medicine: "Paracetamol",
+      BatchNo: "PARA202301",
+      InwardQuantity: 1000,
+      UnitofMeasure: "Tablets",
+      ExpiryDate: "2025-12-31",
+      Price: 0.25,
+      ReceivedDate: "2024-01-15",
+      AvailableBatchQty: 850,
+      TotalAvailableQty: 1200
+    },
+    {
+      Medicine: "Paracetamol",
+      BatchNo: "PARA202301",
+      InwardQuantity: 1000,
+      UnitofMeasure: "Tablets",
+      ExpiryDate: "2025-12-31",
+      Price: 0.25,
+      ReceivedDate: "2024-01-15",
+      AvailableBatchQty: 850,
+      TotalAvailableQty: 1200
+    },
+
   ]);
+
+  // Batch Data
+  const [batchData, setBatchData] = useState([
+    {
+      BatchNo: "PARA202301",
+      Medicine: "Paracetamol",
+      BatchCreationDate: "2023-12-15",
+      ManufactureDate: "2023-12-10",
+      ExpiryDate: "2025-12-31"
+    },
+    {
+      BatchNo: "IBU202302",
+      Medicine: "Ibuprofen",
+      BatchCreationDate: "2024-01-15",
+      ManufactureDate: "2024-01-10",
+      ExpiryDate: "2025-06-30"
+    },
+    {
+      BatchNo: "AMO202303",
+      Medicine: "Amoxicillin",
+      BatchCreationDate: "2024-01-05",
+      ManufactureDate: "2024-01-01",
+      ExpiryDate: "2024-11-30"
+    }
+  ]);
+
   const [searchTerm, setSearchTerm] = useState('');
   const [isViewModalOpen, setIsViewModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [selectedMedicine, setSelectedMedicine] = useState(null);
   const [editFormData, setEditFormData] = useState({});
 
-  const columns = [
+  // Columns for Medicine Stock Tab (unchanged)
+  const medicineColumns = [
     { header: 'Medicine', accessor: 'Medicine' },
     { header: 'Batch No', accessor: 'BatchNo' },
-    { header: 'Inward Quantity', accessor: 'InwardQuantity' },
-    { header: 'Unit of Measure', accessor: 'UnitofMeasure' },
-    { header: 'Expiry Date', accessor: 'ExpiryDate' },
+    { header: 'Inward Qty', accessor: 'InwardQuantity' },
+    { header: 'Unit', accessor: 'UnitofMeasure' },
+    { header: 'Expiry', accessor: 'ExpiryDate' },
     { header: 'Price', accessor: 'Price' },
-    { header: 'Received Date', accessor: 'ReceivedDate' },
-    { header: 'Available Batch Qty', accessor: 'AvailableBatchQty' },
-    { header: 'Total Available Qty', accessor: 'TotalAvailableQty' },
+    { header: 'Received', accessor: 'ReceivedDate' },
+    { header: 'Batch Qty', accessor: 'AvailableBatchQty' },
+    { header: 'Total Qty', accessor: 'TotalAvailableQty' },
     {
       header: 'Action',
       accessor: 'Action',
       Cell: ({ row }) => (
         <div className="flex gap-1">
-          <button
-            className="text-red-500 border border-red-500 rounded p-1 hover:bg-red-50"
-            title="Delete"
-            onClick={() => handleDelete(row.original)}
-          >
-            <RiDeleteBinLine />
+          <button className="text-red-500 border border-red-500 rounded p-1 hover:bg-red-50" title="Delete" onClick={() => handleDelete(row.original)}>
+            <RiDeleteBinLine size={16} />
           </button>
-          <button
-            className="text-green-500 border border-green-500 rounded p-1 hover:bg-green-50"
-            title="Edit Details"
-            onClick={() => handleEdit(row.original)}
-          >
-            <RiEditBoxLine />
+          <button className="text-green-500 border border-green-500 rounded p-1 hover:bg-green-50" title="Edit Details" onClick={() => handleEdit(row.original)}>
+            <RiEditBoxLine size={16} />
           </button>
-          <button
-            className="text-blue-500 border border-blue-500 rounded p-1 hover:bg-blue-50"
-            title="View Details"
-            onClick={() => handleView(row.original)}
-          >
-            <RiEyeLine />
+          <button className="text-blue-500 border border-blue-500 rounded p-1 hover:bg-blue-50" title="View Details" onClick={() => handleView(row.original)}>
+            <RiEyeLine size={16} />
           </button>
         </div>
       )
     },
   ];
 
+  // Columns for Batch Tab
+  const batchColumns = [
+    { header: 'Batch No', accessor: 'BatchNo' },
+    { header: 'Medicine', accessor: 'Medicine' },
+    { header: 'Batch Creation Date', accessor: 'BatchCreationDate' },
+    { header: 'Manufacture Date', accessor: 'ManufactureDate' },
+    { header: 'Expiry Date', accessor: 'ExpiryDate' },
+    {
+      header: 'Action',
+      accessor: 'Action',
+      Cell: ({ row }) => (
+        <div className="flex gap-1">
+          <button className="text-red-500 border border-red-500 rounded p-1 hover:bg-red-50" title="Delete" onClick={() => handleBatchDelete(row.original)}>
+            <RiDeleteBinLine size={16} />
+          </button>
+          <button className="text-green-500 border border-green-500 rounded p-1 hover:bg-green-50" title="Edit Details" onClick={() => handleEdit(row.original)}>
+            <RiEditBoxLine size={16} />
+          </button>
+          <button className="text-blue-500 border border-blue-500 rounded p-1 hover:bg-blue-50" title="View Details" onClick={() => handleView(row.original)}>
+            <RiEyeLine size={16} />
+          </button>
+        </div>
+      )
+    },
+  ];
+
+  // Handlers (unchanged except for new batch delete handler)
   const handleDelete = (medicine) => {
     Swal.fire({
       title: 'Are you sure?',
@@ -173,18 +193,32 @@ function Inventory() {
     }).then((result) => {
       if (result.isConfirmed) {
         setInventoryData(inventoryData.filter(item => item.BatchNo !== medicine.BatchNo));
-        Swal.fire(
-          'Deleted!',
-          'The inventory item has been deleted.',
-          'success'
-        );
+        Swal.fire('Deleted!', 'The inventory item has been deleted.', 'success');
       }
     });
   };
 
-  const handleEdit = (medicine) => {
-    setSelectedMedicine(medicine);
-    setEditFormData({ ...medicine });
+  const handleBatchDelete = (batch) => {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: `This action will permanently delete ${batch.Medicine} (Batch: ${batch.BatchNo}). You won’t be able to undo this!`,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#3085d6',
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'Cancel'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        setBatchData(batchData.filter(item => item.BatchNo !== batch.BatchNo));
+        Swal.fire('Deleted!', 'The batch has been deleted.', 'success');
+      }
+    });
+  };
+
+  const handleEdit = (item) => {
+    setSelectedMedicine(item);
+    setEditFormData({ ...item });
     setIsEditModalOpen(true);
   };
 
@@ -195,14 +229,21 @@ function Inventory() {
 
   const handleEditSubmit = (e) => {
     e.preventDefault();
-    const updatedInventory = inventoryData.map(item => 
-      item.BatchNo === editFormData.BatchNo ? { ...editFormData } : item
-    );
-    setInventoryData(updatedInventory);
+    if (activeTab === 'medicine') {
+      const updatedInventory = inventoryData.map(item =>
+        item.BatchNo === editFormData.BatchNo ? { ...editFormData } : item
+      );
+      setInventoryData(updatedInventory);
+    } else {
+      const updatedBatches = batchData.map(item =>
+        item.BatchNo === editFormData.BatchNo ? { ...editFormData } : item
+      );
+      setBatchData(updatedBatches);
+    }
     setIsEditModalOpen(false);
     Swal.fire({
       title: 'Success!',
-      text: 'Inventory details have been updated successfully.',
+      text: 'Details have been updated successfully.',
       icon: 'success',
       confirmButtonText: 'OK',
       timer: 1500,
@@ -210,8 +251,8 @@ function Inventory() {
     });
   };
 
-  const handleView = (medicine) => {
-    setSelectedMedicine(medicine);
+  const handleView = (item) => {
+    setSelectedMedicine(item);
     setIsViewModalOpen(true);
   };
 
@@ -220,31 +261,44 @@ function Inventory() {
     item.BatchNo.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  const filteredBatches = batchData.filter(item =>
+    item.Medicine.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    item.BatchNo.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
-    <div className="w-[95%] lg:ms-[70px] min-h-screen bg-white flex flex-col">
-      <div className="flex flex-wrap justify-between items-center gap-5 font-medium mb-5 border-b pb-2 px-4">
-        <div className="flex items-center">
-          <h5 className="text-lg font-semibold">Inventory</h5>
-        </div>
-        <div className="flex items-center gap-3 flex-wrap">
-          <PrimaryButton className="flex items-center gap-3 whitespace-nowrap">
+    <div className="w-full max-w-[95%] mx-auto lg:ml-[70px] min-h-screen bg-white flex flex-col">
+      {/* Header */}
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 md:gap-6 font-medium mb-6 border-b pb-3 px-2 sm:px-4 lg:px-6">
+        <h5 className="text-base sm:text-lg md:text-xl font-semibold">Inventory</h5>
+        <div className="flex flex-row items-center gap-2 sm:gap-3 md:gap-4">
+          <PrimaryButton
+            onClick={() => setActiveTab('medicine')}
+            className={`flex items-center justify-center gap-2 sm:gap-2.5 md:gap-3 whitespace-nowrap text-sm sm:text-base md:text-lg px-3 py-1.5 sm:px-4 sm:py-2 rounded-md transition-colors ${activeTab === 'medicine' ? 'bg-primary text-white ' : ' text-gray-800 hover:bg-gray-300'
+              }`}
+          >
             Medicine Stock
           </PrimaryButton>
-          <PrimaryButton className="flex items-center gap-3 whitespace-nowrap">
+          <PrimaryButton
+            onClick={() => setActiveTab('batch')}
+            className={`flex items-center justify-center gap-2 sm:gap-2.5 md:gap-3 whitespace-nowrap text-sm sm:text-base md:text-lg px-3 py-1.5 sm:px-4 sm:py-2 rounded-md transition-colors ${activeTab === 'batch' ? 'bg-primary text-white ' : ' text-gray-800 hover:bg-gray-300'
+              }`}
+          >
             Batch
           </PrimaryButton>
         </div>
       </div>
 
-      <div className="flex flex-col md:flex-row justify-between mb-4 gap-4 border-b pb-3 px-4">
-        <PrimaryButton className="flex items-center gap-3 whitespace-nowrap">
+      {/* Button and Search */}
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 gap-4 border-b pb-3 px-2 sm:px-4">
+        <PrimaryButton className="flex items-center gap-2 sm:gap-3 whitespace-nowrap w-full sm:w-auto text-sm sm:text-base">
           <MdOutlineAdd /> Receive Inventory
         </PrimaryButton>
-        <div className="flex items-center gap-2">
-          <label className="text-sm">Search:</label>
+        <div className="flex items-center gap-2 w-full sm:w-auto">
+          <label className="text-xs sm:text-sm">Search:</label>
           <input
             type="search"
-            className="border rounded p-1 text-sm w-full md:w-64 bg-white text-black"
+            className="border rounded p-1 text-xs sm:text-sm w-full bg-white text-black"
             placeholder="Search By Name or Batch..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
@@ -252,8 +306,13 @@ function Inventory() {
         </div>
       </div>
 
+      {/* Table Content based on Active Tab */}
       <div className="overflow-x-auto px-2 flex-grow">
-        <Table columns={columns} data={filteredInventory} />
+        {activeTab === 'medicine' ? (
+          <Table columns={medicineColumns} data={filteredInventory} />
+        ) : (
+          <Table columns={batchColumns} data={filteredBatches} />
+        )}
       </div>
 
       {/* View Modal */}
@@ -263,16 +322,12 @@ function Inventory() {
         title="Inventory Details"
       >
         {selectedMedicine && (
-          <div className="space-y-2">
-            <p><strong>Medicine:</strong> {selectedMedicine.Medicine}</p>
-            <p><strong>Batch No:</strong> {selectedMedicine.BatchNo}</p>
-            <p><strong>Inward Quantity:</strong> {selectedMedicine.InwardQuantity}</p>
-            <p><strong>Unit:</strong> {selectedMedicine.UnitofMeasure}</p>
-            <p><strong>Expiry:</strong> {selectedMedicine.ExpiryDate}</p>
-            <p><strong>Price:</strong> ${selectedMedicine.Price}</p>
-            <p><strong>Received:</strong> {selectedMedicine.ReceivedDate}</p>
-            <p><strong>Available Batch:</strong> {selectedMedicine.AvailableBatchQty}</p>
-            <p><strong>Total Available:</strong> {selectedMedicine.TotalAvailableQty}</p>
+          <div className="space-y-2 text-sm sm:text-base">
+            {Object.entries(selectedMedicine).map(([key, value]) => (
+              key !== 'Action' && (
+                <p key={key}><strong>{key}:</strong> {value}</p>
+              )
+            ))}
           </div>
         )}
       </Modal>
@@ -284,109 +339,33 @@ function Inventory() {
         title="Edit Inventory"
       >
         {selectedMedicine && (
-          <form onSubmit={handleEditSubmit} className="space-y-4">
-            <div>
-              <label className="block text-sm font-medium">Medicine</label>
-              <input
-                type="text"
-                name="Medicine"
-                value={editFormData.Medicine}
-                onChange={handleEditChange}
-                className="w-full border rounded p-2 bg-white text-black"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium">Batch No</label>
-              <input
-                type="text"
-                name="BatchNo"
-                value={editFormData.BatchNo}
-                onChange={handleEditChange}
-                className="w-full border rounded p-2 bg-white text-black"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium">Inward Quantity</label>
-              <input
-                type="number"
-                name="InwardQuantity"
-                value={editFormData.InwardQuantity}
-                onChange={handleEditChange}
-                className="w-full border rounded p-2 bg-white text-black"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium">Unit of Measure</label>
-              <input
-                type="text"
-                name="UnitofMeasure"
-                value={editFormData.UnitofMeasure}
-                onChange={handleEditChange}
-                className="w-full border rounded p-2 bg-white text-black"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium">Expiry Date</label>
-              <input
-                type="date"
-                name="ExpiryDate"
-                value={editFormData.ExpiryDate}
-                onChange={handleEditChange}
-                className="w-full border rounded p-2 bg-white text-black"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium">Price</label>
-              <input
-                type="number"
-                name="Price"
-                value={editFormData.Price}
-                onChange={handleEditChange}
-                className="w-full border rounded p-2 bg-white text-black"
-                step="0.01"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium">Received Date</label>
-              <input
-                type="date"
-                name="ReceivedDate"
-                value={editFormData.ReceivedDate}
-                onChange={handleEditChange}
-                className="w-full border rounded p-2 bg-white text-black"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium">Available Batch Qty</label>
-              <input
-                type="number"
-                name="AvailableBatchQty"
-                value={editFormData.AvailableBatchQty}
-                onChange={handleEditChange}
-                className="w-full border rounded p-2 bg-white text-black"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium">Total Available Qty</label>
-              <input
-                type="number"
-                name="TotalAvailableQty"
-                value={editFormData.TotalAvailableQty}
-                onChange={handleEditChange}
-                className="w-full border rounded p-2 bg-white text-black"
-              />
-            </div>
+          <form onSubmit={handleEditSubmit} className="space-y-3 sm:space-y-4 text-sm sm:text-base">
+            {Object.entries(editFormData).map(([key, value]) => (
+              key !== 'Action' && (
+                <div key={key}>
+                  <label className="block font-medium">{key}</label>
+                  <input
+                    type={key.includes('Date') ? 'date' : key.includes('Qty') || key === 'Price' ? 'number' : 'text'}
+                    name={key}
+                    value={value}
+                    onChange={handleEditChange}
+                    className="w-full border rounded p-2 bg-white text-black"
+                    step={key === 'Price' ? '0.01' : undefined}
+                  />
+                </div>
+              )
+            ))}
             <div className="flex justify-end gap-2">
               <PrimaryButton
                 type="button"
                 onClick={() => setIsEditModalOpen(false)}
-                className="px-4 py-2 border rounded text-gray-600 hover:bg-gray-100"
+                className="px-3 sm:px-4 py-1 sm:py-2 border rounded text-gray-600 hover:bg-gray-100 text-sm sm:text-base"
               >
                 Cancel
               </PrimaryButton>
               <PrimaryButton
                 type="submit"
-                className="px-4 py-2 bg-primary text-white rounded hover:bg-primary-dark"
+                className="px-3 sm:px-4 py-1 sm:py-2 bg-primary text-white rounded hover:bg-primary-dark text-sm sm:text-base"
               >
                 Save Changes
               </PrimaryButton>

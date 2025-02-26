@@ -6,6 +6,7 @@ import { IoIosHelpCircleOutline } from "react-icons/io";
 import { NavLink, useLocation } from "react-router-dom";
 import { LuNotebookPen } from "react-icons/lu";
 import { FaUsers } from "react-icons/fa";
+
 // Tooltip Component
 function Tooltip({ content, children }) {
   return (
@@ -23,16 +24,25 @@ function Tooltip({ content, children }) {
 const Sidebar = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [isHidden, setIsHidden] = useState(true);
+  const [isSmallScreen, setIsSmallScreen] = useState(false); // Track if screen is small
   const location = useLocation();
 
   useEffect(() => {
-    if (window.innerWidth >= 768) {
-      setIsCollapsed(true);
-      setIsHidden(false);
-    } else {
-      setIsHidden(true);
-      setIsCollapsed(false);
-    }
+    const handleResize = () => {
+      const isSmall = window.innerWidth < 768; // Adjust threshold as needed (e.g., 768px for tablet/mobile)
+      setIsSmallScreen(isSmall);
+      if (isSmall) {
+        setIsHidden(true); // Hide sidebar on small screens
+        setIsCollapsed(false);
+      } else {
+        setIsHidden(false); // Show sidebar on large screens
+        setIsCollapsed(true); // Default collapsed on large screens
+      }
+    };
+
+    handleResize(); // Initial check
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, [location]);
 
   const toggleSidebar = () => {
@@ -66,10 +76,11 @@ const Sidebar = () => {
 
   return (
     <>
+      {/* Sidebar for large screens (hidden on small screens) */}
       <nav
         className={`sidebar bg-white text-black shadow-lg border-r-2 border-primary h-full fixed left-0 top-0 transition-all duration-300 z-50 
           ${isHidden ? "hidden" : "block"} 
-          ${isCollapsed ? "w-16" : "w-64"} sm:block`}
+          ${isCollapsed ? "w-16" : "w-64"} ${isSmallScreen ? "hidden" : "sm:block"}`}
       >
         <button
           onClick={toggleSidebar}
@@ -97,13 +108,25 @@ const Sidebar = () => {
         </ul>
       </nav>
 
-      <button
-        onClick={toggleSidebar}
-        className={`p-3 m-1 bg-primary text-black rounded-full transition duration-300 hover:bg-secondary fixed top-1 left-1 z-50 block md:hidden ${isHidden ? "rotate-0" : "rotate-180"
-          }`}
+      {/* Bottom Navbar for small screens (hidden on large screens) */}
+      <nav
+        className={`fixed bottom-0 left-0 right-0 bg-white shadow-lg border-t-2 border-primary p-2 flex justify-around items-center z-50 
+          ${isSmallScreen ? "block" : "hidden"}`}
       >
-        <MdMenu size={24} />
-      </button>
+        {navLinks.map(({ to, icon, label }, index) => (
+          <NavLink
+            key={index}
+            to={to}
+            className={({ isActive }) =>
+              `p-2 rounded-lg ${isActive || location.pathname.startsWith(to) ? "text-primary" : "text-black"
+              } hover:text-primary`
+            }
+            onClick={handleNavClick}
+          >
+            {icon}
+          </NavLink>
+        ))}
+      </nav>
     </>
   );
 };

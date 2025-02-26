@@ -11,14 +11,14 @@ import BookAppointmentForm from "./Components/BookAppointmentForm";
 import Login from "./Components/Login";
 import { AuthProvider, useAuth } from "./Context/AuthContext"; // Import from new file
 import Inventory from "./Pages/Inventory";
-
+import PageNotFound from "./Components/PageNotFound";
 // Private Route Component
 const PrivateRoute = ({ element: Element, ...rest }) => {
   const { isAuthenticated } = useAuth();
   return isAuthenticated ? (
     <div className="flex bg-white text-black w-full h-screen">
       <Sidebar />
-      <main className="flex-1 lg:mx-4 pt-10">
+      <main className="flex-1 lg:mx-4 pt-5">
         <Element {...rest} />
       </main>
     </div>
@@ -41,6 +41,7 @@ function App() {
           <Route path="/doctor/settings" element={<PrivateRoute element={Settings} />} />
           <Route path="/doctor/Appointment/bookappointmentform" element={<PrivateRoute element={BookAppointmentForm} />} />
           <Route path="/doctor/settings/inventory" element={<PrivateRoute element={Inventory} />} />
+          <Route path="/*" element={<PrivateRoute element={PageNotFound} />} />
           {/* <Route path="/tv-view-setup" element={<TVViewSetup />} /> */}
           {/* <Route path="/consultation-setup" element={<ConsultationSetup />} /> */}
           {/* <Route path="/general-settings" element={<GeneralSettings />} /> */}

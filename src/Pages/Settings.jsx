@@ -19,7 +19,7 @@ const Setup = () => {
                     />
                 </Link>
                 
-                <Link to="/tv-view-setup" className="no-underline">
+                <Link to="/doctor/settings/tv-view-setup" className="no-underline">
                     <Cards
                         title="TV View Setup"
                         description="Configure fields and notices for TV display"

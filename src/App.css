@@ -67,3 +67,10 @@
   color: #006400; /* Dark green for current time indicator */
   font-weight: bold;
 }
+
+.rbc-event-label {
+  font-size: 12px; /* Smaller text for month view */
+}
+.rbc-event {
+  padding: 2px 4px; /* Adjust padding */
+}
