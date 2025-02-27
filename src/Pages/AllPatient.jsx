@@ -1,13 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react';
-import PrimaryButton from '../Components/PrimaryButton';
 import { RiEditBoxLine } from "react-icons/ri";
 import { RiEyeLine } from "react-icons/ri";
 import { RiDeleteBinLine } from "react-icons/ri";
+import { BiSave } from "react-icons/bi";
 import { IoMdPersonAdd } from "react-icons/io";
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
-
-
+import BackButton from '../Components/BackButton';
+import Button from '../Components/Button';
+import { MdOutlineClose } from "react-icons/md";
+import Modal from '../Components/Modal'
 // Function to get initials from name
 const getInitials = (name) => {
   const nameParts = name.trim().split(' ');
@@ -18,55 +20,50 @@ const getInitials = (name) => {
 };
 
 // Modal Component
-const Modal = ({ isOpen, onClose, children, title }) => {
-  const modalRef = useRef(null);
+// const Modal = ({ isOpen, onClose, children, title }) => {
+//   const modalRef = useRef(null);
 
-  // Close modal on Escape key press
-  useEffect(() => {
-    const handleEscape = (event) => {
-      if (event.key === 'Escape' && isOpen) {
-        onClose();
-      }
-    };
+//   // Close modal on Escape key press
+//   useEffect(() => {
+//     const handleEscape = (event) => {
+//       if (event.key === 'Escape' && isOpen) {
+//         onClose();
+//       }
+//     };
 
-    document.addEventListener('keydown', handleEscape);
-    return () => {
-      document.removeEventListener('keydown', handleEscape);
-    };
-  }, [isOpen, onClose]);
+//     document.addEventListener('keydown', handleEscape);
+//     return () => {
+//       document.removeEventListener('keydown', handleEscape);
+//     };
+//   }, [isOpen, onClose]);
 
-  // Close modal on outside click
-  const handleOutsideClick = (event) => {
-    if (modalRef.current && !modalRef.current.contains(event.target)) {
-      onClose();
-    }
-  };
+//   // Close modal on outside click
+//   const handleOutsideClick = (event) => {
+//     if (modalRef.current && !modalRef.current.contains(event.target)) {
+//       onClose();
+//     }
+//   };
 
-  if (!isOpen) return null;
+//   if (!isOpen) return null;
 
-  return (
-    <div 
-      className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
-      onClick={handleOutsideClick}
-    >
-      <div 
-        ref={modalRef}
-        className="bg-white rounded-lg p-6 w-full max-w-md max-h-[80vh] overflow-y-auto"
-      >
-        <div className="flex justify-between items-center mb-4">
-          <h3 className="text-lg font-semibold">{title}</h3>
-          < PrimaryButton
-            onClick={onClose} 
-            className="text-gray-500 hover:text-gray-700"
-          >
-            ×
-          </PrimaryButton>
-        </div>
-        {children}
-      </div>
-    </div>
-  );
-};
+//   return (
+//     <div
+//       className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+//       onClick={handleOutsideClick}
+//     >
+//       <div
+//         ref={modalRef}
+//         className="bg-white rounded-lg p-6 w-full max-w-md max-h-[80vh] overflow-y-auto"
+//       >
+//         <div className="flex justify-between items-center mb-4">
+//           <h3 className="text-lg font-semibold">{title}</h3>
+//           <Button variant="secondary" size="sm" onClick={onClose}> <MdOutlineClose /></Button>
+//         </div>
+//         {children}
+//       </div>
+//     </div>
+//   );
+// };
 
 const AllPatient = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -131,23 +128,23 @@ const AllPatient = () => {
     setEditFormData(prev => ({ ...prev, [name]: value }));
   };
 
- // Handle Edit Submit with SweetAlert2
- const handleEditSubmit = (e) => {
-  e.preventDefault();
-  const updatedPatients = patientsList.map(patient => 
-    patient.id === editFormData.id ? { ...editFormData } : patient
-  );
-  setPatientsList(updatedPatients);
-  setIsEditModalOpen(false);
-  Swal.fire({
-    title: 'Success!',
-    text: 'Patient details have been updated successfully.',
-    icon: 'success',
-    confirmButtonText: 'OK',
-    timer: 1500, // Auto-close after 1.5 seconds
-    timerProgressBar: true,
-  });
-};
+  // Handle Edit Submit with SweetAlert2
+  const handleEditSubmit = (e) => {
+    e.preventDefault();
+    const updatedPatients = patientsList.map(patient =>
+      patient.id === editFormData.id ? { ...editFormData } : patient
+    );
+    setPatientsList(updatedPatients);
+    setIsEditModalOpen(false);
+    Swal.fire({
+      title: 'Success!',
+      text: 'Patient details have been updated successfully.',
+      icon: 'success',
+      confirmButtonText: 'OK',
+      timer: 1500, // Auto-close after 1.5 seconds
+      timerProgressBar: true,
+    });
+  };
   // Filter patients
   const filteredPatients = patientsList.filter(patient =>
     patient.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -155,17 +152,14 @@ const AllPatient = () => {
   );
 
   return (
-    <div className="grid grid-cols-1 gap-3 w-[95%] lg:ms-[70px]">
+    <div className="grid grid-cols-1 gap-3 w-[95%] lg:ms-[70px] px-2">
       <div className="bg-white rounded-lg">
         {/* Card Header */}
-        <div className="flex items-center justify-between p-4 border-b">
+        <div className="flex items-center justify-between pb-4 border-b">
+          <BackButton />
           <h5 className="text-lg font-semibold">Patients List</h5>
-          <PrimaryButton 
-            className='btn-sm flex justify-center items-center gap-3' 
-            onClick={handleBookAppoinmentClick}
-          >
-            <IoMdPersonAdd /> Add Patient
-          </PrimaryButton>
+          <Button variant="primary" size="sm" onClick={handleBookAppoinmentClick}>  <IoMdPersonAdd /> Add Patient</Button>
+
         </div>
 
         {/* Card Body */}
@@ -284,7 +278,7 @@ const AllPatient = () => {
       </div>
 
       {/* View Patient Modal */}
-      <Modal
+      {/* <Modal
         isOpen={isViewModalOpen}
         onClose={() => setIsViewModalOpen(false)}
         title="Patient Details"
@@ -307,10 +301,36 @@ const AllPatient = () => {
             <p><strong>Address:</strong> {selectedPatient.address}</p>
           </div>
         )}
+      </Modal> */}
+      <Modal
+        isOpen={isViewModalOpen}
+        onClose={() => setIsViewModalOpen(false)}
+        title="Patient Details"
+        className="w-full max-w-md mx-auto p-4 sm:p-6" // Consistent with Inventory
+      >
+        {selectedPatient && (
+          <div className="space-y-2 text-sm sm:text-base overflow-x-hidden">
+            <div className="flex items-center gap-2">
+              <div className="w-12 h-12 rounded-full bg-blue-500 text-white flex items-center justify-center shadow">
+                {getInitials(selectedPatient.name)}
+              </div>
+              <h4 className="font-medium">{selectedPatient.name}</h4>
+            </div>
+            {/* Show ID by default; remove this line if you want to hide it */}
+            <p><strong>ID:</strong> {selectedPatient.id}</p>
+            <p><strong>Gender:</strong> {selectedPatient.gender}</p>
+            <p><strong>Age:</strong> {selectedPatient.age}</p>
+            <p><strong>Blood Group:</strong> {selectedPatient.blood}</p>
+            <p><strong>Treatment:</strong> {selectedPatient.treatment}</p>
+            <p><strong>Mobile:</strong> {selectedPatient.mobile}</p>
+            <p><strong>Email:</strong> {selectedPatient.email}</p>
+            <p><strong>Address:</strong> {selectedPatient.address}</p>
+          </div>
+        )}
       </Modal>
 
       {/* Edit Patient Modal */}
-      <Modal
+      {/* <Modal
         isOpen={isEditModalOpen}
         onClose={() => setIsEditModalOpen(false)}
         title="Edit Patient"
@@ -400,20 +420,82 @@ const AllPatient = () => {
               />
             </div>
             <div className="flex justify-end gap-2">
-              <PrimaryButton
-                type="button"
-                onClick={() => setIsEditModalOpen(false)}
-                className="px-4 py-2 border rounded text-gray-600 hover:bg-gray-100"
-              >
-                Cancel
-              </PrimaryButton>
-              <PrimaryButton
-                type="submit"
-                className="px-4 py-2 bg-primary text-white rounded hover:bg-primary-dark"
-              >
-                Save Changes
-              </PrimaryButton>
+              <Button variant="secondary" size="sm" onClick={() => setIsEditModalOpen(false)}>Click Me</Button>
+              <Button variant="primary" size="sm"> Save Changes</Button>
+
             </div>
+          </form>
+        )}
+      </Modal> */}
+      <Modal
+        isOpen={isEditModalOpen}
+        onClose={() => setIsEditModalOpen(false)}
+        title="Edit Patient"
+        className="w-full max-w-md mx-auto p-4 sm:p-6" // Consistent with Inventory
+        footer={
+          <div className="flex justify-end gap-2">
+            <Button
+              variant="secondary"
+              type="button"
+              size="sm"
+              onClick={() => setIsEditModalOpen(false)}
+              className="px-3 sm:px-4 py-1 sm:py-2 border rounded text-gray-600 hover:bg-gray-100 text-sm sm:text-base"
+            >
+              <MdOutlineClose /> Cancel
+            </Button>
+            <Button
+              variant="primary"
+              type="submit"
+              form="edit-form"
+              size="sm"
+              className="px-3 sm:px-4 py-1 sm:py-2 bg-primary text-white rounded hover:bg-primary-dark text-sm sm:text-base"
+            >
+              <BiSave /> Save Changes
+            </Button>
+          </div>
+        }
+      >
+        {selectedPatient && (
+          <form
+            id="edit-form"
+            onSubmit={handleEditSubmit}
+            className="space-y-3 sm:space-y-4 text-sm sm:text-base overflow-x-hidden"
+          >
+            {Object.entries(editFormData).map(
+              ([key, value]) =>
+                key !== 'id' && ( // Hide 'id' field
+                  <div key={key}>
+                    <label className="block text-sm font-medium">
+                      {key.charAt(0).toUpperCase() + key.slice(1).replace(/([A-Z])/g, ' $1')}
+                    </label>
+                    {key === 'gender' ? (
+                      <select
+                        name={key}
+                        value={value}
+                        onChange={handleEditChange}
+                        className="w-full border rounded p-2 bg-white text-black"
+                      >
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                      </select>
+                    ) : (
+                      <input
+                        type={
+                          key === 'age'
+                            ? 'number'
+                            : key === 'email'
+                              ? 'email'
+                              : 'text'
+                        }
+                        name={key}
+                        value={value}
+                        onChange={handleEditChange}
+                        className="w-full border rounded p-2 bg-white text-black"
+                      />
+                    )}
+                  </div>
+                )
+            )}
           </form>
         )}
       </Modal>

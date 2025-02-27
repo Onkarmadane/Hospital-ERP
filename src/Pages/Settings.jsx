@@ -6,11 +6,15 @@ import { IoTvSharp } from "react-icons/io5";
 import { RiFileUserLine } from "react-icons/ri";
 import { VscSettings } from "react-icons/vsc";
 import { Link } from 'react-router-dom'; // Import Link from react-router-dom
+import BackButton from '../Components/BackButton';
 
 const Setup = () => {
     return (
-        <>
-            <div className="flex flex-wrap justify-center gap-6">
+        <div>
+            <div className="lg:ps-20">
+        <BackButton/>
+        </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-[95%] mx-auto lg:ps-10 gap-6">
                 <Link to="/doctor/settings/inventory" className="no-underline">
                     <Cards
                         title="Inventory"
@@ -59,7 +63,7 @@ const Setup = () => {
                     />
                 </Link>
             </div>
-        </>
+        </div>
     );
 };
 

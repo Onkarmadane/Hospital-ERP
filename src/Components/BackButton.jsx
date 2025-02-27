@@ -1,16 +1,21 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import { FaArrowLeft } from 'react-icons/fa'; // You can use any icon or text here.
-import PrimaryButton from '../Components/PrimaryButton'
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import { FaArrowLeft } from "react-icons/fa";
+
 const BackButton = () => {
-  const navigate = useNavigate(); // Hook to navigate to previous page
+  const navigate = useNavigate();
 
   const goBack = () => {
     navigate(-1); // Go back to the previous page
   };
 
   return (
-    <PrimaryButton className='text-white' onClick={goBack}> <FaArrowLeft size={20} /></PrimaryButton>
+    <button
+      className="hidden sm:hidden md:block lg:block text-black bg-transparent duration-100 border border-1 hover:shadow-lg  items-center gap-3 p-2 rounded hover:bg-primary-dark"
+      onClick={goBack}
+    >
+      <FaArrowLeft size={20} />
+    </button>
   );
 };
 

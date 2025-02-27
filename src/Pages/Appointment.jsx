@@ -3,8 +3,10 @@ import { Calendar, momentLocalizer } from 'react-big-calendar';
 import moment from 'moment';
 import 'react-big-calendar/lib/css/react-big-calendar.css'; // Default styles
 import { useNavigate } from 'react-router-dom';
-import PrimaryButton from '../Components/PrimaryButton';
+// import PrimaryButton from '../Components/PrimaryButton';
 import { FaAddressBook } from 'react-icons/fa';
+import BackButton from '../Components/BackButton'
+import Button from '../Components/Button'
 
 const Appointment = () => {
   const navigate = useNavigate();
@@ -99,18 +101,17 @@ const Appointment = () => {
     step: currentView === 'day' ? 5 : 30, // 5 minutes for day view, 30 for others
     timeslots: currentView === 'day' ? 6 : 2, // 6 slots (5 min) for day, 2 slots (30 min) for others
   };
-  
+
 
   return (
-    <div className="grid grid-cols-1 gap-3 lg:ms-[70px] h-screen bg-white">
+    <div className="w-[95%] lg:ms-[70px] bg-white mx-auto">
       <div className="rounded-lg flex flex-col min-h-0">
-        <div className="flex items-center justify-between p-4 border-b shrink-0">
-          <h5 className="text-lg font-semibold">Appointments</h5>
-          <PrimaryButton
-            onClick={handleBookAppointmentClick}
-          >
-            <FaAddressBook />Book Appointment
-          </PrimaryButton>
+        <div className="flex items-center gap-2 justify-between text-center pb-4 border-b shrink-0">
+          <div className="lg:block md:block sm:hidden">
+            <BackButton />
+          </div>
+          <h5 className="text-lg font-semibold text-center lg:ps-20">Appointments</h5>
+          <Button variant="primary" size="sm" onClick={handleBookAppointmentClick}> <FaAddressBook />Book Appointment</Button>
         </div>
 
         <div className="p-4 overflow-x-auto flex-grow w-full">

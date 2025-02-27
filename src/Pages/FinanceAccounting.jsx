@@ -1,9 +1,10 @@
 import React from 'react'
 import Table from '../Components/Table'
-import PrimaryButton from '../Components/PrimaryButton'
+import Button from '../Components/Button'
 import { IoCreateOutline } from "react-icons/io5";
 import { TbInvoice } from "react-icons/tb";
 import { FaMoneyCheck } from 'react-icons/fa';
+import BackButton from '../Components/BackButton';
 function FinanceAccounting() {
   const columns = [
     { header: 'Patient Name', accessor: 'patientname' },
@@ -22,24 +23,19 @@ function FinanceAccounting() {
 
   ];
   return (
-    <div className="w-[95%] ps-10 mx-auto min-h-screen bg-white">
+    <div className="w-[95%] lg:ps-10 mx-auto min-h-screen bg-white">
       {/* Header with Buttons */}
       <div className="flex font-medium mb-5 border-b pb-2 flex-wrap items-center gap-5">
-        {/* Left Side */}
-        <div className="flex flex-wrap items-center gap-5 w-full lg:w-auto lg:flex-row lg:items-center">
-          <PrimaryButton className="flex items-center gap-3  lg:w-auto">
-            <IoCreateOutline /> Create Bill
-          </PrimaryButton>
-          {/* </div> */}
+        {/* Left Side: BackButton */}
+        <div className="flex items-center">
+          <BackButton />
+        </div>
 
-          {/* Right Side */}
-          {/* <div className="flex flex-wrap items-center gap-5 w-full lg:w-auto lg:flex-row lg:items-center"> */}
-          <PrimaryButton className="flex items-center gap-3  sm:w-auto">
-            <TbInvoice /> Invoice
-          </PrimaryButton>
-          <PrimaryButton className="flex items-center gap-3 sm:w-auto">
-            <FaMoneyCheck /> Payment Voucher
-          </PrimaryButton>
+        {/* Right Side: Three Buttons */}
+        <div className="flex flex-wrap items-center gap-5 w-full lg:w-auto lg:flex-row lg:items-center ml-auto">
+          <Button variant="primary" size="sm"><IoCreateOutline /> Create Bill</Button>
+          <Button variant="primary" size="sm"><TbInvoice /> Invoice</Button>
+          <Button variant="primary" size="sm"> <FaMoneyCheck /> Payment Voucher</Button>
         </div>
       </div>
 

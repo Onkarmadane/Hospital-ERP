@@ -16,7 +16,7 @@ import PageNotFound from "./Components/PageNotFound";
 const PrivateRoute = ({ element: Element, ...rest }) => {
   const { isAuthenticated } = useAuth();
   return isAuthenticated ? (
-    <div className="flex bg-white text-black w-full h-screen">
+    <div className="flex bg-white text-black w-full h-screen pb-20">
       <Sidebar />
       <main className="flex-1 sm:ms-4 lg:mx-4 sm:mx-auto pt-5 ">
         <Element {...rest} />

@@ -74,3 +74,25 @@
 .rbc-event {
   padding: 2px 4px; /* Adjust padding */
 }
+
+
+.custom-tooltip {
+  background: linear-gradient(135deg, #ffffff 0%, #f5f7fa 100%);
+  color: #1f2937; /* gray-900 */
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  font-family: 'Inter', sans-serif;
+}
+
+.introjs-button {
+  background-color: #3b82f6; /* primary */
+  color: white;
+  border-radius: 9999px; /* rounded-full */
+  padding: 0.5rem 1rem;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.introjs-button:hover {
+  background-color: #2563eb; /* primary-hover */
+}

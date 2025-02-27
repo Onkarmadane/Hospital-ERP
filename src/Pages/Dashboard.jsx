@@ -178,6 +178,7 @@ import { FaUsers } from "react-icons/fa";
 import { FaIndianRupeeSign } from "react-icons/fa6";
 import { SlCalender } from "react-icons/sl";
 import { HiUsers } from "react-icons/hi";
+import BackButton from '../Components/BackButton'
 function Dashboard() {
   const [searchTerm, setSearchTerm] = useState('');
   const [currentDateTime, setCurrentDateTime] = useState(new Date());
@@ -206,9 +207,10 @@ function Dashboard() {
   };
 
   return (
-    <div className="w-[95%] lg:ms-[70px] bg-white">
+    <div className="w-[95%] lg:ms-[70px] bg-white mx-auto">
       {/* Header with Search and Date */}
       <div className="flex flex-col sm:flex-row justify-between items-center mb-6">
+      <BackButton/>
         <h2 className="text-base sm:text-lg font-semibold text-gray-800">
           {formatDateTime(currentDateTime)}
         </h2>

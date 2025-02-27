@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import PrimaryButton from './PrimaryButton'
-import Heading from './Heading';
+import Button from './Button'
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
-import SecondaryButton from './SecondaryButton'
+import { CiBookmarkCheck } from "react-icons/ci";
 
 const BookAppointmentForm = () => {
   const navigate = useNavigate(); // Get navigation function from React Router
@@ -40,12 +39,7 @@ const BookAppointmentForm = () => {
     <div className="h-screen w-[95%] lg:ms-[70px] text-black">
       <div className="flex items-center justify-between p-4 border-b">
         <h5 className="text-lg font-semibold">Book Appointments</h5>
-        {/* <PrimaryButton >Book Appointment</PrimaryButton> */}
       </div>
-      {/* <Heading title="Book Appointment" className=" text-2xl font-semibold"/> */}
-      {/* <div className=" bg-gradient-to-r to-[#77db8f] from-blue-800 text-white p-4 rounded-t-lg">
-              <h5 className=" text-2xl font-semibold">Book Appointment</h5>
-            </div> */}
       <div className="row gx-3">
         <div className="col-sm-12">
           <div className="bg-white">
@@ -174,16 +168,8 @@ const BookAppointmentForm = () => {
                     ></textarea>
                   </div>
                   <div className="col-span-full flex justify-end gap-4">
-                    <SecondaryButton onClick={goBack}
-                    >
-                      Cancel
-                    </SecondaryButton>
-                    <PrimaryButton
-                      type="submit"
-                      className="px-4 py-2 bg-primary text-white rounded hover:bg-primary-dark"
-                    >
-                      Book Appointment
-                    </PrimaryButton>
+                    <Button variant="secondary" size="lg" onClick={goBack}>Cancel</Button>
+                    <Button variant="primary" size="lg" type='submit'><CiBookmarkCheck/>Book Appointment</Button>
                   </div>
                 </div>
               </form>

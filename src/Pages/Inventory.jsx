@@ -1,62 +1,19 @@
-import React, { useState, useEffect, useRef } from 'react';
-import PrimaryButton from '../Components/PrimaryButton';
+import React, { useState } from 'react';
+import Button from '../Components/Button';
 import Table from '../Components/Table';
 import { MdOutlineAdd } from "react-icons/md";
 import { RiDeleteBinLine, RiEditBoxLine, RiEyeLine } from "react-icons/ri";
 import Swal from 'sweetalert2';
-
-// Modal Component (unchanged)
-const Modal = ({ isOpen, onClose, children, title }) => {
-  const modalRef = useRef(null);
-
-  useEffect(() => {
-    const handleEscape = (event) => {
-      if (event.key === 'Escape' && isOpen) {
-        onClose();
-      }
-    };
-    document.addEventListener('keydown', handleEscape);
-    return () => document.removeEventListener('keydown', handleEscape);
-  }, [isOpen, onClose]);
-
-  const handleOutsideClick = (event) => {
-    if (modalRef.current && !modalRef.current.contains(event.target)) {
-      onClose();
-    }
-  };
-
-  if (!isOpen) return null;
-
-  return (
-    <div
-      className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 px-2 sm:px-0"
-      onClick={handleOutsideClick}
-    >
-      <div
-        ref={modalRef}
-        className="bg-white rounded-lg p-4 sm:p-6 w-full max-w-[95%] sm:max-w-md max-h-[80vh] overflow-y-auto"
-      >
-        <div className="flex justify-between items-center mb-4">
-          <h3 className="text-base sm:text-lg font-semibold">{title}</h3>
-          <PrimaryButton
-            onClick={onClose}
-            className="text-gray-500 hover:text-gray-700 text-lg"
-          >
-            ×
-          </PrimaryButton>
-        </div>
-        {children}
-      </div>
-    </div>
-  );
-};
+import BackButton from '../Components/BackButton';
+import { MdOutlineClose } from "react-icons/md";
+import Modal from '../Components/Modal';
+import { BiSave } from "react-icons/bi";
 
 function Inventory() {
-  const [activeTab, setActiveTab] = useState('medicine'); // Medicine tab active by default
-
-  // Medicine Stock Data (unchanged)
+  const [activeTab, setActiveTab] = useState('medicine');
   const [inventoryData, setInventoryData] = useState([
     {
+      id: 1, // Unique ID
       Medicine: "Paracetamol",
       BatchNo: "PARA202301",
       InwardQuantity: 1000,
@@ -68,33 +25,34 @@ function Inventory() {
       TotalAvailableQty: 1200
     },
     {
+      id: 2, // Unique ID
       Medicine: "Paracetamol",
-      BatchNo: "PARA202301",
-      InwardQuantity: 1000,
+      BatchNo: "PARA202302", // Different BatchNo for clarity
+      InwardQuantity: 500,
       UnitofMeasure: "Tablets",
-      ExpiryDate: "2025-12-31",
-      Price: 0.25,
-      ReceivedDate: "2024-01-15",
-      AvailableBatchQty: 850,
+      ExpiryDate: "2025-11-30",
+      Price: 0.30,
+      ReceivedDate: "2024-02-01",
+      AvailableBatchQty: 450,
       TotalAvailableQty: 1200
     },
     {
-      Medicine: "Paracetamol",
-      BatchNo: "PARA202301",
-      InwardQuantity: 1000,
+      id: 3, // Unique ID
+      Medicine: "Ibuprofen",
+      BatchNo: "IBU202302",
+      InwardQuantity: 800,
       UnitofMeasure: "Tablets",
-      ExpiryDate: "2025-12-31",
-      Price: 0.25,
-      ReceivedDate: "2024-01-15",
-      AvailableBatchQty: 850,
-      TotalAvailableQty: 1200
+      ExpiryDate: "2025-06-30",
+      Price: 0.50,
+      ReceivedDate: "2024-03-01",
+      AvailableBatchQty: 700,
+      TotalAvailableQty: 700
     },
-
   ]);
 
-  // Batch Data
   const [batchData, setBatchData] = useState([
     {
+      id: 1, // Unique ID
       BatchNo: "PARA202301",
       Medicine: "Paracetamol",
       BatchCreationDate: "2023-12-15",
@@ -102,6 +60,7 @@ function Inventory() {
       ExpiryDate: "2025-12-31"
     },
     {
+      id: 2, // Unique ID
       BatchNo: "IBU202302",
       Medicine: "Ibuprofen",
       BatchCreationDate: "2024-01-15",
@@ -109,6 +68,7 @@ function Inventory() {
       ExpiryDate: "2025-06-30"
     },
     {
+      id: 3, // Unique ID
       BatchNo: "AMO202303",
       Medicine: "Amoxicillin",
       BatchCreationDate: "2024-01-05",
@@ -123,7 +83,7 @@ function Inventory() {
   const [selectedMedicine, setSelectedMedicine] = useState(null);
   const [editFormData, setEditFormData] = useState({});
 
-  // Columns for Medicine Stock Tab (unchanged)
+  // Columns for Medicine Stock Tab
   const medicineColumns = [
     { header: 'Medicine', accessor: 'Medicine' },
     { header: 'Batch No', accessor: 'BatchNo' },
@@ -179,7 +139,7 @@ function Inventory() {
     },
   ];
 
-  // Handlers (unchanged except for new batch delete handler)
+  // Handlers
   const handleDelete = (medicine) => {
     Swal.fire({
       title: 'Are you sure?',
@@ -192,7 +152,7 @@ function Inventory() {
       cancelButtonText: 'Cancel'
     }).then((result) => {
       if (result.isConfirmed) {
-        setInventoryData(inventoryData.filter(item => item.BatchNo !== medicine.BatchNo));
+        setInventoryData(inventoryData.filter(item => item.id !== medicine.id));
         Swal.fire('Deleted!', 'The inventory item has been deleted.', 'success');
       }
     });
@@ -210,7 +170,7 @@ function Inventory() {
       cancelButtonText: 'Cancel'
     }).then((result) => {
       if (result.isConfirmed) {
-        setBatchData(batchData.filter(item => item.BatchNo !== batch.BatchNo));
+        setBatchData(batchData.filter(item => item.id !== batch.id));
         Swal.fire('Deleted!', 'The batch has been deleted.', 'success');
       }
     });
@@ -218,7 +178,7 @@ function Inventory() {
 
   const handleEdit = (item) => {
     setSelectedMedicine(item);
-    setEditFormData({ ...item });
+    setEditFormData({ ...item }); // Initialize with a copy of the selected item
     setIsEditModalOpen(true);
   };
 
@@ -231,12 +191,12 @@ function Inventory() {
     e.preventDefault();
     if (activeTab === 'medicine') {
       const updatedInventory = inventoryData.map(item =>
-        item.BatchNo === editFormData.BatchNo ? { ...editFormData } : item
+        item.id === selectedMedicine.id ? { ...editFormData } : item
       );
       setInventoryData(updatedInventory);
     } else {
       const updatedBatches = batchData.map(item =>
-        item.BatchNo === editFormData.BatchNo ? { ...editFormData } : item
+        item.id === selectedMedicine.id ? { ...editFormData } : item
       );
       setBatchData(updatedBatches);
     }
@@ -268,112 +228,119 @@ function Inventory() {
 
   return (
     <div className="w-[95%] mx-auto ml-0 sm:ml-[70px] min-h-screen bg-white overflow-x-hidden">
-    {/* Header */}
-    <div className="flex flex-col md:flex-row flex-wrap justify-between items-start md:items-center gap-4 md:gap-6 font-medium mb-6 border-b pb-3 px-2 sm:px-4 lg:px-6">
-      <h5 className="text-base sm:text-lg md:text-xl font-semibold">Inventory</h5>
-      <div className="flex flex-row items-center gap-2 sm:gap-3 md:gap-4">
-        <PrimaryButton
-          onClick={() => setActiveTab('medicine')}
-          className={`flex items-center justify-center gap-2 sm:gap-2.5 md:gap-3 whitespace-nowrap text-sm sm:text-base md:text-lg px-3 py-1.5 sm:px-4 sm:py-2 rounded-md transition-colors ${activeTab === 'medicine' ? 'bg-secondary' : 'text-gray-800 hover:bg-gray-300'}`}
-        >
-          Medicine Stock
-        </PrimaryButton>
-        <PrimaryButton
-          onClick={() => setActiveTab('batch')}
-          className={`flex items-center justify-center gap-2 sm:gap-2.5 md:gap-3 whitespace-nowrap text-sm sm:text-base md:text-lg px-3 py-1.5 sm:px-4 sm:py-2 rounded-md transition-colors ${activeTab === 'batch' ? 'bg-secondary text-white' : 'text-gray-800 hover:bg-gray-300'}`}
-        >
-          Batch
-        </PrimaryButton>
-      </div>
-    </div>
-  
-    {/* Button and Search */}
-    <div className="flex  sm:flex-row items-start sm:items-center gap-4 mb-4 justify-between px-2 sm:px-4">
-      <PrimaryButton className="flex items-center gap-2 sm:gap-3 whitespace-nowrap sm:w-auto text-sm sm:text-base">
-        <MdOutlineAdd /> Receive Inventory
-      </PrimaryButton>
-      <div className="flex items-center gap-2 sm:w-auto">
-        <label className="text-xs sm:text-sm">Search:</label>
-        <input
-          type="search"
-          className="border rounded p-1 text-xs sm:text-sm w-full bg-white text-black"
-          placeholder="Search By Name or Batch..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
-      </div>
-    </div>
-  
-    {/* Table Content based on Active Tab */}
-    <div className="overflow-x-auto px-2 flex-grow">
-      {activeTab === 'medicine' ? (
-        <Table columns={medicineColumns} data={filteredInventory} className="min-w-full" />
-      ) : (
-        <Table columns={batchColumns} data={filteredBatches} className="min-w-full" />
-      )}
-    </div>
-  
-    {/* View Modal */}
-    <Modal
-      isOpen={isViewModalOpen}
-      onClose={() => setIsViewModalOpen(false)}
-      title="Inventory Details"
-      className="w-full max-w-md mx-auto p-4 sm:p-6"
-    >
-      {selectedMedicine && (
-        <div className="space-y-2 text-sm sm:text-base overflow-x-hidden">
-          {Object.entries(selectedMedicine).map(([key, value]) => (
-            key !== 'Action' && (
-              <p key={key}><strong>{key}:</strong> {value}</p>
-            )
-          ))}
+      {/* Header */}
+      <div className="flex flex-col md:flex-row flex-wrap justify-between items-start md:items-center gap-4 md:gap-6 font-medium mb-6 border-b pb-3 px-2 sm:px-4 lg:px-6">
+        <BackButton />
+        <h5 className="text-base sm:text-lg md:text-xl font-semibold">Inventory</h5>
+        <div className="flex flex-row items-center gap-2 sm:gap-3 md:gap-4">
+          <Button variant="primary" className={`flex items-center outline-none border-none justify-center gap-2 sm:gap-2.5 md:gap-3 whitespace-nowrap text-sm sm:text-base md:text-lg px-3 py-1.5 sm:px-4 sm:py-2 rounded-md transition-colors ${activeTab === 'batch' ? 'bg-gray-500 text-white ' : 'text-gray-800 hover:bg-gray-300 shadow-lg  '}`} size="sm" onClick={() => setActiveTab('medicine')}>Medicine Stock</Button>
+          <Button variant="primary" className={`flex items-center outline-none border-none justify-center gap-2 sm:gap-2.5 md:gap-3 whitespace-nowrap text-sm sm:text-base md:text-lg px-3 py-1.5 sm:px-4 sm:py-2 rounded-md transition-colors ${activeTab === 'medicine' ? 'bg-gray-500' : ' text-gray-800 hover:bg-gray-300 shadow-lg'}`} size="sm" onClick={() => setActiveTab('batch')}> Batch</Button>
         </div>
-      )}
-    </Modal>
-  
-    {/* Edit Modal */}
-    <Modal
-      isOpen={isEditModalOpen}
-      onClose={() => setIsEditModalOpen(false)}
-      title="Edit Inventory"
-      className="w-full max-w-md mx-auto p-4 sm:p-6"
-    >
-      {selectedMedicine && (
-        <form onSubmit={handleEditSubmit} className="space-y-3 sm:space-y-4 text-sm sm:text-base overflow-x-hidden">
-          {Object.entries(editFormData).map(([key, value]) => (
-            key !== 'Action' && (
-              <div key={key}>
-                <label className="block font-medium">{key}</label>
-                <input
-                  type={key.includes('Date') ? 'date' : key.includes('Qty') || key === 'Price' ? 'number' : 'text'}
-                  name={key}
-                  value={value}
-                  onChange={handleEditChange}
-                  className="w-full border rounded p-2 bg-white text-black"
-                  step={key === 'Price' ? '0.01' : undefined}
-                />
-              </div>
-            )
-          ))}
+      </div>
+
+      {/* Button and Search */}
+      <div className="flex sm:flex-row items-start sm:items-center gap-4 mb-4 justify-between px-2 sm:px-4">
+        <Button variant="primary" size="sm"><MdOutlineAdd /> Receive Inventory</Button>
+        <div className="flex items-center gap-2 sm:w-auto">
+          <label className="text-xs sm:text-sm">Search:</label>
+          <input
+            type="search"
+            className="border rounded p-1 text-xs sm:text-sm w-full bg-white text-black"
+            placeholder="Search By Name or Batch..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+        </div>
+      </div>
+
+      {/* Table Content based on Active Tab */}
+      <div className="overflow-x-auto px-2 flex-grow">
+        {activeTab === 'medicine' ? (
+          <Table columns={medicineColumns} data={filteredInventory} className="min-w-full" />
+        ) : (
+          <Table columns={batchColumns} data={filteredBatches} className="min-w-full" />
+        )}
+      </div>
+
+      {/* View Modal */}
+      <Modal
+        isOpen={isViewModalOpen}
+        onClose={() => setIsViewModalOpen(false)}
+        title="Inventory Details"
+        className="w-full max-w-md mx-auto p-4 sm:p-6"
+      >
+        {selectedMedicine && (
+          <div className="space-y-2 text-sm sm:text-base overflow-x-hidden">
+            {Object.entries(selectedMedicine).map(
+              ([key, value]) =>
+                key !== 'Action' && (
+                  <p key={key}>
+                    <strong>{key}:</strong> {value}
+                  </p>
+                )
+            )}
+          </div>
+        )}
+      </Modal>
+      {/* Edit Modal */}
+      <Modal
+        isOpen={isEditModalOpen}
+        onClose={() => setIsEditModalOpen(false)}
+        title="Edit Inventory"
+        className="w-full max-w-md mx-auto p-4 sm:p-6"
+        footer={
           <div className="flex justify-end gap-2">
-            <PrimaryButton
+            <Button
+              variant="secondary"
               type="button"
               onClick={() => setIsEditModalOpen(false)}
               className="px-3 sm:px-4 py-1 sm:py-2 border rounded text-gray-600 hover:bg-gray-100 text-sm sm:text-base"
             >
-              Cancel
-            </PrimaryButton>
-            <PrimaryButton
+              <MdOutlineClose /> Cancel
+            </Button>
+            <Button
+              variant="primary"
               type="submit"
+              form="edit-form"
               className="px-3 sm:px-4 py-1 sm:py-2 bg-primary text-white rounded hover:bg-primary-dark text-sm sm:text-base"
             >
-              Save Changes
-            </PrimaryButton>
+              <BiSave /> Save Changes
+            </Button>
           </div>
-        </form>
-      )}
-    </Modal>
-  </div>
+        }
+      >
+        {selectedMedicine && (
+          <form
+            id="edit-form"
+            onSubmit={handleEditSubmit}
+            className="space-y-3 sm:space-y-4 text-sm sm:text-base overflow-x-hidden"
+          >
+            {Object.entries(editFormData).map(
+              ([key, value]) =>
+                key !== 'Action' && key !== 'id' && ( // Exclude 'id' here
+                  <div key={key}>
+                    <label className="block font-medium">{key}</label>
+                    <input
+                      type={
+                        key.includes('Date')
+                          ? 'date'
+                          : key.includes('Qty') || key === 'Price'
+                            ? 'number'
+                            : 'text'
+                      }
+                      name={key}
+                      value={value}
+                      onChange={handleEditChange}
+                      className="w-full border rounded p-2 bg-white text-black"
+                      step={key === 'Price' ? '0.01' : undefined}
+                    />
+                  </div>
+                )
+            )}
+          </form>
+        )}
+      </Modal>
+    </div>
   );
 }
 
