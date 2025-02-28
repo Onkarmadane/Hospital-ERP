@@ -31,7 +31,7 @@ const Setup = () => {
                     />
                 </Link>
                 
-                <Link to="/consultation-setup" className="no-underline">
+                <Link to="/doctor/settings/consultation-setup" className="no-underline">
                     <Cards
                         title="Consulation Setup"
                         description="Establish and specify digital prescription fields"

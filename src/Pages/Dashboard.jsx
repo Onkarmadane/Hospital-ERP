@@ -210,19 +210,10 @@ function Dashboard() {
     <div className="w-[95%] lg:ms-[70px] bg-white mx-auto">
       {/* Header with Search and Date */}
       <div className="flex flex-col sm:flex-row justify-between items-center mb-6">
-      <BackButton/>
+        <BackButton />
         <h2 className="text-base sm:text-lg font-semibold text-gray-800">
           {formatDateTime(currentDateTime)}
         </h2>
-        <div className="w-full sm:w-auto mb-4 sm:mb-0">
-          <input
-            type="search"
-            className="w-full sm:w-64 border bg-white border-gray-300 rounded-md p-2 text-sm sm:text-base text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-400"
-            placeholder="Search..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
-        </div>
       </div>
 
       {/* KPI Cards Grid */}

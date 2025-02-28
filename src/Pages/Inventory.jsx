@@ -227,20 +227,20 @@ function Inventory() {
   );
 
   return (
-    <div className="w-[95%] mx-auto ml-0 sm:ml-[70px] min-h-screen bg-white overflow-x-hidden">
+    <div className="grid grid-cols-1 gap-3 w-[95%] lg:ms-[70px] px-2">
       {/* Header */}
       <div className="flex flex-col md:flex-row flex-wrap justify-between items-start md:items-center gap-4 md:gap-6 font-medium mb-6 border-b pb-3 px-2 sm:px-4 lg:px-6">
         <BackButton />
         <h5 className="text-base sm:text-lg md:text-xl font-semibold">Inventory</h5>
         <div className="flex flex-row items-center gap-2 sm:gap-3 md:gap-4">
-          <Button variant="primary" className={`flex items-center outline-none border-none justify-center gap-2 sm:gap-2.5 md:gap-3 whitespace-nowrap text-sm sm:text-base md:text-lg px-3 py-1.5 sm:px-4 sm:py-2 rounded-md transition-colors ${activeTab === 'batch' ? 'bg-gray-500 text-white ' : 'text-gray-800 hover:bg-gray-300 shadow-lg  '}`} size="sm" onClick={() => setActiveTab('medicine')}>Medicine Stock</Button>
-          <Button variant="primary" className={`flex items-center outline-none border-none justify-center gap-2 sm:gap-2.5 md:gap-3 whitespace-nowrap text-sm sm:text-base md:text-lg px-3 py-1.5 sm:px-4 sm:py-2 rounded-md transition-colors ${activeTab === 'medicine' ? 'bg-gray-500' : ' text-gray-800 hover:bg-gray-300 shadow-lg'}`} size="sm" onClick={() => setActiveTab('batch')}> Batch</Button>
+          <Button variant="primary" className={`flex items-center outline-none border-none justify-center gap-2 sm:gap-2.5 md:gap-3 whitespace-nowrap text-sm sm:text-base md:text-lg px-3 py-1.5 sm:px-4 sm:py-2 rounded-md transition-colors ${activeTab === 'batch' ? 'bg-gray-200  hover:bg-primary duration-300' : 'text-gray-800 hover:bg-gray-300 shadow-lg  '}`} size="sm" onClick={() => setActiveTab('medicine')}>Medicine Stock</Button>
+          <Button variant="primary" className={`flex items-center outline-none border-none justify-center gap-2 sm:gap-2.5 md:gap-3 whitespace-nowrap text-sm sm:text-base md:text-lg px-3 py-1.5 sm:px-4 sm:py-2 rounded-md transition-colors ${activeTab === 'medicine' ? 'bg-gray-200 hover:bg-primary duration-300' : ' text-gray-800 hover:bg-gray-300 shadow-lg '}`} size="sm" onClick={() => setActiveTab('batch')}> Batch</Button>
         </div>
       </div>
 
       {/* Button and Search */}
       <div className="flex sm:flex-row items-start sm:items-center gap-4 mb-4 justify-between px-2 sm:px-4">
-        <Button variant="primary" size="sm"><MdOutlineAdd /> Receive Inventory</Button>
+        <Button variant="primary" size="sm"><MdOutlineAdd size={24}/> Receive Inventory</Button>
         <div className="flex items-center gap-2 sm:w-auto">
           <label className="text-xs sm:text-sm">Search:</label>
           <input

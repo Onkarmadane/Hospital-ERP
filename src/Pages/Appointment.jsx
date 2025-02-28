@@ -10,6 +10,8 @@ import Button from '../Components/Button'
 
 const Appointment = () => {
   const navigate = useNavigate();
+  const [currentDateTime, setCurrentDateTime] = useState(new Date());
+
 
   // Localizer for React Big Calendar
   const localizer = momentLocalizer(moment);
@@ -101,6 +103,18 @@ const Appointment = () => {
     step: currentView === 'day' ? 5 : 30, // 5 minutes for day view, 30 for others
     timeslots: currentView === 'day' ? 6 : 2, // 6 slots (5 min) for day, 2 slots (30 min) for others
   };
+  // Format the date and time to match "Wed 26 February, 11:02 AM"
+  const formatDateTime = (date) => {
+    const options = {
+      weekday: 'short', // "Wed"
+      day: 'numeric',   // "26"
+      month: 'long',    // "February"
+      hour: '2-digit',  // "11"
+      minute: '2-digit',// "02"
+      hour12: true,     // Use 12-hour clock with AM/PM
+    };
+    return date.toLocaleString('en-US', options).replace(',', ',');
+  };
 
 
   return (
@@ -112,6 +126,12 @@ const Appointment = () => {
           </div>
           <h5 className="text-lg font-semibold text-center lg:ps-20">Appointments</h5>
           <Button variant="primary" size="sm" onClick={handleBookAppointmentClick}> <FaAddressBook />Book Appointment</Button>
+        </div>
+        <div className="flex flex-wrap items-center justify-between">
+          <p className='text-center p-3'>Total Appointments:<b>10</b> Remaining: <b>05</b> Completed: <b>05</b> No Show: <b>0</b></p>
+          <h2 className="text-base sm:text-lg font-semibold text-gray-800">
+            {formatDateTime(currentDateTime)}
+          </h2>
         </div>
 
         <div className="p-4 overflow-x-auto flex-grow w-full">

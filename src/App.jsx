@@ -12,6 +12,7 @@ import Login from "./Components/Login";
 import { AuthProvider, useAuth } from "./Context/AuthContext"; // Import from new file
 import Inventory from "./Pages/Inventory";
 import PageNotFound from "./Components/PageNotFound";
+import ConsultationSetup from './Pages/ConsultationSetup'
 // Private Route Component
 const PrivateRoute = ({ element: Element, ...rest }) => {
   const { isAuthenticated } = useAuth();
@@ -41,6 +42,7 @@ function App() {
           <Route path="/doctor/settings" element={<PrivateRoute element={Settings} />} />
           <Route path="/doctor/Appointment/bookappointmentform" element={<PrivateRoute element={BookAppointmentForm} />} />
           <Route path="/doctor/settings/inventory" element={<PrivateRoute element={Inventory} />} />
+          <Route path="/doctor/settings/consultation-setup" element={<PrivateRoute element={ConsultationSetup} />} />
           <Route path="/*" element={<PrivateRoute element={PageNotFound} />} />
           {/* <Route path="/tv-view-setup" element={<TVViewSetup />} /> */}
           {/* <Route path="/consultation-setup" element={<ConsultationSetup />} /> */}
