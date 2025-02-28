@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { FaSearch, FaEye, FaTrash, FaList, FaTh } from 'react-icons/fa';
-import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
+import { MdChevronLeft, MdChevronRight, MdClose } from 'react-icons/md';
 import { RiDeleteBinLine, RiEditBoxLine, RiEyeLine } from 'react-icons/ri';
 import Table from '../Components/Table';
 import Button from '../Components/Button';
@@ -26,7 +26,7 @@ const tabs = [
   'Advice and Direction',
 ];
 
-// Static data for "Vitals" (assumed from context)
+// Static data for each tab
 const initialVitalsData = [
   { id: 1, label: 'SPO2', fields: 1, maxLength: 4, unit: '%', separator: '/' },
   { id: 2, label: 'BP', fields: 2, maxLength: 3, unit: 'mmHg', separator: '/' },
@@ -35,62 +35,58 @@ const initialVitalsData = [
   { id: 5, label: 'Weight', fields: 1, maxLength: 3, unit: 'kg', separator: '/' },
 ];
 
-// Static data for "Dosage" (assumed from context)
 const initialDosageData = [
   { id: 1, name: '1-0-1' },
   { id: 2, name: '1-0-1' },
-  // { id: 3, name: '' },
+  { id: 3, name: '' },
   { id: 4, name: '0-1-0' },
-  // { id: 5, name: '' },
+  { id: 5, name: '' },
   { id: 6, name: '1-0-1' },
-  // { id: 7, name: '' },
+  { id: 7, name: '' },
   { id: 8, name: '1-1-1' },
-  // { id: 9, name: '' },
-  // { id: 10, name: '' },
+  { id: 9, name: '' },
+  { id: 10, name: '' },
   { id: 11, name: '1-0-1' },
-  // { id: 12, name: '' },
+  { id: 12, name: '' },
   { id: 13, name: '1-0-1' },
 ];
 
-// Static data for "Units"
 const initialUnitsData = [
   { id: 1, name: 'MG' },
-  // { id: 2, name: '' },
-  // { id: 3, name: '' },
+  { id: 2, name: '' },
+  { id: 3, name: '' },
   { id: 4, name: '3.5ML' },
   { id: 5, name: 'UNDEFINED' },
   { id: 6, name: 'NAN' },
   { id: 7, name: 'MCG' },
-  // { id: 8, name: '' },
+  { id: 8, name: '' },
   { id: 9, name: '-1' },
-  // { id: 10, name: '' },
-  // { id: 11, name: '' },
+  { id: 10, name: '' },
+  { id: 11, name: '' },
   { id: 12, name: 'TAB' },
   { id: 13, name: 'IU' },
   { id: 14, name: 'AVIIU' },
   { id: 15, name: 'ML' },
 ];
 
-// Static data for "Frequency"
 const initialFrequencyData = [
-  // { id: 1, name: '' },
+  { id: 1, name: '' },
   { id: 2, name: 'TO CONTINUE' },
-  // { id: 3, name: '' },
-  // { id: 4, name: '' },
-  // { id: 5, name: '' },
+  { id: 3, name: '' },
+  { id: 4, name: '' },
+  { id: 5, name: '' },
   { id: 6, name: 'DAILY' },
-  // { id: 7, name: '' },
-  // { id: 8, name: '' },
-  // { id: 9, name: '' },
-  // { id: 10, name: '' },
-  // { id: 11, name: '' },
-  // { id: 12, name: '' },
-  // { id: 13, name: '' },
-  // { id: 14, name: '' },
-  // { id: 15, name: '' },
+  { id: 7, name: '' },
+  { id: 8, name: '' },
+  { id: 9, name: '' },
+  { id: 10, name: '' },
+  { id: 11, name: '' },
+  { id: 12, name: '' },
+  { id: 13, name: '' },
+  { id: 14, name: '' },
+  { id: 15, name: '' },
 ];
 
-// Static data for "When"
 const initialWhenData = [
   { id: 1, name: 'nan' },
   { id: 2, name: 'BEFORE FOOD' },
@@ -101,15 +97,14 @@ const initialWhenData = [
   { id: 7, name: 'NAN' },
   { id: 8, name: '-AFTER FOOD' },
   { id: 9, name: 'SOS' },
-  // { id: 10, name: '' },
+  { id: 10, name: '' },
   { id: 11, name: 'AFTER FOOD' },
   { id: 12, name: 'AFTER BREAKFAST' },
   { id: 13, name: 'EMPTY STOMACH' },
-  // { id: 14, name: '' },
-  // { id: 15, name: '' },
+  { id: 14, name: '' },
+  { id: 15, name: '' },
 ];
 
-// Static data for "Medicine Type"
 const initialMedicineTypeData = [
   { id: 1, name: 'ASDF' },
   { id: 2, name: 'ASDFASDF' },
@@ -128,7 +123,6 @@ const initialMedicineTypeData = [
   { id: 15, name: 'INHALER' },
 ];
 
-// Static data for "Advice and Direction"
 const initialAdviceDirectionData = [
   { id: 1, name: 't', description: 't' },
   { id: 2, name: 'test', description: 'test' },
@@ -151,13 +145,23 @@ const initialAdviceDirectionData = [
 const handleDelete = (id) => console.log(`Delete item with ID: ${id}`);
 const handleEdit = (item) => console.log(`Edit item: ${JSON.stringify(item)}`);
 const handleView = (item) => console.log(`View item: ${JSON.stringify(item)}`);
-const handleCreate = (tab) => console.log(`Create new entry for ${tab}`);
 
 const SetupTable = () => {
   const [activeTab, setActiveTab] = useState('Vitals');
   const [searchTerm, setSearchTerm] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(25);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [formData, setFormData] = useState({
+    id: Date.now(), // Unique ID for new entries
+    label: '',
+    name: '',
+    fields: 1,
+    maxLength: '',
+    unit: '',
+    separator: '/',
+    description: '',
+  });
 
   // Function to get initial data based on active tab
   const getInitialData = () => {
@@ -237,11 +241,80 @@ const SetupTable = () => {
     },
   ];
 
+  // Handle form change
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  // Handle form submission
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const newData = {
+      ...formData,
+      id: Date.now(), // Ensure unique ID
+    };
+
+    // Add new data to the respective tab's data array
+    switch (activeTab) {
+      case 'Vitals':
+        initialVitalsData.push({
+          ...newData,
+          fields: parseInt(newData.fields) || 1,
+          maxLength: parseInt(newData.maxLength) || '',
+          unit: newData.unit || '',
+          separator: newData.separator || '/',
+        });
+        break;
+      case 'Dosage':
+      case 'Units':
+      case 'Frequency':
+      case 'When':
+      case 'Medicine Type':
+        initialData[activeTab.toLowerCase()].push({ id: newData.id, name: newData.name });
+        break;
+      case 'Advice and Direction':
+        initialAdviceDirectionData.push({
+          id: newData.id,
+          name: newData.name,
+          description: newData.description,
+        });
+        break;
+      default:
+        break;
+    }
+
+    setIsModalOpen(false);
+    setFormData({
+      id: Date.now(),
+      label: '',
+      name: '',
+      fields: 1,
+      maxLength: '',
+      unit: '',
+      separator: '/',
+      description: '',
+    });
+  };
+
   // Event handlers
   const handleTabChange = (tab) => {
     setActiveTab(tab);
     setCurrentPage(1);
     setSearchTerm('');
+    setFormData({
+      id: Date.now(),
+      label: '',
+      name: '',
+      fields: 1,
+      maxLength: '',
+      unit: '',
+      separator: '/',
+      description: '',
+    });
   };
 
   const handleSearch = (e) => {
@@ -257,6 +330,8 @@ const SetupTable = () => {
     setItemsPerPage(Number(e.target.value));
     setCurrentPage(1);
   };
+
+  const handleCreate = () => setIsModalOpen(true);
 
   return (
     <div className="grid grid-cols-1 gap-3 w-[95%] lg:ms-[70px] px-2">
@@ -289,10 +364,10 @@ const SetupTable = () => {
       <div className="space-y-4">
         {/* Search and Create */}
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-          <Button onClick={() => handleCreate(activeTab)} variant="primary">
+          <Button onClick={handleCreate} variant="primary">
             <MdOutlineAdd /> Create
           </Button>
-          <div className="relative w-full sm:w-auto">
+          <div className="relative w-full bg-white sm:w-auto">
             <input
               type="text"
               placeholder="Search by Name"
@@ -347,6 +422,138 @@ const SetupTable = () => {
           </div>
         </div>
       </div>
+
+      {/* Create Modal */}
+      {isModalOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
+            <div className="flex justify-between items-center mb-4">
+              <h2 className="text-lg font-bold">Create New {activeTab} Entry</h2>
+              <button
+                onClick={() => setIsModalOpen(false)}
+                className="text-gray-500 hover:text-gray-700"
+              >
+                <MdClose size={24} />
+              </button>
+            </div>
+            <form onSubmit={handleSubmit} className="space-y-4">
+              {activeTab === 'Vitals' ? (
+                <>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700">Label</label>
+                    <input
+                      type="text"
+                      name="label"
+                      value={formData.label}
+                      onChange={handleInputChange}
+                      className="d-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm bg-white w-full text-black"
+                      placeholder="Enter label"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700">Fields</label>
+                    <input
+                      type="number"
+                      name="fields"
+                      value={formData.fields}
+                      onChange={handleInputChange}
+                      className="d-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm bg-white w-full text-black"
+                      placeholder="Enter number of fields"
+                      min="1"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700">Max Length</label>
+                    <input
+                      type="number"
+                      name="maxLength"
+                      value={formData.maxLength}
+                      onChange={handleInputChange}
+                      className="d-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm bg-white w-full text-black"
+                      placeholder="Enter max length"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700">Unit</label>
+                    <input
+                      type="text"
+                      name="unit"
+                      value={formData.unit}
+                      onChange={handleInputChange}
+                      className="d-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm bg-white w-full text-black"
+                      placeholder="Enter unit (e.g., %, mmHg)"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700">Separator</label>
+                    <input
+                      type="text"
+                      name="separator"
+                      value={formData.separator}
+                      onChange={handleInputChange}
+                      className="d-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm bg-white w-full text-black"
+                      placeholder="Enter separator (e.g., /)"
+                    />
+                  </div>
+                </>
+              ) : activeTab === 'Advice and Direction' ? (
+                <>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700">Name</label>
+                    <input
+                      type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      className="d-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm bg-white w-full text-black"
+                      placeholder="Enter name"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700">Description</label>
+                    <textarea
+                      name="description"
+                      value={formData.description}
+                      onChange={handleInputChange}
+                      className="d-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm bg-white w-full text-black"
+                      placeholder="Enter description"
+                      required
+                    />
+                  </div>
+                </>
+              ) : (
+                <div>
+                  <label className="block text-sm font-medium text-gray-700">Name</label>
+                  <input
+                    type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    className="d-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm bg-white w-full text-black"
+                    placeholder={`Enter ${activeTab.toLowerCase()} name`}
+                    required
+                  />
+                </div>
+              )}
+              <div className="flex justify-end gap-2">
+                <Button
+                  variant="secondary"
+                  onClick={() => setIsModalOpen(false)}
+                  className="bg-gray-200 text-gray-800 hover:bg-gray-300"
+                >
+                  Cancel
+                </Button>
+                <Button type="submit" variant="primary">
+                  Create
+                </Button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

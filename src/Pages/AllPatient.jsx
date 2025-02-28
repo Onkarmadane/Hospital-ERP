@@ -26,6 +26,8 @@ const AllPatient = () => {
   const [patientsList, setPatientsList] = useState([
     { id: '#80762', name: 'Wendi Combs', gender: 'Female', age: 28, blood: 'AB+', treatment: 'Cyclospora', mobile: '0987654321', email: 'test@testing.com', address: '360 Branden Knoll' },
     { id: '#82348', name: 'Reba Fisher', gender: 'Female', age: 59, blood: 'A+', treatment: 'Alphaviruses', mobile: '0987654321', email: 'test@testing.com', address: '806 Je Alley, Robelfurt' },
+    { id: '#82348', name: 'Reba Fisher', gender: 'Female', age: 59, blood: 'A+', treatment: 'Alphaviruses', mobile: '0987654321', email: 'test@testing.com', address: '806 Je Alley, Robelfurt' },
+    { id: '#82348', name: 'Reba Fisher', gender: 'Female', age: 59, blood: 'A+', treatment: 'Alphaviruses', mobile: '0987654321', email: 'test@testing.com', address: '806 Je Alley, Robelfurt' },
     { id: '#82894', name: 'Nick Morrow', gender: 'Male', age: 69, blood: 'A+', treatment: 'Thyroid', mobile: '0987654321', email: 'test@testing.com', address: '835 Lorena Stream' },
   ]);
   const [selectedPatient, setSelectedPatient] = useState(null);
