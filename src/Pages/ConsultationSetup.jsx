@@ -1,19 +1,22 @@
 import React, { useState } from 'react';
 import { FaSearch, FaEye, FaTrash, FaList, FaTh } from 'react-icons/fa';
 import { MdChevronLeft, MdChevronRight, MdClose } from 'react-icons/md';
-import { RiDeleteBinLine, RiEditBoxLine, RiEyeLine } from 'react-icons/ri';
+import { RiDeleteBinLine, RiEditBoxLine, RiEyeLine, RiSaveLine, RiCloseLine } from 'react-icons/ri';
 import Table from '../Components/Table';
 import Button from '../Components/Button';
 import { MdOutlineAdd } from 'react-icons/md';
-import { 
-  FaHeartbeat, 
-  FaPrescriptionBottle, 
-  FaRuler, 
-  FaClock, 
-  FaCalendarAlt, 
-  FaCapsules, 
-  FaInfoCircle 
+import {
+  FaHeartbeat,
+  FaPrescriptionBottle,
+  FaRuler,
+  FaClock,
+  FaCalendarAlt,
+  FaCapsules,
+  FaInfoCircle
 } from 'react-icons/fa';
+import Modal from '../Components/Modal'; // Adjust the path to your Modal component
+import Swal from 'sweetalert2';
+import BackButton from '../Components/BackButton';
 
 // Define tabs
 const tabs = [
@@ -26,7 +29,7 @@ const tabs = [
   'Advice and Direction',
 ];
 
-// Static data for each tab
+// Initial data for each tab
 const initialVitalsData = [
   { id: 1, label: 'SPO2', fields: 1, maxLength: 4, unit: '%', separator: '/' },
   { id: 2, label: 'BP', fields: 2, maxLength: 3, unit: 'mmHg', separator: '/' },
@@ -38,31 +41,31 @@ const initialVitalsData = [
 const initialDosageData = [
   { id: 1, name: '1-0-1' },
   { id: 2, name: '1-0-1' },
-  { id: 3, name: '' },
+  // { id: 3, name: '' },
   { id: 4, name: '0-1-0' },
-  { id: 5, name: '' },
+  // { id: 5, name: '' },
   { id: 6, name: '1-0-1' },
-  { id: 7, name: '' },
+  // { id: 7, name: '' },
   { id: 8, name: '1-1-1' },
-  { id: 9, name: '' },
-  { id: 10, name: '' },
+  // { id: 9, name: '' },
+  // { id: 10, name: '' },
   { id: 11, name: '1-0-1' },
-  { id: 12, name: '' },
+  // { id: 12, name: '' },
   { id: 13, name: '1-0-1' },
 ];
 
 const initialUnitsData = [
   { id: 1, name: 'MG' },
-  { id: 2, name: '' },
-  { id: 3, name: '' },
+  // { id: 2, name: '' },
+  // { id: 3, name: '' },
   { id: 4, name: '3.5ML' },
   { id: 5, name: 'UNDEFINED' },
   { id: 6, name: 'NAN' },
   { id: 7, name: 'MCG' },
-  { id: 8, name: '' },
+  // { id: 8, name: '' },
   { id: 9, name: '-1' },
-  { id: 10, name: '' },
-  { id: 11, name: '' },
+  // { id: 10, name: '' },
+  // { id: 11, name: '' },
   { id: 12, name: 'TAB' },
   { id: 13, name: 'IU' },
   { id: 14, name: 'AVIIU' },
@@ -70,21 +73,21 @@ const initialUnitsData = [
 ];
 
 const initialFrequencyData = [
-  { id: 1, name: '' },
+  // { id: 1, name: '' },
   { id: 2, name: 'TO CONTINUE' },
-  { id: 3, name: '' },
-  { id: 4, name: '' },
-  { id: 5, name: '' },
+  // { id: 3, name: '' },
+  // { id: 4, name: '' },
+  // { id: 5, name: '' },
   { id: 6, name: 'DAILY' },
-  { id: 7, name: '' },
-  { id: 8, name: '' },
-  { id: 9, name: '' },
-  { id: 10, name: '' },
-  { id: 11, name: '' },
-  { id: 12, name: '' },
-  { id: 13, name: '' },
-  { id: 14, name: '' },
-  { id: 15, name: '' },
+  // { id: 7, name: '' },
+  // { id: 8, name: '' },
+  // { id: 9, name: '' },
+  // { id: 10, name: '' },
+  // { id: 11, name: '' },
+  // { id: 12, name: '' },
+  // { id: 13, name: '' },
+  // { id: 14, name: '' },
+  // { id: 15, name: '' },
 ];
 
 const initialWhenData = [
@@ -97,12 +100,12 @@ const initialWhenData = [
   { id: 7, name: 'NAN' },
   { id: 8, name: '-AFTER FOOD' },
   { id: 9, name: 'SOS' },
-  { id: 10, name: '' },
+  // { id: 10, name: '' },
   { id: 11, name: 'AFTER FOOD' },
   { id: 12, name: 'AFTER BREAKFAST' },
   { id: 13, name: 'EMPTY STOMACH' },
-  { id: 14, name: '' },
-  { id: 15, name: '' },
+  // { id: 14, name: '' },
+  // { id: 15, name: '' },
 ];
 
 const initialMedicineTypeData = [
@@ -141,19 +144,16 @@ const initialAdviceDirectionData = [
   { id: 15, name: 'exercise daily', description: 'drink water pro, exe...' },
 ];
 
-// Placeholder action handlers
-const handleDelete = (id) => console.log(`Delete item with ID: ${id}`);
-const handleEdit = (item) => console.log(`Edit item: ${JSON.stringify(item)}`);
-const handleView = (item) => console.log(`View item: ${JSON.stringify(item)}`);
-
 const SetupTable = () => {
   const [activeTab, setActiveTab] = useState('Vitals');
   const [searchTerm, setSearchTerm] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(25);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalMode, setModalMode] = useState('create'); // 'create' or 'edit'
+  const [editingItem, setEditingItem] = useState(null);
   const [formData, setFormData] = useState({
-    id: Date.now(), // Unique ID for new entries
+    id: Date.now(),
     label: '',
     name: '',
     fields: 1,
@@ -163,37 +163,27 @@ const SetupTable = () => {
     description: '',
   });
 
-  // Function to get initial data based on active tab
-  const getInitialData = () => {
-    switch (activeTab) {
-      case 'Vitals':
-        return initialVitalsData;
-      case 'Dosage':
-        return initialDosageData;
-      case 'Units':
-        return initialUnitsData;
-      case 'Frequency':
-        return initialFrequencyData;
-      case 'When':
-        return initialWhenData;
-      case 'Medicine Type':
-        return initialMedicineTypeData;
-      case 'Advice and Direction':
-        return initialAdviceDirectionData;
-      default:
-        return initialVitalsData;
-    }
-  };
+  // State to manage all tab data
+  const [data, setData] = useState({
+    Vitals: initialVitalsData,
+    Dosage: initialDosageData,
+    Units: initialUnitsData,
+    Frequency: initialFrequencyData,
+    When: initialWhenData,
+    'Medicine Type': initialMedicineTypeData,
+    'Advice and Direction': initialAdviceDirectionData,
+  });
 
-  const currentData = getInitialData();
+  // Get current tab data
+  const currentData = data[activeTab];
 
   // Filter data based on search term
   const filteredData = currentData.filter((item) =>
     activeTab === 'Advice and Direction'
       ? (item.name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-         item.description?.toLowerCase().includes(searchTerm.toLowerCase()))
+        item.description?.toLowerCase().includes(searchTerm.toLowerCase()))
       : (item.name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-         item.label?.toLowerCase().includes(searchTerm.toLowerCase()))
+        item.label?.toLowerCase().includes(searchTerm.toLowerCase()))
   );
 
   // Pagination logic
@@ -205,9 +195,9 @@ const SetupTable = () => {
 
   // Define columns dynamically
   const columns = [
-    { 
-      header: activeTab === 'Advice and Direction' ? 'Name' : 'Label', 
-      accessor: activeTab === 'Advice and Direction' ? 'name' : 'label' 
+    {
+      header: activeTab === 'Vitals' ? 'Label' : 'Name',
+      accessor: activeTab === 'Vitals' ? 'label' : 'name'
     },
     ...(activeTab === 'Advice and Direction' ? [{ header: 'Description', accessor: 'description' }] : []),
     {
@@ -229,62 +219,62 @@ const SetupTable = () => {
           >
             <RiEditBoxLine />
           </button>
-          <button
+          {/* <button
             className="text-blue-500 border border-blue-500 rounded p-1 hover:bg-blue-50"
             title="View"
             onClick={() => handleView(original)}
           >
             <RiEyeLine />
-          </button>
+          </button> */}
         </div>
       ),
     },
   ];
 
-  // Handle form change
+  // Handle form input changes
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value,
-    }));
+    setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  // Handle form submission
+  // Handle form submission (create or update)
   const handleSubmit = (e) => {
     e.preventDefault();
-    const newData = {
-      ...formData,
-      id: Date.now(), // Ensure unique ID
-    };
+    let newData;
+    if (activeTab === 'Vitals') {
+      newData = {
+        id: modalMode === 'create' ? Date.now() : editingItem.id,
+        label: formData.label,
+        fields: parseInt(formData.fields) || 1,
+        maxLength: parseInt(formData.maxLength) || '',
+        unit: formData.unit || '',
+        separator: formData.separator || '/',
+      };
+    } else if (activeTab === 'Advice and Direction') {
+      newData = {
+        id: modalMode === 'create' ? Date.now() : editingItem.id,
+        name: formData.name,
+        description: formData.description,
+      };
+    } else {
+      newData = {
+        id: modalMode === 'create' ? Date.now() : editingItem.id,
+        name: formData.name,
+      };
+    }
 
-    // Add new data to the respective tab's data array
-    switch (activeTab) {
-      case 'Vitals':
-        initialVitalsData.push({
-          ...newData,
-          fields: parseInt(newData.fields) || 1,
-          maxLength: parseInt(newData.maxLength) || '',
-          unit: newData.unit || '',
-          separator: newData.separator || '/',
-        });
-        break;
-      case 'Dosage':
-      case 'Units':
-      case 'Frequency':
-      case 'When':
-      case 'Medicine Type':
-        initialData[activeTab.toLowerCase()].push({ id: newData.id, name: newData.name });
-        break;
-      case 'Advice and Direction':
-        initialAdviceDirectionData.push({
-          id: newData.id,
-          name: newData.name,
-          description: newData.description,
-        });
-        break;
-      default:
-        break;
+    if (modalMode === 'create') {
+      setData(prevData => ({
+        ...prevData,
+        [activeTab]: [...prevData[activeTab], newData],
+      }));
+    } else if (modalMode === 'edit') {
+      setData(prevData => ({
+        ...prevData,
+        [activeTab]: prevData[activeTab].map(item =>
+          item.id === editingItem.id ? newData : item
+        ),
+      }));
     }
 
     setIsModalOpen(false);
@@ -298,6 +288,7 @@ const SetupTable = () => {
       separator: '/',
       description: '',
     });
+    setEditingItem(null);
   };
 
   // Event handlers
@@ -305,6 +296,8 @@ const SetupTable = () => {
     setActiveTab(tab);
     setCurrentPage(1);
     setSearchTerm('');
+    setIsModalOpen(false);
+    setEditingItem(null);
     setFormData({
       id: Date.now(),
       label: '',
@@ -331,20 +324,77 @@ const SetupTable = () => {
     setCurrentPage(1);
   };
 
-  const handleCreate = () => setIsModalOpen(true);
+  const handleCreate = () => {
+    setModalMode('create');
+    setFormData({
+      id: Date.now(),
+      label: '',
+      name: '',
+      fields: 1,
+      maxLength: '',
+      unit: '',
+      separator: '/',
+      description: '',
+    });
+    setIsModalOpen(true);
+  };
+
+  const handleEdit = (item) => {
+    setModalMode('edit');
+    setEditingItem(item);
+    setFormData({
+      ...item,
+      label: item.label || '',
+      name: item.name || '',
+      fields: item.fields || 1,
+      maxLength: item.maxLength || '',
+      unit: item.unit || '',
+      separator: item.separator || '/',
+      description: item.description || '',
+    });
+    setIsModalOpen(true);
+  };
+
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        setData(prevData => ({
+          ...prevData,
+          [activeTab]: prevData[activeTab].filter(item => item.id !== id),
+        }));
+        Swal.fire(
+          'Deleted!',
+          'The item has been deleted.',
+          'success'
+        );
+      }
+    });
+  };
+
+  const handleView = (item) => {
+    console.log(`View item: ${JSON.stringify(item)}`);
+  };
 
   return (
     <div className="grid grid-cols-1 gap-3 w-[95%] lg:ms-[70px] px-2">
       {/* Tabs */}
       <div className="flex flex-wrap gap-2 border-b pb-2 mb-4">
+        <BackButton />
         {tabs.map((tab) => (
-          <button
+          <Button
             key={tab}
-            className={`flex items-center gap-2 px-3 py-1.5 rounded-md transition-colors ${
-              activeTab === tab
+            className={`flex items-center gap-2 px-3 py-1.5 rounde transition-colors ${activeTab === tab
                 ? 'bg-primary text-white shadow-lg'
                 : 'text-gray-800 bg-gray-200 hover:bg-primary hover:text-white'
-            }`}
+              }`}
             onClick={() => handleTabChange(tab)}
             title={tab}
           >
@@ -356,7 +406,7 @@ const SetupTable = () => {
             {tab === 'Medicine Type' && <FaCapsules />}
             {tab === 'Advice and Direction' && <FaInfoCircle />}
             {tab}
-          </button>
+          </Button>
         ))}
       </div>
 
@@ -371,7 +421,7 @@ const SetupTable = () => {
             <input
               type="text"
               placeholder="Search by Name"
-              className="w-full sm:w-64 py-2 px-4 rounded-md border bg-white border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary"
+              className="w-full sm:w-64 py-2 px-4 rounde border bg-white border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary"
               value={searchTerm}
               onChange={handleSearch}
             />
@@ -386,7 +436,7 @@ const SetupTable = () => {
         <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
           <div className="flex items-center gap-2">
             <button
-              className="p-1 bg-gray-200 rounded-md hover:bg-gray-300 disabled:opacity-50"
+              className="p-1 bg-gray-200 rounde hover:bg-gray-300 disabled:opacity-50"
               onClick={() => handlePageChange(currentPage - 1)}
               disabled={currentPage === 1}
             >
@@ -396,7 +446,7 @@ const SetupTable = () => {
               Page {currentPage} of {totalPages}
             </span>
             <button
-              className="p-1 bg-gray-200 rounded-md hover:bg-gray-300 disabled:opacity-50"
+              className="p-1 bg-gray-200 rounde hover:bg-gray-300 disabled:opacity-50"
               onClick={() => handlePageChange(currentPage + 1)}
               disabled={currentPage === totalPages}
             >
@@ -404,12 +454,12 @@ const SetupTable = () => {
             </button>
           </div>
           <div className="flex items-center gap-2">
-            <label htmlFor="itemsPerPage" className="text-sm text-gray-700">
+            <label htmlFor="itemsPerPage" className=" text-gray-700">
               Items per page:
             </label>
             <select
               id="itemsPerPage"
-              className="py-1 px-2 border bg-white border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+              className="py-1 px-2 border bg-white border-gray-300 rounde focus:outline-none focus:ring-2 focus:ring-primary"
               value={itemsPerPage}
               onChange={handleItemsPerPageChange}
             >
@@ -423,137 +473,138 @@ const SetupTable = () => {
         </div>
       </div>
 
-      {/* Create Modal */}
-      {isModalOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
-            <div className="flex justify-between items-center mb-4">
-              <h2 className="text-lg font-bold">Create New {activeTab} Entry</h2>
-              <button
-                onClick={() => setIsModalOpen(false)}
-                className="text-gray-500 hover:text-gray-700"
-              >
-                <MdClose size={24} />
-              </button>
-            </div>
-            <form onSubmit={handleSubmit} className="space-y-4">
-              {activeTab === 'Vitals' ? (
-                <>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700">Label</label>
-                    <input
-                      type="text"
-                      name="label"
-                      value={formData.label}
-                      onChange={handleInputChange}
-                      className="d-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm bg-white w-full text-black"
-                      placeholder="Enter label"
-                      required
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700">Fields</label>
-                    <input
-                      type="number"
-                      name="fields"
-                      value={formData.fields}
-                      onChange={handleInputChange}
-                      className="d-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm bg-white w-full text-black"
-                      placeholder="Enter number of fields"
-                      min="1"
-                      required
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700">Max Length</label>
-                    <input
-                      type="number"
-                      name="maxLength"
-                      value={formData.maxLength}
-                      onChange={handleInputChange}
-                      className="d-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm bg-white w-full text-black"
-                      placeholder="Enter max length"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700">Unit</label>
-                    <input
-                      type="text"
-                      name="unit"
-                      value={formData.unit}
-                      onChange={handleInputChange}
-                      className="d-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm bg-white w-full text-black"
-                      placeholder="Enter unit (e.g., %, mmHg)"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700">Separator</label>
-                    <input
-                      type="text"
-                      name="separator"
-                      value={formData.separator}
-                      onChange={handleInputChange}
-                      className="d-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm bg-white w-full text-black"
-                      placeholder="Enter separator (e.g., /)"
-                    />
-                  </div>
-                </>
-              ) : activeTab === 'Advice and Direction' ? (
-                <>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700">Name</label>
-                    <input
-                      type="text"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleInputChange}
-                      className="d-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm bg-white w-full text-black"
-                      placeholder="Enter name"
-                      required
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700">Description</label>
-                    <textarea
-                      name="description"
-                      value={formData.description}
-                      onChange={handleInputChange}
-                      className="d-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm bg-white w-full text-black"
-                      placeholder="Enter description"
-                      required
-                    />
-                  </div>
-                </>
-              ) : (
-                <div>
-                  <label className="block text-sm font-medium text-gray-700">Name</label>
-                  <input
-                    type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleInputChange}
-                    className="d-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm bg-white w-full text-black"
-                    placeholder={`Enter ${activeTab.toLowerCase()} name`}
-                    required
-                  />
-                </div>
-              )}
-              <div className="flex justify-end gap-2">
-                <Button
-                  variant="secondary"
-                  onClick={() => setIsModalOpen(false)}
-                  className="bg-gray-200 text-gray-800 hover:bg-gray-300"
-                >
-                  Cancel
-                </Button>
-                <Button type="submit" variant="primary">
-                  Create
-                </Button>
+      {/* Reusable Modal for Create/Edit */}
+      <Modal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        title={`${modalMode === 'create' ? 'Create New' : 'Edit'} ${activeTab} Entry`}
+        className="w-full max-w-md mx-auto p-4 sm:p-6"
+      >
+        <form onSubmit={handleSubmit} className="space-y-4">
+          {activeTab === 'Vitals' ? (
+            <>
+              <div>
+                <label className="block  font-medium text-gray-700">Label</label>
+                <input
+                  type="text"
+                  name="label"
+                  value={formData.label}
+                  onChange={handleInputChange}
+                  className=" border-gray-300 shadow-sm focus:border-primary focus:ring-primary  bg-white w-full text-black"
+                  placeholder="Enter label"
+                  required
+                />
               </div>
-            </form>
+              <div>
+                <label className="block  font-medium text-gray-700">Fields</label>
+                <input
+                  type="number"
+                  name="fields"
+                  value={formData.fields}
+                  onChange={handleInputChange}
+                  className=" border-gray-300 shadow-sm focus:border-primary focus:ring-primary  bg-white w-full text-black"
+                  placeholder="Enter number of fields"
+                  min="1"
+                  required
+                />
+              </div>
+              <div>
+                <label className="block  font-medium text-gray-700">Max Length</label>
+                <input
+                  type="number"
+                  name="maxLength"
+                  value={formData.maxLength}
+                  onChange={handleInputChange}
+                  className=" border-gray-300 shadow-sm focus:border-primary focus:ring-primary  bg-white w-full text-black"
+                  placeholder="Enter max length"
+                />
+              </div>
+              <div>
+                <label className="block  font-medium text-gray-700">Unit</label>
+                <input
+                  type="text"
+                  name="unit"
+                  value={formData.unit}
+                  onChange={handleInputChange}
+                  className=" border-gray-300 shadow-sm focus:border-primary focus:ring-primary  bg-white w-full text-black"
+                  placeholder="Enter unit (e.g., %, mmHg)"
+                />
+              </div>
+              <div>
+                <label className="block  font-medium text-gray-700">Separator</label>
+                <input
+                  type="text"
+                  name="separator"
+                  value={formData.separator}
+                  onChange={handleInputChange}
+                  className=" border-gray-300 shadow-sm focus:border-primary focus:ring-primary  bg-white w-full text-black"
+                  placeholder="Enter separator (e.g., /)"
+                />
+              </div>
+            </>
+          ) : activeTab === 'Advice and Direction' ? (
+            <>
+              <div>
+                <label className="block  font-medium text-gray-700">Name</label>
+                <input
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleInputChange}
+                  className=" border-gray-300 shadow-sm focus:border-primary focus:ring-primary  bg-white w-full text-black"
+                  placeholder="Enter name"
+                  required
+                />
+              </div>
+              <div>
+                <label className="block font-medium text-gray-700">Description</label>
+                <textarea
+                  name="description"
+                  value={formData.description}
+                  onChange={handleInputChange}
+                  className=" border-gray-300 shadow-sm focus:border-primary focus:ring-primary  bg-white w-full text-black"
+                  placeholder="Enter description"
+                  required
+                />
+              </div>
+            </>
+          ) : (
+            <div>
+              <label className="block  font-medium text-gray-700">Name</label>
+              <input
+                type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleInputChange}
+                className=" border-gray-300 shadow-sm focus:border-primary focus:ring-primary  bg-white w-full text-black"
+                placeholder={`Enter ${activeTab.toLowerCase()} name`}
+                required
+              />
+            </div>
+          )}
+          <div className="flex justify-end gap-2">
+            {/* {modalMode === 'edit' && (
+        <Button
+          variant="danger"
+          onClick={() => handleDelete(editingItem.id)}
+          className="bg-red-500 text-white hover:bg-red-600"
+        >
+          <RiDeleteBinLine className="inline mr-1" /> Delete
+        </Button>
+      )} */}
+            <Button
+              variant="secondary"
+              onClick={() => setIsModalOpen(false)}
+              className="bg-gray-200 text-gray-800 hover:bg-gray-300"
+            >
+              <RiCloseLine className="inline" /> Cancel
+            </Button>
+            <Button type="submit" variant="primary">
+              <RiSaveLine className="inline" /> {modalMode === 'create' ? 'Create' : 'Update'}
+            </Button>
           </div>
-        </div>
-      )}
+        </form>
+      </Modal>
     </div>
   );
 };

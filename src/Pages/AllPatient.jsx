@@ -106,10 +106,10 @@ const AllPatient = () => {
   );
 
   return (
-    <div className="grid grid-cols-1 gap-3 w-[95%] lg:ms-[70px] px-2">
-      <div className="bg-white rounded-lg">
+    <div className="w-[95%] lg:ms-[70px] bg-white mx-auto">
+      <div className="">
         {/* Card Header */}
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between pb-4 border-b p-4 gap-4">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between pb-4 border-b  gap-4">
           <div className="flex items-center gap-4">
             <BackButton />
             <h5 className="text-lg font-semibold">Patients List</h5>

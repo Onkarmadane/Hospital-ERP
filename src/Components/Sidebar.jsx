@@ -7,7 +7,8 @@ import { NavLink, useLocation } from "react-router-dom";
 import { LuNotebookPen } from "react-icons/lu";
 import { FaUsers } from "react-icons/fa";
 import { RiMenu4Line } from "react-icons/ri";
-
+import { MdCurrencyRupee } from "react-icons/md";
+import { FaIndianRupeeSign } from "react-icons/fa6";
 function Tooltip({ content, children }) {
   return (
     <div className="relative group" data-tip={content}>
@@ -30,7 +31,7 @@ const Sidebar = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      const isSmall = window.innerWidth < 768;
+      const isSmall = window.innerWidth < 800;
       setIsSmallScreen(isSmall);
       if (isSmall) {
         setIsHidden(true);
@@ -87,7 +88,7 @@ const Sidebar = () => {
     { to: "/doctor/Dashboard", icon: <MdDashboard size={28} />, label: "Dashboard" },
     { to: "/doctor/Appointment", icon: <LuNotebookPen size={28} />, label: "Appointment" },
     { to: "/doctor/AllPatient", icon: <FaUsers size={28} />, label: "All Patient" },
-    { to: "/doctor/FinanceAccounting", icon: <FaRupeeSign size={28} />, label: "Finance & Accounting" },
+    // { to: "/doctor/FinanceAccounting", icon: <FaIndianRupeeSign  size={28} />, label: "Finance & Accounting" },
     { to: "/doctor/settings", icon: <IoSettings size={28} />, label: "Setup" },
     // { to: "/doctor/support", icon: <IoIosHelpCircleOutline size={28} />, label: "Help & Support" },
   ];

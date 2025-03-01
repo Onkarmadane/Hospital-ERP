@@ -1,19 +1,18 @@
 import React from 'react';
 import Cards from '../Components/Cards';
 import { FaHandsHelping } from 'react-icons/fa';
-import { MdOutlineInventory } from "react-icons/md";
-import { IoTvSharp } from "react-icons/io5";
-import { RiFileUserLine } from "react-icons/ri";
-import { VscSettings } from "react-icons/vsc";
-import { Link } from 'react-router-dom'; // Import Link from react-router-dom
+import { MdOutlineInventory } from 'react-icons/md';
+import { IoTvSharp } from 'react-icons/io5';
+import { RiFileUserLine, RiMedicineBottleLine } from 'react-icons/ri';
+import { Link } from 'react-router-dom';
 import BackButton from '../Components/BackButton';
 
 const Setup = () => {
     return (
         <div>
             <div className="lg:ps-20">
-        <BackButton/>
-        </div>
+                <BackButton />
+            </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-[95%] mx-auto lg:ps-10 gap-6">
                 <Link to="/doctor/settings/inventory" className="no-underline">
                     <Cards
@@ -22,7 +21,7 @@ const Setup = () => {
                         Icon={MdOutlineInventory}
                     />
                 </Link>
-                
+
                 <Link to="/doctor/settings/tv-view-setup" className="no-underline">
                     <Cards
                         title="TV View Setup"
@@ -30,23 +29,23 @@ const Setup = () => {
                         Icon={IoTvSharp}
                     />
                 </Link>
-                
+
                 <Link to="/doctor/settings/consultation-setup" className="no-underline">
                     <Cards
-                        title="Consulation Setup"
+                        title="Consultation Setup"
                         description="Establish and specify digital prescription fields"
                         Icon={RiFileUserLine}
                     />
                 </Link>
-                
-                <Link to="/general-settings" className="no-underline">
+
+                <Link to="/doctor/settings/medicine-setup" className="no-underline">
                     <Cards
-                        title="General Settings"
+                        title="Medicine Setup"
                         description="Manage and specify general settings."
-                        Icon={VscSettings}
+                        Icon={RiMedicineBottleLine}
                     />
                 </Link>
-                
+
                 <Link to="/claim-help" className="no-underline">
                     <Cards
                         title="Need help in Claim?"
@@ -54,7 +53,7 @@ const Setup = () => {
                         Icon={FaHandsHelping}
                     />
                 </Link>
-                
+
                 <Link to="/claim-help" className="no-underline">
                     <Cards
                         title="Need help in Claim?"

@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { IoMdClose } from "react-icons/io";
+import Button from '../Components/Button'
 
 const Modal = ({
   isOpen,
@@ -25,37 +27,38 @@ const Modal = ({
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
       <div
-        className={`bg-white rounded-lg shadow-lg ${className}`}
+        className={`bg-white rounded-lg shadow-lg  w-full ${className}`}
         role="dialog"
         aria-modal="true"
         aria-labelledby={ariaLabelledBy}
       >
         {/* Header */}
-        <div className="flex items-center justify-between border-b p-4">
+        <div className="flex items-center justify-between  p-1">
           <h2 id={ariaLabelledBy} className="text-lg font-semibold">
             {title}
           </h2>
-          <button
+          <Button
+          variant='secondary'
             onClick={onClose}
             className="text-gray-500 hover:text-gray-700 focus:outline-none"
             aria-label="Close modal"
           >
-            ✕
-          </button>
+           <IoMdClose />
+          </Button>
         </div>
 
         {/* Body */}
-        <div className="max-h-[70vh] overflow-y-auto">{children}</div>
+        <div className="max-h-[70vh] overflow-y-auto bg-white text-black ">{children}</div>
 
         {/* Footer (optional) */}
         {footer && (
-          <div className="flex justify-end gap-2 border-t p-4">{footer}</div>
+          <div className="flex justify-end gap-2  p-4 mt-2">{footer}</div>
         )}
 
         {/* Backdrop */}
         {!disableBackdropClick && (
           <div
-            className="absolute inset-0 z-[-1]"
+            className="absolute inset-0 z-[-1] "
             onClick={onClose}
             aria-hidden="true"
           />
