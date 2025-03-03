@@ -90,6 +90,7 @@ const Sidebar = () => {
     { to: "/doctor/AllPatient", icon: <FaUsers size={28} />, label: "All Patient" },
     // { to: "/doctor/FinanceAccounting", icon: <FaIndianRupeeSign  size={28} />, label: "Finance & Accounting" },
     { to: "/doctor/settings", icon: <IoSettings size={28} />, label: "Setup" },
+    { to: "/doctor/patient-form", icon: <IoSettings size={28} />, label: "Patient Form" },
     // { to: "/doctor/support", icon: <IoIosHelpCircleOutline size={28} />, label: "Help & Support" },
   ];
 
