@@ -48,7 +48,7 @@ const BookAppointmentForm = () => {
           <h5 className="text-lg font-semibold">Book Appointments</h5>
         </div>
         <div className="bg-white p-7">
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-6 bg-white">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               <div className="mb-4">
                 <label htmlFor="a1" className="block text-gray-700 font-medium mb-2">
@@ -142,7 +142,7 @@ const BookAppointmentForm = () => {
                 <input
                   type="time"
                   name="time"
-                  className="w-full p-3 border border-blue-200 rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-blue-200 focus:outline-none"
+                  className="w-full p-3 border border-primary rounded-lg text-black bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
                   id="a7"
                   value={formData.time}
                   onChange={handleChange}
@@ -173,7 +173,7 @@ const BookAppointmentForm = () => {
                 </label>
                 <textarea
                   name="problem"
-                  className="w-full p-3 border border-blue-200 rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-blue-200 focus:outline-none h-24"
+                  className="w-full p-3 border border-blue-200 rounded-lg bg-white  focus:border-primary focus:ring-2 focus:ring-blue-200 focus:outline-none h-24"
                   id="a9"
                   placeholder="Enter Problem"
                   value={formData.problem}

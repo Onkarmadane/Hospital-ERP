@@ -47,7 +47,7 @@ function App() {
           <Route path="/doctor/settings/inventory" element={<PrivateRoute element={Inventory} />} />
           <Route path="/doctor/settings/consultation-setup" element={<PrivateRoute element={ConsultationSetup} />} />
           <Route path="/doctor/settings/medicine-setup" element={<PrivateRoute element={MedicineSetup} />} />
-          <Route path="/doctor/patient-form" element={<PrivateRoute element={PatientForm} />} />
+          <Route path="/doctor/Appointment/patient-form" element={<PrivateRoute element={PatientForm} />} />
           {/* <Route path="/doctor/show-booking" element={<PrivateRoute element={ShowBookings} />} /> */}
           <Route path="/*" element={<PrivateRoute element={PageNotFound} />} />
           {/* <Route path="/tv-view-setup" element={<TVViewSetup />} /> */}

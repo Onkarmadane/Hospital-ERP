@@ -262,60 +262,10 @@ function Dashboard() {
       {/* Charts Section */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Patient Visits (Bar Chart) */}
-        <div className="bg-white p-4 rounded-lg  border border-gray-200">
-          <h3 className="text-base sm:text-lg font-medium text-gray-800 mb-4">Patients Visit</h3>
-          <div className="h-64 flex items-center justify-center">
-            {/* Placeholder for bar chart - Use a library like Chart.js or Recharts for actual chart */}
-            <div className="w-full h-full flex flex-col items-center justify-center text-gray-500">
-              <p>Bar Chart Placeholder (e.g., Chart.js/Recharts)</p>
-              <p className="text-xs">Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec</p>
-              <div className="flex justify-between w-full mt-2 text-xs text-gray-400">
-                <span>male</span>
-                <span>female</span>
-                <span>child</span>
-              </div>
-            </div>
-          </div>
-        </div>
+    
 
         {/* Credits (Donut Chart) */}
-        <div className="bg-white p-4 rounded-lg  border border-gray-200">
-          <div className="flex justify-between items-center mb-4">
-            <h3 className="text-base sm:text-lg font-medium text-gray-800">This Year</h3>
-            <select className="border border-gray-300 rounded-md p-1 sm:p-2 text-sm bg-white text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500">
-              <option>This Year</option>
-              <option>Last Year</option>
-            </select>
-          </div>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-            {/* Donut Chart Placeholder */}
-            <div className="w-40 h-40 flex items-center justify-center">
-              <div className="relative w-full h-full">
-                {/* Simulated Donut Chart - Use Chart.js or Recharts for actual implementation */}
-                <div className="absolute inset-0 flex items-center justify-center text-2xl font-bold text-gray-900">87</div>
-                <svg className="w-full h-full" viewBox="0 0 100 100">
-                  {/* Simplified donut segments - Replace with actual chart library */}
-                  <circle cx="50" cy="50" r="40" fill="none" stroke="#E53E3E" strokeWidth="10" strokeDasharray="60 140" transform="rotate(-90 50 50)" />
-                  <circle cx="50" cy="50" r="40" fill="none" stroke="#F6AD55" strokeWidth="10" strokeDasharray="20 180" transform="rotate(-90 50 50)" />
-                  <circle cx="50" cy="50" r="40" fill="none" stroke="#ED8936" strokeWidth="10" strokeDasharray="10 190" transform="rotate(-90 50 50)" />
-                  <circle cx="50" cy="50" r="40" fill="none" stroke="#744210" strokeWidth="10" strokeDasharray="10 190" transform="rotate(-90 50 50)" />
-                </svg>
-                <p className="text-sm text-gray-600 mt-2">Credits</p>
-              </div>
-            </div>
-            {/* Legend */}
-            <div className="flex flex-col gap-2">
-              <div className="flex items-center gap-2">
-                <span className="w-4 h-4 bg-purple-500 rounded-full"></span>
-                <span className="text-sm text-gray-600">Notification</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="w-4 h-4 bg-orange-500 rounded-full"></span>
-                <span className="text-sm text-gray-600">Appointment</span>
-              </div>
-            </div>
-          </div>
-        </div>
+      
       </div>
     </div>
   );

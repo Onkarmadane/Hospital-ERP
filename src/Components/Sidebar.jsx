@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react";
-import { MdDashboard, MdMenu } from "react-icons/md";
-import { FaRupeeSign } from "react-icons/fa";
+import { MdDashboard } from "react-icons/md";
 import { IoSettings } from "react-icons/io5";
 import { IoIosHelpCircleOutline } from "react-icons/io";
 import { NavLink, useLocation } from "react-router-dom";
 import { LuNotebookPen } from "react-icons/lu";
-import { FaUsers } from "react-icons/fa";
+import { FaUsers, FaUser } from "react-icons/fa"; // Added FaUser for profile
 import { RiMenu4Line } from "react-icons/ri";
-import { MdCurrencyRupee } from "react-icons/md";
-import { FaIndianRupeeSign } from "react-icons/fa6";
+import { MdOutlineKeyboardArrowRight } from "react-icons/md";
+
 function Tooltip({ content, children }) {
   return (
     <div className="relative group" data-tip={content}>
@@ -79,20 +78,21 @@ const Sidebar = () => {
 
   const navItemClass = ({ isActive }, to) => {
     return `flex items-center p-5 space-x-4 rounded-lg transition-all duration-200 
-      ${isActive || location.pathname.startsWith(to) 
-        ? "bg-primary text-white scale-105" 
-        : "hover:bg-primary hover:text-white hover:scale-105"}`;
+      ${isActive || location.pathname.startsWith(to)
+        ? "text-primary"
+        : "text-gray-900 hover:bg-primary hover:text-white hover:scale-105"
+      }`;
   };
 
   const navLinks = [
-    { to: "/doctor/Dashboard", icon: <MdDashboard size={28} />, label: "Dashboard" },
-    { to: "/doctor/Appointment", icon: <LuNotebookPen size={28} />, label: "Appointment" },
-    { to: "/doctor/AllPatient", icon: <FaUsers size={28} />, label: "All Patient" },
-    // { to: "/doctor/FinanceAccounting", icon: <FaIndianRupeeSign  size={28} />, label: "Finance & Accounting" },
-    { to: "/doctor/settings", icon: <IoSettings size={28} />, label: "Setup" },
-    { to: "/doctor/patient-form", icon: <IoSettings size={28} />, label: "Patient Form" },
-    // { to: "/doctor/support", icon: <IoIosHelpCircleOutline size={28} />, label: "Help & Support" },
+    { to: "/doctor/Dashboard", icon: <MdDashboard size={19} />, label: "Dashboard" },
+    { to: "/doctor/Appointment", icon: <LuNotebookPen size={19} />, label: "Appointment" },
+    { to: "/doctor/AllPatient", icon: <FaUsers size={19} />, label: "All Patient" },
+    { to: "/doctor/settings", icon: <IoSettings size={19} />, label: "Setup" },
+    // { to: "/doctor/patient-form", icon: <IoSettings size={19} />, label: "Patient Form" },
   ];
+
+  const profileLink = { to: "/doctor/profile", icon: <FaUser size={19} />, label: "Profile" };
 
   return (
     <>
@@ -103,14 +103,31 @@ const Sidebar = () => {
             ${isHidden ? "hidden" : "block"} 
             ${isCollapsed ? "w-16" : "w-64"} ${isSmallScreen ? "hidden" : "sm:block"}`}
         >
+          {/* User Info Section */}
+          <div className="flex items-center p-5 border-b border-gray-200">
+            {isCollapsed ? (
+              <Tooltip content="Dr. John Doe">
+                <div className="flex items-center justify-center w-full">
+                  <FaUser size={24} className="text-gray-900" />
+                </div>
+              </Tooltip>
+            ) : (
+              <div className="flex items-center space-x-3">
+                <FaUser size={24} className="text-gray-900" />
+                <span className="text-lg font-semibold text-gray-900">Dr. John Doe</span>
+              </div>
+            )}
+          </div>
+
           <button
             onClick={toggleSidebar}
-            className={`p-3 m-5 bg-primary text-white rounded-full transition duration-300 hover:bg-secondary fixed top-4 left-4 z-50 hidden md:block ${isCollapsed ? "rotate-0" : "rotate-180"}`}
+            className={`m-5 text-white bg-primary rounded transition duration-300 hover:bg-secondary fixed top-14 left-9 z-50 hidden md:block ${isCollapsed ? "rotate-0" : "rotate-180"
+              }`}
           >
-            <RiMenu4Line size={24} />
+            <MdOutlineKeyboardArrowRight size={19} />
           </button>
 
-          <ul className="space-y-4 mt-[110px]">
+          <ul className="space-y-4 mt-[30px]">
             {navLinks.map(({ to, icon, label }, index) => (
               <li key={index} className="nav-item">
                 {isCollapsed ? (
@@ -145,20 +162,34 @@ const Sidebar = () => {
           ${isSmallScreen ? "block" : "hidden"} 
           ${isBottomNavVisible ? "translate-y-0" : "translate-y-full"}`}
       >
-        {navLinks.map(({ to, icon, label }, index) => (
+        {navLinks.map(({ to, icon }, index) => (
           <NavLink
             key={index}
             to={to}
             className={({ isActive }) =>
-              `p-3 ${isActive || location.pathname.startsWith(to) 
-                ? "text-primary" 
-                : "text-gray-900"} hover:text-primary transition-colors duration-200`
+              `p-3 ${isActive || location.pathname.startsWith(to)
+                ? "text-primary"
+                : "text-gray-900"
+              } hover:text-primary transition-colors duration-200`
             }
             onClick={handleNavClick}
           >
             {icon}
           </NavLink>
         ))}
+        {/* Profile Tab */}
+        <NavLink
+          to={profileLink.to}
+          className={({ isActive }) =>
+            `p-3 ${isActive || location.pathname.startsWith(profileLink.to)
+              ? "text-primary"
+              : "text-gray-900"
+            } hover:text-primary transition-colors duration-200`
+          }
+          onClick={handleNavClick}
+        >
+          {profileLink.icon}
+        </NavLink>
       </nav>
     </>
   );

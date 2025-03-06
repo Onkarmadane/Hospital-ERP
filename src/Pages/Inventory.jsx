@@ -13,7 +13,7 @@ function Inventory() {
   const [activeTab, setActiveTab] = useState('medicine');
   const [inventoryData, setInventoryData] = useState([
     {
-      id: 1, // Unique ID
+      id: 1,
       Medicine: "Paracetamol",
       BatchNo: "PARA202301",
       InwardQuantity: 1000,
@@ -25,9 +25,9 @@ function Inventory() {
       TotalAvailableQty: 1200
     },
     {
-      id: 2, // Unique ID
+      id: 2,
       Medicine: "Paracetamol",
-      BatchNo: "PARA202302", // Different BatchNo for clarity
+      BatchNo: "PARA202302",
       InwardQuantity: 500,
       UnitofMeasure: "Tablets",
       ExpiryDate: "2025-11-30",
@@ -37,7 +37,7 @@ function Inventory() {
       TotalAvailableQty: 1200
     },
     {
-      id: 3, // Unique ID
+      id: 3,
       Medicine: "Ibuprofen",
       BatchNo: "IBU202302",
       InwardQuantity: 800,
@@ -52,7 +52,7 @@ function Inventory() {
 
   const [batchData, setBatchData] = useState([
     {
-      id: 1, // Unique ID
+      id: 1,
       BatchNo: "PARA202301",
       Medicine: "Paracetamol",
       BatchCreationDate: "2023-12-15",
@@ -60,7 +60,7 @@ function Inventory() {
       ExpiryDate: "2025-12-31"
     },
     {
-      id: 2, // Unique ID
+      id: 2,
       BatchNo: "IBU202302",
       Medicine: "Ibuprofen",
       BatchCreationDate: "2024-01-15",
@@ -68,7 +68,7 @@ function Inventory() {
       ExpiryDate: "2025-06-30"
     },
     {
-      id: 3, // Unique ID
+      id: 3,
       BatchNo: "AMO202303",
       Medicine: "Amoxicillin",
       BatchCreationDate: "2024-01-05",
@@ -80,8 +80,18 @@ function Inventory() {
   const [searchTerm, setSearchTerm] = useState('');
   const [isViewModalOpen, setIsViewModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [isReceiveModalOpen, setIsReceiveModalOpen] = useState(false);
   const [selectedMedicine, setSelectedMedicine] = useState(null);
   const [editFormData, setEditFormData] = useState({});
+  const [receiveFormData, setReceiveFormData] = useState({
+    Medicine: '',
+    BatchNo: '',
+    InwardQuantity: '',
+    UnitofMeasure: '',
+    ReceivedDate: '',
+    ExpiryDate: '',
+    Price: ''
+  });
 
   // Columns for Medicine Stock Tab
   const medicineColumns = [
@@ -178,7 +188,7 @@ function Inventory() {
 
   const handleEdit = (item) => {
     setSelectedMedicine(item);
-    setEditFormData({ ...item }); // Initialize with a copy of the selected item
+    setEditFormData({ ...item });
     setIsEditModalOpen(true);
   };
 
@@ -216,6 +226,43 @@ function Inventory() {
     setIsViewModalOpen(true);
   };
 
+  const handleReceiveChange = (e) => {
+    const { name, value } = e.target;
+    setReceiveFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleReceiveSubmit = (e) => {
+    e.preventDefault();
+    const newInventory = {
+      id: inventoryData.length + 1,
+      ...receiveFormData,
+      InwardQuantity: Number(receiveFormData.InwardQuantity),
+      Price: Number(receiveFormData.Price),
+      AvailableBatchQty: Number(receiveFormData.InwardQuantity),
+      TotalAvailableQty: Number(receiveFormData.InwardQuantity)
+    };
+    
+    setInventoryData([...inventoryData, newInventory]);
+    setIsReceiveModalOpen(false);
+    setReceiveFormData({
+      Medicine: '',
+      BatchNo: '',
+      InwardQuantity: '',
+      UnitofMeasure: '',
+      ReceivedDate: '',
+      ExpiryDate: '',
+      Price: ''
+    });
+    
+    Swal.fire({
+      title: 'Success!',
+      text: 'New inventory item has been received.',
+      icon: 'success',
+      timer: 1500,
+      timerProgressBar: true,
+    });
+  };
+
   const filteredInventory = inventoryData.filter(item =>
     item.Medicine.toLowerCase().includes(searchTerm.toLowerCase()) ||
     item.BatchNo.toLowerCase().includes(searchTerm.toLowerCase())
@@ -233,14 +280,20 @@ function Inventory() {
         <BackButton />
         <h5 className="text-base sm:text-lg md:text-xl font-semibold">Inventory</h5>
         <div className="flex flex-row items-center gap-2 sm:gap-3 md:gap-4">
-          <Button variant="primary" className={`flex items-center outline-none border-none justify-center gap-2 sm:gap-2.5 md:gap-3 whitespace-nowrap text-sm sm:text-base md:text-lg px-3 py-1.5 sm:px-4 sm:py-2 rounded-md transition-colors ${activeTab === 'batch' ? 'bg-gray-200  hover:bg-primary duration-300' : 'text-gray-800 hover:bg-gray-300 shadow-lg  '}`} size="sm" onClick={() => setActiveTab('medicine')}>Medicine Stock</Button>
-          <Button variant="primary" className={`flex items-center outline-none border-none justify-center gap-2 sm:gap-2.5 md:gap-3 whitespace-nowrap text-sm sm:text-base md:text-lg px-3 py-1.5 sm:px-4 sm:py-2 rounded-md transition-colors ${activeTab === 'medicine' ? 'bg-gray-200 hover:bg-primary duration-300' : ' text-gray-800 hover:bg-gray-300 shadow-lg '}`} size="sm" onClick={() => setActiveTab('batch')}> Batch</Button>
+          <Button variant="primary" className={`flex items-center outline-none border-none justify-center gap-2 sm:gap-2.5 md:gap-3 whitespace-nowrap text-sm sm:text-base md:text-lg px-3 py-1.5 sm:px-4 sm:py-2 rounded-md transition-colors ${activeTab === 'batch' ? 'bg-gray-200 hover:bg-primary duration-300' : 'text-gray-800 hover:bg-gray-300 shadow-lg'}`} size="sm" onClick={() => setActiveTab('medicine')}>Medicine Stock</Button>
+          <Button variant="primary" className={`flex items-center outline-none border-none justify-center gap-2 sm:gap-2.5 md:gap-3 whitespace-nowrap text-sm sm:text-base md:text-lg px-3 py-1.5 sm:px-4 sm:py-2 rounded-md transition-colors ${activeTab === 'medicine' ? 'bg-gray-200 hover:bg-primary duration-300' : 'text-gray-800 hover:bg-gray-300 shadow-lg'}`} size="sm" onClick={() => setActiveTab('batch')}> Batch</Button>
         </div>
       </div>
 
       {/* Button and Search */}
       <div className="flex sm:flex-row items-start sm:items-center gap-4 mb-4 justify-between px-2 sm:px-4">
-        <Button variant="primary" size="sm"><MdOutlineAdd size={24}/> Receive Inventory</Button>
+        <Button 
+          variant="primary" 
+          size="sm"
+          onClick={() => setIsReceiveModalOpen(true)}
+        >
+          <MdOutlineAdd size={24}/> Receive Inventory
+        </Button>
         <div className="flex items-center gap-2 sm:w-auto">
           <label className="text-xs sm:text-sm">Search:</label>
           <input
@@ -282,6 +335,7 @@ function Inventory() {
           </div>
         )}
       </Modal>
+
       {/* Edit Modal */}
       <Modal
         isOpen={isEditModalOpen}
@@ -317,7 +371,7 @@ function Inventory() {
           >
             {Object.entries(editFormData).map(
               ([key, value]) =>
-                key !== 'Action' && key !== 'id' && ( // Exclude 'id' here
+                key !== 'Action' && key !== 'id' && (
                   <div key={key}>
                     <label className="block font-medium">{key}</label>
                     <input
@@ -339,6 +393,117 @@ function Inventory() {
             )}
           </form>
         )}
+      </Modal>
+
+      {/* Receive Inventory Modal */}
+      <Modal
+        isOpen={isReceiveModalOpen}
+        onClose={() => setIsReceiveModalOpen(false)}
+        title="Receive Inventory"
+        className="w-full max-w-md mx-auto p-4 sm:p-6"
+        footer={
+          <div className="flex justify-end gap-2">
+            <Button
+              variant="secondary"
+              onClick={() => setIsReceiveModalOpen(false)}
+              className="px-3 sm:px-4 py-1 sm:py-2 border rounded text-gray-600 hover:bg-gray-100 text-sm sm:text-base"
+            >
+              <MdOutlineClose /> Cancel
+            </Button>
+            <Button
+              variant="primary"
+              type="submit"
+              form="receive-form"
+              className="px-3 sm:px-4 py-1 sm:py-2 bg-primary text-white rounded hover:bg-primary-dark text-sm sm:text-base"
+            >
+              <BiSave /> Save
+            </Button>
+          </div>
+        }
+      >
+        <form
+          id="receive-form"
+          onSubmit={handleReceiveSubmit}
+          className="space-y-3 sm:space-y-4 text-sm sm:text-base"
+        >
+          <div>
+            <label className="block font-medium">Medicine</label>
+            <input
+              name="Medicine"
+              value={receiveFormData.Medicine}
+              onChange={handleReceiveChange}
+              type="text"
+              required
+              className="w-full border rounded p-2 bg-white text-black"
+            />
+          </div>
+          <div>
+            <label className="block font-medium">Batch No</label>
+            <input
+              name="BatchNo"
+              value={receiveFormData.BatchNo}
+              onChange={handleReceiveChange}
+              type="text"
+              required
+              className="w-full border rounded p-2 bg-white text-black"
+            />
+          </div>
+          <div>
+            <label className="block font-medium">Inward Quantity</label>
+            <input
+              name="InwardQuantity"
+              value={receiveFormData.InwardQuantity}
+              onChange={handleReceiveChange}
+              type="number"
+              required
+              className="w-full border rounded p-2 bg-white text-black"
+            />
+          </div>
+          <div>
+            <label className="block font-medium">Unit of Measure</label>
+            <input
+              name="UnitofMeasure"
+              value={receiveFormData.UnitofMeasure}
+              onChange={handleReceiveChange}
+              type="text"
+              className="w-full border rounded p-2 bg-white text-black"
+            />
+          </div>
+          <div>
+            <label className="block font-medium">Received Date</label>
+            <input
+              name="ReceivedDate"
+              value={receiveFormData.ReceivedDate}
+              onChange={handleReceiveChange}
+              type="date"
+              required
+              className="w-full border rounded p-2 bg-white text-black"
+            />
+          </div>
+          <div>
+            <label className="block font-medium">Expiry</label>
+            <input
+              name="ExpiryDate"
+              value={receiveFormData.ExpiryDate}
+              onChange={handleReceiveChange}
+              type="date"
+              required
+              className="w-full border rounded p-2 bg-white text-black"
+            />
+          </div>
+          <div>
+            <label className="block font-medium">Price</label>
+            <input
+              name="Price"
+              value={receiveFormData.Price}
+              onChange={handleReceiveChange}
+              type="number"
+              required
+              step="0.01"
+              className="w-full border rounded p-2 bg-white text-black"
+            />
+          </div>
+        </form>
       </Modal>
     </div>
   );
