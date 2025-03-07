@@ -4,7 +4,7 @@ import { IoSettings } from "react-icons/io5";
 import { IoIosHelpCircleOutline } from "react-icons/io";
 import { NavLink, useLocation } from "react-router-dom";
 import { LuNotebookPen } from "react-icons/lu";
-import { FaUsers, FaUser } from "react-icons/fa"; // Added FaUser for profile
+import { FaUsers, FaUser, FaStethoscope } from "react-icons/fa";
 import { RiMenu4Line } from "react-icons/ri";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 
@@ -39,6 +39,7 @@ const Sidebar = () => {
         setIsHidden(false);
         setIsCollapsed(true);
       }
+      console.log('After resize:', { isSmall, isHidden, isCollapsed, path: location.pathname });
     };
     handleResize();
     window.addEventListener("resize", handleResize);
@@ -80,7 +81,7 @@ const Sidebar = () => {
     return `flex items-center p-5 space-x-4 rounded-lg transition-all duration-200 
       ${isActive || location.pathname.startsWith(to)
         ? "text-primary"
-        : "text-gray-900 hover:bg-primary hover:text-white hover:scale-105"
+        : "text-gray-900 hover:scale-105"
       }`;
   };
 
@@ -89,7 +90,7 @@ const Sidebar = () => {
     { to: "/doctor/Appointment", icon: <LuNotebookPen size={19} />, label: "Appointment" },
     { to: "/doctor/AllPatient", icon: <FaUsers size={19} />, label: "All Patient" },
     { to: "/doctor/settings", icon: <IoSettings size={19} />, label: "Setup" },
-    // { to: "/doctor/patient-form", icon: <IoSettings size={19} />, label: "Patient Form" },
+    { to: "/doctor/Appointment/aleo-patient-form", icon: <FaStethoscope size={19} />, label: "Allopathy" },
   ];
 
   const profileLink = { to: "/doctor/profile", icon: <FaUser size={19} />, label: "Profile" };
@@ -129,15 +130,19 @@ const Sidebar = () => {
 
           <ul className="space-y-4 mt-[30px]">
             {navLinks.map(({ to, icon, label }, index) => (
-              <li key={index} className="nav-item">
+              <li key={index} className="nav-item" style={{margin:'0'}}>
                 {isCollapsed ? (
                   <Tooltip content={label}>
                     <NavLink
                       to={to}
-                      className={(navData) => navItemClass(navData, to)}
+                      className={(navData) => `${navItemClass(navData, to)} flex items-center justify-center w-full`}
                       onClick={handleNavClick}
                     >
-                      {icon}
+                      <div
+                        className={`flex items-center justify-center w-10 p-2 h-10 rounded border-2 border-transparent group-hover:border-primary group-hover:bg-primary group-hover:text-white group-hover:scale-105 transition-all duration-200`}
+                      >
+                        {icon}
+                      </div>
                     </NavLink>
                   </Tooltip>
                 ) : (

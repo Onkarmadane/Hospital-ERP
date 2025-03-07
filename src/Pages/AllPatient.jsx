@@ -106,7 +106,7 @@ const AllPatient = () => {
   );
 
   return (
-    <div className="w-[95%] lg:ms-[70px] bg-white mx-auto">
+    <div className="grid grid-cols-1 gap-3 w-[95%] lg:ms-[70px] px-2">
       <div className="">
         {/* Card Header */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between pb-4 border-b  gap-4">
