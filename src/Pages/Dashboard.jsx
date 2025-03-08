@@ -36,6 +36,7 @@ function Dashboard() {
       {/* Header with Search and Date */}
       <div className="flex flex-col sm:flex-row justify-between items-center mb-6">
         <BackButton />
+        <h2 className='text-base sm:text-lg font-bold text-gray-800'>Clinic Name</h2>
         <h2 className="text-base sm:text-lg font-semibold text-gray-800">
           {formatDateTime(currentDateTime)}
         </h2>

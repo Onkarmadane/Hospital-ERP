@@ -16,6 +16,7 @@ import ConsultationSetup from './Pages/ConsultationSetup'
 import MedicineSetup from './Pages/MedicineSetup'
 import PatientForm from './Components/PatientForm'
 import PatientFormAleoPathy from "./Components/PatientFormAleoPathy";
+import UnifiedPatientForm from "./Components/FormsSections/UnifiedPatientForm";
 // import ShowBookings from './Components/ShowBooking'
 // Private Route Component
 const PrivateRoute = ({ element: Element, ...rest }) => {
@@ -48,8 +49,9 @@ function App() {
           <Route path="/doctor/settings/inventory" element={<PrivateRoute element={Inventory} />} />
           <Route path="/doctor/settings/consultation-setup" element={<PrivateRoute element={ConsultationSetup} />} />
           <Route path="/doctor/settings/medicine-setup" element={<PrivateRoute element={MedicineSetup} />} />
-          <Route path="/doctor/Appointment/patient-form" element={<PrivateRoute element={PatientForm} />} />
+          <Route path="/doctor/Appointment/patient-form" element={<PrivateRoute element={UnifiedPatientForm} />} />
           <Route path="/doctor/Appointment/aleo-patient-form" element={<PrivateRoute element={PatientFormAleoPathy} />} />
+          <Route path="/doctor/Appointment/aurvedic" element={<PrivateRoute element={PatientForm} />} />
           {/* <Route path="/doctor/show-booking" element={<PrivateRoute element={ShowBookings} />} /> */}
           <Route path="/*" element={<PrivateRoute element={PageNotFound} />} />
           {/* <Route path="/tv-view-setup" element={<TVViewSetup />} /> */}

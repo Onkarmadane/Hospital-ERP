@@ -90,7 +90,8 @@ const Sidebar = () => {
     { to: "/doctor/Appointment", icon: <LuNotebookPen size={19} />, label: "Appointment" },
     { to: "/doctor/AllPatient", icon: <FaUsers size={19} />, label: "All Patient" },
     { to: "/doctor/settings", icon: <IoSettings size={19} />, label: "Setup" },
-    { to: "/doctor/Appointment/aleo-patient-form", icon: <FaStethoscope size={19} />, label: "Allopathy" },
+    // { to: "/doctor/Appointment/aleo-patient-form", icon: <FaStethoscope size={19} />, label: "Allopathy" },
+    // { to: "/doctor/Appointment/aurvedic", icon: <FaStethoscope size={19} />, label: "Aurvedic" },
   ];
 
   const profileLink = { to: "/doctor/profile", icon: <FaUser size={19} />, label: "Profile" };
