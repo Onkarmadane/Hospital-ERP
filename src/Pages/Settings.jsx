@@ -22,7 +22,7 @@ const Setup = () => {
                     />
                 </Link>
 
-                <Link to="/doctor/settings/tv-view-setup" className="no-underline">
+                <Link to="/*" className="no-underline">
                     <Cards
                         title="TV View Setup"
                         description="Configure fields and notices for TV display"
@@ -38,7 +38,7 @@ const Setup = () => {
                     />
                 </Link>
 
-                <Link to="/doctor/settings/medicine-setup" className="no-underline">
+                <Link to="/*" className="no-underline">
                     <Cards
                         title="Medicine Setup"
                         description="Manage and specify general settings."
@@ -46,7 +46,7 @@ const Setup = () => {
                     />
                 </Link>
 
-                <Link to="/claim-help" className="no-underline">
+                <Link to="/*" className="no-underline">
                     <Cards
                         title="Need help in Claim?"
                         description="Go to this step-by-step guideline process on how to certify for your weekly benefits."
@@ -54,7 +54,7 @@ const Setup = () => {
                     />
                 </Link>
 
-                <Link to="/claim-help" className="no-underline">
+                <Link to="/*" className="no-underline">
                     <Cards
                         title="Need help in Claim?"
                         description="Go to this step-by-step guideline process on how to certify for your weekly benefits."
