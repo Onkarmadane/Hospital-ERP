@@ -3,6 +3,7 @@ import Button from './Button';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
 import { CiBookmarkCheck } from "react-icons/ci";
+import Input from './FormFields/InputField';
 
 const BookAppointmentForm = () => {
   const navigate = useNavigate();
@@ -54,10 +55,10 @@ const BookAppointmentForm = () => {
                 <label htmlFor="a1" className="block text-gray-700 font-medium mb-2">
                   Patient Name
                 </label>
-                <input
+                <Input
                   type="text"
                   name="patientName"
-                  className="w-full p-3 border border-blue-200 rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-blue-200 focus:outline-none"
+                  // className="w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
                   id="a1"
                   placeholder="Enter fullname"
                   value={formData.patientName}
@@ -68,10 +69,10 @@ const BookAppointmentForm = () => {
                 <label htmlFor="a2" className="block text-gray-700 font-medium mb-2">
                   Patient Email
                 </label>
-                <input
+                <Input
                   type="email"
                   name="patientEmail"
-                  className="w-full p-3 border border-blue-200 rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-blue-200 focus:outline-none"
+                  // className="w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
                   id="a2"
                   placeholder="Enter email address"
                   value={formData.patientEmail}
@@ -84,7 +85,7 @@ const BookAppointmentForm = () => {
                 </label>
                 <select
                   name="gender"
-                  className="w-full p-3 border border-blue-200 rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-blue-200 focus:outline-none"
+                  className="w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
                   id="a3"
                   value={formData.gender}
                   onChange={handleChange}
@@ -98,10 +99,10 @@ const BookAppointmentForm = () => {
                 <label htmlFor="a4" className="block text-gray-700 font-medium mb-2">
                   Age
                 </label>
-                <input
+                <Input
                   type="number"
                   name="age"
-                  className="w-full p-3 border border-blue-200 rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-blue-200 focus:outline-none"
+                  // className="w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
                   id="a4"
                   placeholder="Enter age"
                   value={formData.age}
@@ -112,10 +113,10 @@ const BookAppointmentForm = () => {
                 <label htmlFor="a5" className="block text-gray-700 font-medium mb-2">
                   Patient Phone
                 </label>
-                <input
+                <Input
                   type="text"
                   name="patientPhone"
-                  className="w-full p-3 border border-blue-200 rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-blue-200 focus:outline-none"
+                  // className="w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
                   id="a5"
                   placeholder="Enter phone number"
                   value={formData.patientPhone}
@@ -126,10 +127,10 @@ const BookAppointmentForm = () => {
                 <label htmlFor="a6" className="block text-gray-700 font-medium mb-2">
                   Select Date
                 </label>
-                <input
+                <Input
                   type="date"
                   name="date"
-                  className="w-full p-3 border border-blue-200 rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-blue-200 focus:outline-none"
+                  // className="w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
                   id="a6"
                   value={formData.date}
                   onChange={handleChange}
@@ -139,10 +140,10 @@ const BookAppointmentForm = () => {
                 <label htmlFor="a7" className="block text-gray-700 font-medium mb-2">
                   Select Time
                 </label>
-                <input
+                <Input
                   type="time"
                   name="time"
-                  className="w-full p-3 border border-primary rounded-lg text-black bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
+                  // className="w-full p-3 border border-primary rounded-lg text-black bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
                   id="a7"
                   value={formData.time}
                   onChange={handleChange}
@@ -154,7 +155,7 @@ const BookAppointmentForm = () => {
                 </label>
                 <select
                   name="specialist"
-                  className="w-full p-3 border border-blue-200 rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-blue-200 focus:outline-none"
+                  className="w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
                   id="a8"
                   value={formData.specialist}
                   onChange={handleChange}
@@ -173,7 +174,7 @@ const BookAppointmentForm = () => {
                 </label>
                 <textarea
                   name="problem"
-                  className="w-full p-3 border border-blue-200 rounded-lg bg-white  focus:border-primary focus:ring-2 focus:ring-blue-200 focus:outline-none h-24"
+                  className="w-full p-3 border border-primary rounded-lg bg-white  focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none h-24"
                   id="a9"
                   placeholder="Enter Problem"
                   value={formData.problem}

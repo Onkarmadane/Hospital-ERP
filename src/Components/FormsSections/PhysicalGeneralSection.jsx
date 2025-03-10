@@ -18,7 +18,7 @@ function PhysicalGeneralSection({ formData, setFormData }) {
               name="appetite"
               value={formData.appetite}
               onChange={handleChange}
-              className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 bg-white"
+              className="mt-1 w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
             />
           </div>
           <div>
@@ -29,7 +29,7 @@ function PhysicalGeneralSection({ formData, setFormData }) {
               name="desire"
               value={formData.desire}
               onChange={handleChange}
-              className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 bg-white"
+              className="mt-1 w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
             />
           </div>
           <div>
@@ -40,7 +40,7 @@ function PhysicalGeneralSection({ formData, setFormData }) {
               name="aversion"
               value={formData.aversion}
               onChange={handleChange}
-              className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 bg-white"
+              className="mt-1 w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
             />
           </div>
           <div>
@@ -51,7 +51,7 @@ function PhysicalGeneralSection({ formData, setFormData }) {
               name="sleep"
               value={formData.sleep}
               onChange={handleChange}
-              className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 bg-white"
+              className="mt-1 w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
             />
           </div>
         </div>

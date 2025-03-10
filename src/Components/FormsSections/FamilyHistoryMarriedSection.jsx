@@ -18,7 +18,7 @@ function FamilyHistoryMarriedSection({ formData, setFormData }) {
               name="noOfSons"
               value={formData.noOfSons}
               onChange={handleChange}
-              className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 bg-white"
+              className="mt-1 w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
             />
           </div>
           <div>
@@ -29,7 +29,7 @@ function FamilyHistoryMarriedSection({ formData, setFormData }) {
               name="illnessSons"
               value={formData.illnessSons}
               onChange={handleChange}
-              className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 bg-white"
+              className="mt-1 w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
             />
           </div>
           <div>
@@ -40,7 +40,7 @@ function FamilyHistoryMarriedSection({ formData, setFormData }) {
               name="noOfDaughters"
               value={formData.noOfDaughters}
               onChange={handleChange}
-              className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 bg-white"
+              className="mt-1 w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
             />
           </div>
           <div>
@@ -51,7 +51,7 @@ function FamilyHistoryMarriedSection({ formData, setFormData }) {
               name="illnessDaughters"
               value={formData.illnessDaughters}
               onChange={handleChange}
-              className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 bg-white"
+              className="mt-1 w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
             />
           </div>
         </div>

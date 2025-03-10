@@ -17,6 +17,7 @@ import { FaClock } from "react-icons/fa";
 import { FaUser } from "react-icons/fa";
 import { RiEditFill } from "react-icons/ri";
 import Modal from '../Components/Modal'
+import '../App.css'
 const Appointment = () => {
   const navigate = useNavigate();
   const [currentDateTime, setCurrentDateTime] = useState(new Date());
@@ -126,47 +127,74 @@ const Appointment = () => {
 
         {/* Action Buttons */}
         <div className="grid grid-cols-2 gap-2">
-          
+
           <button
-            className="flex items-center justify-center gap-2 p-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+            className="flex items-center justify-center gap-2 p-2 bg-blue-500 text-white rounded hover:bg-blue-600 items-center"
             onClick={() => handleActionClick('Edit Details')}
           >
             <NavLink
-                to="/doctor/Appointment/patient-form" // Replace with your desired route
-                onClick={(e) => {
-                  e.stopPropagation(); // Prevent event bubbling
-                  handleActionClick("Reschedule"); // Existing action handler
-                }}
-                className="inline-block" // Ensure NavLink doesn't interfere with button styling
+              to="/doctor/Appointment/patient-form" // Replace with your desired route
+              onClick={(e) => {
+                e.stopPropagation(); // Prevent event bubbling
+                handleActionClick("Reschedule"); // Existing action handler
+              }}
+              className="flex" // Ensure NavLink doesn't interfere with button styling
+            >
+              <button
+                className="lg:text-sm xl:text-base xlarge:text-lg text-white hover:text-gray-500 transition-colors"
+                aria-describedby="popup-243"
               >
-                <button
-                  className="lg:text-sm xl:text-base xlarge:text-lg text-white hover:text-gray-500 transition-colors"
-                  aria-describedby="popup-243"
-                >
-                  <RiEditFill size={24} />
-                </button>Edit
-              </NavLink>
+                <RiEditFill size={24} />
+              </button>Edit
+            </NavLink>
             {/* <RiEditFill size={20} /> Edit */}
           </button>
-          {event.phone && (
-            <button
-              className="flex items-center justify-center gap-2 p-2 bg-green-500 text-white rounded hover:bg-green-600"
-              onClick={handleCallClick}
+          {/* {event.phone && ( */}
+          <button
+            className="flex items-center justify-center gap-2 p-2 bg-green-500 text-white rounded hover:bg-green-600"
+            onClick={handleCallClick}
+          >
+            <NavLink
+              to="/*" // Replace with your desired route
+              onClick={(e) => {
+                e.stopPropagation(); // Prevent event bubbling
+                handleActionClick("Reschedule"); // Existing action handler
+              }}
+              className="flex" // Ensure NavLink doesn't interfere with button styling
             >
               <FaPhoneAlt size={20} /> Call
-            </button>
-          )}
+            </NavLink>
+          </button>
+          {/* )} */}
           <button
             className="flex items-center justify-center gap-2 p-2 bg-purple-500 text-white rounded hover:bg-purple-600"
             onClick={() => handleActionClick('End Consultation')}
           >
-            <IoLogOut size={20} /> End Consultation
+            <NavLink
+              to="/*" // Replace with your desired route
+              onClick={(e) => {
+                e.stopPropagation(); // Prevent event bubbling
+                handleActionClick("Reschedule"); // Existing action handler
+              }}
+              className="flex" // Ensure NavLink doesn't interfere with button styling
+            >
+              <IoLogOut size={20} /> End Consultation
+            </NavLink>
           </button>
           <button
             className="flex items-center justify-center gap-2 p-2 bg-yellow-500 text-white rounded hover:bg-yellow-600"
             onClick={() => handleActionClick('View Profile')}
           >
-            <FaUser size={20} /> View Profile
+            <NavLink
+              to="/*" // Replace with your desired route
+              onClick={(e) => {
+                e.stopPropagation(); // Prevent event bubbling
+                handleActionClick("Reschedule"); // Existing action handler
+              }}
+              className="flex" // Ensure NavLink doesn't interfere with button styling
+            >
+              <FaUser size={20} /> View Profile
+            </NavLink>
           </button>
           <button
             className="flex items-center justify-center gap-2 p-2 bg-orange-500 text-white rounded hover:bg-orange-600"
@@ -178,7 +206,16 @@ const Appointment = () => {
             className="flex items-center justify-center gap-2 p-2 bg-gray-500 text-white rounded hover:bg-gray-600"
             onClick={() => handleActionClick('View Details')}
           >
-            <FaFilePrescription size={20} /> Details
+            <NavLink
+              to="/*" // Replace with your desired route
+              onClick={(e) => {
+                e.stopPropagation(); // Prevent event bubbling
+                handleActionClick("Reschedule"); // Existing action handler
+              }}
+              className="flex" // Ensure NavLink doesn't interfere with button styling
+            >
+              <FaFilePrescription size={20} /> Details
+            </NavLink>
           </button>
         </div>
       </div>
@@ -237,7 +274,16 @@ const Appointment = () => {
                 aria-describedby="popup-240"
                 onClick={(e) => { e.stopPropagation(); handleCallClick(); }}
               >
-                <FaFilePrescription size={24} />
+                <NavLink
+                  to="/*" // Replace with your desired route
+                  onClick={(e) => {
+                    e.stopPropagation(); // Prevent event bubbling
+                    handleActionClick("Reschedule"); // Existing action handler
+                  }}
+                  className="inline-block" // Ensure NavLink doesn't interfere with button styling
+                >
+                  <FaFilePrescription size={24} />
+                </NavLink>
               </button>
             </Tooltip>
             <Tooltip content="End Consultation">
@@ -246,7 +292,16 @@ const Appointment = () => {
                 aria-describedby="popup-241"
                 onClick={(e) => { e.stopPropagation(); handleActionClick('Quick Dial'); }}
               >
-                <IoLogOut size={24} />
+                <NavLink
+                  to="/*" // Replace with your desired route
+                  onClick={(e) => {
+                    e.stopPropagation(); // Prevent event bubbling
+                    handleActionClick("Reschedule"); // Existing action handler
+                  }}
+                  className="inline-block" // Ensure NavLink doesn't interfere with button styling
+                >
+                  <IoLogOut size={24} />
+                </NavLink>
               </button>
             </Tooltip>
             <Tooltip content="View Details">
@@ -255,7 +310,16 @@ const Appointment = () => {
                 aria-describedby="popup-242"
                 onClick={(e) => { e.stopPropagation(); handleActionClick('Schedule Follow-up'); }}
               >
-                <FaUser size={24} />
+                <NavLink
+                  to="/*" // Replace with your desired route
+                  onClick={(e) => {
+                    e.stopPropagation(); // Prevent event bubbling
+                    handleActionClick("Reschedule"); // Existing action handler
+                  }}
+                  className="inline-block" // Ensure NavLink doesn't interfere with button styling
+                >
+                  <FaUser size={24} />
+                </NavLink>
               </button>
             </Tooltip>
             <Tooltip content="Reschedule">
@@ -264,7 +328,16 @@ const Appointment = () => {
                 aria-describedby="popup-243"
                 onClick={(e) => { e.stopPropagation(); handleActionClick('Reschedule'); }}
               >
-                <FaClock size={24} />
+                <NavLink
+                  to="/*" // Replace with your desired route
+                  onClick={(e) => {
+                    e.stopPropagation(); // Prevent event bubbling
+                    handleActionClick("Reschedule"); // Existing action handler
+                  }}
+                  className="inline-block" // Ensure NavLink doesn't interfere with button styling
+                >
+                  <FaClock size={24} />
+                </NavLink>
               </button>
             </Tooltip>
             {event.phone && (
@@ -274,6 +347,7 @@ const Appointment = () => {
                   aria-describedby="popup-247"
                   onClick={(e) => { e.stopPropagation(); handleCallClick(); }}
                 >
+
                   <a href={`tel:${event.phone}`} onClick={(e) => e.preventDefault()}>
                     <FaPhoneAlt size={24} />
                   </a>
@@ -287,7 +361,16 @@ const Appointment = () => {
                 style={{ cursor: 'pointer' }}
                 onClick={(e) => { e.stopPropagation(); handleActionClick('View Details'); }}
               >
-                <FaPhoneAlt size={24} />
+                <NavLink
+                  to="/*" // Replace with your desired route
+                  onClick={(e) => {
+                    e.stopPropagation(); // Prevent event bubbling
+                    handleActionClick("Reschedule"); // Existing action handler
+                  }}
+                  className="inline-block" // Ensure NavLink doesn't interfere with button styling
+                >
+                  <FaPhoneAlt size={24} />
+                </NavLink>
               </button>
             </Tooltip>
           </div>
@@ -346,19 +429,70 @@ const Appointment = () => {
   };
 
   return (
-    <div className="w-[95%] lg:ms-[70px] bg-white mx-auto ">
-      <div className="rounded-lg flex flex-col  min-h-0">
-        <div className="bg-white sticky top-0">
-          <div className="flex bg-white  gap-2 justify-between text-center pb-4 border-b shrink-0">
+    // <div className="w-[95%] lg:ms-[70px] bg-white mx-auto ">
+    //   <div className="rounded-lg flex flex-col  min-h-0">
+    //     <div className="bg-white sticky top-0 z-999">
+    //       <div className="flex bg-white  gap-2 justify-between text-center pb-4 border-b shrink-0">
+    //         <div className="lg:block md:block sm:hidden">
+    //           <BackButton />
+    //         </div>
+    //         <h5 className="text-lg font-semibold text-center bg-white lg:ps-20">Appointments</h5>
+    //         <Button variant="primary" size="sm" onClick={handleBookAppointmentClick}>
+    //           <FaAddressBook /> Book Appointment
+    //         </Button>
+    //       </div>
+    //       <div className="flex flex-wrap  justify-between">
+    //         <p className="text-center p-3">
+    //           Total Appointments: <b>10</b> Remaining: <b>5</b> Completed: <b>5</b> No Show: <b>0</b>
+    //         </p>
+    //         <h2 className="text-base sm:text-lg font-semibold text-gray-800">
+    //           {formatDateTime(currentDateTime)}
+    //         </h2>
+    //       </div>
+    //     </div>
+    //     <div className="p-4 overflow-x-auto flex-grow w-full text-black -z-5">
+    //       <Calendar
+    //         localizer={localizer}
+    //         events={events}
+    //         startAccessor="start"
+    //         endAccessor="end"
+    //         defaultView="day" // Default view set to day
+    //         views={['day', 'week', 'month']} // Available views: day, week, month
+    //         defaultDate={new Date('2025-02-01')} // Initial date
+    //         components={{
+    //           event: renderEventContent, // Custom event rendering function
+    //         }}
+    //         onSelectEvent={handleEventClick} // Handle event clicks
+    //         onView={handleViewChange} // Update view state
+    //         onNavigate={handleNavigate} // Handle navigation (e.g., next/prev day)
+    //         style={{ height: '800px', minHeight: '500px' }} // Fixed height styling
+    //         eventPropGetter={() => ({
+    //           style: {
+    //             backgroundColor: 'transparent', // Transparent background for events
+    //             border: 'none', // No borders for events
+    //           },
+    //         })}
+    //         step={calendarProps.step} // Time slot interval (e.g., 15, 30, 60 minutes)
+    //         timeslots={calendarProps.timeslots} // Number of time slots per interval
+    //         scrollToTime={scrollTime} // Scroll to a specific time in day view
+    //       />
+    //     </div>
+    //   </div>
+    // </div>
+    <div className="w-[95%] lg:ms-[70px] bg-white mx-auto">
+      <div className="rounded-lg flex flex-col min-h-0">
+        {/* Sticky Header */}
+        <div className="bg-white sticky top-0 z-[10] border-b pb-4">
+          <div className="flex items-center gap-2 justify-between text-center">
             <div className="lg:block md:block sm:hidden">
               <BackButton />
             </div>
-            <h5 className="text-lg font-semibold text-center lg:ps-20">Appointments</h5>
+            <h5 className="text-lg font-semibold text-center flex-1">Appointments</h5>
             <Button variant="primary" size="sm" onClick={handleBookAppointmentClick}>
               <FaAddressBook /> Book Appointment
             </Button>
           </div>
-          <div className="flex flex-wrap  justify-between">
+          <div className="flex flex-wrap justify-between items-center mt-2">
             <p className="text-center p-3">
               Total Appointments: <b>10</b> Remaining: <b>5</b> Completed: <b>5</b> No Show: <b>0</b>
             </p>
@@ -367,31 +501,33 @@ const Appointment = () => {
             </h2>
           </div>
         </div>
-        <div className="p-4 overflow-x-auto flex-grow w-full text-black">
+
+        {/* Calendar Section */}
+        <div className="p-4 overflow-x-auto flex-grow w-full text-black hide-scroll">
           <Calendar
             localizer={localizer}
             events={events}
             startAccessor="start"
             endAccessor="end"
-            defaultView="day" // Default view set to day
-            views={['day', 'week', 'month']} // Available views: day, week, month
-            defaultDate={new Date('2025-02-01')} // Initial date
+            defaultView="day"
+            views={['day', 'week', 'month']}
+            defaultDate={new Date('2025-02-01')}
             components={{
-              event: renderEventContent, // Custom event rendering function
+              event: renderEventContent,
             }}
-            onSelectEvent={handleEventClick} // Handle event clicks
-            onView={handleViewChange} // Update view state
-            onNavigate={handleNavigate} // Handle navigation (e.g., next/prev day)
-            style={{ height: '800px', minHeight: '500px' }} // Fixed height styling
+            onSelectEvent={handleEventClick}
+            onView={handleViewChange}
+            onNavigate={handleNavigate}
+            style={{ height: '800px', minHeight: '500px' }}
             eventPropGetter={() => ({
               style: {
-                backgroundColor: 'transparent', // Transparent background for events
-                border: 'none', // No borders for events
+                backgroundColor: 'transparent',
+                border: 'none',
               },
             })}
-            step={calendarProps.step} // Time slot interval (e.g., 15, 30, 60 minutes)
-            timeslots={calendarProps.timeslots} // Number of time slots per interval
-            scrollToTime={scrollTime} // Scroll to a specific time in day view
+            step={calendarProps.step}
+            timeslots={calendarProps.timeslots}
+            scrollToTime={scrollTime}
           />
         </div>
       </div>

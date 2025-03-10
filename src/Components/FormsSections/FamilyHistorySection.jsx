@@ -18,7 +18,7 @@ function FamilyHistorySection({ formData, setFormData }) {
               name="noOfBrothers"
               value={formData.noOfBrothers}
               onChange={handleChange}
-              className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 bg-white"
+              className="mt-1 w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
             />
           </div>
           <div>
@@ -29,7 +29,7 @@ function FamilyHistorySection({ formData, setFormData }) {
               name="illnessBrothers"
               value={formData.illnessBrothers}
               onChange={handleChange}
-              className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 bg-white"
+              className="mt-1 w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
             />
           </div>
           <div>
@@ -40,7 +40,7 @@ function FamilyHistorySection({ formData, setFormData }) {
               name="noOfSisters"
               value={formData.noOfSisters}
               onChange={handleChange}
-              className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 bg-white"
+              className="mt-1 w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
             />
           </div>
           <div>
@@ -51,7 +51,7 @@ function FamilyHistorySection({ formData, setFormData }) {
               name="illnessSisters"
               value={formData.illnessSisters}
               onChange={handleChange}
-              className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 bg-white"
+              className="mt-1 w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
             />
           </div>
         </div>

@@ -377,7 +377,7 @@ const AllPatient = () => {
                         name={key}
                         value={value}
                         onChange={handleEditChange}
-                        className="w-full border rounded p-2 bg-white text-black"
+                        className="w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
                       >
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
@@ -394,7 +394,7 @@ const AllPatient = () => {
                         name={key}
                         value={value}
                         onChange={handleEditChange}
-                        className="w-full border rounded p-2 bg-white text-black"
+                        className="w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
                       />
                     )}
                   </div>

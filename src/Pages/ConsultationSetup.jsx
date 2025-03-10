@@ -391,9 +391,9 @@ const SetupTable = () => {
         {tabs.map((tab) => (
           <Button
             key={tab}
-            className={`flex items-center gap-2 px-3 py-1.5 rounde transition-colors ${activeTab === tab
-                ? 'bg-primary text-white shadow-lg'
-                : 'text-gray-800 bg-gray-200 hover:bg-primary hover:text-white'
+            className={`flex items-center gap-2 px-3 py-1.5 text-black rounded transition-colors ${activeTab === tab
+              ? 'bg-primary text-white shadow-lg'
+              : 'text-gray-800 bg-gray-200 hover:bg-primary hover:text-white'
               }`}
             onClick={() => handleTabChange(tab)}
             title={tab}
@@ -490,7 +490,7 @@ const SetupTable = () => {
                   name="label"
                   value={formData.label}
                   onChange={handleInputChange}
-                  className=" border-gray-300 shadow-sm focus:border-primary focus:ring-primary  bg-white w-full text-black"
+                  className=" w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
                   placeholder="Enter label"
                   required
                 />
@@ -502,7 +502,7 @@ const SetupTable = () => {
                   name="fields"
                   value={formData.fields}
                   onChange={handleInputChange}
-                  className=" border-gray-300 shadow-sm focus:border-primary focus:ring-primary  bg-white w-full text-black"
+                  className=" w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
                   placeholder="Enter number of fields"
                   min="1"
                   required
@@ -515,7 +515,7 @@ const SetupTable = () => {
                   name="maxLength"
                   value={formData.maxLength}
                   onChange={handleInputChange}
-                  className=" border-gray-300 shadow-sm focus:border-primary focus:ring-primary  bg-white w-full text-black"
+                  className=" w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
                   placeholder="Enter max length"
                 />
               </div>
@@ -526,7 +526,7 @@ const SetupTable = () => {
                   name="unit"
                   value={formData.unit}
                   onChange={handleInputChange}
-                  className=" border-gray-300 shadow-sm focus:border-primary focus:ring-primary  bg-white w-full text-black"
+                  className=" w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
                   placeholder="Enter unit (e.g., %, mmHg)"
                 />
               </div>
@@ -537,7 +537,7 @@ const SetupTable = () => {
                   name="separator"
                   value={formData.separator}
                   onChange={handleInputChange}
-                  className=" border-gray-300 shadow-sm focus:border-primary focus:ring-primary  bg-white w-full text-black"
+                  className=" w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
                   placeholder="Enter separator (e.g., /)"
                 />
               </div>
@@ -551,7 +551,7 @@ const SetupTable = () => {
                   name="name"
                   value={formData.name}
                   onChange={handleInputChange}
-                  className=" border-gray-300 shadow-sm focus:border-primary focus:ring-primary  bg-white w-full text-black"
+                  className=" w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
                   placeholder="Enter name"
                   required
                 />
@@ -562,7 +562,7 @@ const SetupTable = () => {
                   name="description"
                   value={formData.description}
                   onChange={handleInputChange}
-                  className=" border-gray-300 shadow-sm focus:border-primary focus:ring-primary  bg-white w-full text-black"
+                  className=" w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
                   placeholder="Enter description"
                   required
                 />
@@ -576,7 +576,7 @@ const SetupTable = () => {
                 name="name"
                 value={formData.name}
                 onChange={handleInputChange}
-                className=" border-gray-300 shadow-sm focus:border-primary focus:ring-primary  bg-white w-full text-black"
+                className=" w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
                 placeholder={`Enter ${activeTab.toLowerCase()} name`}
                 required
               />

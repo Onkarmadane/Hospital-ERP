@@ -22,7 +22,7 @@ function MenstrualHistorySection({ formData, setFormData }) {
                       menstrualHistory: { ...formData.menstrualHistory, lmp: e.target.value },
                   })
               }
-              className="p-2 border rounded bg-white w-full mb-4"
+              className="w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none mb-4"
           />
           <input
               type="text"
@@ -34,7 +34,7 @@ function MenstrualHistorySection({ formData, setFormData }) {
                       menstrualHistory: { ...formData.menstrualHistory, cycleDuration: e.target.value },
                   })
               }
-              className="p-2 border rounded bg-white w-full mb-4"
+              className="w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none mb-4"
           />
           <input
               type="text"
@@ -46,7 +46,7 @@ function MenstrualHistorySection({ formData, setFormData }) {
                       menstrualHistory: { ...formData.menstrualHistory, bleeding: e.target.value },
                   })
               }
-              className="p-2 border rounded bg-white w-full mb-4"
+              className="w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none mb-4"
           />
           <input
               type="text"
@@ -58,7 +58,7 @@ function MenstrualHistorySection({ formData, setFormData }) {
                       menstrualHistory: { ...formData.menstrualHistory, pms: e.target.value },
                   })
               }
-              className="p-2 border rounded bg-white w-full mb-4"
+              className="w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none mb-4"
           />
           <input
               type="text"
@@ -70,7 +70,7 @@ function MenstrualHistorySection({ formData, setFormData }) {
                       menstrualHistory: { ...formData.menstrualHistory, menarche: e.target.value },
                   })
               }
-              className="p-2 border rounded bg-white w-full mb-4"
+              className="w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none mb-4"
           />
           <input
               type="number"
@@ -82,7 +82,7 @@ function MenstrualHistorySection({ formData, setFormData }) {
                       menstrualHistory: { ...formData.menstrualHistory, menopause: e.target.value },
                   })
               }
-              className="p-2 border rounded bg-white w-full mb-4"
+              className="w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none mb-4"
           />
           <div className="grid grid-cols-2 gap-4">
               <input
@@ -95,7 +95,7 @@ function MenstrualHistorySection({ formData, setFormData }) {
                           obstetricalHistory: { ...formData.obstetricalHistory, gravida: e.target.value },
                       })
                   }
-                  className="p-2 border rounded bg-white"
+                  className="w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
               />
               <input
                   type="number"
@@ -107,7 +107,7 @@ function MenstrualHistorySection({ formData, setFormData }) {
                           obstetricalHistory: { ...formData.obstetricalHistory, para: e.target.value },
                       })
                   }
-                  className="p-2 border rounded bg-white"
+                  className="w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
               />
               <input
                   type="number"
@@ -119,7 +119,7 @@ function MenstrualHistorySection({ formData, setFormData }) {
                           obstetricalHistory: { ...formData.obstetricalHistory, abortions: e.target.value },
                       })
                   }
-                  className="p-2 border rounded bg-white"
+                  className="w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
               />
               <input
                   type="number"
@@ -131,26 +131,26 @@ function MenstrualHistorySection({ formData, setFormData }) {
                           obstetricalHistory: { ...formData.obstetricalHistory, living: e.target.value },
                       })
                   }
-                  className="p-2 border rounded bg-white"
+                  className="w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
               />
           </div>
           <textarea
               placeholder="Local/Specific Examination"
               value={formData.localExamination}
               onChange={(e) => setFormData({ ...formData, localExamination: e.target.value })}
-              className="p-2 border rounded bg-white w-full mt-4"
+              className="w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none mt-4"
           />
           <textarea
               placeholder="General/Systemic Examination"
               value={formData.generalExamination}
               onChange={(e) => setFormData({ ...formData, generalExamination: e.target.value })}
-              className="p-2 border rounded bg-white w-full mt-4"
+              className="w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none mt-4"
           />
           <textarea
               placeholder="Advise"
               value={formData.advise}
               onChange={(e) => setFormData({ ...formData, advise: e.target.value })}
-              className="p-2 border rounded bg-white w-full mt-4"
+              className="w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none mt-4"
           />
       </div>
   );
