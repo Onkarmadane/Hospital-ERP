@@ -191,7 +191,7 @@ function UnifiedPatientForm() {
   };
 
   return (
-    <div className="w-[95%] lg:ms-[70px] bg-white mx-auto p-4">
+    <div className="w-[95%] lg:ms-[70px] bg-white mx-auto p-4 pb-20">
       <h2 className="text-2xl font-bold mb-4">
         Patient Form
         {/* {doctorType === 'Ayurvedic' ? 'Patient Form' : ' Patient Form'} */}
