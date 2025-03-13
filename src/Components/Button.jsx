@@ -10,7 +10,7 @@ const Button = ({
 }) => {
   const baseStyles = 'px-4 py-2 rounded focus:outline-none flex items-center gap-3';
   const variants = {
-    primary: 'text-white bg-primary hover:bg-primary-dark border border-1 hover:shadow-lg duration-100',
+    primary: ' bg-primary  hover:bg-primary-dark border-none outline-none hover:shadow-lg duration-100',
     secondary: 'bg-gray-300 text-black hover:bg-gray-400',
   };
   const sizes = { 

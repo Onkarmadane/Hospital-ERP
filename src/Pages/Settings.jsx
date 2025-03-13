@@ -38,7 +38,7 @@ const Setup = () => {
                     />
                 </Link>
 
-                <Link to="/*" className="no-underline">
+                <Link to="/doctor/settings/medicine-setup" className="no-underline">
                     <Cards
                         title="Medicine Setup"
                         description="Manage and specify general settings."

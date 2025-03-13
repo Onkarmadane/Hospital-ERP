@@ -4,7 +4,7 @@ import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
 import { CiBookmarkCheck } from "react-icons/ci";
 import Input from './FormFields/InputField';
-
+import { MdOutlineClose } from "react-icons/md";
 const BookAppointmentForm = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -183,9 +183,9 @@ const BookAppointmentForm = () => {
               </div>
               <div className="col-span-full flex justify-end gap-4">
                 <Button variant="secondary" size="lg" onClick={goBack}>
-                  Cancel
+                <MdOutlineClose/> Cancel
                 </Button>
-                <Button variant="primary" size="lg" type="submit">
+                <Button variant="primary" size="lg" type="submit" className='text-white'>
                   <CiBookmarkCheck /> Book Appointment
                 </Button>
               </div>
@@ -193,9 +193,9 @@ const BookAppointmentForm = () => {
           </form>
         </div>
       </div>
-    {/* </div > */}
-      </>
-);
+      {/* </div > */}
+    </>
+  );
 };
 
 export default BookAppointmentForm;

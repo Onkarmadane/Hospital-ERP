@@ -53,7 +53,7 @@ function ChiefComplaintsSection({ formData, setFormData }) {
                   />
               </div>
           ))}
-          <Button onClick={addComplaint} className="mb-4" variant='primary'>
+          <Button onClick={addComplaint} className="mb-4 text-white mb-2" variant='primary'>
               <LuFilePlus2 /> Add Complaint
           </Button>
           <input

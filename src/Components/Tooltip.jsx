@@ -27,7 +27,7 @@ function Tooltip({ content, children }) {
                         padding: '8px',
                         borderRadius: '4px',
                         zIndex: 50,
-                        marginRight: '200px'
+                        marginRight: '270px'
                     }}
                 >
                     {content}

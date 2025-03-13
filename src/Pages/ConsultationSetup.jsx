@@ -386,12 +386,12 @@ const SetupTable = () => {
   return (
     <div className="grid grid-cols-1 gap-3 w-[95%] lg:ms-[70px] px-2">
       {/* Tabs */}
-      <div className="flex flex-wrap gap-2 border-b pb-2 mb-4">
+      <div className="flex overflow-x-auto gap-2 border-b pb-2 mb-4">
         <BackButton />
         {tabs.map((tab) => (
           <Button
             key={tab}
-            className={`flex items-center gap-2 px-3 py-1.5 text-black rounded transition-colors ${activeTab === tab
+            className={`flex text-white items-center gap-2 px-3  py-1.5 text-black rounded transition-colors ${activeTab === tab
               ? 'bg-primary text-white shadow-lg'
               : 'text-gray-800 bg-gray-200 hover:bg-primary hover:text-white'
               }`}
@@ -414,7 +414,7 @@ const SetupTable = () => {
       <div className="space-y-4">
         {/* Search and Create */}
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-          <Button onClick={handleCreate} variant="primary">
+          <Button onClick={handleCreate} variant="primary" className='text-white'>
             <MdOutlineAdd /> Create
           </Button>
           <div className="relative w-full bg-white sm:w-auto">
@@ -436,7 +436,7 @@ const SetupTable = () => {
         <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
           <div className="flex items-center gap-2">
             <button
-              className="p-1 bg-gray-200 rounde hover:bg-gray-300 disabled:opacity-50"
+              className="p-1 bg-gray-200 rounded hover:bg-gray-300 disabled:opacity-50 text-white"
               onClick={() => handlePageChange(currentPage - 1)}
               disabled={currentPage === 1}
             >
@@ -446,7 +446,7 @@ const SetupTable = () => {
               Page {currentPage} of {totalPages}
             </span>
             <button
-              className="p-1 bg-gray-200 rounde hover:bg-gray-300 disabled:opacity-50"
+              className="p-1 bg-gray-200 rounded hover:bg-gray-300 disabled:opacity-50 text-white"
               onClick={() => handlePageChange(currentPage + 1)}
               disabled={currentPage === totalPages}
             >

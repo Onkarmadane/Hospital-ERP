@@ -9,6 +9,7 @@ import Button from '../Components/Button';
 import { MdOutlineClose } from "react-icons/md";
 import Modal from '../Components/Modal';
 import { FaList, FaTh } from "react-icons/fa"; // Icons for view toggle
+import Table from '../Components/Table'; // Adjust the import path as needed
 
 // Function to get initials from name
 const getInitials = (name) => {
@@ -105,24 +106,92 @@ const AllPatient = () => {
     patient.id.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  // Define columns for the Table component
+  const columns = [
+    { header: 'No.', accessor: 'id' },
+    {
+      header: 'Patient Name',
+      accessor: 'name',
+      Cell: ({ row }) => (
+        <div className="flex items-center">
+          <div className="w-8 h-8 rounded-full bg-blue-500 text-white flex items-center justify-center mr-2 shadow">
+            {getInitials(row.original.name)}
+          </div>
+          {row.original.name}
+        </div>
+      ),
+    },
+    {
+      header: 'Gender',
+      accessor: 'gender',
+      Cell: ({ row }) => (
+        <span
+          className={`px-2 py-1 rounded text-xs ${
+            row.original.gender === 'Female'
+              ? 'bg-yellow-100 text-yellow-800'
+              : 'bg-blue-100 text-blue-800'
+          }`}
+        >
+          {row.original.gender}
+        </span>
+      ),
+    },
+    { header: 'Age', accessor: 'age' },
+    { header: 'Blood Group', accessor: 'blood' },
+    { header: 'Treatment', accessor: 'treatment' },
+    { header: 'Mobile', accessor: 'mobile' },
+    { header: 'Email', accessor: 'email' },
+    { header: 'Address', accessor: 'address' },
+    {
+      header: 'Actions',
+      accessor: 'actions',
+      Cell: ({ row }) => (
+        <div className="flex gap-1">
+          <button
+            className="text-red-500 border border-red-500 rounded p-1 hover:bg-red-50"
+            title="Delete"
+            onClick={() => handleDelete(row.original.id)}
+          >
+            <RiDeleteBinLine />
+          </button>
+          <button
+            className="text-green-500 border border-green-500 rounded p-1 hover:bg-green-50"
+            title="Edit Patient Details"
+            onClick={() => handleEdit(row.original)}
+          >
+            <RiEditBoxLine />
+          </button>
+          <button
+            className="text-blue-500 border border-blue-500 rounded p-1 hover:bg-blue-50"
+            title="View Dashboard"
+            onClick={() => handleView(row.original)}
+          >
+            <RiEyeLine />
+          </button>
+        </div>
+      ),
+    },
+  ];
+
   return (
     <div className="grid grid-cols-1 gap-3 w-[95%] lg:ms-[70px] px-2">
       <div className="">
         {/* Card Header */}
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between pb-4 border-b  gap-4">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between pb-4 border-b gap-4">
           <div className="flex items-center gap-4">
             <BackButton />
             <h5 className="text-lg font-semibold">Patients List</h5>
           </div>
           <div className="flex items-center gap-2 sm:gap-3 md:gap-4">
             <div className="flex flex-row items-center gap-2 sm:gap-3 md:gap-4">
-              <Button variant="primary" size="sm" onClick={handleBookAppoinmentClick}>
+              <Button variant="primary" size="sm" onClick={handleBookAppoinmentClick} className='text-white'>
                 <IoMdPersonAdd /> Add Patient
               </Button>
               <Button
                 variant="primary"
-                className={`flex items-center outline-none border-none justify-center gap-2 sm:gap-2.5 md:gap-3 whitespace-nowrap text-sm sm:text-base md:text-lg px-3 py-1.5 sm:px-4 sm:py-2 rounded-md transition-colors ${viewMode === 'list' ? 'bg-primary text-white shadow-lg' : 'text-gray-800 bg-gray-200 hover:bg-primary duration-300 '
-                  }`}
+                className={`text-white flex items-center outline-none border-none justify-center gap-2 sm:gap-2.5 md:gap-3 whitespace-nowrap text-sm sm:text-base md:text-lg px-3 py-1.5 sm:px-4 sm:py-2 rounded-md transition-colors ${
+                  viewMode === 'list' ? 'bg-primary text-white shadow-lg' : 'text-gray-800 bg-gray-200 hover:bg-primary duration-300'
+                }`}
                 size="sm"
                 onClick={() => setViewMode('list')}
                 title="List View"
@@ -131,8 +200,9 @@ const AllPatient = () => {
               </Button>
               <Button
                 variant="primary"
-                className={`flex items-center outline-none border-none justify-center gap-2 sm:gap-2.5 md:gap-3 whitespace-nowrap text-sm sm:text-base md:text-lg px-3 py-1.5 sm:px-4 sm:py-2 rounded-md transition-colors ${viewMode === 'card' ? 'bg-primary text-white shadow-lg ' : 'text-gray-800 bg-gray-200 hover:bg-primary duration-300'
-                  }`}
+                className={`text-white flex items-center outline-none border-none justify-center gap-2 sm:gap-2.5 md:gap-3 whitespace-nowrap text-sm sm:text-base md:text-lg px-3 py-1.5 sm:px-4 sm:py-2 rounded-md transition-colors ${
+                  viewMode === 'card' ? 'bg-primary text-white shadow-lg' : 'text-gray-800 bg-gray-200 hover:bg-primary duration-300'
+                }`}
                 size="sm"
                 onClick={() => setViewMode('card')}
                 title="Card View"
@@ -174,83 +244,11 @@ const AllPatient = () => {
 
           {/* Conditional Rendering: List View or Card View */}
           {viewMode === 'list' ? (
-            <div className="overflow-x-auto">
-              <table className="w-full text-sm">
-                <thead className="bg-gray-50">
-                  <tr>
-                    <th className="p-2 text-left">No.</th>
-                    <th className="p-2 text-left">Patient Name</th>
-                    <th className="p-2 text-left">Gender</th>
-                    <th className="p-2 text-left">Age</th>
-                    <th className="p-2 text-left">Blood Group</th>
-                    <th className="p-2 text-left">Treatment</th>
-                    <th className="p-2 text-left">Mobile</th>
-                    <th className="p-2 text-left">Email</th>
-                    <th className="p-2 text-left">Address</th>
-                    <th className="p-2 text-left">Actions</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {filteredPatients.slice(0, recordsPerPage).map((patient, index) => (
-                    <tr key={patient.id} className={index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
-                      <td className="p-2">{patient.id}</td>
-                      <td className="p-2 flex items-center">
-                        <div className="w-8 h-8 rounded-full bg-blue-500 text-white flex items-center justify-center mr-2 shadow">
-                          {getInitials(patient.name)}
-                        </div>
-                        {patient.name}
-                      </td>
-                      <td className="p-2">
-                        <span
-                          className={`px-2 py-1 rounded text-xs ${patient.gender === 'Female'
-                            ? 'bg-yellow-100 text-yellow-800'
-                            : 'bg-blue-100 text-blue-800'
-                            }`}
-                        >
-                          {patient.gender}
-                        </span>
-                      </td>
-                      <td className="p-2">{patient.age}</td>
-                      <td className="p-2">{patient.blood}</td>
-                      <td className="p-2">{patient.treatment}</td>
-                      <td className="p-2">{patient.mobile}</td>
-                      <td className="p-2">{patient.email}</td>
-                      <td className="p-2">{patient.address}</td>
-                      <td className="p-2">
-                        <div className="flex gap-1">
-                          <button
-                            className="text-red-500 border border-red-500 rounded p-1 hover:bg-red-50"
-                            title="Delete"
-                            onClick={() => handleDelete(patient.id)}
-                          >
-                            <RiDeleteBinLine />
-                          </button>
-                          <button
-                            className="text-green-500 border border-green-500 rounded p-1 hover:bg-green-50"
-                            title="Edit Patient Details"
-                            onClick={() => handleEdit(patient)}
-                          >
-                            <RiEditBoxLine />
-                          </button>
-                          <button
-                            className="text-blue-500 border border-blue-500 rounded p-1 hover:bg-blue-50"
-                            title="View Dashboard"
-                            onClick={() => handleView(patient)}
-                          >
-                            <RiEyeLine />
-                          </button>
-                        </div>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+            <Table columns={columns} data={filteredPatients.slice(0, recordsPerPage)} />
           ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mx-auto">
               {filteredPatients.slice(0, recordsPerPage).map((patient) => (
                 <div key={patient.id} className="bg-white rounded-lg shadow p-4 flex gap-2 border">
-                  {/* Left section with patient info */}
                   <div className="flex items-center gap-3 flex-1">
                     <div className="w-12 h-12 rounded-full bg-blue-500 text-white flex items-center justify-center shadow">
                       {getInitials(patient.name)}
@@ -261,7 +259,6 @@ const AllPatient = () => {
                       <p className="text-sm">{patient.age}</p>
                     </div>
                   </div>
-                  {/* Right section with vertical buttons */}
                   <div className="flex flex-col gap-1">
                     <button
                       className="text-blue-500 border border-blue-500 rounded p-1 hover:bg-blue-50"
@@ -270,7 +267,6 @@ const AllPatient = () => {
                     >
                       <RiEyeLine />
                     </button>
-
                     <button
                       className="text-green-500 border border-green-500 rounded p-1 hover:bg-green-50"
                       title="Edit Patient Details"

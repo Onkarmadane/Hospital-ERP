@@ -13,9 +13,9 @@ function MedicalHistorySection({ formData, setFormData }) {
   return (
       <div>
           <h3 className="text-lg font-semibold mb-2">Medical History</h3>
-          <div className='flex flex-col space-y-2'>
+          <div className='flex space-y-2 flex-wrap gap-2'>
               {conditions.map((condition) => (
-                  <div key={condition} className="flex items-center space-x-2">
+                  <div key={condition} className="flex  items-center space-x-2 ">
                       <input
                           type="checkbox"
                           checked={formData.medicalHistory[condition.toLowerCase()].hasCondition}
@@ -35,7 +35,7 @@ function MedicalHistorySection({ formData, setFormData }) {
                       />
                       <span>{condition}</span>
                       <input
-                          type="text"
+                          type="date"
                           placeholder="Since"
                           value={formData.medicalHistory[condition.toLowerCase()].since}
                           onChange={(e) =>
@@ -50,7 +50,7 @@ function MedicalHistorySection({ formData, setFormData }) {
                                   },
                               })
                           }
-                          className="p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none w-1/2"
+                          className="p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
                       />
                   </div>
               ))}
