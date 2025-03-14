@@ -1057,6 +1057,7 @@ import { RiEditFill } from 'react-icons/ri';
 import Modal from '../Components/Modal';
 import '../App.css';
 import Input from '../Components/FormFields/InputField';
+import AppointmenData from '../data.json'
 
 const Appointment = () => {
   const navigate = useNavigate();
@@ -1520,7 +1521,7 @@ const Appointment = () => {
       <div className="rounded-lg flex flex-col min-h-0">
         {/* Sticky Header */}
         <div className="bg-white sticky top-0 z-[10] border-b pb-4">
-          <div className="flex items-center gap-2 justify-between text-center">
+          <div className="flex items-center gap-2 justify-between text-center border-b pb-2">
             <div className="lg:block md:block sm:hidden">
               <BackButton />
             </div>

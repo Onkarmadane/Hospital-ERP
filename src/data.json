@@ -1,0 +1,208 @@
+{
+    "inventoryData": [
+      {
+        "id": 1,
+        "Medicine": "Paracetamol",
+        "BatchNo": "PARA202301",
+        "InwardQuantity": 1000,
+        "UnitofMeasure": "Tablets",
+        "ExpiryDate": "2025-12-31",
+        "Price": 0.25,
+        "ReceivedDate": "2024-01-15",
+        "AvailableBatchQty": 850,
+        "TotalAvailableQty": 1200
+      },
+      {
+        "id": 2,
+        "Medicine": "Paracetamol",
+        "BatchNo": "PARA202302",
+        "InwardQuantity": 500,
+        "UnitofMeasure": "Tablets",
+        "ExpiryDate": "2025-11-30",
+        "Price": 0.30,
+        "ReceivedDate": "2024-02-01",
+        "AvailableBatchQty": 450,
+        "TotalAvailableQty": 1200
+      },
+      {
+        "id": 3,
+        "Medicine": "Ibuprofen",
+        "BatchNo": "IBU202302",
+        "InwardQuantity": 800,
+        "UnitofMeasure": "Tablets",
+        "ExpiryDate": "2025-06-30",
+        "Price": 0.50,
+        "ReceivedDate": "2024-03-01",
+        "AvailableBatchQty": 700,
+        "TotalAvailableQty": 700
+      },{
+        "id": 1,
+        "Medicine": "Paracetamol",
+        "BatchNo": "PARA202301",
+        "InwardQuantity": 1000,
+        "UnitofMeasure": "Tablets",
+        "ExpiryDate": "2025-12-31",
+        "Price": 0.25,
+        "ReceivedDate": "2024-01-15",
+        "AvailableBatchQty": 850,
+        "TotalAvailableQty": 1200
+      },
+      {
+        "id": 2,
+        "Medicine": "Paracetamol",
+        "BatchNo": "PARA202302",
+        "InwardQuantity": 500,
+        "UnitofMeasure": "Tablets",
+        "ExpiryDate": "2025-11-30",
+        "Price": 0.30,
+        "ReceivedDate": "2024-02-01",
+        "AvailableBatchQty": 450,
+        "TotalAvailableQty": 1200
+      },
+      {
+        "id": 3,
+        "Medicine": "Ibuprofen",
+        "BatchNo": "IBU202302",
+        "InwardQuantity": 800,
+        "UnitofMeasure": "Tablets",
+        "ExpiryDate": "2025-06-30",
+        "Price": 0.50,
+        "ReceivedDate": "2024-03-01",
+        "AvailableBatchQty": 700,
+        "TotalAvailableQty": 700
+      },{
+        "id": 1,
+        "Medicine": "Paracetamol",
+        "BatchNo": "PARA202301",
+        "InwardQuantity": 1000,
+        "UnitofMeasure": "Tablets",
+        "ExpiryDate": "2025-12-31",
+        "Price": 0.25,
+        "ReceivedDate": "2024-01-15",
+        "AvailableBatchQty": 850,
+        "TotalAvailableQty": 1200
+      },
+      {
+        "id": 2,
+        "Medicine": "Paracetamol",
+        "BatchNo": "PARA202302",
+        "InwardQuantity": 500,
+        "UnitofMeasure": "Tablets",
+        "ExpiryDate": "2025-11-30",
+        "Price": 0.30,
+        "ReceivedDate": "2024-02-01",
+        "AvailableBatchQty": 450,
+        "TotalAvailableQty": 1200
+      },
+      {
+        "id": 3,
+        "Medicine": "Ibuprofen",
+        "BatchNo": "IBU202302",
+        "InwardQuantity": 800,
+        "UnitofMeasure": "Tablets",
+        "ExpiryDate": "2025-06-30",
+        "Price": 0.50,
+        "ReceivedDate": "2024-03-01",
+        "AvailableBatchQty": 700,
+        "TotalAvailableQty": 700
+      }
+    ],
+    "batchData": [
+      {
+        "id": 1,
+        "BatchNo": "PARA202301",
+        "Medicine": "Paracetamol",
+        "BatchCreationDate": "2023-12-15",
+        "ManufactureDate": "2023-12-10",
+        "ExpiryDate": "2025-12-31"
+      },
+      {
+        "id": 2,
+        "BatchNo": "IBU202302",
+        "Medicine": "Ibuprofen",
+        "BatchCreationDate": "2024-01-15",
+        "ManufactureDate": "2024-01-10",
+        "ExpiryDate": "2025-06-30"
+      },
+      {
+        "id": 3,
+        "BatchNo": "AMO202303",
+        "Medicine": "Amoxicillin",
+        "BatchCreationDate": "2024-01-05",
+        "ManufactureDate": "2024-01-01",
+        "ExpiryDate": "2024-11-30"
+      },
+      {
+        "id": 1,
+        "BatchNo": "PARA202301",
+        "Medicine": "Paracetamol",
+        "BatchCreationDate": "2023-12-15",
+        "ManufactureDate": "2023-12-10",
+        "ExpiryDate": "2025-12-31"
+      },
+      {
+        "id": 2,
+        "BatchNo": "IBU202302",
+        "Medicine": "Ibuprofen",
+        "BatchCreationDate": "2024-01-15",
+        "ManufactureDate": "2024-01-10",
+        "ExpiryDate": "2025-06-30"
+      },
+      {
+        "id": 3,
+        "BatchNo": "AMO202303",
+        "Medicine": "Amoxicillin",
+        "BatchCreationDate": "2024-01-05",
+        "ManufactureDate": "2024-01-01",
+        "ExpiryDate": "2024-11-30"
+      }
+    ],
+    "staticEvents":[
+        {
+            "title": "Rishabh Sahu - 2:55 PM",
+            "start": "2025-02-28T14:55:00.000Z",
+            "end": "2025-02-28T15:00:00.000Z",
+            "patientName": "Rishabh Sahu",
+            "age": "22 d",
+            "duration": "25.1",
+            "type": "In-person",
+            "phone": "8965823672"
+        },
+        {
+            "title": "John Doe - 10:00 AM",
+            "start": "2025-02-01T10:00:00.000Z",
+            "end": "2025-02-01T10:05:00.000Z",
+            "patientName": "John Doe",
+            "time": "10:00 AM",
+            "reason": "Checkup",
+            "phone": "8965823672"
+        },
+        {
+            "title": "Jane Smith - 02:30 PM",
+            "start": "2025-02-02T14:30:00.000Z",
+            "end": "2025-02-02T15:00:00.000Z",
+            "patientName": "Jane Smith",
+            "time": "02:30 PM",
+            "reason": "Follow-up",
+            "phone": "8965823672"
+        },
+        {
+            "title": "Mike Johnson - 09:15 AM",
+            "start": "2025-03-14T09:15:00.000Z",
+            "end": "2025-03-14T09:45:00.000Z",
+            "patientName": "Mike Johnson",
+            "time": "09:15 AM",
+            "reason": "Consultation",
+            "phone": "8965823672"
+        },
+        {
+            "title": "Sarah Lee - 10:00 PM",
+            "start": "2025-03-14T22:00:00.000Z",
+            "end": "2025-03-14T22:30:00.000Z",
+            "patientName": "Sarah Lee",
+            "time": "10:00 PM",
+            "reason": "Consultation",
+            "phone": "8965823672"
+        }
+    ]
+  }
