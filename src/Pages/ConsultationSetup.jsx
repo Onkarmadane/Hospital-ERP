@@ -206,21 +206,21 @@ const SetupTable = () => {
       Cell: ({ row: { original } }) => (
         <div className="flex gap-1">
           <button
-            className="text-red-500 border border-red-500 rounded p-1 hover:bg-red-50"
+            className="text-red-500 border border-red-500 rounded p-1 lg:hover:bg-red-50"
             title="Delete"
             onClick={() => handleDelete(original.id)}
           >
             <RiDeleteBinLine />
           </button>
           <button
-            className="text-green-500 border border-green-500 rounded p-1 hover:bg-green-50"
+            className="text-green-500 border border-green-500 rounded p-1 lg:hover:bg-green-50"
             title="Edit"
             onClick={() => handleEdit(original)}
           >
             <RiEditBoxLine />
           </button>
           {/* <button
-            className="text-blue-500 border border-blue-500 rounded p-1 hover:bg-blue-50"
+            className="text-blue-500 border border-blue-500 rounded p-1 lg:hover:bg-blue-50"
             title="View"
             onClick={() => handleView(original)}
           >
@@ -392,8 +392,8 @@ const SetupTable = () => {
           <Button
             key={tab}
             className={`flex text-white items-center gap-2 px-3  py-1.5 text-black rounded transition-colors ${activeTab === tab
-              ? 'bg-primary text-white shadow-lg'
-              : 'text-gray-800 bg-gray-200 hover:bg-primary hover:text-white'
+              ? 'bg-primary text-white shadow-lg font-bold'
+              : ' bg-secondary text-green-900 lg:hover:bg-primary lg:hover:text-white'
               }`}
             onClick={() => handleTabChange(tab)}
             title={tab}
@@ -436,7 +436,7 @@ const SetupTable = () => {
         <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
           <div className="flex items-center gap-2">
             <button
-              className="p-1 bg-gray-200 rounded hover:bg-gray-300 disabled:opacity-50 text-white"
+              className="p-1 bg-gray-200 rounded lg:hover:bg-gray-300 disabled:opacity-50 text-white"
               onClick={() => handlePageChange(currentPage - 1)}
               disabled={currentPage === 1}
             >
@@ -446,7 +446,7 @@ const SetupTable = () => {
               Page {currentPage} of {totalPages}
             </span>
             <button
-              className="p-1 bg-gray-200 rounded hover:bg-gray-300 disabled:opacity-50 text-white"
+              className="p-1 bg-gray-200 rounded lg:hover:bg-gray-300 disabled:opacity-50 text-white"
               onClick={() => handlePageChange(currentPage + 1)}
               disabled={currentPage === totalPages}
             >
@@ -587,7 +587,7 @@ const SetupTable = () => {
         <Button
           variant="danger"
           onClick={() => handleDelete(editingItem.id)}
-          className="bg-red-500 text-white hover:bg-red-600"
+          className="bg-red-500 text-white lg:hover:bg-red-600"
         >
           <RiDeleteBinLine className="inline mr-1" /> Delete
         </Button>
@@ -595,7 +595,7 @@ const SetupTable = () => {
             <Button
               variant="secondary"
               onClick={() => setIsModalOpen(false)}
-              className="bg-gray-200 text-gray-800 hover:bg-gray-300"
+              className="bg-gray-200 text-gray-800 lg:hover:bg-gray-300"
             >
               <RiCloseLine className="inline" /> Cancel
             </Button>

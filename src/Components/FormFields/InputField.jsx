@@ -20,7 +20,7 @@ const Input = ({
   ...props
 }) => {
   // Base styles
-  const baseStyles = 'w-full p-3 border rounded-lg focus:outline-none transition-all duration-500';
+  const baseStyles = 'w-full h-10 p-3 border rounded-lg focus:outline-none transition-all duration-500';
 
   // Variant styles
   const variantStyles = {

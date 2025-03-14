@@ -390,7 +390,7 @@
 //             className={`flex items-center px-3 py-2 text-sm sm:text-base font-medium mb-1  ${
 //               activeTab === index
 //                 ? 'bg-primary text-white shadow-lg'
-//                 : 'bg-white hover:bg-gray-100 '
+//                 : 'bg-white lg:hoverbg-gray-100 '
 //             }`}
 //             onClick={() => setActiveTab(index)}
 //           >
@@ -584,7 +584,7 @@ function UnifiedPatientForm() {
               variant="primary"
               className={`flex items-center px-2 py-1 sm:px-3 sm:py-2 text-xs sm:text-sm md:text-base font-medium mb-1 ${activeTab === index
                   ? 'bg-primary text-white shadow-md'
-                  : 'bg-white text-gray-700 hover:bg-gray-100'
+                  : 'bg-white text-gray-700 lg:hoverbg-gray-100'
                 }`}
               onClick={() => setActiveTab(index)}
             >
@@ -599,9 +599,9 @@ function UnifiedPatientForm() {
             <Button
               key={index}
               variant="primary"
-              className={`flex items-center justify-center px-2 py-1 sm:px-3 sm:py-2 text-xs sm:text-sm md:text-base font-medium mb-1 ${activeTab === index
-                  ? 'bg-primary text-white shadow-md'
-                  : 'bg-white text-gray-700 hover:bg-gray-100'
+              className={`flex items-center justify-center px-2 py-1 sm:px-3 sm:py-2 text-xs sm:text-sm md:text-base mb-1 ${activeTab === index
+                  ? 'bg-primary font-bold text-white shadow-md'
+                  : 'bg-secondary text-green-900 text-gray-700 lg:hoverbg-gray-100 '
                 }`}
               onClick={() => setActiveTab(index)}
             >

@@ -8,10 +8,300 @@ import BackButton from '../Components/BackButton';
 import { MdOutlineClose } from "react-icons/md";
 import Modal from '../Components/Modal';
 import { BiSave } from "react-icons/bi";
-
+import { MdOutlineInventory } from "react-icons/md";
+import { CiBarcode } from "react-icons/ci";
+import Input from '../Components/FormFields/InputField';
 function Inventory() {
   const [activeTab, setActiveTab] = useState('medicine');
   const [inventoryData, setInventoryData] = useState([
+    {
+      id: 1,
+      Medicine: "Paracetamol",
+      BatchNo: "PARA202301",
+      InwardQuantity: 1000,
+      UnitofMeasure: "Tablets",
+      ExpiryDate: "2025-12-31",
+      Price: 0.25,
+      ReceivedDate: "2024-01-15",
+      AvailableBatchQty: 850,
+      TotalAvailableQty: 1200
+    },
+    {
+      id: 2,
+      Medicine: "Paracetamol",
+      BatchNo: "PARA202302",
+      InwardQuantity: 500,
+      UnitofMeasure: "Tablets",
+      ExpiryDate: "2025-11-30",
+      Price: 0.30,
+      ReceivedDate: "2024-02-01",
+      AvailableBatchQty: 450,
+      TotalAvailableQty: 1200
+    },
+    {
+      id: 3,
+      Medicine: "Ibuprofen",
+      BatchNo: "IBU202302",
+      InwardQuantity: 800,
+      UnitofMeasure: "Tablets",
+      ExpiryDate: "2025-06-30",
+      Price: 0.50,
+      ReceivedDate: "2024-03-01",
+      AvailableBatchQty: 700,
+      TotalAvailableQty: 700
+    },
+    {
+      id: 1,
+      Medicine: "Paracetamol",
+      BatchNo: "PARA202301",
+      InwardQuantity: 1000,
+      UnitofMeasure: "Tablets",
+      ExpiryDate: "2025-12-31",
+      Price: 0.25,
+      ReceivedDate: "2024-01-15",
+      AvailableBatchQty: 850,
+      TotalAvailableQty: 1200
+    },
+    {
+      id: 2,
+      Medicine: "Paracetamol",
+      BatchNo: "PARA202302",
+      InwardQuantity: 500,
+      UnitofMeasure: "Tablets",
+      ExpiryDate: "2025-11-30",
+      Price: 0.30,
+      ReceivedDate: "2024-02-01",
+      AvailableBatchQty: 450,
+      TotalAvailableQty: 1200
+    },
+    {
+      id: 3,
+      Medicine: "Ibuprofen",
+      BatchNo: "IBU202302",
+      InwardQuantity: 800,
+      UnitofMeasure: "Tablets",
+      ExpiryDate: "2025-06-30",
+      Price: 0.50,
+      ReceivedDate: "2024-03-01",
+      AvailableBatchQty: 700,
+      TotalAvailableQty: 700
+    },
+    {
+      id: 1,
+      Medicine: "Paracetamol",
+      BatchNo: "PARA202301",
+      InwardQuantity: 1000,
+      UnitofMeasure: "Tablets",
+      ExpiryDate: "2025-12-31",
+      Price: 0.25,
+      ReceivedDate: "2024-01-15",
+      AvailableBatchQty: 850,
+      TotalAvailableQty: 1200
+    },
+    {
+      id: 2,
+      Medicine: "Paracetamol",
+      BatchNo: "PARA202302",
+      InwardQuantity: 500,
+      UnitofMeasure: "Tablets",
+      ExpiryDate: "2025-11-30",
+      Price: 0.30,
+      ReceivedDate: "2024-02-01",
+      AvailableBatchQty: 450,
+      TotalAvailableQty: 1200
+    },
+    {
+      id: 3,
+      Medicine: "Ibuprofen",
+      BatchNo: "IBU202302",
+      InwardQuantity: 800,
+      UnitofMeasure: "Tablets",
+      ExpiryDate: "2025-06-30",
+      Price: 0.50,
+      ReceivedDate: "2024-03-01",
+      AvailableBatchQty: 700,
+      TotalAvailableQty: 700
+    },
+    {
+      id: 1,
+      Medicine: "Paracetamol",
+      BatchNo: "PARA202301",
+      InwardQuantity: 1000,
+      UnitofMeasure: "Tablets",
+      ExpiryDate: "2025-12-31",
+      Price: 0.25,
+      ReceivedDate: "2024-01-15",
+      AvailableBatchQty: 850,
+      TotalAvailableQty: 1200
+    },
+    {
+      id: 2,
+      Medicine: "Paracetamol",
+      BatchNo: "PARA202302",
+      InwardQuantity: 500,
+      UnitofMeasure: "Tablets",
+      ExpiryDate: "2025-11-30",
+      Price: 0.30,
+      ReceivedDate: "2024-02-01",
+      AvailableBatchQty: 450,
+      TotalAvailableQty: 1200
+    },
+    {
+      id: 3,
+      Medicine: "Ibuprofen",
+      BatchNo: "IBU202302",
+      InwardQuantity: 800,
+      UnitofMeasure: "Tablets",
+      ExpiryDate: "2025-06-30",
+      Price: 0.50,
+      ReceivedDate: "2024-03-01",
+      AvailableBatchQty: 700,
+      TotalAvailableQty: 700
+    },
+    {
+      id: 1,
+      Medicine: "Paracetamol",
+      BatchNo: "PARA202301",
+      InwardQuantity: 1000,
+      UnitofMeasure: "Tablets",
+      ExpiryDate: "2025-12-31",
+      Price: 0.25,
+      ReceivedDate: "2024-01-15",
+      AvailableBatchQty: 850,
+      TotalAvailableQty: 1200
+    },
+    {
+      id: 2,
+      Medicine: "Paracetamol",
+      BatchNo: "PARA202302",
+      InwardQuantity: 500,
+      UnitofMeasure: "Tablets",
+      ExpiryDate: "2025-11-30",
+      Price: 0.30,
+      ReceivedDate: "2024-02-01",
+      AvailableBatchQty: 450,
+      TotalAvailableQty: 1200
+    },
+    {
+      id: 3,
+      Medicine: "Ibuprofen",
+      BatchNo: "IBU202302",
+      InwardQuantity: 800,
+      UnitofMeasure: "Tablets",
+      ExpiryDate: "2025-06-30",
+      Price: 0.50,
+      ReceivedDate: "2024-03-01",
+      AvailableBatchQty: 700,
+      TotalAvailableQty: 700
+    },
+    {
+      id: 1,
+      Medicine: "Paracetamol",
+      BatchNo: "PARA202301",
+      InwardQuantity: 1000,
+      UnitofMeasure: "Tablets",
+      ExpiryDate: "2025-12-31",
+      Price: 0.25,
+      ReceivedDate: "2024-01-15",
+      AvailableBatchQty: 850,
+      TotalAvailableQty: 1200
+    },
+    {
+      id: 2,
+      Medicine: "Paracetamol",
+      BatchNo: "PARA202302",
+      InwardQuantity: 500,
+      UnitofMeasure: "Tablets",
+      ExpiryDate: "2025-11-30",
+      Price: 0.30,
+      ReceivedDate: "2024-02-01",
+      AvailableBatchQty: 450,
+      TotalAvailableQty: 1200
+    },
+    {
+      id: 3,
+      Medicine: "Ibuprofen",
+      BatchNo: "IBU202302",
+      InwardQuantity: 800,
+      UnitofMeasure: "Tablets",
+      ExpiryDate: "2025-06-30",
+      Price: 0.50,
+      ReceivedDate: "2024-03-01",
+      AvailableBatchQty: 700,
+      TotalAvailableQty: 700
+    },
+    {
+      id: 1,
+      Medicine: "Paracetamol",
+      BatchNo: "PARA202301",
+      InwardQuantity: 1000,
+      UnitofMeasure: "Tablets",
+      ExpiryDate: "2025-12-31",
+      Price: 0.25,
+      ReceivedDate: "2024-01-15",
+      AvailableBatchQty: 850,
+      TotalAvailableQty: 1200
+    },
+    {
+      id: 2,
+      Medicine: "Paracetamol",
+      BatchNo: "PARA202302",
+      InwardQuantity: 500,
+      UnitofMeasure: "Tablets",
+      ExpiryDate: "2025-11-30",
+      Price: 0.30,
+      ReceivedDate: "2024-02-01",
+      AvailableBatchQty: 450,
+      TotalAvailableQty: 1200
+    },
+    {
+      id: 3,
+      Medicine: "Ibuprofen",
+      BatchNo: "IBU202302",
+      InwardQuantity: 800,
+      UnitofMeasure: "Tablets",
+      ExpiryDate: "2025-06-30",
+      Price: 0.50,
+      ReceivedDate: "2024-03-01",
+      AvailableBatchQty: 700,
+      TotalAvailableQty: 700
+    },
+    {
+      id: 1,
+      Medicine: "Paracetamol",
+      BatchNo: "PARA202301",
+      InwardQuantity: 1000,
+      UnitofMeasure: "Tablets",
+      ExpiryDate: "2025-12-31",
+      Price: 0.25,
+      ReceivedDate: "2024-01-15",
+      AvailableBatchQty: 850,
+      TotalAvailableQty: 1200
+    },
+    {
+      id: 2,
+      Medicine: "Paracetamol",
+      BatchNo: "PARA202302",
+      InwardQuantity: 500,
+      UnitofMeasure: "Tablets",
+      ExpiryDate: "2025-11-30",
+      Price: 0.30,
+      ReceivedDate: "2024-02-01",
+      AvailableBatchQty: 450,
+      TotalAvailableQty: 1200
+    },
+    {
+      id: 3,
+      Medicine: "Ibuprofen",
+      BatchNo: "IBU202302",
+      InwardQuantity: 800,
+      UnitofMeasure: "Tablets",
+      ExpiryDate: "2025-06-30",
+      Price: 0.50,
+      ReceivedDate: "2024-03-01",
+      AvailableBatchQty: 700,
+      TotalAvailableQty: 700
+    },
     {
       id: 1,
       Medicine: "Paracetamol",
@@ -75,7 +365,7 @@ function Inventory() {
       ManufactureDate: "2024-01-01",
       ExpiryDate: "2024-11-30"
     },
-    
+
     {
       id: 1,
       BatchNo: "PARA202301",
@@ -99,7 +389,7 @@ function Inventory() {
       BatchCreationDate: "2024-01-05",
       ManufactureDate: "2024-01-01",
       ExpiryDate: "2024-11-30"
-    },    
+    },
     {
       id: 1,
       BatchNo: "PARA202301",
@@ -123,7 +413,79 @@ function Inventory() {
       BatchCreationDate: "2024-01-05",
       ManufactureDate: "2024-01-01",
       ExpiryDate: "2024-11-30"
-    }
+    },
+    {
+      id: 1,
+      BatchNo: "PARA202301",
+      Medicine: "Paracetamol",
+      BatchCreationDate: "2023-12-15",
+      ManufactureDate: "2023-12-10",
+      ExpiryDate: "2025-12-31"
+    },
+    {
+      id: 2,
+      BatchNo: "IBU202302",
+      Medicine: "Ibuprofen",
+      BatchCreationDate: "2024-01-15",
+      ManufactureDate: "2024-01-10",
+      ExpiryDate: "2025-06-30"
+    },
+    {
+      id: 3,
+      BatchNo: "AMO202303",
+      Medicine: "Amoxicillin",
+      BatchCreationDate: "2024-01-05",
+      ManufactureDate: "2024-01-01",
+      ExpiryDate: "2024-11-30"
+    },
+    {
+      id: 1,
+      BatchNo: "PARA202301",
+      Medicine: "Paracetamol",
+      BatchCreationDate: "2023-12-15",
+      ManufactureDate: "2023-12-10",
+      ExpiryDate: "2025-12-31"
+    },
+    {
+      id: 2,
+      BatchNo: "IBU202302",
+      Medicine: "Ibuprofen",
+      BatchCreationDate: "2024-01-15",
+      ManufactureDate: "2024-01-10",
+      ExpiryDate: "2025-06-30"
+    },
+    {
+      id: 3,
+      BatchNo: "AMO202303",
+      Medicine: "Amoxicillin",
+      BatchCreationDate: "2024-01-05",
+      ManufactureDate: "2024-01-01",
+      ExpiryDate: "2024-11-30"
+    },
+    {
+      id: 1,
+      BatchNo: "PARA202301",
+      Medicine: "Paracetamol",
+      BatchCreationDate: "2023-12-15",
+      ManufactureDate: "2023-12-10",
+      ExpiryDate: "2025-12-31"
+    },
+    {
+      id: 2,
+      BatchNo: "IBU202302",
+      Medicine: "Ibuprofen",
+      BatchCreationDate: "2024-01-15",
+      ManufactureDate: "2024-01-10",
+      ExpiryDate: "2025-06-30"
+    },
+    {
+      id: 3,
+      BatchNo: "AMO202303",
+      Medicine: "Amoxicillin",
+      BatchCreationDate: "2024-01-05",
+      ManufactureDate: "2024-01-01",
+      ExpiryDate: "2024-11-30"
+    },
   ]);
 
   const [searchTerm, setSearchTerm] = useState('');
@@ -290,7 +652,7 @@ function Inventory() {
       AvailableBatchQty: Number(receiveFormData.InwardQuantity),
       TotalAvailableQty: Number(receiveFormData.InwardQuantity)
     };
-    
+
     setInventoryData([...inventoryData, newInventory]);
     setIsReceiveModalOpen(false);
     setReceiveFormData({
@@ -302,7 +664,7 @@ function Inventory() {
       ExpiryDate: '',
       Price: ''
     });
-    
+
     Swal.fire({
       title: 'Success!',
       text: 'New inventory item has been received.',
@@ -325,34 +687,53 @@ function Inventory() {
   return (
     <div className="grid grid-cols-1 gap-3 w-[95%] lg:ms-[70px] px-1 mx-auto">
       {/* Header */}
-      <div className="flex flex-col md:flex-row flex-wrap justify-between items-start md:items-center gap-4 md:gap-6 font-medium mb-6 border-b pb-3 px-2 sm:px-4 lg:px-6">
-        <BackButton />
-        <h5 className="text-base sm:text-lg md:text-xl font-semibold">Inventory</h5>
-        <div className="flex flex-row items-center gap-2 sm:gap-3 md:gap-4">
-          <Button variant="primary" className={`flex items-center text-white outline-none border-none justify-center gap-2 sm:gap-2.5 md:gap-3 whitespace-nowrap text-sm sm:text-base md:text-lg px-3 py-1.5 sm:px-4 sm:py-2 rounded-md transition-colors ${activeTab === 'batch' ? 'bg-gray-200 hover:bg-primary duration-300' : 'text-gray-800 hover:bg-gray-300 shadow-lg'}`} size="sm" onClick={() => setActiveTab('medicine')}>Medicine Stock</Button>
-          <Button variant="primary" className={`flex items-center text-white outline-none border-none justify-center gap-2 sm:gap-2.5 md:gap-3 whitespace-nowrap text-sm sm:text-base md:text-lg px-3 py-1.5 sm:px-4 sm:py-2 rounded-md transition-colors ${activeTab === 'medicine' ? 'bg-gray-200 hover:bg-primary duration-300' : 'text-gray-800 hover:bg-gray-300 shadow-lg'}`} size="sm" onClick={() => setActiveTab('batch')}> Batch</Button>
-        </div>
-      </div>
-
-      {/* Button and Search */}
-      <div className="flex sm:flex-row items-start sm:items-center gap-4 mb-4 justify-between px-2 sm:px-4">
-        <Button 
-          variant="primary" 
-          size="sm"
-          onClick={() => setIsReceiveModalOpen(true)}
-          className='text-white'
-        >
-          <MdOutlineAdd size={24}/> Receive Inventory
-        </Button>
-        <div className="flex items-center gap-2 sm:w-auto">
-          <label className="text-xs sm:text-sm">Search:</label>
-          <input
-            type="search"
-            className="border rounded p-1 text-xs sm:text-sm w-full bg-white text-black"
-            placeholder="Search By Name or Batch..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
+      <div className="sticky top-0 bg-white">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6 border-b pb-3 px-2 sm:px-4 lg:px-6">
+          <BackButton />
+          <h5 className="text-base sm:text-lg md:text-xl font-semibold">Inventory</h5>
+          {/* Single flex container for buttons and search */}
+          <div className="flex flex-row items-center gap-2 sm:gap-3 md:gap-4 flex-wrap w-full sm:w-auto">
+            <Button
+              variant="primary"
+              className={`flex items-center outline-none border-none justify-center gap-2 sm:gap-2.5 md:gap-3 whitespace-nowrap text-sm sm:text-base md:text-lg px-3 py-1.5 sm:px-4 sm:py-2 rounded-md transition-colors ${activeTab === 'batch'
+                ? 'bg-secondary text-black text-green-900 lg:hover:bg-primary duration-300'
+                : 'text-gray-800 lg:hover:bg-gray-300 shadow-lg font-bold'
+                }`}
+              size="sm"
+              onClick={() => setActiveTab('medicine')}
+            >
+              <MdOutlineInventory /> Medicine Stock
+            </Button>
+            <Button
+              variant="primary"
+              className={`flex items-center outline-none border-none justify-center gap-2 sm:gap-2.5 md:gap-3 whitespace-nowrap text-sm sm:text-base md:text-lg px-3 py-1.5 sm:px-4 sm:py-2 rounded-md transition-colors ${activeTab === 'medicine'
+                ? 'bg-secondary text-green-900 lg:hover:bg-primary  duration-300'
+                : 'text-gray-800 lg:hover:bg-gray-300 shadow-lg font-bold'
+                }`}
+              size="sm"
+              onClick={() => setActiveTab('batch')}
+            >
+              <CiBarcode />Batch
+            </Button>
+            {/* Search bar */}
+            <div className="flex items-center gap-2 flex-grow">
+              <Input
+                type="search"
+                placeholder="Search By Name or Batch..."
+                className='w-1/2'
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
+            </div>
+            <Button
+              variant="primary"
+              size="sm"
+              onClick={() => setIsReceiveModalOpen(true)}
+              className="bg-primary text-white"
+            >
+              <MdOutlineAdd size={24} /> Receive Inventory
+            </Button>
+          </div>
         </div>
       </div>
 

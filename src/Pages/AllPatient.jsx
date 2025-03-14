@@ -147,21 +147,21 @@ const AllPatient = () => {
       Cell: ({ row }) => (
         <div className="flex gap-1">
           <button
-            className="text-red-500 border border-red-500 rounded p-1 hover:bg-red-50"
+            className="text-red-500 border border-red-500 rounded p-1 lg:hover:bg-red-50"
             title="Delete"
             onClick={() => handleDelete(row.original.id)}
           >
             <RiDeleteBinLine />
           </button>
           <button
-            className="text-green-500 border border-green-500 rounded p-1 hover:bg-green-50"
+            className="text-green-500 border border-green-500 rounded p-1 lg:hover:bg-green-50"
             title="Edit Patient Details"
             onClick={() => handleEdit(row.original)}
           >
             <RiEditBoxLine />
           </button>
           <button
-            className="text-blue-500 border border-blue-500 rounded p-1 hover:bg-blue-50"
+            className="text-blue-500 border border-blue-500 rounded p-1 lg:hover:bg-blue-50"
             title="View Dashboard"
             onClick={() => handleView(row.original)}
           >
@@ -188,7 +188,7 @@ const AllPatient = () => {
               </Button>
               <Button
                 variant="primary"
-                className={`text-white flex items-center outline-none border-none justify-center gap-2 sm:gap-2.5 md:gap-3 whitespace-nowrap text-sm sm:text-base md:text-lg px-3 py-1.5 sm:px-4 sm:py-2 rounded-md transition-colors ${viewMode === 'list' ? 'bg-primary text-white shadow-lg' : 'text-gray-800 bg-gray-200 hover:bg-primary duration-300'
+                className={`text-white flex items-center outline-none border-none justify-center gap-2 sm:gap-2.5 md:gap-3 whitespace-nowrap text-sm sm:text-base md:text-lg px-3 py-1.5 sm:px-4 sm:py-2 rounded-md transition-colors ${viewMode === 'list' ? 'bg-primary text-white shadow-lg' : 'text-gray-800 bg-secondary lg:hover:bg-primary duration-300'
                   }`}
                 size="sm"
                 onClick={() => setViewMode('list')}
@@ -198,7 +198,7 @@ const AllPatient = () => {
               </Button>
               <Button
                 variant="primary"
-                className={`text-white flex items-center outline-none border-none justify-center gap-2 sm:gap-2.5 md:gap-3 whitespace-nowrap text-sm sm:text-base md:text-lg px-3 py-1.5 sm:px-4 sm:py-2 rounded-md transition-colors ${viewMode === 'card' ? 'bg-primary text-white shadow-lg' : 'text-gray-800 bg-gray-200 hover:bg-primary duration-300'
+                className={`text-white flex items-center outline-none border-none justify-center gap-2 sm:gap-2.5 md:gap-3 whitespace-nowrap text-sm sm:text-base md:text-lg px-3 py-1.5 sm:px-4 sm:py-2 rounded-md transition-colors ${viewMode === 'card' ? 'bg-primary text-white shadow-lg' : 'text-gray-800 bg-secondary lg:hover:bg-primary duration-300'
                   }`}
                 size="sm"
                 onClick={() => setViewMode('card')}
@@ -258,21 +258,21 @@ const AllPatient = () => {
                   </div>
                   <div className="flex flex-col gap-1">
                     <button
-                      className="text-blue-500 border border-blue-500 rounded p-1 hover:bg-blue-50"
+                      className="text-blue-500 border border-blue-500 rounded p-1 lg:hover:bg-blue-50"
                       title="View Dashboard"
                       onClick={() => handleView(patient)}
                     >
                       <RiEyeLine />
                     </button>
                     <button
-                      className="text-green-500 border border-green-500 rounded p-1 hover:bg-green-50"
+                      className="text-green-500 border border-green-500 rounded p-1 lg:hover:bg-green-50"
                       title="Edit Patient Details"
                       onClick={() => handleEdit(patient)}
                     >
                       <RiEditBoxLine />
                     </button>
                     <button
-                      className="text-red-500 border border-red-500 rounded p-1 hover:bg-red-50"
+                      className="text-red-500 border border-red-500 rounded p-1 lg:hover:bg-red-50"
                       title="Delete"
                       onClick={() => handleDelete(patient.id)}
                     >
@@ -336,7 +336,7 @@ const AllPatient = () => {
               type="button"
               size="sm"
               onClick={() => setIsEditModalOpen(false)}
-              className="px-3 sm:px-4 py-1 sm:py-2 border rounded text-gray-600 hover:bg-gray-100 text-sm sm:text-base"
+              className="px-3 sm:px-4 py-1 sm:py-2 border rounded text-gray-600 lg:hover:bg-gray-100 text-sm sm:text-base"
             >
               <MdOutlineClose /> Cancel
             </Button>
@@ -345,7 +345,7 @@ const AllPatient = () => {
               type="submit"
               form="edit-form"
               size="sm"
-              className="px-3 sm:px-4 py-1 sm:py-2 bg-primary text-white rounded hover:bg-primary-dark text-sm sm:text-base"
+              className="px-3 sm:px-4 py-1 sm:py-2 bg-primary text-white rounded lg:hover:bg-primary-dark text-sm sm:text-base"
             >
               <BiSave /> Save Changes
             </Button>

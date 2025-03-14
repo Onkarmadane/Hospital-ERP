@@ -8,6 +8,10 @@ import { MdOutlineClose } from "react-icons/md";
 import Modal from '../Components/Modal';
 import { BiSave } from "react-icons/bi";
 import { RiDeleteBinLine, RiEditBoxLine, RiEyeLine, RiSaveLine, RiCloseLine } from 'react-icons/ri';
+import { GiMedicines } from "react-icons/gi";
+import { FaPills } from 'react-icons/fa';
+import Search from '../Components/Search';
+import Input from '../Components/FormFields/InputField';
 
 function MedicineSetup() {
     const [activeTab, setActiveTab] = useState('medicine');
@@ -269,33 +273,40 @@ function MedicineSetup() {
                     <div className="flex flex-row items-center gap-2 sm:gap-3 md:gap-4 flex-wrap w-full sm:w-auto">
                         <Button
                             variant="primary"
-                            className={`flex items-center outline-none border-none justify-center gap-2 sm:gap-2.5 md:gap-3 whitespace-nowrap text-sm sm:text-base md:text-lg px-3 py-1.5 sm:px-4 sm:py-2 rounded-md transition-colors ${activeTab === 'batch' ? 'bg-secondary text-black lg:hover:bg-primary duration-300' : 'text-gray-800 lg:hover:bg-gray-300 shadow-lg'
+                            className={`flex items-center text-white outline-none border-none justify-center gap-2 sm:gap-2.5 md:gap-3 whitespace-nowrap text-sm sm:text-base md:text-lg px-3 py-1.5 sm:px-4 sm:py-2 rounded-md transition-colors ${activeTab === 'batch' ? 'bg-secondary text-green-900 lg:hover:bg-primary duration-300' : 'text-gray-800 font-bold lg:hover:bg-gray-300 shadow-lg'
                                 }`}
                             size="sm"
                             onClick={() => setActiveTab('medicine')}
                         >
-                            Medicine Name
+                            <GiMedicines />  Medicine Name
                         </Button>
                         <Button
                             variant="primary"
-                            className={`flex  items-center outline-none border-none justify-center gap-2 sm:gap-2.5 md:gap-3 whitespace-nowrap text-sm sm:text-base md:text-lg px-3 py-1.5 sm:px-4 sm:py-2 rounded-md transition-colors ${activeTab === 'medicine' ? 'bg-secondary lg:hover:bg-primary duration-300' : 'text-gray-800 lg:hover:bg-gray-300 shadow-lg'
+                            className={`flex text-white items-center outline-none border-none justify-center gap-2 sm:gap-2.5 md:gap-3 whitespace-nowrap text-sm sm:text-base md:text-lg px-3 py-1.5 sm:px-4 sm:py-2 rounded-md transition-colors ${activeTab === 'medicine' ? 'bg-secondary  text-green-900 lg:hover:bg-primary duration-300' : 'text-gray-800 lg:hover:bg-gray-300 shadow-lg font-bold '
                                 }`}
                             size="sm"
                             onClick={() => setActiveTab('batch')}
                         >
-                            Generic Name
+                            <FaPills /> Generic Name
                         </Button>
                         {/* Search bar */}
                         <div className="flex items-center gap-2 flex-grow">
-                            <label className="text-xs sm:text-sm whitespace-nowrap">Search:</label>
+                            {/* <label className="text-xs sm:text-sm whitespace-nowrap">Search:</label>
                             <input
                                 type="search"
-                                className="border rounded p-1 text-xs sm:text-sm sm:w-full lg:w-full bg-white text-black"
+                                className="border rounded p-1 text-xs h-10 sm:text-sm sm:w-1/3 md:w-full lg:w-full bg-white text-black"
+                                placeholder="Search By Name or Generic Name..."
+                                value={searchTerm}
+                                onChange={(e) => setSearchTerm(e.target.value)}
+                            /> */}
+                            <Input
+                                type="search"
                                 placeholder="Search By Name or Generic Name..."
                                 value={searchTerm}
                                 onChange={(e) => setSearchTerm(e.target.value)}
                             />
                         </div>
+                        {/* <Search/> */}
                         <Button variant="primary" size="sm" onClick={openModal} className="text-white">
                             <MdOutlineAdd size={24} /> Add
                         </Button>

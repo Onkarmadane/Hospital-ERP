@@ -4,9 +4,9 @@
 
 :root {
   --primary: #77db8f;
-  --secondary: #b6dfbf;
+  --secondary: rgb(179, 255, 195);
   --background: #f5f5f5;
-  --text: #333;
+  --text: #5f5d5d;
 }
 .schedule-container {
   font-family: Arial, sans-serif;
