@@ -269,7 +269,7 @@ function MedicineSetup() {
                     <div className="flex flex-row items-center gap-2 sm:gap-3 md:gap-4 flex-wrap w-full sm:w-auto">
                         <Button
                             variant="primary"
-                            className={`flex text-white items-center outline-none border-none justify-center gap-2 sm:gap-2.5 md:gap-3 whitespace-nowrap text-sm sm:text-base md:text-lg px-3 py-1.5 sm:px-4 sm:py-2 rounded-md transition-colors ${activeTab === 'batch' ? 'bg-primary lg:hover:bg-primary duration-300' : 'text-gray-800 lg:hover:bg-gray-300 shadow-lg'
+                            className={`flex items-center outline-none border-none justify-center gap-2 sm:gap-2.5 md:gap-3 whitespace-nowrap text-sm sm:text-base md:text-lg px-3 py-1.5 sm:px-4 sm:py-2 rounded-md transition-colors ${activeTab === 'batch' ? 'bg-secondary text-black lg:hover:bg-primary duration-300' : 'text-gray-800 lg:hover:bg-gray-300 shadow-lg'
                                 }`}
                             size="sm"
                             onClick={() => setActiveTab('medicine')}
@@ -278,7 +278,7 @@ function MedicineSetup() {
                         </Button>
                         <Button
                             variant="primary"
-                            className={`flex text-white items-center outline-none border-none justify-center gap-2 sm:gap-2.5 md:gap-3 whitespace-nowrap text-sm sm:text-base md:text-lg px-3 py-1.5 sm:px-4 sm:py-2 rounded-md transition-colors ${activeTab === 'medicine' ? 'bg-gray-200 lg:hover:bg-primary duration-300' : 'text-gray-800 lg:hover:bg-gray-300 shadow-lg'
+                            className={`flex  items-center outline-none border-none justify-center gap-2 sm:gap-2.5 md:gap-3 whitespace-nowrap text-sm sm:text-base md:text-lg px-3 py-1.5 sm:px-4 sm:py-2 rounded-md transition-colors ${activeTab === 'medicine' ? 'bg-secondary lg:hover:bg-primary duration-300' : 'text-gray-800 lg:hover:bg-gray-300 shadow-lg'
                                 }`}
                             size="sm"
                             onClick={() => setActiveTab('batch')}

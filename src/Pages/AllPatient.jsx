@@ -127,8 +127,8 @@ const AllPatient = () => {
       Cell: ({ row }) => (
         <span
           className={`px-2 py-1 rounded text-xs ${row.original.gender === 'Female'
-              ? 'bg-yellow-100 text-yellow-800'
-              : 'bg-blue-100 text-blue-800'
+            ? 'bg-yellow-100 text-yellow-800'
+            : 'bg-blue-100 text-blue-800'
             }`}
         >
           {row.original.gender}
