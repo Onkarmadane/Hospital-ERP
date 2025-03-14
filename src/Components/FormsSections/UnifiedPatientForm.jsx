@@ -572,17 +572,34 @@ function UnifiedPatientForm() {
     <div className="w-[95%] lg:ms-[70px] bg-white mx-auto p-4 pb-20">
       {/* Title */}
       <div className="lg:sticky lg:top-0 z-10 bg-white">
-        <h2 className="text-xl sm:text-2xl font-bold mb-4 text-center sm:text-left">
+        <h2 className="text-xl sm:text-2xl font-bold mb-4 text-left">
           Patient Form
         </h2>
 
         {/* Tab Navigation */}
-        <div className="flex flex-wrap border-b border-gray-200 overflow-x-auto whitespace-nowrap gap-2 pb-2">
+        {/* <div className="flex flex-wrap border-b border-gray-200 overflow-x-auto whitespace-nowrap gap-2 pb-2">
           {tabs.map((tab, index) => (
             <Button
               key={index}
               variant="primary"
               className={`flex items-center px-2 py-1 sm:px-3 sm:py-2 text-xs sm:text-sm md:text-base font-medium mb-1 ${activeTab === index
+                  ? 'bg-primary text-white shadow-md'
+                  : 'bg-white text-gray-700 hover:bg-gray-100'
+                }`}
+              onClick={() => setActiveTab(index)}
+            >
+              {tab.icon}
+              <span className="ml-1 sm:ml-2">{tab.label}</span>
+            </Button>
+          ))}
+        </div>
+      </div> */}
+        <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 border-b border-gray-200 overflow-x-auto gap-2 pb-2">
+          {tabs.map((tab, index) => (
+            <Button
+              key={index}
+              variant="primary"
+              className={`flex items-center justify-center px-2 py-1 sm:px-3 sm:py-2 text-xs sm:text-sm md:text-base font-medium mb-1 ${activeTab === index
                   ? 'bg-primary text-white shadow-md'
                   : 'bg-white text-gray-700 hover:bg-gray-100'
                 }`}

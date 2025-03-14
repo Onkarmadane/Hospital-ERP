@@ -126,11 +126,10 @@ const AllPatient = () => {
       accessor: 'gender',
       Cell: ({ row }) => (
         <span
-          className={`px-2 py-1 rounded text-xs ${
-            row.original.gender === 'Female'
+          className={`px-2 py-1 rounded text-xs ${row.original.gender === 'Female'
               ? 'bg-yellow-100 text-yellow-800'
               : 'bg-blue-100 text-blue-800'
-          }`}
+            }`}
         >
           {row.original.gender}
         </span>
@@ -174,8 +173,8 @@ const AllPatient = () => {
   ];
 
   return (
-    <div className="grid grid-cols-1 gap-3 w-[95%] lg:ms-[70px] px-2">
-      <div className="">
+    <div className="grid grid-cols-1 gap-3 w-[95%] lg:ms-[70px] bg-white mx-auto max-w-7xl mx-auto ">
+      <div>
         {/* Card Header */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between pb-4 border-b gap-4">
           <div className="flex items-center gap-4">
@@ -189,9 +188,8 @@ const AllPatient = () => {
               </Button>
               <Button
                 variant="primary"
-                className={`text-white flex items-center outline-none border-none justify-center gap-2 sm:gap-2.5 md:gap-3 whitespace-nowrap text-sm sm:text-base md:text-lg px-3 py-1.5 sm:px-4 sm:py-2 rounded-md transition-colors ${
-                  viewMode === 'list' ? 'bg-primary text-white shadow-lg' : 'text-gray-800 bg-gray-200 hover:bg-primary duration-300'
-                }`}
+                className={`text-white flex items-center outline-none border-none justify-center gap-2 sm:gap-2.5 md:gap-3 whitespace-nowrap text-sm sm:text-base md:text-lg px-3 py-1.5 sm:px-4 sm:py-2 rounded-md transition-colors ${viewMode === 'list' ? 'bg-primary text-white shadow-lg' : 'text-gray-800 bg-gray-200 hover:bg-primary duration-300'
+                  }`}
                 size="sm"
                 onClick={() => setViewMode('list')}
                 title="List View"
@@ -200,9 +198,8 @@ const AllPatient = () => {
               </Button>
               <Button
                 variant="primary"
-                className={`text-white flex items-center outline-none border-none justify-center gap-2 sm:gap-2.5 md:gap-3 whitespace-nowrap text-sm sm:text-base md:text-lg px-3 py-1.5 sm:px-4 sm:py-2 rounded-md transition-colors ${
-                  viewMode === 'card' ? 'bg-primary text-white shadow-lg' : 'text-gray-800 bg-gray-200 hover:bg-primary duration-300'
-                }`}
+                className={`text-white flex items-center outline-none border-none justify-center gap-2 sm:gap-2.5 md:gap-3 whitespace-nowrap text-sm sm:text-base md:text-lg px-3 py-1.5 sm:px-4 sm:py-2 rounded-md transition-colors ${viewMode === 'card' ? 'bg-primary text-white shadow-lg' : 'text-gray-800 bg-gray-200 hover:bg-primary duration-300'
+                  }`}
                 size="sm"
                 onClick={() => setViewMode('card')}
                 title="Card View"

@@ -133,13 +133,13 @@ function MedicineSetup() {
             accessor: 'Action',
             Cell: ({ row }) => (
                 <div className="flex flex-col sm:flex-row gap-1">
-                    <button className="text-red-500 border border-red-500 rounded p-1 hover:bg-red-50" title="Delete" onClick={() => handleDelete(row.original)}>
+                    <button className="text-red-500 border border-red-500 rounded p-1 lg:hover:bg-red-50" title="Delete" onClick={() => handleDelete(row.original)}>
                         <RiDeleteBinLine size={16} />
                     </button>
-                    <button className="text-green-500 border border-green-500 rounded p-1 hover:bg-green-50" title="Edit Details" onClick={() => handleEdit(row.original)}>
+                    <button className="text-green-500 border border-green-500 rounded p-1 lg:hover:bg-green-50" title="Edit Details" onClick={() => handleEdit(row.original)}>
                         <RiEditBoxLine size={16} />
                     </button>
-                    <button className="text-blue-500 border border-blue-500 rounded p-1 hover:bg-blue-50" title="View Details" onClick={() => handleView(row.original)}>
+                    <button className="text-blue-500 border border-blue-500 rounded p-1 lg:hover:bg-blue-50" title="View Details" onClick={() => handleView(row.original)}>
                         <RiEyeLine size={16} />
                     </button>
                 </div>
@@ -158,13 +158,13 @@ function MedicineSetup() {
             accessor: 'Action',
             Cell: ({ row }) => (
                 <div className="flex flex-col sm:flex-row gap-1">
-                    <button className="text-red-500 border border-red-500 rounded p-1 hover:bg-red-50" title="Delete" onClick={() => handleBatchDelete(row.original)}>
+                    <button className="text-red-500 border border-red-500 rounded p-1 lg:hover:bg-red-50" title="Delete" onClick={() => handleBatchDelete(row.original)}>
                         <RiDeleteBinLine size={16} />
                     </button>
-                    <button className="text-green-500 border border-green-500 rounded p-1 hover:bg-green-50" title="Edit Details" onClick={() => handleEdit(row.original)}>
+                    <button className="text-green-500 border border-green-500 rounded p-1 lg:hover:bg-green-50" title="Edit Details" onClick={() => handleEdit(row.original)}>
                         <RiEditBoxLine size={16} />
                     </button>
-                    <button className="text-blue-500 border border-blue-500 rounded p-1 hover:bg-blue-50" title="View Details" onClick={() => handleView(row.original)}>
+                    <button className="text-blue-500 border border-blue-500 rounded p-1 lg:hover:bg-blue-50" title="View Details" onClick={() => handleView(row.original)}>
                         <RiEyeLine size={16} />
                     </button>
                 </div>
@@ -269,7 +269,7 @@ function MedicineSetup() {
                     <div className="flex flex-row items-center gap-2 sm:gap-3 md:gap-4 flex-wrap w-full sm:w-auto">
                         <Button
                             variant="primary"
-                            className={`flex text-white items-center outline-none border-none justify-center gap-2 sm:gap-2.5 md:gap-3 whitespace-nowrap text-sm sm:text-base md:text-lg px-3 py-1.5 sm:px-4 sm:py-2 rounded-md transition-colors ${activeTab === 'batch' ? 'bg-gray-200 hover:bg-primary duration-300' : 'text-gray-800 hover:bg-gray-300 shadow-lg'
+                            className={`flex text-white items-center outline-none border-none justify-center gap-2 sm:gap-2.5 md:gap-3 whitespace-nowrap text-sm sm:text-base md:text-lg px-3 py-1.5 sm:px-4 sm:py-2 rounded-md transition-colors ${activeTab === 'batch' ? 'bg-primary lg:hover:bg-primary duration-300' : 'text-gray-800 lg:hover:bg-gray-300 shadow-lg'
                                 }`}
                             size="sm"
                             onClick={() => setActiveTab('medicine')}
@@ -278,27 +278,28 @@ function MedicineSetup() {
                         </Button>
                         <Button
                             variant="primary"
-                            className={`flex text-white items-center outline-none border-none justify-center gap-2 sm:gap-2.5 md:gap-3 whitespace-nowrap text-sm sm:text-base md:text-lg px-3 py-1.5 sm:px-4 sm:py-2 rounded-md transition-colors ${activeTab === 'medicine' ? 'bg-gray-200 hover:bg-primary duration-300' : 'text-gray-800 hover:bg-gray-300 shadow-lg'
+                            className={`flex text-white items-center outline-none border-none justify-center gap-2 sm:gap-2.5 md:gap-3 whitespace-nowrap text-sm sm:text-base md:text-lg px-3 py-1.5 sm:px-4 sm:py-2 rounded-md transition-colors ${activeTab === 'medicine' ? 'bg-gray-200 lg:hover:bg-primary duration-300' : 'text-gray-800 lg:hover:bg-gray-300 shadow-lg'
                                 }`}
                             size="sm"
                             onClick={() => setActiveTab('batch')}
                         >
                             Generic Name
                         </Button>
-                        <Button variant="primary" size="sm" onClick={openModal} className="text-white">
-                            <MdOutlineAdd size={24} /> Add
-                        </Button>
                         {/* Search bar */}
                         <div className="flex items-center gap-2 flex-grow">
                             <label className="text-xs sm:text-sm whitespace-nowrap">Search:</label>
                             <input
                                 type="search"
-                                className="border rounded p-1 text-xs sm:text-sm w-1/3 lg:w-full bg-white text-black"
+                                className="border rounded p-1 text-xs sm:text-sm sm:w-full lg:w-full bg-white text-black"
                                 placeholder="Search By Name or Generic Name..."
                                 value={searchTerm}
                                 onChange={(e) => setSearchTerm(e.target.value)}
                             />
                         </div>
+                        <Button variant="primary" size="sm" onClick={openModal} className="text-white">
+                            <MdOutlineAdd size={24} /> Add
+                        </Button>
+
                     </div>
                 </div>
             </div>

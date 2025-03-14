@@ -278,7 +278,7 @@ const Appointment = () => {
                 onClick={(e) => { e.stopPropagation(); handleCallClick(); }}
               >
                 <NavLink
-                  to="/*" // Replace with your desired route
+                  to="/doctor/Appointment/patient-form" // Replace with your desired route
                   onClick={(e) => {
                     e.stopPropagation(); // Prevent event bubbling
                     handleActionClick("Reschedule"); // Existing action handler
@@ -445,12 +445,15 @@ const Appointment = () => {
               <FaAddressBook /> Book Appointment
             </Button>
           </div>
-          <div className="flex flex-wrap justify-between items-center mt-2">
-            <p className="text-center p-3">
-              Total Appointments: <b>10</b> Remaining: <b>5</b> Completed: <b>5</b> No Show: <b>0</b>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 items-center mt-2 text-center sm:text-left">
+            <p class="p-3">
+              Total Appointments: <b>10</b>
+              Remaining: <b>5</b>
+              Completed: <b>5</b>
+              No Show: <b>0</b>
             </p>
-            <h2 className="text-base sm:text-lg font-semibold text-gray-800">
-              {formatDateTime(currentDateTime)}
+            <h2 class="text-base sm:text-lg font-semibold text-gray-800 lg:text-right sm:text-right">
+              Fri, March 14 at 10:13 AM
             </h2>
           </div>
         </div>

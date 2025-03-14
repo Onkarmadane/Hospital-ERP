@@ -194,7 +194,7 @@ const PatientDetails = () => {
                     <BackButton />
                     <h5 className="text-lg font-semibold">Patients Details</h5>
                 </div>
-                <Button onClick={() => navigate(-1)} className="p-2 hover:bg-gray-200 rounded-full">
+                <Button onClick={() => navigate(-1)} className="p-2 hover:bg-gray-200 rounded-full text-white">
                     <FaPlus />
                 </Button>
             </div>
@@ -222,8 +222,8 @@ const PatientDetails = () => {
 
             </div>
             <div className="flex my-3 gap-3">
-                <Button className={`flex items-center gap-2 p-2 rounded cursor-pointer ${activeTab === 'Profile' ? 'bg-primary text-white shadow-lg' : 'hover:bg-gray-200 '}`} onClick={() => { setActiveTab('Profile'); }}><FaUser />Profile</Button>
-                <Button className={`flex items-center gap-2 p-2 rounded cursor-pointer ${activeTab === 'Health Board' ? 'bg-primary text-white shadow-lg' : 'hover:bg-gray-200 '}`} onClick={() => { setActiveTab('Health Board'); }}><FaClipboardList />Health Board</Button>
+                <Button className={`flex items-center text-white gap-2 p-2 rounded cursor-pointer ${activeTab === 'Profile' ? 'bg-primary text-white shadow-lg' : 'hover:bg-gray-200 '}`} onClick={() => { setActiveTab('Profile'); }}><FaUser />Profile</Button>
+                <Button className={`flex items-center text-white gap-2 p-2 rounded cursor-pointer ${activeTab === 'Health Board' ? 'bg-primary text-white shadow-lg' : 'hover:bg-gray-200 '}`} onClick={() => { setActiveTab('Health Board'); }}><FaClipboardList />Health Board</Button>
             </div>
             <div className="w-full">
                 {activeTab === 'Profile' && renderProfileContent()}
