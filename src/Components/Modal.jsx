@@ -25,7 +25,7 @@ const Modal = ({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black bg-opacity-50 ">
       <div
         className={`bg-white rounded-lg shadow-lg  w-full ${className}`}
         role="dialog"
@@ -38,12 +38,12 @@ const Modal = ({
             {title}
           </h2>
           <Button
-          variant='secondary'
+            variant='secondary'
             onClick={onClose}
             className="text-gray-500 hover:text-gray-700 focus:outline-none"
             aria-label="Close modal"
           >
-           <IoMdClose />
+            <IoMdClose />
           </Button>
         </div>
 

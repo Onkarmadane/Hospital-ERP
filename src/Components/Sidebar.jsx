@@ -120,7 +120,7 @@ const Sidebar = () => {
       {/* Sidebar for large screens */}
       <aside>
         <nav
-          className={`sidebar rounded-xl bg-gradient-to-br from-white to-gray-100 text-gray-900 shadow-lg border-r-2 border-primary h-full fixed left-0 top-0 transition-all duration-500 ease-in-out z-50 
+          className={`sidebar rounded-xl bg-gradient-to-br from-white to-gray-100 text-gray-900 shadow-lg border-r-2 border-primary h-full fixed left-0 top-0 transition-all duration-500 ease-in-out z-[90] 
             ${isHidden ? "hidden" : "block"} 
             ${isCollapsed ? "w-16" : "w-64"} ${isSmallScreen ? "hidden" : "sm:block"}`}
         >
