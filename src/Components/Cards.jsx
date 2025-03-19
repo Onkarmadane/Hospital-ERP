@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 const Cards = ({ title, description, linkText, linkUrl, Icon }) => {
   return (
-    <div className="flex-1 min-w-[300px] h-[250px] p-6 my-3 cursor-pointer  bg-white text-black rounded-xl border hover:scale-105 transition-transform duration-900 hover:shadow-xl  flex flex-col justify-between">
+    <div className="flex-1 min-w-[300px] h-[250px] p-6 my-3 cursor-pointer  bg-white text-black rounded-xl border lg:hover:scale-105 transition-transform duration-900 lg:hover:shadow-xl  flex flex-col justify-between">
       <div className="flex flex-col">
         {Icon && <Icon className="w-7 h-7 mb-3" />}
         {/* <NavLink to={linkUrl}> */}
@@ -16,7 +16,7 @@ const Cards = ({ title, description, linkText, linkUrl, Icon }) => {
         </p>
       </div>
       {linkText && (
-        <NavLink to={linkUrl} className="text-blue-600 hover:underline self-start">
+        <NavLink to={linkUrl} className="text-blue-600 lg:hover:underline self-start">
           {linkText}
         </NavLink>
       )}

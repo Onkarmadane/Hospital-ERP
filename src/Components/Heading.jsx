@@ -1,11 +1,13 @@
-import React from 'react'
+import React from 'react';
 
-function Heading({title,className}) {
+function Heading({ children, className }) {
   return (
-    <h1 className={`bg-gradient-to-r from-blue-800 to-[#77db8f] text-white p-4 rounded-t-lg ${className}`}>
-        {title}
-      </h1>
-  )
+    <h1
+      className={`lg:text-lg md:text-lg font-semibold text-center flex-1 sm:text-sm sm:text-center ${className}`}
+    >
+      {children}
+    </h1>
+  );
 }
 
-export default Heading
+export default Heading;

@@ -956,6 +956,7 @@ import { MdOutlineInventory } from "react-icons/md";
 import { CiBarcode } from "react-icons/ci";
 import Input from '../Components/FormFields/InputField';
 import inventoryStaticData from '../data.json'; // Adjust path as needed
+import Heading from '../Components/Heading';
 
 function Inventory() {
   const [activeTab, setActiveTab] = useState('medicine');
@@ -1158,42 +1159,43 @@ function Inventory() {
   );
 
   return (
-    <div className="grid grid-cols-1 gap-3 w-[95%] lg:ms-[70px] px-1 mx-auto">
+    <div className="grid grid-cols-1 gap-3 w-[95%] lg:ms-[70px] px-1 mx-auto ">
       {/* Header */}
-      <div className="sticky top-0 bg-white">
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6 border-b pb-3 px-2 sm:px-4 lg:px-6">
+
+      <div className="sticky top-0 bg-white z-[90]">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6 pb-3 ">
           <BackButton />
-          <h5 className="text-base sm:text-lg md:text-xl font-semibold">Inventory</h5>
+          <Heading>Inventory</Heading>
           {/* Single flex container for buttons and search */}
           <div className="flex flex-row items-center gap-2 sm:gap-3 md:gap-4 flex-wrap w-full sm:w-auto">
-            <Button
+            <button
               variant="primary"
-              className={`flex items-center outline-none border-none justify-center gap-2 sm:gap-2.5 md:gap-3 whitespace-nowrap text-sm sm:text-base md:text-lg px-3 py-1.5 sm:px-4 sm:py-2 rounded-md transition-colors ${activeTab === 'batch'
-                ? 'bg-secondary text-black text-green-900 lg:hover:bg-primary duration-300'
-                : 'text-gray-800 lg:hover:bg-gray-300 shadow-lg font-bold'
+              className={`px-4 py-2 text-sm font-medium flex items-center justify-center gap-2 transition-colors ${activeTab === 'medicine'
+                ? 'border-b-2 border-primary text-primary'
+                : 'text-gray-600 hover:text-gray-800'
                 }`}
               size="sm"
               onClick={() => setActiveTab('medicine')}
             >
               <MdOutlineInventory /> Medicine Stock
-            </Button>
-            <Button
+            </button>
+            <button
               variant="primary"
-              className={`flex items-center outline-none border-none justify-center gap-2 sm:gap-2.5 md:gap-3 whitespace-nowrap text-sm sm:text-base md:text-lg px-3 py-1.5 sm:px-4 sm:py-2 rounded-md transition-colors ${activeTab === 'medicine'
-                ? 'bg-secondary text-green-900 lg:hover:bg-primary  duration-300'
-                : 'text-gray-800 lg:hover:bg-gray-300 shadow-lg font-bold'
+              className={`px-4 py-2 text-sm font-medium flex items-center justify-center gap-2 transition-colors ${activeTab === 'batch'
+                ? 'border-b-2 border-primary text-primary'
+                : 'text-gray-600 hover:text-gray-800'
                 }`}
               size="sm"
               onClick={() => setActiveTab('batch')}
             >
-              <CiBarcode />Batch
-            </Button>
+              <CiBarcode /> Batch
+            </button>
             {/* Search bar */}
             <div className="flex items-center gap-2 flex-grow">
               <Input
                 type="search"
                 placeholder="Search By Name or Batch..."
-                className='w-full'
+                className='md:w-20 lg:w-full sm:w-20'
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
@@ -1204,14 +1206,14 @@ function Inventory() {
               onClick={() => setIsReceiveModalOpen(true)}
               className="bg-primary text-white"
             >
-              <MdOutlineAdd size={24} /> Receive Inventory
+              <MdOutlineAdd size={24} /> Receive
             </Button>
           </div>
         </div>
       </div>
 
       {/* Table Content based on Active Tab */}
-      <div className="overflow-x-auto px-2 flex-grow">
+      <div className="overflow-x-auto flex-grow">
         {activeTab === 'medicine' ? (
           <Table columns={medicineColumns} data={filteredInventory} className="min-w-full" />
         ) : (
@@ -1278,7 +1280,7 @@ function Inventory() {
                 key !== 'Action' && key !== 'id' && (
                   <div key={key}>
                     <label className="block font-medium">{key}</label>
-                    <input
+                    <Input
                       type={
                         key.includes('Date')
                           ? 'date'

@@ -10,6 +10,8 @@ import { MdOutlineClose } from "react-icons/md";
 import Modal from '../Components/Modal';
 import { FaList, FaTh } from "react-icons/fa"; // Icons for view toggle
 import Table from '../Components/Table'; // Adjust the import path as needed
+import Heading from '../Components/Heading';
+import Input from '../Components/FormFields/InputField';
 
 // Function to get initials from name
 const getInitials = (name) => {
@@ -176,10 +178,10 @@ const AllPatient = () => {
     <div className="grid grid-cols-1 gap-3 w-[95%] lg:ms-[70px] bg-white mx-auto max-w-7xl">
       <div>
         {/* Card Header */}
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between pb-4 border-b gap-4">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between pb-4  gap-4">
           <div className="flex items-center gap-4">
             <BackButton />
-            <h5 className="text-lg font-semibold">Patients List</h5>
+            <Heading>Patient List</Heading>
           </div>
           <div className="flex items-center gap-2 sm:gap-3 md:gap-4">
             <div className="flex flex-row items-center gap-2 sm:gap-3 md:gap-4">
@@ -228,10 +230,9 @@ const AllPatient = () => {
               <span className="text-sm">Records Per Page</span>
             </div>
             <div className="flex items-center gap-2">
-              <label className="text-sm">Search:</label>
-              <input
+              <Input
                 type="search"
-                className="border rounded p-1 text-sm w-full md:w-64 bg-white text-black"
+                className="md:w-20 lg:w-full sm:w-20 text-sm"
                 placeholder="Search patients..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}

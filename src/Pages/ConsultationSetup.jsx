@@ -17,6 +17,8 @@ import {
 import Modal from '../Components/Modal'; // Adjust the path to your Modal component
 import Swal from 'sweetalert2';
 import BackButton from '../Components/BackButton';
+import Input from '../Components/FormFields/InputField';
+import Heading from '../Components/Heading';
 
 // Define tabs
 const tabs = [
@@ -384,16 +386,33 @@ const SetupTable = () => {
   };
 
   return (
-    <div className="grid grid-cols-1 gap-3 w-[95%] lg:ms-[70px] px-2">
+    <div className="grid grid-cols-1 gap-3 w-[95%] lg:ms-[70px]">
       {/* Tabs */}
-      <div className="flex overflow-x-auto gap-2 border-b pb-2 mb-4">
+      <div className=" justify-between flex flex-row items-center gap-2 sm:gap-3 md:gap-4 flex-wrap w-full sm:w-auto">
         <BackButton />
+        <Heading>Consultation Setup</Heading>
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 ">
+          <div className="relative w-full bg-white sm:w-auto">
+            <Input
+              type="text"
+              placeholder="Search by Name"
+              className='md:w-20 lg:w-full sm:w-20'
+              value={searchTerm}
+              onChange={handleSearch}
+            />
+          </div>
+          <Button onClick={handleCreate} variant="primary" className='text-white'>
+            <MdOutlineAdd /> Create
+          </Button>
+        </div>
+      </div>
+      <div className="flex overflow-x-auto text-center gap-2 pb-2 mb-4">
         {tabs.map((tab) => (
-          <Button
+          <button
             key={tab}
-            className={`flex text-white items-center gap-2 px-3  py-1.5 text-black rounded transition-colors ${activeTab === tab
-              ? 'bg-primary text-white shadow-lg font-bold'
-              : ' bg-secondary text-green-900 lg:hover:bg-primary lg:hover:text-white'
+            className={`px-3 py-1.5 text-sm font-medium flex items-center gap-2 transition-colors ${activeTab === tab
+              ? 'border-b-2 border-primary text-primary'
+              : 'text-gray-600 hover:text-gray-800'
               }`}
             onClick={() => handleTabChange(tab)}
             title={tab}
@@ -406,28 +425,14 @@ const SetupTable = () => {
             {tab === 'Medicine Type' && <FaCapsules />}
             {tab === 'Advice and Direction' && <FaInfoCircle />}
             {tab}
-          </Button>
+          </button>
         ))}
       </div>
 
       {/* Content */}
       <div className="space-y-4">
         {/* Search and Create */}
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-          <Button onClick={handleCreate} variant="primary" className='text-white'>
-            <MdOutlineAdd /> Create
-          </Button>
-          <div className="relative w-full bg-white sm:w-auto">
-            <input
-              type="text"
-              placeholder="Search by Name"
-              className="w-full sm:w-64 py-2 px-4 rounde border bg-white border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary"
-              value={searchTerm}
-              onChange={handleSearch}
-            />
-            <FaSearch className="absolute top-1/2 right-3 transform -translate-y-1/2 text-gray-500" />
-          </div>
-        </div>
+
 
         {/* Table */}
         <Table columns={columns} data={displayedData} />
