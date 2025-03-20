@@ -365,7 +365,7 @@ const SetupTable = () => {
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!'
+      confirmButtonText: 'Yes, delete it!',
     }).then((result) => {
       if (result.isConfirmed) {
         setData(prevData => ({
@@ -392,7 +392,7 @@ const SetupTable = () => {
         <BackButton />
         <Heading>Consultation Setup</Heading>
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 ">
-          <div className="relative w-full bg-white sm:w-auto">
+          <div className="relative w-full bg-background sm:w-auto">
             <Input
               type="text"
               placeholder="Search by Name"
@@ -401,7 +401,7 @@ const SetupTable = () => {
               onChange={handleSearch}
             />
           </div>
-          <Button onClick={handleCreate} variant="primary" className='text-white'>
+          <Button onClick={handleCreate} variant="primary" className='text-text'>
             <MdOutlineAdd /> Create
           </Button>
         </div>
@@ -412,7 +412,7 @@ const SetupTable = () => {
             key={tab}
             className={`px-3 py-1.5 text-sm font-medium flex items-center gap-2 transition-colors ${activeTab === tab
               ? 'border-b-2 border-primary text-primary'
-              : 'text-gray-600 hover:text-gray-800'
+              : 'text-text duration-300 lg:hover:text-green-900'
               }`}
             onClick={() => handleTabChange(tab)}
             title={tab}
@@ -441,17 +441,17 @@ const SetupTable = () => {
         <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
           <div className="flex items-center gap-2">
             <button
-              className="p-1 bg-gray-200 rounded lg:hover:bg-gray-300 disabled:opacity-50 text-white"
+              className="p-1 bg-background rounded lg:hover:bg-gray-300 disabled:opacity-50 text-text"
               onClick={() => handlePageChange(currentPage - 1)}
               disabled={currentPage === 1}
             >
               <MdChevronLeft />
             </button>
-            <span className="text-gray-700">
+            <span className="text-text">
               Page {currentPage} of {totalPages}
             </span>
             <button
-              className="p-1 bg-gray-200 rounded lg:hover:bg-gray-300 disabled:opacity-50 text-white"
+              className="p-1 bg-background rounded lg:hover:bg-gray-300 disabled:opacity-50 text-text"
               onClick={() => handlePageChange(currentPage + 1)}
               disabled={currentPage === totalPages}
             >
@@ -459,12 +459,12 @@ const SetupTable = () => {
             </button>
           </div>
           <div className="flex items-center gap-2">
-            <label htmlFor="itemsPerPage" className=" text-gray-700">
+            <label htmlFor="itemsPerPage" className=" text-text">
               Items per page:
             </label>
             <select
               id="itemsPerPage"
-              className="py-1 px-2 border bg-white border-gray-300 rounde focus:outline-none focus:ring-2 focus:ring-primary"
+              className="border-primary  focus:border-primary focus:ring-2 focus:ring-primary bg-background text-text"
               value={itemsPerPage}
               onChange={handleItemsPerPageChange}
             >
@@ -489,60 +489,60 @@ const SetupTable = () => {
           {activeTab === 'Vitals' ? (
             <>
               <div>
-                <label className="block  font-medium text-gray-700">Label</label>
+                <label className="block  font-medium text-text">Label</label>
                 <input
                   type="text"
                   name="label"
                   value={formData.label}
                   onChange={handleInputChange}
-                  className=" w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
+                  className=" w-full p-3 border border-primary rounded-lg bg-background focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
                   placeholder="Enter label"
                   required
                 />
               </div>
               <div>
-                <label className="block  font-medium text-gray-700">Fields</label>
+                <label className="block  font-medium text-text">Fields</label>
                 <input
                   type="number"
                   name="fields"
                   value={formData.fields}
                   onChange={handleInputChange}
-                  className=" w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
+                  className=" w-full p-3 border border-primary rounded-lg bg-background focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
                   placeholder="Enter number of fields"
                   min="1"
                   required
                 />
               </div>
               <div>
-                <label className="block  font-medium text-gray-700">Max Length</label>
+                <label className="block  font-medium text-text">Max Length</label>
                 <input
                   type="number"
                   name="maxLength"
                   value={formData.maxLength}
                   onChange={handleInputChange}
-                  className=" w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
+                  className=" w-full p-3 border border-primary rounded-lg bg-background focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
                   placeholder="Enter max length"
                 />
               </div>
               <div>
-                <label className="block  font-medium text-gray-700">Unit</label>
+                <label className="block  font-medium text-text">Unit</label>
                 <input
                   type="text"
                   name="unit"
                   value={formData.unit}
                   onChange={handleInputChange}
-                  className=" w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
+                  className=" w-full p-3 border border-primary rounded-lg bg-background focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
                   placeholder="Enter unit (e.g., %, mmHg)"
                 />
               </div>
               <div>
-                <label className="block  font-medium text-gray-700">Separator</label>
+                <label className="block  font-medium text-text">Separator</label>
                 <input
                   type="text"
                   name="separator"
                   value={formData.separator}
                   onChange={handleInputChange}
-                  className=" w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
+                  className=" w-full p-3 border border-primary rounded-lg bg-background focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
                   placeholder="Enter separator (e.g., /)"
                 />
               </div>
@@ -550,24 +550,24 @@ const SetupTable = () => {
           ) : activeTab === 'Advice and Direction' ? (
             <>
               <div>
-                <label className="block  font-medium text-gray-700">Name</label>
+                <label className="block  font-medium text-text">Name</label>
                 <input
                   type="text"
                   name="name"
                   value={formData.name}
                   onChange={handleInputChange}
-                  className=" w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
+                  className=" w-full p-3 border border-primary rounded-lg bg-background focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
                   placeholder="Enter name"
                   required
                 />
               </div>
               <div>
-                <label className="block font-medium text-gray-700">Description</label>
+                <label className="block font-medium text-text">Description</label>
                 <textarea
                   name="description"
                   value={formData.description}
                   onChange={handleInputChange}
-                  className=" w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
+                  className=" w-full p-3 border border-primary rounded-lg bg-background focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
                   placeholder="Enter description"
                   required
                 />
@@ -575,13 +575,13 @@ const SetupTable = () => {
             </>
           ) : (
             <div>
-              <label className="block  font-medium text-gray-700">Name</label>
+              <label className="block  font-medium text-text">Name</label>
               <input
                 type="text"
                 name="name"
                 value={formData.name}
                 onChange={handleInputChange}
-                className=" w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
+                className=" w-full p-3 border border-primary rounded-lg bg-background focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
                 placeholder={`Enter ${activeTab.toLowerCase()} name`}
                 required
               />
@@ -592,7 +592,7 @@ const SetupTable = () => {
         <Button
           variant="danger"
           onClick={() => handleDelete(editingItem.id)}
-          className="bg-red-500 text-white lg:hover:bg-red-600"
+          className="bg-red-500 text-text lg:hover:bg-red-600"
         >
           <RiDeleteBinLine className="inline mr-1" /> Delete
         </Button>
@@ -600,7 +600,7 @@ const SetupTable = () => {
             <Button
               variant="secondary"
               onClick={() => setIsModalOpen(false)}
-              className="bg-gray-200 text-gray-800 lg:hover:bg-gray-300"
+              className="bg-background text-text lg:hover:bg-gray-300"
             >
               <RiCloseLine className="inline" /> Cancel
             </Button>

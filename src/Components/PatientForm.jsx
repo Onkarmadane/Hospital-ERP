@@ -15,27 +15,27 @@ function HeaderSection({ formData, setFormData }) {
                 placeholder="Patient Name"
                 value={formData.patientName}
                 onChange={(e) => setFormData({ ...formData, patientName: e.target.value })}
-                className="p-2 border rounded bg-white"
+                className="p-2 border rounded bg-background"
             />
             <input
                 type="text"
                 placeholder="UHID No."
                 value={formData.uhidNo}
                 onChange={(e) => setFormData({ ...formData, uhidNo: e.target.value })}
-                className="p-2 border rounded bg-white"
+                className="p-2 border rounded bg-background"
             />
             <input
                 type="datetime-local"
                 value={formData.dateTime}
                 onChange={(e) => setFormData({ ...formData, dateTime: e.target.value })}
-                className="p-2 border rounded bg-white"
+                className="p-2 border rounded bg-background"
             />
             <input
                 type="text"
                 placeholder="Place"
                 value={formData.place}
                 onChange={(e) => setFormData({ ...formData, place: e.target.value })}
-                className="p-2 border rounded bg-white"
+                className="p-2 border rounded bg-background"
             />
             <div className="flex space-x-2">
                 <input
@@ -43,12 +43,12 @@ function HeaderSection({ formData, setFormData }) {
                     placeholder="Age"
                     value={formData.age}
                     onChange={(e) => setFormData({ ...formData, age: e.target.value })}
-                    className="p-2 border rounded bg-white w-1/2"
+                    className="p-2 border rounded bg-background w-1/2"
                 />
                 <select
                     value={formData.gender}
                     onChange={(e) => setFormData({ ...formData, gender: e.target.value })}
-                    className="p-2 border rounded bg-white w-1/2"
+                    className="p-2 border rounded bg-background w-1/2"
                 >
                     <option value="">Gender</option>
                     <option value="Male">Male</option>
@@ -61,12 +61,12 @@ function HeaderSection({ formData, setFormData }) {
                 placeholder="Occupation"
                 value={formData.occupation}
                 onChange={(e) => setFormData({ ...formData, occupation: e.target.value })}
-                className="p-2 border rounded bg-white"
+                className="p-2 border rounded bg-background"
             />
             <select
                 value={formData.maritalStatus}
                 onChange={(e) => setFormData({ ...formData, maritalStatus: e.target.value })}
-                className="p-2 border rounded bg-white"
+                className="p-2 border rounded bg-background"
             >
                 <option value="">Marital Status</option>
                 <option value="Single">Single</option>
@@ -79,14 +79,14 @@ function HeaderSection({ formData, setFormData }) {
                 placeholder="Diagnosis"
                 value={formData.diagnosis}
                 onChange={(e) => setFormData({ ...formData, diagnosis: e.target.value })}
-                className="p-2 border rounded bg-white"
+                className="p-2 border rounded bg-background"
             />
             <input
                 type="text"
                 placeholder="Reference"
                 value={formData.reference}
                 onChange={(e) => setFormData({ ...formData, reference: e.target.value })}
-                className="p-2 border rounded bg-white"
+                className="p-2 border rounded bg-background"
             />
         </div>
     );
@@ -118,12 +118,12 @@ function ChiefComplaintsSection({ formData, setFormData }) {
                         placeholder="Complaint"
                         value={complaint.complaint}
                         onChange={(e) => updateComplaint(index, 'complaint', e.target.value)}
-                        className="p-2 border rounded bg-white flex-1"
+                        className="p-2 border rounded bg-background flex-1"
                     />
                     <select
                         value={complaint.severity}
                         onChange={(e) => updateComplaint(index, 'severity', e.target.value)}
-                        className="p-2 border rounded bg-white"
+                        className="p-2 border rounded bg-background"
                     >
                         <option value="">Severity</option>
                         <option value="Mild">Mild</option>
@@ -135,7 +135,7 @@ function ChiefComplaintsSection({ formData, setFormData }) {
                         placeholder="Duration"
                         value={complaint.duration}
                         onChange={(e) => updateComplaint(index, 'duration', e.target.value)}
-                        className="p-2 border rounded bg-white w-1/4"
+                        className="p-2 border rounded bg-background w-1/4"
                     />
                 </div>
             ))}
@@ -146,13 +146,13 @@ function ChiefComplaintsSection({ formData, setFormData }) {
                 placeholder="Associated Complaints"
                 value={formData.associatedComplaints}
                 onChange={(e) => setFormData({ ...formData, associatedComplaints: e.target.value })}
-                className="p-2 border rounded bg-white w-full mb-4"
+                className="p-2 border rounded bg-background w-full mb-4"
             />
             <textarea
                 placeholder="Aggravating Factors"
                 value={formData.aggravatingFactors}
                 onChange={(e) => setFormData({ ...formData, aggravatingFactors: e.target.value })}
-                className="p-2 border rounded bg-white w-full"
+                className="p-2 border rounded bg-background w-full"
             />
         </div>
     );
@@ -165,12 +165,12 @@ function MedicalHistorySection({ formData, setFormData }) {
     return (
         <div>
             <h3 className="text-lg font-semibold mb-2">Medical History</h3>
-            <div className='flex bg-white'>
+            <div className='flex bg-background'>
                 {conditions.map((condition) => (
-                    <div key={condition} className="flex items-center bg-white mb-2">
+                    <div key={condition} className="flex items-center bg-background mb-2">
                         <input
                             type="checkbox"
-                            className='bg-white text-white'
+                            className='bg-background text-white'
                             checked={formData.medicalHistory[condition.toLowerCase()].hasCondition}
                             onChange={(e) =>
                                 setFormData({
@@ -202,7 +202,7 @@ function MedicalHistorySection({ formData, setFormData }) {
                                     },
                                 })
                             }
-                            className="p-2 border rounded bg-white w-1/2"
+                            className="p-2 border rounded bg-background w-1/2"
                         />
                     </div>
                 ))}
@@ -220,7 +220,7 @@ function MedicalHistorySection({ formData, setFormData }) {
                                 familyHistory: { ...formData.familyHistory, mother: e.target.value },
                             })
                         }
-                        className="p-2 border rounded bg-white flex-1"
+                        className="p-2 border rounded bg-background flex-1"
                     />
                     <input
                         type="text"
@@ -232,7 +232,7 @@ function MedicalHistorySection({ formData, setFormData }) {
                                 familyHistory: { ...formData.familyHistory, father: e.target.value },
                             })
                         }
-                        className="p-2 border rounded bg-white flex-1"
+                        className="p-2 border rounded bg-background flex-1"
                     />
                 </div>
             </div>
@@ -240,25 +240,25 @@ function MedicalHistorySection({ formData, setFormData }) {
                 placeholder="Current Medication"
                 value={formData.currentMedication}
                 onChange={(e) => setFormData({ ...formData, currentMedication: e.target.value })}
-                className="p-2 border rounded bg-white w-full mt-4"
+                className="p-2 border rounded bg-background w-full mt-4"
             />
             <textarea
                 placeholder="History of Allergy"
                 value={formData.allergyHistory}
                 onChange={(e) => setFormData({ ...formData, allergyHistory: e.target.value })}
-                className="p-2 border rounded bg-white w-full mt-4"
+                className="p-2 border rounded bg-background w-full mt-4"
             />
             <textarea
                 placeholder="Past History"
                 value={formData.pastHistory}
                 onChange={(e) => setFormData({ ...formData, pastHistory: e.target.value })}
-                className="p-2 border rounded bg-white w-full mt-4"
+                className="p-2 border rounded bg-background w-full mt-4"
             />
             <textarea
                 placeholder="Surgical History"
                 value={formData.surgicalHistory}
                 onChange={(e) => setFormData({ ...formData, surgicalHistory: e.target.value })}
-                className="p-2 border rounded bg-white w-full mt-4"
+                className="p-2 border rounded bg-background w-full mt-4"
             />
         </div>
     );
@@ -278,7 +278,7 @@ function NadiParikshanSection({ formData, setFormData }) {
                             nadiParikshan: { ...formData.nadiParikshan, vata: e.target.value },
                         })
                     }
-                    className="p-2 border rounded bg-white"
+                    className="p-2 border rounded bg-background"
                 >
                     <option value="">Vata</option>
                     <option value="Normal">Normal</option>
@@ -293,7 +293,7 @@ function NadiParikshanSection({ formData, setFormData }) {
                             nadiParikshan: { ...formData.nadiParikshan, pitta: e.target.value },
                         })
                     }
-                    className="p-2 border rounded bg-white"
+                    className="p-2 border rounded bg-background"
                 >
                     <option value="">Pitta</option>
                     <option value="Normal">Normal</option>
@@ -308,7 +308,7 @@ function NadiParikshanSection({ formData, setFormData }) {
                             nadiParikshan: { ...formData.nadiParikshan, kapha: e.target.value },
                         })
                     }
-                    className="p-2 border rounded bg-white"
+                    className="p-2 border rounded bg-background"
                 >
                     <option value="">Kapha</option>
                     <option value="Normal">Normal</option>
@@ -320,7 +320,7 @@ function NadiParikshanSection({ formData, setFormData }) {
             <select
                 value={formData.agni}
                 onChange={(e) => setFormData({ ...formData, agni: e.target.value })}
-                className="p-2 border rounded bg-white w-full mb-4"
+                className="p-2 border rounded bg-background w-full mb-4"
             >
                 <option value="">Agni</option>
                 <option value="Good">Good</option>
@@ -331,19 +331,19 @@ function NadiParikshanSection({ formData, setFormData }) {
                 placeholder="Mala Pravrutti (e.g., Irregular, Unsatisfied)"
                 value={formData.malaPravrutti}
                 onChange={(e) => setFormData({ ...formData, malaPravrutti: e.target.value })}
-                className="p-2 border rounded bg-white w-full mb-4"
+                className="p-2 border rounded bg-background w-full mb-4"
             />
             <textarea
                 placeholder="Mutra (e.g., Itching present)"
                 value={formData.mutra}
                 onChange={(e) => setFormData({ ...formData, mutra: e.target.value })}
-                className="p-2 border rounded bg-white w-full mb-4"
+                className="p-2 border rounded bg-background w-full mb-4"
             />
             <textarea
                 placeholder="Nindra (e.g., Early sleep 2-3 AM)"
                 value={formData.nindra}
                 onChange={(e) => setFormData({ ...formData, nindra: e.target.value })}
-                className="p-2 border rounded bg-white w-full mb-4"
+                className="p-2 border rounded bg-background w-full mb-4"
             />
             <input
                 type="number"
@@ -352,7 +352,7 @@ function NadiParikshanSection({ formData, setFormData }) {
                 onChange={(e) => setFormData({ ...formData, painAssessment: e.target.value })}
                 min="0"
                 max="10"
-                className="p-2 border rounded bg-white w-full mb-4"
+                className="p-2 border rounded bg-background w-full mb-4"
             />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <input
@@ -365,7 +365,7 @@ function NadiParikshanSection({ formData, setFormData }) {
                             vitalSigns: { ...formData.vitalSigns, bp: e.target.value },
                         })
                     }
-                    className="p-2 border rounded bg-white"
+                    className="p-2 border rounded bg-background"
                 />
                 <input
                     type="text"
@@ -377,7 +377,7 @@ function NadiParikshanSection({ formData, setFormData }) {
                             vitalSigns: { ...formData.vitalSigns, pulse: e.target.value },
                         })
                     }
-                    className="p-2 border rounded bg-white"
+                    className="p-2 border rounded bg-background"
                 />
             </div>
         </div>
@@ -399,7 +399,7 @@ function MenstrualHistorySection({ formData, setFormData }) {
                         menstrualHistory: { ...formData.menstrualHistory, lmp: e.target.value },
                     })
                 }
-                className="p-2 border rounded bg-white w-full mb-4"
+                className="p-2 border rounded bg-background w-full mb-4"
             />
             <select
                 value={formData.menstrualHistory.cycle}
@@ -409,7 +409,7 @@ function MenstrualHistorySection({ formData, setFormData }) {
                         menstrualHistory: { ...formData.menstrualHistory, cycle: e.target.value },
                     })
                 }
-                className="p-2 border rounded bg-white w-full mb-4"
+                className="p-2 border rounded bg-background w-full mb-4"
             >
                 <option value="">Cycle</option>
                 <option value="Regular">Regular</option>
@@ -425,7 +425,7 @@ function MenstrualHistorySection({ formData, setFormData }) {
                         menstrualHistory: { ...formData.menstrualHistory, menarche: e.target.value },
                     })
                 }
-                className="p-2 border rounded bg-white w-full mb-4"
+                className="p-2 border rounded bg-background w-full mb-4"
             />
             <input
                 type="number"
@@ -437,7 +437,7 @@ function MenstrualHistorySection({ formData, setFormData }) {
                         menstrualHistory: { ...formData.menstrualHistory, menopause: e.target.value },
                     })
                 }
-                className="p-2 border rounded bg-white w-full mb-4"
+                className="p-2 border rounded bg-background w-full mb-4"
             />
             <div className="grid grid-cols-2 gap-4">
                 <input
@@ -450,7 +450,7 @@ function MenstrualHistorySection({ formData, setFormData }) {
                             obstetricalHistory: { ...formData.obstetricalHistory, gravida: e.target.value },
                         })
                     }
-                    className="p-2 border rounded bg-white"
+                    className="p-2 border rounded bg-background"
                 />
                 <input
                     type="number"
@@ -462,7 +462,7 @@ function MenstrualHistorySection({ formData, setFormData }) {
                             obstetricalHistory: { ...formData.obstetricalHistory, para: e.target.value },
                         })
                     }
-                    className="p-2 border rounded bg-white"
+                    className="p-2 border rounded bg-background"
                 />
                 <input
                     type="number"
@@ -474,7 +474,7 @@ function MenstrualHistorySection({ formData, setFormData }) {
                             obstetricalHistory: { ...formData.obstetricalHistory, abortions: e.target.value },
                         })
                     }
-                    className="p-2 border rounded bg-white"
+                    className="p-2 border rounded bg-background"
                 />
                 <input
                     type="number"
@@ -486,26 +486,26 @@ function MenstrualHistorySection({ formData, setFormData }) {
                             obstetricalHistory: { ...formData.obstetricalHistory, living: e.target.value },
                         })
                     }
-                    className="p-2 border rounded bg-white"
+                    className="p-2 border rounded bg-background"
                 />
             </div>
             <textarea
                 placeholder="Local/Specific Examination"
                 value={formData.localExamination}
                 onChange={(e) => setFormData({ ...formData, localExamination: e.target.value })}
-                className="p-2 border rounded bg-white w-full mt-4"
+                className="p-2 border rounded bg-background w-full mt-4"
             />
             <textarea
                 placeholder="General/Systemic Examination"
                 value={formData.generalExamination}
                 onChange={(e) => setFormData({ ...formData, generalExamination: e.target.value })}
-                className="p-2 border rounded bg-white w-full mt-4"
+                className="p-2 border rounded bg-background w-full mt-4"
             />
             <textarea
                 placeholder="Advise"
                 value={formData.advise}
                 onChange={(e) => setFormData({ ...formData, advise: e.target.value })}
-                className="p-2 border rounded bg-white w-full mt-4"
+                className="p-2 border rounded bg-background w-full mt-4"
             />
         </div>
     );
@@ -664,7 +664,7 @@ function PatientForm() {
     const conditions = ['HTN', 'DM', 'IHD', 'Cholesterol', 'Thyroid', 'Others'];
 
     return (
-        <div className="w-[95%] lg:ms-[70px] bg-white mx-auto p-4">
+        <div className="w-[95%] lg:ms-[70px] bg-background mx-auto p-4">
             {/* Form Progress Indicator */}
             <div className="mb-4">
                 <div className="text-lg font-semibold">Step {step} of {totalSteps}</div>

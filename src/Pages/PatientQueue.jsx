@@ -10,6 +10,7 @@ import { RiEditBoxLine, RiEyeLine, RiDeleteBinLine } from 'react-icons/ri';
 import { IoMdPersonAdd } from 'react-icons/io';
 import { MdOutlineClose } from 'react-icons/md';
 import { BiSave } from 'react-icons/bi';
+import useConfirmDialog from '../Context/useConfirmDialog';
 
 const getInitials = (name) => {
   const nameParts = name.trim().split(' ');
@@ -23,24 +24,25 @@ function PatientQueue() {
   const [searchTerm, setSearchTerm] = useState('');
   const [recordsPerPage, setRecordsPerPage] = useState(12);
   const [viewMode, setViewMode] = useState('list');
+  const showConfirmDialog = useConfirmDialog();
   const [patientsList, setPatientsList] = useState([
-      { id: '#80762', name: 'Wendi Combs', gender: 'Female', age: 28, blood: 'AB+', treatment: 'Cyclospora', mobile: '0987654321', email: 'test@testing.com', address: '360 Branden Knoll' },
-      { id: '#82348', name: 'Reba Fisher', gender: 'Female', age: 59, blood: 'A+', treatment: 'Alphaviruses', mobile: '0987654321', email: 'test@testing.com', address: '806 Je Alley, Robelfurt' },
-      { id: '#82348', name: 'Reba Fisher', gender: 'Female', age: 59, blood: 'A+', treatment: 'Alphaviruses', mobile: '0987654321', email: 'test@testing.com', address: '806 Je Alley, Robelfurt' },
-      { id: '#82348', name: 'Reba Fisher', gender: 'Female', age: 59, blood: 'A+', treatment: 'Alphaviruses', mobile: '0987654321', email: 'test@testing.com', address: '806 Je Alley, Robelfurt' },
-      { id: '#82894', name: 'Nick Morrow', gender: 'Male', age: 69, blood: 'A+', treatment: 'Thyroid', mobile: '0987654321', email: 'test@testing.com', address: '835 Lorena Stream' },
-      { id: '#80762', name: 'Wendi Combs', gender: 'Female', age: 28, blood: 'AB+', treatment: 'Cyclospora', mobile: '0987654321', email: 'test@testing.com', address: '360 Branden Knoll' },
-      { id: '#82348', name: 'Reba Fisher', gender: 'Female', age: 59, blood: 'A+', treatment: 'Alphaviruses', mobile: '0987654321', email: 'test@testing.com', address: '806 Je Alley, Robelfurt' },
-      { id: '#82348', name: 'Reba Fisher', gender: 'Female', age: 59, blood: 'A+', treatment: 'Alphaviruses', mobile: '0987654321', email: 'test@testing.com', address: '806 Je Alley, Robelfurt' },
-      { id: '#82348', name: 'Reba Fisher', gender: 'Female', age: 59, blood: 'A+', treatment: 'Alphaviruses', mobile: '0987654321', email: 'test@testing.com', address: '806 Je Alley, Robelfurt' },
-      { id: '#82894', name: 'Nick Morrow', gender: 'Male', age: 69, blood: 'A+', treatment: 'Thyroid', mobile: '0987654321', email: 'test@testing.com', address: '835 Lorena Stream' },
-      { id: '#80762', name: 'Wendi Combs', gender: 'Female', age: 28, blood: 'AB+', treatment: 'Cyclospora', mobile: '0987654321', email: 'test@testing.com', address: '360 Branden Knoll' },
-      { id: '#82348', name: 'Reba Fisher', gender: 'Female', age: 59, blood: 'A+', treatment: 'Alphaviruses', mobile: '0987654321', email: 'test@testing.com', address: '806 Je Alley, Robelfurt' },
-      { id: '#82348', name: 'Reba Fisher', gender: 'Female', age: 59, blood: 'A+', treatment: 'Alphaviruses', mobile: '0987654321', email: 'test@testing.com', address: '806 Je Alley, Robelfurt' },
-      { id: '#82348', name: 'Reba Fisher', gender: 'Female', age: 59, blood: 'A+', treatment: 'Alphaviruses', mobile: '0987654321', email: 'test@testing.com', address: '806 Je Alley, Robelfurt' },
-      { id: '#82894', name: 'Nick Morrow', gender: 'Male', age: 69, blood: 'A+', treatment: 'Thyroid', mobile: '0987654321', email: 'test@testing.com', address: '835 Lorena Stream' },
-    ]);
-  
+    { id: '#80762', name: 'Wendi Combs', gender: 'Female', age: 28, blood: 'AB+', treatment: 'Cyclospora', mobile: '0987654321', email: 'test@testing.com', address: '360 Branden Knoll' },
+    { id: '#82348', name: 'Reba Fisher', gender: 'Female', age: 59, blood: 'A+', treatment: 'Alphaviruses', mobile: '0987654321', email: 'test@testing.com', address: '806 Je Alley, Robelfurt' },
+    { id: '#82348', name: 'Reba Fisher', gender: 'Female', age: 59, blood: 'A+', treatment: 'Alphaviruses', mobile: '0987654321', email: 'test@testing.com', address: '806 Je Alley, Robelfurt' },
+    { id: '#82348', name: 'Reba Fisher', gender: 'Female', age: 59, blood: 'A+', treatment: 'Alphaviruses', mobile: '0987654321', email: 'test@testing.com', address: '806 Je Alley, Robelfurt' },
+    { id: '#82894', name: 'Nick Morrow', gender: 'Male', age: 69, blood: 'A+', treatment: 'Thyroid', mobile: '0987654321', email: 'test@testing.com', address: '835 Lorena Stream' },
+    { id: '#80762', name: 'Wendi Combs', gender: 'Female', age: 28, blood: 'AB+', treatment: 'Cyclospora', mobile: '0987654321', email: 'test@testing.com', address: '360 Branden Knoll' },
+    { id: '#82348', name: 'Reba Fisher', gender: 'Female', age: 59, blood: 'A+', treatment: 'Alphaviruses', mobile: '0987654321', email: 'test@testing.com', address: '806 Je Alley, Robelfurt' },
+    { id: '#82348', name: 'Reba Fisher', gender: 'Female', age: 59, blood: 'A+', treatment: 'Alphaviruses', mobile: '0987654321', email: 'test@testing.com', address: '806 Je Alley, Robelfurt' },
+    { id: '#82348', name: 'Reba Fisher', gender: 'Female', age: 59, blood: 'A+', treatment: 'Alphaviruses', mobile: '0987654321', email: 'test@testing.com', address: '806 Je Alley, Robelfurt' },
+    { id: '#82894', name: 'Nick Morrow', gender: 'Male', age: 69, blood: 'A+', treatment: 'Thyroid', mobile: '0987654321', email: 'test@testing.com', address: '835 Lorena Stream' },
+    { id: '#80762', name: 'Wendi Combs', gender: 'Female', age: 28, blood: 'AB+', treatment: 'Cyclospora', mobile: '0987654321', email: 'test@testing.com', address: '360 Branden Knoll' },
+    { id: '#82348', name: 'Reba Fisher', gender: 'Female', age: 59, blood: 'A+', treatment: 'Alphaviruses', mobile: '0987654321', email: 'test@testing.com', address: '806 Je Alley, Robelfurt' },
+    { id: '#82348', name: 'Reba Fisher', gender: 'Female', age: 59, blood: 'A+', treatment: 'Alphaviruses', mobile: '0987654321', email: 'test@testing.com', address: '806 Je Alley, Robelfurt' },
+    { id: '#82348', name: 'Reba Fisher', gender: 'Female', age: 59, blood: 'A+', treatment: 'Alphaviruses', mobile: '0987654321', email: 'test@testing.com', address: '806 Je Alley, Robelfurt' },
+    { id: '#82894', name: 'Nick Morrow', gender: 'Male', age: 69, blood: 'A+', treatment: 'Thyroid', mobile: '0987654321', email: 'test@testing.com', address: '835 Lorena Stream' },
+  ]);
+
   const [selectedPatient, setSelectedPatient] = useState(null);
   const [isViewModalOpen, setIsViewModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
@@ -48,27 +50,31 @@ function PatientQueue() {
 
   const navigate = useNavigate();
 
-//   useEffect(() => {
-//     fetch('../data.json')
-//       .then((response) => response.json())
-//       .then((data) => setPatientsList(data.patientQueue))
-//       .catch((error) => console.error('Error fetching data:', error));
-//   }, []);
+  //   useEffect(() => {
+  //     fetch('../data.json')
+  //       .then((response) => response.json())
+  //       .then((data) => setPatientsList(data.patientQueue))
+  //       .catch((error) => console.error('Error fetching data:', error));
+  //   }, []);
 
   const handleBookAppoinmentClick = () => {
     navigate('/doctor/Appointment/bookappointmentform');
   };
 
   const handleDelete = (patientId) => {
-    Swal.fire({
+    showConfirmDialog({
       title: 'Are you sure?',
-      text: 'This action will permanently delete the patient. You won’t be able to undo this!',
+      text: "You won't be able to revert this!",
       icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#d33',
-      cancelButtonColor: '#3085d6',
       confirmButtonText: 'Yes, delete it!',
-      cancelButtonText: 'Cancel',
+      onConfirm: () => {
+        // Delete logic
+        console.log('Item deleted');
+        Swal.fire('Deleted!', 'Your item has been deleted.', 'success');
+      },
+      onCancel: () => {
+        console.log('Delete canceled');
+      },
     }).then((result) => {
       if (result.isConfirmed) {
         const updatedPatients = patientsList.filter((patient) => patient.id !== patientId);
@@ -136,11 +142,10 @@ function PatientQueue() {
       accessor: 'gender',
       Cell: ({ row }) => (
         <span
-          className={`px-2 py-1 rounded text-xs ${
-            row.original.gender === 'Female'
-              ? 'bg-yellow-100 text-yellow-800'
-              : 'bg-blue-100 text-blue-800'
-          }`}
+          className={`px-2 py-1 rounded text-xs ${row.original.gender === 'Female'
+            ? 'bg-yellow-100 text-yellow-800'
+            : 'bg-blue-100 text-blue-800'
+            }`}
         >
           {row.original.gender}
         </span>
@@ -184,20 +189,20 @@ function PatientQueue() {
   ];
 
   return (
-    <div className="p-4">
+    <div>
       {/* Controls */}
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between pb-4 border-b gap-4">
         <div className="flex items-center gap-2">
           <Input
             type="search"
-            className="border rounded p-1 text-sm w-full md:w-64 bg-white text-black"
+            className="sm:w-[10px] md:w-[190px] lg:w-full"
             placeholder="Search patients..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
-          <div className="flex items-center gap-2">
+          <div className="flex items-center text-text gap-2">
             <select
-              className="border-primary focus:border-primary focus:ring-2 focus:ring-primary bg-white h-9 px-3 border rounded-lg focus:outline-none transition-all duration-500"
+              className="border-primary focus:border-primary focus:ring-2 focus:ring-primary bg-background h-9  border rounded-lg focus:outline-none transition-all duration-500 text-sm"
               value={recordsPerPage}
               onChange={(e) => setRecordsPerPage(Number(e.target.value))}
             >
@@ -205,17 +210,16 @@ function PatientQueue() {
               <option value="25">25</option>
               <option value="50">50</option>
             </select>
-            <span className="text-sm">Records Per Page</span>
+            <span className="text-sm">Records / Page</span>
           </div>
         </div>
         <div className="flex items-end gap-2 sm:gap-3 md:gap-4">
           <Button
             variant="primary"
-            className={`text-white flex items-center outline-none border-none justify-center gap-2 sm:gap-2.5 md:gap-3 whitespace-nowrap text-sm sm:text-base md:text-lg px-3 py-1.5 sm:px-4 sm:py-2 rounded-md transition-colors ${
-              viewMode === 'list'
-                ? 'bg-primary text-white shadow-lg'
-                : 'text-gray-800 bg-secondary lg:hover:bg-primary duration-300'
-            }`}
+            className={`text-white flex items-center outline-none border-none justify-center gap-2 sm:gap-2.5 md:gap-3 whitespace-nowrap text-sm sm:text-base md:text-lg px-3 py-1.5 sm:px-4 sm:py-2 rounded-md transition-colors ${viewMode === 'list'
+              ? 'bg-primary text-white shadow-lg'
+              : 'text-white bg-secondary lg:hover:bg-primary duration-300'
+              }`}
             size="sm"
             onClick={() => setViewMode('list')}
             title="List View"
@@ -224,11 +228,10 @@ function PatientQueue() {
           </Button>
           <Button
             variant="primary"
-            className={`text-white flex items-center outline-none border-none justify-center gap-2 sm:gap-2.5 md:gap-3 whitespace-nowrap text-sm sm:text-base md:text-lg px-3 py-1.5 sm:px-4 sm:py-2 rounded-md transition-colors ${
-              viewMode === 'card'
-                ? 'bg-primary text-white shadow-lg'
-                : 'text-gray-800 bg-secondary lg:hover:bg-primary duration-300'
-            }`}
+            className={`text-white flex items-center outline-none border-none justify-center gap-2 sm:gap-2.5 md:gap-3 whitespace-nowrap text-sm sm:text-base md:text-lg px-3 py-1.5 sm:px-4 sm:py-2 rounded-md transition-colors ${viewMode === 'card'
+              ? 'bg-primary text-white shadow-lg'
+              : 'text-white bg-secondary lg:hover:bg-primary duration-300'
+              }`}
             size="sm"
             onClick={() => setViewMode('card')}
             title="Card View"
@@ -250,20 +253,20 @@ function PatientQueue() {
       {viewMode === 'list' ? (
         <Table columns={columns} data={filteredPatients.slice(0, recordsPerPage)} />
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mx-auto mt-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mx-auto mt-4 ">
           {filteredPatients.slice(0, recordsPerPage).map((patient) => (
             <div
               key={patient.id}
-              className="bg-white rounded-lg shadow p-4 flex gap-2 border"
+              className="bg-background rounded-lg shadow p-4 flex gap-2 border"
             >
               <div className="flex items-center gap-3 flex-1">
                 <div className="w-12 h-12 rounded-full bg-blue-500 text-white flex items-center justify-center shadow">
                   {getInitials(patient.name)}
                 </div>
                 <div>
-                  <h6 className="font-semibold">{patient.name}</h6>
-                  <p className="text-sm text-gray-600">{patient.mobile}</p>
-                  <p className="text-sm">{patient.age}</p>
+                  <h6 className="font-semibold text-text">{patient.name}</h6>
+                  <p className="text-sm text-text">{patient.mobile}</p>
+                  <p className="text-sm text-text">{patient.age}</p>
                 </div>
               </div>
               <div className="flex flex-col gap-1">
@@ -301,7 +304,7 @@ function PatientQueue() {
           <button className="px-3 py-1 border rounded text-gray-500 cursor-not-allowed">
             Previous
           </button>
-          <button className="px-3 py-1 border rounded bg-primary text-white">1</button>
+          <button className="px-3 py-1 border rounded bg-primary text-text">1</button>
           <button className="px-3 py-1 border rounded text-gray-500 cursor-not-allowed">
             Next
           </button>
@@ -373,7 +376,7 @@ function PatientQueue() {
               type="submit"
               form="edit-form"
               size="sm"
-              className="px-3 sm:px-4 py-1 sm:py-2 bg-primary text-white rounded lg:hover:bg-primary-dark text-sm sm:text-base"
+              className="px-3 sm:px-4 py-1 sm:py-2 bg-primary text-text rounded lg:hover:bg-primary-dark text-sm sm:text-base"
             >
               <BiSave /> Save Changes
             </Button>
@@ -398,7 +401,7 @@ function PatientQueue() {
                         name={key}
                         value={value}
                         onChange={handleEditChange}
-                        className="w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
+                        className="w-full p-3 border border-primary rounded-lg bg-background focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
                       >
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
@@ -409,13 +412,13 @@ function PatientQueue() {
                           key === 'age'
                             ? 'number'
                             : key === 'email'
-                            ? 'email'
-                            : 'text'
+                              ? 'email'
+                              : 'text'
                         }
                         name={key}
                         value={value}
                         onChange={handleEditChange}
-                        className="w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
+                        className="w-full p-3 border border-primary rounded-lg bg-background focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
                       />
                     )}
                   </div>

@@ -11,8 +11,8 @@ import Swal from 'sweetalert2';
 function MenstrualHistorySection({ formData, setFormData }) {
   return (
     <div>
-    <h3 className="text-lg font-semibold mb-2">Menstrual/Obstetrical History</h3>
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+    <h3 className="text-lg font-semibold mb-2 text-text">Menstrual/Obstetrical History</h3>
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-text">
       <input
         type="text"
         placeholder="LMP (Last Menstrual Period)"
@@ -23,7 +23,7 @@ function MenstrualHistorySection({ formData, setFormData }) {
             menstrualHistory: { ...formData.menstrualHistory, lmp: e.target.value },
           })
         }
-        className="w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
+        className="w-full p-3 border border-primary rounded-lg bg-background focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
       />
       <input
         type="text"
@@ -35,7 +35,7 @@ function MenstrualHistorySection({ formData, setFormData }) {
             menstrualHistory: { ...formData.menstrualHistory, cycleDuration: e.target.value },
           })
         }
-        className="w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
+        className="w-full p-3 border border-primary rounded-lg bg-background focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
       />
       <input
         type="text"
@@ -47,7 +47,7 @@ function MenstrualHistorySection({ formData, setFormData }) {
             menstrualHistory: { ...formData.menstrualHistory, bleeding: e.target.value },
           })
         }
-        className="w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
+        className="w-full p-3 border border-primary rounded-lg bg-background focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
       />
       <input
         type="text"
@@ -59,7 +59,7 @@ function MenstrualHistorySection({ formData, setFormData }) {
             menstrualHistory: { ...formData.menstrualHistory, pms: e.target.value },
           })
         }
-        className="w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
+        className="w-full p-3 border border-primary rounded-lg bg-background focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
       />
       <input
         type="text"
@@ -71,7 +71,7 @@ function MenstrualHistorySection({ formData, setFormData }) {
             menstrualHistory: { ...formData.menstrualHistory, menarche: e.target.value },
           })
         }
-        className="w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
+        className="w-full p-3 border border-primary rounded-lg bg-background focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
       />
       <input
         type="number"
@@ -83,7 +83,7 @@ function MenstrualHistorySection({ formData, setFormData }) {
             menstrualHistory: { ...formData.menstrualHistory, menopause: e.target.value },
           })
         }
-        className="w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
+        className="w-full p-3 border border-primary rounded-lg bg-background focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
       />
     </div>
   
@@ -98,7 +98,7 @@ function MenstrualHistorySection({ formData, setFormData }) {
             obstetricalHistory: { ...formData.obstetricalHistory, gravida: e.target.value },
           })
         }
-        className="w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
+        className="w-full p-3 border border-primary rounded-lg bg-background focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
       />
       <input
         type="number"
@@ -110,7 +110,7 @@ function MenstrualHistorySection({ formData, setFormData }) {
             obstetricalHistory: { ...formData.obstetricalHistory, para: e.target.value },
           })
         }
-        className="w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
+        className="w-full p-3 border border-primary rounded-lg bg-background focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
       />
       <input
         type="number"
@@ -122,7 +122,7 @@ function MenstrualHistorySection({ formData, setFormData }) {
             obstetricalHistory: { ...formData.obstetricalHistory, abortions: e.target.value },
           })
         }
-        className="w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
+        className="w-full p-3 border border-primary rounded-lg bg-background focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
       />
       <input
         type="number"
@@ -134,7 +134,7 @@ function MenstrualHistorySection({ formData, setFormData }) {
             obstetricalHistory: { ...formData.obstetricalHistory, living: e.target.value },
           })
         }
-        className="w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
+        className="w-full p-3 border border-primary rounded-lg bg-background focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
       />
     </div>
   
@@ -143,19 +143,19 @@ function MenstrualHistorySection({ formData, setFormData }) {
         placeholder="Local/Specific Examination"
         value={formData.localExamination}
         onChange={(e) => setFormData({ ...formData, localExamination: e.target.value })}
-        className="w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
+        className="w-full p-3 border border-primary rounded-lg bg-background focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
       />
       <textarea
         placeholder="General/Systemic Examination"
         value={formData.generalExamination}
         onChange={(e) => setFormData({ ...formData, generalExamination: e.target.value })}
-        className="w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none mt-4"
+        className="w-full p-3 border border-primary rounded-lg bg-background focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none mt-4"
       />
       <textarea
         placeholder="Advise"
         value={formData.advise}
         onChange={(e) => setFormData({ ...formData, advise: e.target.value })}
-        className="w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none mt-4"
+        className="w-full p-3 border border-primary rounded-lg bg-background focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none mt-4"
       />
     </div>
   </div>

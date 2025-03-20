@@ -2,13 +2,49 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  transition: background-color 2.0s ease, color 2.3s ease;
+  background-color: var(--background);
+  color: var(--text);
+}
+
+.text-text {
+  color: var(--text);
+  transition: color 0.3s ease;
+}
+
+.swap-on,
+.swap-off {
+  transition: opacity 0.3s ease;
+}
+
 :root {
   /* --primary: #005500; */
   --primary: #77db8f;
   --secondary: rgb(179, 255, 195);
-  --background: #f5f5f5;
-  --text: #5f5d5d;
+  --background: #ffffff;
+  --text: #000000;
 }
+
+[data-theme="blackDark"] {
+  --primary: #77db8e9c;
+  /* Keep the same primary, or adjust if needed */
+  --secondary: rgba(179, 255, 195, 0.747);
+  /* Keep the same secondary, or adjust */
+  --background: #000000;
+  /* Full black background */
+  --text: #ffffff;
+  /* White text for contrast */
+  --calendar-bg: #000000;
+  --calendar-text: #ffffff;
+  --calendar-border: #000000; /* Adjusted for better contrast in dark mode */
+  --calendar-header-bg: #000000;
+  --calendar-event-bg: #000000;
+  --events-container-bg: #000000;
+}
+
+
+
 .schedule-container {
   font-family: Arial, sans-serif;
   padding: 20px;
@@ -57,24 +93,28 @@
 }
 
 .time-slot.active {
-  background-color: #e6f7e6; /* Light green for active time */
+  background-color: #e6f7e6;
+  /* Light green for active time */
   font-weight: bold;
 }
 
 .current-time-indicator {
   margin-top: 20px;
   font-size: 0.9em;
-  color: #006400; /* Dark green for current time indicator */
+  color: #006400;
+  /* Dark green for current time indicator */
   font-weight: bold;
 }
 
 .rbc-event-label {
   font-size: 12px;
-  padding-left:10px !important;
-  margin-top:10px !important;
+  padding-left: 10px !important;
+  margin-top: 10px !important;
   /* background-color:white !important; */
-  color: white !important; /* Smaller text for month view */
+  color: white !important;
+  /* Smaller text for month view */
 }
+
 .rbc-event,
 .rbc-event-content {
   /* padding: 4px; */
@@ -86,7 +126,8 @@
 
 .custom-tooltip {
   background: linear-gradient(135deg, #ffffff 0%, #f5f7fa 100%);
-  color: #1f2937; /* gray-900 */
+  color: #1f2937;
+  /* gray-900 */
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   padding: 1rem;
@@ -94,26 +135,31 @@
 }
 
 .introjs-button {
-  background-color: #3b82f6; /* primary */
+  background-color: #3b82f6;
+  /* primary */
   color: white;
-  border-radius: 9999px; /* rounded-full */
+  border-radius: 9999px;
+  /* rounded-full */
   padding: 0.5rem 1rem;
   transition: background-color 0.2s ease-in-out;
 }
 
 .introjs-button:hover {
-  background-color: #2563eb; /* primary-hover */
+  background-color: #2563eb;
+  /* primary-hover */
 }
+
 .rbc-event,
 .rbc-day-slot .rbc-background-event {
   /* background-color: transparent !important; */
   border: none !important;
-  color: white !important ;
+  color: white !important;
 }
+
 .rbc-day-slot .rbc-event,
 .rbc-day-slot .rbc-background-event {
   border: none !important;
-  color:  white !important;
+  color: white !important;
   display: flex;
   max-height: auto !important;
   min-height: auto !important;
@@ -121,8 +167,9 @@
   align-items: flex-start;
   overflow: hidden;
   position: absolute;
-  margin-right:0% !important;
+  margin-right: 0% !important;
 }
+
 .rbc-day-slot .rbc-events-container {
   /* display: flex !i; */
   bottom: 0;
@@ -136,14 +183,21 @@
 
 /* .rbc-event, .rbc-day-slot .rbc-background-event */
 /*  */
-.rbc-time-view{
-border:  none !important;
+.rbc-time-view {
+  border: none !important;
 }
-.rbc-row{
+
+.rbc-row {
   display: none !important;
 }
+
 /* @media only screen and (max-width: 600px) { */
-  .rbc-event-label {
-    display: none !important;
-  }
+.rbc-event-label {
+  display: none !important;
+}
+
 /* } */
+.rbc-events-container {
+  background-color: var(--events-container-bg) !important;
+  border: white 1px solid;
+}

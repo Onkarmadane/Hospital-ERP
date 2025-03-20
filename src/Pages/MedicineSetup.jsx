@@ -266,7 +266,7 @@ function MedicineSetup() {
     return (
         <div className="grid grid-cols-1 gap-3 w-[95%] lg:ms-[70px] px-1 mx-auto ">
             {/* Header */}
-            <div className="sticky top-0 bg-white z-[90]">
+            <div className="sticky top-0 bg-background z-[10]">
                 <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6  pb-3">
                     <BackButton />
                     <Heading>Medicine Setup</Heading>
@@ -294,7 +294,7 @@ function MedicineSetup() {
                             variant="primary"
                             className={`px-4 py-2 text-sm font-medium flex items-center justify-center gap-2 transition-colors ${activeTab === 'medicine'
                                 ? 'border-b-2 border-primary text-primary'
-                                : 'text-gray-600 hover:text-gray-800'
+                                : 'text-text lg:hover:text-green-900'
                                 }`}
                             size="sm"
                             onClick={() => setActiveTab('medicine')}
@@ -305,7 +305,7 @@ function MedicineSetup() {
                             variant="primary"
                             className={`px-4 py-2 text-sm font-medium flex items-center justify-center gap-2 transition-colors ${activeTab === 'batch'
                                 ? 'border-b-2 border-primary text-primary'
-                                : 'text-gray-600 hover:text-gray-800'
+                                : 'text-text hover:text-green-900'
                                 }`}
                             size="sm"
                             onClick={() => setActiveTab('batch')}
@@ -317,7 +317,7 @@ function MedicineSetup() {
                             {/* <label className="text-xs sm:text-sm whitespace-nowrap">Search:</label>
                             <input
                                 type="search"
-                                className="border rounded p-1 text-xs h-10 sm:text-sm sm:w-1/3 md:w-full lg:w-full bg-white text-black"
+                                className="border rounded p-1 text-xs h-10 sm:text-sm sm:w-1/3 md:w-full lg:w-full bg-background text-black"
                                 placeholder="Search By Name or Generic Name..."
                                 value={searchTerm}
                                 onChange={(e) => setSearchTerm(e.target.value)}
@@ -402,7 +402,7 @@ function MedicineSetup() {
                                         name="MedicineName"
                                         value={editFormData.MedicineName}
                                         onChange={handleEditChange}
-                                        className="w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
+                                        className="w-full p-3 border border-primary rounded-lg bg-background focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
                                         required
                                     />
                                 </div>
@@ -413,7 +413,7 @@ function MedicineSetup() {
                                         name="GenericName"
                                         value={editFormData.GenericName}
                                         onChange={handleEditChange}
-                                        className="w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
+                                        className="w-full p-3 border border-primary rounded-lg bg-background focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
                                         required
                                     />
                                 </div>
@@ -424,7 +424,7 @@ function MedicineSetup() {
                                         name="Dosage"
                                         value={editFormData.Dosage}
                                         onChange={handleEditChange}
-                                        className="w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
+                                        className="w-full p-3 border border-primary rounded-lg bg-background focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
                                     />
                                 </div>
                                 <div>
@@ -434,7 +434,7 @@ function MedicineSetup() {
                                         name="Unit"
                                         value={editFormData.Unit}
                                         onChange={handleEditChange}
-                                        className="w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
+                                        className="w-full p-3 border border-primary rounded-lg bg-background focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
                                     />
                                 </div>
                                 <div>
@@ -444,7 +444,7 @@ function MedicineSetup() {
                                         name="When"
                                         value={editFormData.When}
                                         onChange={handleEditChange}
-                                        className="w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
+                                        className="w-full p-3 border border-primary rounded-lg bg-background focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
                                     />
                                 </div>
                                 <div>
@@ -454,7 +454,7 @@ function MedicineSetup() {
                                         name="Frequency"
                                         value={editFormData.Frequency}
                                         onChange={handleEditChange}
-                                        className="w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
+                                        className="w-full p-3 border border-primary rounded-lg bg-background focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
                                     />
                                 </div>
                                 <div>
@@ -464,7 +464,7 @@ function MedicineSetup() {
                                         name="Notes"
                                         value={editFormData.Notes}
                                         onChange={handleEditChange}
-                                        className="w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
+                                        className="w-full p-3 border border-primary rounded-lg bg-background focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
                                     />
                                 </div>
                                 <div>
@@ -474,7 +474,7 @@ function MedicineSetup() {
                                         name="MedicineType"
                                         value={editFormData.MedicineType}
                                         onChange={handleEditChange}
-                                        className="w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
+                                        className="w-full p-3 border border-primary rounded-lg bg-background focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
                                         required
                                     />
                                 </div>
@@ -488,7 +488,7 @@ function MedicineSetup() {
                                         name="BatchNo"
                                         value={editFormData.BatchNo}
                                         onChange={handleEditChange}
-                                        className="w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
+                                        className="w-full p-3 border border-primary rounded-lg bg-background focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
                                         required
                                     />
                                 </div>
@@ -499,7 +499,7 @@ function MedicineSetup() {
                                         name="Medicine"
                                         value={editFormData.Medicine}
                                         onChange={handleEditChange}
-                                        className="w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
+                                        className="w-full p-3 border border-primary rounded-lg bg-background focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
                                         required
                                     />
                                 </div>
@@ -510,7 +510,7 @@ function MedicineSetup() {
                                         name="BatchCreationDate"
                                         value={editFormData.BatchCreationDate}
                                         onChange={handleEditChange}
-                                        className="w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
+                                        className="w-full p-3 border border-primary rounded-lg bg-background focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
                                         required
                                     />
                                 </div>
@@ -521,7 +521,7 @@ function MedicineSetup() {
                                         name="ManufactureDate"
                                         value={editFormData.ManufactureDate}
                                         onChange={handleEditChange}
-                                        className="w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
+                                        className="w-full p-3 border border-primary rounded-lg bg-background focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
                                         required
                                     />
                                 </div>
@@ -532,7 +532,7 @@ function MedicineSetup() {
                                         name="ExpiryDate"
                                         value={editFormData.ExpiryDate}
                                         onChange={handleEditChange}
-                                        className="w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
+                                        className="w-full p-3 border border-primary rounded-lg bg-background focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
                                         required
                                     />
                                 </div>
@@ -566,7 +566,7 @@ function MedicineSetup() {
                             name="medicineName"
                             value={formData.medicineName}
                             onChange={handleInputChange}
-                            className="w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
+                            className="w-full p-3 border border-primary rounded-lg bg-background focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
                             placeholder="Enter medicine name"
                             required
                         />
@@ -579,7 +579,7 @@ function MedicineSetup() {
                             name="genericName"
                             value={formData.genericName}
                             onChange={handleInputChange}
-                            className="w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
+                            className="w-full p-3 border border-primary rounded-lg bg-background focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
                             placeholder="Enter generic name"
                             required
                         />
@@ -592,7 +592,7 @@ function MedicineSetup() {
                             name="dosage"
                             value={formData.dosage}
                             onChange={handleInputChange}
-                            className="w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
+                            className="w-full p-3 border border-primary rounded-lg bg-background focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
                             placeholder="Enter dosage (e.g., 500 mg)"
                             required
                         />
@@ -604,7 +604,7 @@ function MedicineSetup() {
                             name="unit"
                             value={formData.unit}
                             onChange={handleInputChange}
-                            className="w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
+                            className="w-full p-3 border border-primary rounded-lg bg-background focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
                             required
                         >
                             <option value="">Select unit</option>
@@ -621,7 +621,7 @@ function MedicineSetup() {
                             name="when"
                             value={formData.when}
                             onChange={handleInputChange}
-                            className="w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
+                            className="w-full p-3 border border-primary rounded-lg bg-background focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
                             required
                         >
                             <option value="">Select timing</option>
@@ -639,7 +639,7 @@ function MedicineSetup() {
                             name="frequency"
                             value={formData.frequency}
                             onChange={handleInputChange}
-                            className="w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
+                            className="w-full p-3 border border-primary rounded-lg bg-background focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
                             placeholder="e.g., Once daily, Twice daily"
                             required
                         />
@@ -651,7 +651,7 @@ function MedicineSetup() {
                             name="notes"
                             value={formData.notes}
                             onChange={handleInputChange}
-                            className="w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
+                            className="w-full p-3 border border-primary rounded-lg bg-background focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
                             placeholder="Add any additional notes"
                             rows="3"
                         />
@@ -663,7 +663,7 @@ function MedicineSetup() {
                             name="medicineType"
                             value={formData.medicineType}
                             onChange={handleInputChange}
-                            className="w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
+                            className="w-full p-3 border border-primary rounded-lg bg-background focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
                             required
                         >
                             <option value="">Select type</option>

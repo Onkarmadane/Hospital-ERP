@@ -25,9 +25,9 @@ const Modal = ({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black bg-opacity-50 ">
+    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black text-text bg-opacity-50 ">
       <div
-        className={`bg-white rounded-lg shadow-lg  w-full ${className}`}
+        className={`bg-background rounded-lg shadow-lg  w-full ${className}`}
         role="dialog"
         aria-modal="true"
         aria-labelledby={ariaLabelledBy}
@@ -40,7 +40,7 @@ const Modal = ({
           <Button
             variant='secondary'
             onClick={onClose}
-            className="text-gray-500 hover:text-gray-700 focus:outline-none"
+            // className="text-gray-500 hover:text-gray-700 focus:outline-none"
             aria-label="Close modal"
           >
             <IoMdClose />
@@ -48,7 +48,7 @@ const Modal = ({
         </div>
 
         {/* Body */}
-        <div className="max-h-[70vh] overflow-y-auto bg-white text-black ">{children}</div>
+        <div className="max-h-[70vh] overflow-y-auto bg-background text-text  ">{children}</div>
 
         {/* Footer (optional) */}
         {footer && (

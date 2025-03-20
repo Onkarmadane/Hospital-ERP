@@ -24,7 +24,7 @@ const Input = ({
 
   // Variant styles
   const variantStyles = {
-    primary: 'border-primary focus:border-primary focus:ring-2 focus:ring-primary bg-white',
+    primary: 'border-primary  focus:border-primary focus:ring-2 focus:ring-primary bg-background text-text',
     secondary: 'border-gray-300 focus:border-secondary focus:ring-2 focus:ring-secondary bg-gray-50',
     minimal: 'border-transparent focus:border-gray-200 bg-transparent',
   };

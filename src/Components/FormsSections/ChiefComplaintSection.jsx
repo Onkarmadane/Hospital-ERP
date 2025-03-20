@@ -32,12 +32,12 @@ function ChiefComplaintsSection({ formData, setFormData }) {
                       placeholder="Complaint"
                       value={complaint.complaint}
                       onChange={(e) => updateComplaint(index, 'complaint', e.target.value)}
-                      className="w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
+                      className="w-full p-3 border border-primary rounded-lg bg-background focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
                   />
                   <select
                       value={complaint.severity}
                       onChange={(e) => updateComplaint(index, 'severity', e.target.value)}
-                      className="w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
+                      className="w-full p-3 border border-primary rounded-lg bg-background focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
                   >
                       <option value="">Severity</option>
                       <option value="Mild">Mild</option>
@@ -49,7 +49,7 @@ function ChiefComplaintsSection({ formData, setFormData }) {
                       placeholder="Duration"
                       value={complaint.duration}
                       onChange={(e) => updateComplaint(index, 'duration', e.target.value)}
-                      className="w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
+                      className="w-full p-3 border border-primary rounded-lg bg-background focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
                   />
               </div>
           ))}
@@ -61,25 +61,25 @@ function ChiefComplaintsSection({ formData, setFormData }) {
               placeholder="Ailments From"
               value={formData.ailmentsFrom}
               onChange={(e) => setFormData({ ...formData, ailmentsFrom: e.target.value })}
-              className="w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none mb-4"
+              className="w-full p-3 border border-primary rounded-lg bg-background focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none mb-4"
           />
           
           <textarea
               placeholder="Additional/Associated Complaints"
               value={formData.associatedComplaints}
               onChange={(e) => setFormData({ ...formData, associatedComplaints: e.target.value })}
-              className="w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none mb-4"
+              className="w-full p-3 border border-primary rounded-lg bg-background focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none mb-4"
           />
           <textarea
               placeholder="Aggravating Factors"
               value={formData.aggravatingFactors}
               onChange={(e) => setFormData({ ...formData, aggravatingFactors: e.target.value })}
-              className="w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
+              className="w-full p-3 border border-primary rounded-lg bg-background focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
           />
           <input
               type="file"
               placeholder="Photo"
-              className="w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none mb-4"
+              className="w-full p-3 border border-primary rounded-lg bg-background focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none mb-4"
           />
       </div>
   );

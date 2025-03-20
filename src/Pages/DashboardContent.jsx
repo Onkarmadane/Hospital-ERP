@@ -15,45 +15,47 @@ function DashboardContent() {
       
 
       {/* KPI Cards Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+      <div className="grid grid-cols-1 text-text sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
         {/* Total Appointments */}
-        <div className="bg-white p-4 rounded-lg  border border-gray-200">
+        <div className="bg-background text-text p-4 rounded-lg  border border-gray-200">
           <div className="flex items-center gap-2 mb-2">
-            <span className="text-yellow-500 text-lg"><HiUsers /></span>
-            <Heading>Total Appointments</Heading>
+            <span className="text-yellow-500 text-lg"><HiUsers size={50}/></span>
+            {/* <h3 className="text-sm sm:text-base font-medium text-text">Pending</h3> */}
+            <Heading className='flex items-end'>Total Appointments</Heading>
           </div>
-          <p className="text-2xl font-bold text-gray-900">1044</p>
-          <p className="text-xs sm:text-sm text-gray-500">last 7 days <span className="text-green-500">300.00% ↑</span></p>
+          <p className="text-2xl font-bold text-text">1044</p>
+          <p className="text-xs sm:text-sm text-text">last 7 days <span className="text-green-500">300.00% ↑</span></p>
         </div>
 
         {/* Pending */}
-        <div className="bg-white p-4 rounded-lg  border border-gray-200">
+        <div className="bg-background p-4 rounded-lg  border text-text border-gray-200">
           <div className="flex items-center gap-2 mb-2">
-            <span className="text-purple-500 text-lg"><SlCalender /></span>
-            <h3 className="text-sm sm:text-base font-medium text-gray-600">Pending</h3>
+            <span className="text-purple-500 text-lg"><SlCalender size={50}/></span>
+            <Heading className='flex items-end'>Pending</Heading>
+            {/* <h3 className="text-sm sm:text-base font-medium text-text">Pending</h3> */}
           </div>
-          <p className="text-2xl font-bold text-gray-900">827</p>
-          <p className="text-xs sm:text-sm text-gray-500">last 7 days <span className="text-green-500">300.00% ↑</span></p>
+          <p className="text-2xl font-bold text-text">827</p>
+          <p className="text-xs sm:text-sm text-text">last 7 days <span className="text-green-500">300.00% ↑</span></p>
         </div>
 
         {/* Total Earnings */}
-        <div className="bg-white p-4 rounded-lg  border border-gray-200">
+        <div className="bg-background p-4 rounded-lg  border border-gray-200">
           <div className="flex items-center gap-2 mb-2">
-            <span className="text-yellow-500 text-lg"><FaIndianRupeeSign /></span>
-            <h3 className="text-sm sm:text-base font-medium text-gray-600">Total Earnings</h3>
+            <span className="text-yellow-500 text-lg"><FaIndianRupeeSign size={50}/></span>
+            <Heading className='flex items-end'>Total Earnings</Heading>
           </div>
-          <p className="text-2xl font-bold text-gray-900">₹ 75275</p>
-          <p className="text-xs sm:text-sm text-gray-500">last 7 days <span className="text-green-500">300.00% ↑</span></p>
+          <p className="text-2xl font-bold text-text">₹ 75275</p>
+          <p className="text-xs sm:text-sm text-text">last 7 days <span className="text-green-500">300.00% ↑</span></p>
         </div>
 
         {/* Patient Queue */}
-        <div className="bg-white p-4 rounded-lg  border border-gray-200">
+        <div className="bg-background p-4 rounded-lg  border border-gray-200">
           <div className="flex items-center gap-2 mb-2">
-            <span className="text-blue-500 text-lg"><FaUsers /></span>
-            <h3 className="text-sm sm:text-base font-medium text-gray-600">Patient Queue</h3>
+            <span className="text-blue-500 text-lg"><FaUsers size={50}/></span>
+            <Heading className='flex items-end'>Patient Queue</Heading>
           </div>
-          <p className="text-2xl pt-5 text-gray-900">No Data Available</p>
-          {/* <p className="text-xs sm:text-sm text-gray-500">Credit Usage <span className="text-green-500">100.00%</span></p> */}
+          <p className="text-2xl pt-5 text-text">No Data Available</p>
+          {/* <p className="text-xs sm:text-sm text-text">Credit Usage <span className="text-green-500">100.00%</span></p> */}
         </div>
       </div>
 

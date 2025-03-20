@@ -3,8 +3,9 @@ import Button from './Button';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
 import { CiBookmarkCheck } from "react-icons/ci";
-import Input from './FormFields/InputField';
+// import input from './FormFields/inputField';
 import { MdOutlineClose } from "react-icons/md";
+import Heading from './Heading';
 const BookAppointmentForm = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -44,21 +45,21 @@ const BookAppointmentForm = () => {
 
   return (
     <>
-      <div className="h-screen w-[95%] lg:ms-[70px] text-black">
-        <div className="flex items-center justify-between p-4 border-b">
-          <h5 className="text-lg font-semibold">Book Appointments</h5>
-        </div>
-        <div className="bg-white p-7">
-          <form onSubmit={handleSubmit} className="space-y-6 bg-white">
+      <div className=" w-[95%] lg:ms-[70px] text-text min-h-screen">
+        {/* <div className="flex items-center justify-between p-4 border-b"> */}
+          <Heading className='flex justify-start p-4'>Book Appointments</Heading>
+        {/* </div> */}
+        <div className="bg-background p-7">
+          <form onSubmit={handleSubmit} className="space-y-6 bg-background">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               <div className="mb-4">
-                <label htmlFor="a1" className="block text-gray-700 font-medium mb-2">
+                <label htmlFor="a1" className="block text-text font-medium mb-2">
                   Patient Name
                 </label>
-                <Input
+                <input
                   type="text"
                   name="patientName"
-                  // className="w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
+                  className="w-full p-3 border border-primary rounded-lg bg-background focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
                   id="a1"
                   placeholder="Enter fullname"
                   value={formData.patientName}
@@ -66,13 +67,13 @@ const BookAppointmentForm = () => {
                 />
               </div>
               <div className="mb-4">
-                <label htmlFor="a2" className="block text-gray-700 font-medium mb-2">
+                <label htmlFor="a2" className="block text-text font-medium mb-2">
                   Patient Email
                 </label>
-                <Input
+                <input
                   type="email"
                   name="patientEmail"
-                  // className="w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
+                  className="w-full p-3 border border-primary rounded-lg bg-background focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
                   id="a2"
                   placeholder="Enter email address"
                   value={formData.patientEmail}
@@ -80,12 +81,12 @@ const BookAppointmentForm = () => {
                 />
               </div>
               <div className="mb-4">
-                <label htmlFor="a3" className="block text-gray-700 font-medium mb-2">
+                <label htmlFor="a3" className="block text-text font-medium mb-2">
                   Gender
                 </label>
                 <select
                   name="gender"
-                  className="w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
+                  className="w-full p-3 border border-primary rounded-lg bg-background focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
                   id="a3"
                   value={formData.gender}
                   onChange={handleChange}
@@ -96,13 +97,13 @@ const BookAppointmentForm = () => {
                 </select>
               </div>
               <div className="mb-4">
-                <label htmlFor="a4" className="block text-gray-700 font-medium mb-2">
+                <label htmlFor="a4" className="block text-text font-medium mb-2">
                   Age
                 </label>
-                <Input
+                <input
                   type="number"
                   name="age"
-                  // className="w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
+                  className="w-full p-3 border border-primary rounded-lg bg-background focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
                   id="a4"
                   placeholder="Enter age"
                   value={formData.age}
@@ -110,13 +111,13 @@ const BookAppointmentForm = () => {
                 />
               </div>
               <div className="mb-4">
-                <label htmlFor="a5" className="block text-gray-700 font-medium mb-2">
+                <label htmlFor="a5" className="block text-text font-medium mb-2">
                   Patient Phone
                 </label>
-                <Input
+                <input
                   type="text"
                   name="patientPhone"
-                  // className="w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
+                  className="w-full p-3 border border-primary rounded-lg bg-background focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
                   id="a5"
                   placeholder="Enter phone number"
                   value={formData.patientPhone}
@@ -124,38 +125,38 @@ const BookAppointmentForm = () => {
                 />
               </div>
               <div className="mb-4">
-                <label htmlFor="a6" className="block text-gray-700 font-medium mb-2">
+                <label htmlFor="a6" className="block text-text font-medium mb-2">
                   Select Date
                 </label>
-                <Input
+                <input
                   type="date"
                   name="date"
-                  // className="w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
+                  className="w-full p-3 border border-primary rounded-lg bg-background focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
                   id="a6"
                   value={formData.date}
                   onChange={handleChange}
                 />
               </div>
               <div className="mb-4">
-                <label htmlFor="a7" className="block text-gray-700 font-medium mb-2">
+                <label htmlFor="a7" className="block text-text font-medium mb-2">
                   Select Time
                 </label>
-                <Input
+                <input
                   type="time"
                   name="time"
-                  // className="w-full p-3 border border-primary rounded-lg text-black bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
+                  className="w-full p-3 border border-primary rounded-lg text-text bg-background focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
                   id="a7"
                   value={formData.time}
                   onChange={handleChange}
                 />
               </div>
               <div className="mb-4">
-                <label htmlFor="a8" className="block text-gray-700 font-medium mb-2">
+                <label htmlFor="a8" className="block text-text font-medium mb-2">
                   Specialist Doctor
                 </label>
                 <select
                   name="specialist"
-                  className="w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
+                  className="w-full p-3 border border-primary rounded-lg bg-background focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
                   id="a8"
                   value={formData.specialist}
                   onChange={handleChange}
@@ -169,12 +170,12 @@ const BookAppointmentForm = () => {
                 </select>
               </div>
               <div className="mb-4 col-span-full">
-                <label htmlFor="a9" className="block text-gray-700 font-medium mb-2">
+                <label htmlFor="a9" className="block text-text font-medium mb-2">
                   Problem
                 </label>
                 <textarea
                   name="problem"
-                  className="w-full p-3 border border-primary rounded-lg bg-white  focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none h-24"
+                  className="w-full p-3 border border-primary rounded-lg bg-background  focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none h-24"
                   id="a9"
                   placeholder="Enter Problem"
                   value={formData.problem}

@@ -32,7 +32,7 @@ function TestReportSection({ formData, setFormData }) {
             <div className="flex-1">
               <label
                 htmlFor={`testReport-${index}`}
-                className="block text-sm font-medium text-gray-700"
+                className="block text-sm font-medium text-text"
               >
                 Upload Report {index + 1}
               </label>

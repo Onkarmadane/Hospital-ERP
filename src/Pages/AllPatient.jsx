@@ -175,7 +175,7 @@ const AllPatient = () => {
   ];
 
   return (
-    <div className="grid grid-cols-1 gap-3 w-[95%] lg:ms-[70px] bg-white mx-auto max-w-7xl">
+    <div className="grid grid-cols-1 gap-3 w-[95%] lg:ms-[70px] bg-background mx-auto max-w-7xl">
       <div>
         {/* Card Header */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between pb-4  gap-4">
@@ -190,7 +190,7 @@ const AllPatient = () => {
               </Button>
               <Button
                 variant="primary"
-                className={`text-white flex items-center outline-none border-none justify-center gap-2 sm:gap-2.5 md:gap-3 whitespace-nowrap text-sm sm:text-base md:text-lg px-3 py-1.5 sm:px-4 sm:py-2 rounded-md transition-colors ${viewMode === 'list' ? 'bg-primary text-white shadow-lg' : 'text-gray-800 bg-secondary lg:hover:bg-primary duration-300'
+                className={`text-white flex items-center outline-none border-none justify-center gap-2 sm:gap-2.5 md:gap-3 whitespace-nowrap text-sm sm:text-base md:text-lg px-3 py-1.5 sm:px-4 sm:py-2 rounded-md transition-colors ${viewMode === 'list' ? 'bg-primary text-white shadow-lg' : 'text-white bg-secondary lg:hover:bg-primary duration-300'
                   }`}
                 size="sm"
                 onClick={() => setViewMode('list')}
@@ -200,7 +200,7 @@ const AllPatient = () => {
               </Button>
               <Button
                 variant="primary"
-                className={`text-white flex items-center outline-none border-none justify-center gap-2 sm:gap-2.5 md:gap-3 whitespace-nowrap text-sm sm:text-base md:text-lg px-3 py-1.5 sm:px-4 sm:py-2 rounded-md transition-colors ${viewMode === 'card' ? 'bg-primary text-white shadow-lg' : 'text-gray-800 bg-secondary lg:hover:bg-primary duration-300'
+                className={`text-white flex items-center outline-none border-none justify-center gap-2 sm:gap-2.5 md:gap-3 whitespace-nowrap text-sm sm:text-base md:text-lg px-3 py-1.5 sm:px-4 sm:py-2 rounded-md transition-colors ${viewMode === 'card' ? 'bg-primary text-white shadow-lg' : 'text-white bg-secondary lg:hover:bg-primary duration-300'
                   }`}
                 size="sm"
                 onClick={() => setViewMode('card')}
@@ -213,13 +213,12 @@ const AllPatient = () => {
         </div>
 
         {/* Card Body */}
-        <div className="p-4">
+        <div className="">
           {/* Table Controls */}
           <div className="flex flex-col md:flex-row justify-between mb-4 gap-4">
             <div className="flex items-center gap-2">
-              <label className="text-sm">Display</label>
               <select
-                className="border rounded p-1 text-sm bg-white"
+                className="border-primary focus:border-primary text-text focus:ring-2 focus:ring-primary h-10 border rounded-lg focus:outline-none transition-all duration-500 text-text bg-background text-sm"
                 value={recordsPerPage}
                 onChange={(e) => setRecordsPerPage(Number(e.target.value))}
               >
@@ -227,7 +226,7 @@ const AllPatient = () => {
                 <option value="25">25</option>
                 <option value="50">50</option>
               </select>
-              <span className="text-sm">Records Per Page</span>
+              <span className="text-sm text-text">Records Per Page</span>
             </div>
             <div className="flex items-center gap-2">
               <Input
@@ -246,20 +245,20 @@ const AllPatient = () => {
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mx-auto">
               {filteredPatients.slice(0, recordsPerPage).map((patient) => (
-                <div key={patient.id} className="bg-white rounded-lg shadow p-4 flex gap-2 border">
+                <div key={patient.id} className="bg-background rounded-lg shadow p-4 flex gap-2 border">
                   <div className="flex items-center gap-3 flex-1">
-                    <div className="w-12 h-12 rounded-full bg-blue-500 text-white flex items-center justify-center shadow">
+                    <div className="w-12 h-12 rounded-full text-white bg-blue-500 flex items-center justify-center shadow">
                       {getInitials(patient.name)}
                     </div>
                     <div>
-                      <h6 className="font-semibold">{patient.name}</h6>
+                      <h6 className="font-semibold text-white">{patient.name}</h6>
                       <p className="text-sm text-gray-600">{patient.mobile}</p>
                       <p className="text-sm">{patient.age}</p>
                     </div>
                   </div>
                   <div className="flex flex-col gap-1">
                     <button
-                      className="text-blue-500 border border-blue-500 rounded p-1 lg:hover:bg-blue-50"
+                      className="text-blue-500 border border-blue-500 rounded p-1  lg:hover:bg-blue-50"
                       title="View Dashboard"
                       onClick={() => handleView(patient)}
                     >
@@ -286,11 +285,11 @@ const AllPatient = () => {
           )}
 
           {/* Pagination */}
-          <div className="flex flex-col md:flex-row justify-between mt-4 text-sm">
+          <div className="flex flex-col md:flex-row justify-between mt-4 text-sm text-text">
             <div>Showing Page 1 of 1</div>
             <div className="flex gap-2 mt-2 md:mt-0">
               <button className="px-3 py-1 border rounded text-gray-500 cursor-not-allowed">Previous</button>
-              <button className="px-3 py-1 border rounded bg-primary text-white">1</button>
+              <button className="px-3 py-1 border rounded bg-primary text-text">1</button>
               <button className="px-3 py-1 border rounded text-gray-500 cursor-not-allowed">Next</button>
             </div>
           </div>
@@ -346,7 +345,7 @@ const AllPatient = () => {
               type="submit"
               form="edit-form"
               size="sm"
-              className="px-3 sm:px-4 py-1 sm:py-2 bg-primary text-white rounded lg:hover:bg-primary-dark text-sm sm:text-base"
+              className="px-3 sm:px-4 py-1 sm:py-2 bg-primary text-text rounded lg:hover:bg-primary-dark text-sm sm:text-base"
             >
               <BiSave /> Save Changes
             </Button>
@@ -371,13 +370,13 @@ const AllPatient = () => {
                         name={key}
                         value={value}
                         onChange={handleEditChange}
-                        className="w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
+                        className="w-full p-3 border border-primary rounded-lg bg-background focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
                       >
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
                       </select>
                     ) : (
-                      <input
+                      <Input
                         type={
                           key === 'age'
                             ? 'number'
@@ -388,7 +387,7 @@ const AllPatient = () => {
                         name={key}
                         value={value}
                         onChange={handleEditChange}
-                        className="w-full p-3 border border-primary rounded-lg bg-white focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
+                        className="w-full p-3 border border-primary rounded-lg bg-background focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
                       />
                     )}
                   </div>

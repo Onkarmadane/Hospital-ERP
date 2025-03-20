@@ -191,7 +191,7 @@
 //   };
 
 //   return (
-//     <div className="w-[95%] lg:ms-[70px] bg-white mx-auto p-4 pb-20">
+//     <div className="w-[95%] lg:ms-[70px] bg-background mx-auto p-4 pb-20">
 //       <h2 className="text-2xl font-bold mb-4">
 //         Patient Form
 //         {/* {doctorType === 'Ayurvedic' ? 'Patient Form' : ' Patient Form'} */}
@@ -376,7 +376,7 @@
 //   const CurrentSection = tabs[activeTab].component;
 
 //   return (
-//     <div className="w-[95%] lg:ms-[70px] bg-white mx-auto p-4 pb-20">
+//     <div className="w-[95%] lg:ms-[70px] bg-background mx-auto p-4 pb-20">
 //       {/* Title */}
 //       <h2 className="text-xl sm:text-2xl font-bold mb-4 text-center sm:text-left">
 //         Patient Form
@@ -390,7 +390,7 @@
 //             className={`flex items-center px-3 py-2 text-sm sm:text-base font-medium mb-1  ${
 //               activeTab === index
 //                 ? 'bg-primary text-white shadow-lg'
-//                 : 'bg-white lg:hoverbg-gray-100 '
+//                 : 'bg-background lg:hoverbg-gray-100 '
 //             }`}
 //             onClick={() => setActiveTab(index)}
 //           >
@@ -440,6 +440,7 @@ import FamilyHistorySection from './FamilyHistorySection';
 import FamilyHistoryMarriedSection from './FamilyHistoryMarriedSection';
 import AdditionalDetailsSection from './AdditionalDetailsSection';
 import TestReportSection from './TestReportSection';
+import Heading from '../Heading';
 
 function UnifiedPatientForm() {
   const doctorType = localStorage.getItem('doctorType') || 'Ayurvedic';
@@ -569,12 +570,13 @@ function UnifiedPatientForm() {
   const CurrentSection = tabs[activeTab].component;
 
   return (
-    <div className="w-[95%] lg:ms-[70px] bg-white mx-auto p-4 pb-20">
+    <div className="w-[95%] lg:ms-[70px] bg-background mx-auto p-4 pb-20">
       {/* Title */}
-      <div className="lg:sticky lg:top-0 z-10 bg-white">
-        <h2 className="text-xl sm:text-2xl font-bold mb-4 text-left">
-          Patient Form
-        </h2>
+      <div className="lg:sticky lg:top-0 z-10 bg-background">
+        <Heading className='flex justify-start py-4'> Patient Form</Heading>
+        {/* <h2 className="text-xl sm:text-2xl font-bold mb-4 text-left">
+          
+        </h2> */}
 
         {/* Tab Navigation */}
         {/* <div className="flex flex-wrap border-b border-gray-200 overflow-x-auto whitespace-nowrap gap-2 pb-2">
@@ -584,7 +586,7 @@ function UnifiedPatientForm() {
               variant="primary"
               className={`flex items-center px-2 py-1 sm:px-3 sm:py-2 text-xs sm:text-sm md:text-base font-medium mb-1 ${activeTab === index
                   ? 'bg-primary text-white shadow-md'
-                  : 'bg-white text-gray-700 lg:hoverbg-gray-100'
+                  : 'bg-background text-gray-700 lg:hoverbg-gray-100'
                 }`}
               onClick={() => setActiveTab(index)}
             >

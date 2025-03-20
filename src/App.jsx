@@ -24,7 +24,7 @@ import Profile from "./Pages/Profile";
 const PrivateRoute = ({ element: Element, ...rest }) => {
   const { isAuthenticated } = useAuth();
   return isAuthenticated ? (
-    <div className="flex bg-white text-black w-full h-screen pb-20">
+    <div className="flex bg-background w-full min-h-screen pb-20">
       <Sidebar />
       <main className="flex-1 sm:ms-4 lg:mx-4 sm:mx-auto pt-5 ">
         <Element {...rest} />
@@ -36,6 +36,7 @@ const PrivateRoute = ({ element: Element, ...rest }) => {
 };
 
 function App() {
+
   return (
     <Router>
       <AuthProvider>

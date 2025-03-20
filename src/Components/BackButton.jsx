@@ -11,7 +11,7 @@ const BackButton = () => {
 
   return (
     <button
-      className="hidden sm:hidden md:block lg:block text-black bg-transparent duration-100 border border-1 hover:shadow-lg  items-center gap-3 p-2 rounded hover:bg-primary-dark"
+      className="hidden sm:hidden md:block lg:block text-text bg-transparent duration-100 border border-1 hover:shadow-lg  items-center gap-3 p-2 rounded hover:bg-primary-dark"
       onClick={goBack}
     >
       <FaArrowLeft size={20} />

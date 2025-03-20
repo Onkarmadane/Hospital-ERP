@@ -5,5 +5,6 @@ import App from './App.jsx'
 import { ThemeProvider } from './Context/ThemeContext.jsx'
 
 createRoot(document.getElementById('root')).render(
-    <App />
+    <ThemeProvider><App /></ThemeProvider>
+
 )

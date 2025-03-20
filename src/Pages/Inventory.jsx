@@ -687,7 +687,7 @@
 //   return (
 //     <div className="grid grid-cols-1 gap-3 w-[95%] lg:ms-[70px] px-1 mx-auto">
 //       {/* Header */}
-//       <div className="sticky top-0 bg-white">
+//       <div className="sticky top-0 bg-background">
 //         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6 border-b pb-3 px-2 sm:px-4 lg:px-6">
 //           <BackButton />
 //           <h5 className="text-base sm:text-lg md:text-xl font-semibold">Inventory</h5>
@@ -729,7 +729,7 @@
 //               variant="primary"
 //               size="sm"
 //               onClick={() => setIsReceiveModalOpen(true)}
-//               className="bg-primary text-white"
+//               className="bg-primary text-text"
 //             >
 //               <MdOutlineAdd size={24} /> Receive Inventory
 //             </Button>
@@ -779,7 +779,7 @@
 //               variant="secondary"
 //               type="button"
 //               onClick={() => setIsEditModalOpen(false)}
-//               className="px-3 sm:px-4 py-1 sm:py-2 border rounded text-gray-600 hover:bg-gray-100 text-sm sm:text-base"
+//               className="px-3 sm:px-4 py-1 sm:py-2 border rounded text-text hover:bg-gray-100 text-sm sm:text-base"
 //             >
 //               <MdOutlineClose /> Cancel
 //             </Button>
@@ -787,7 +787,7 @@
 //               variant="primary"
 //               type="submit"
 //               form="edit-form"
-//               className="px-3 sm:px-4 py-1 sm:py-2 bg-primary text-white rounded hover:bg-primary-dark text-sm sm:text-base"
+//               className="px-3 sm:px-4 py-1 sm:py-2 bg-primary text-text rounded hover:bg-primary-dark text-sm sm:text-base"
 //             >
 //               <BiSave /> Save Changes
 //             </Button>
@@ -816,7 +816,7 @@
 //                       name={key}
 //                       value={value}
 //                       onChange={handleEditChange}
-//                       className="w-full border rounded p-2 bg-white text-black"
+//                       className="w-full border rounded p-2 bg-background text-black"
 //                       step={key === 'Price' ? '0.01' : undefined}
 //                     />
 //                   </div>
@@ -837,7 +837,7 @@
 //             <Button
 //               variant="secondary"
 //               onClick={() => setIsReceiveModalOpen(false)}
-//               className="px-3 sm:px-4 py-1 sm:py-2 border rounded text-gray-600 hover:bg-gray-100 text-sm sm:text-base"
+//               className="px-3 sm:px-4 py-1 sm:py-2 border rounded text-text hover:bg-gray-100 text-sm sm:text-base"
 //             >
 //               <MdOutlineClose /> Cancel
 //             </Button>
@@ -845,7 +845,7 @@
 //               variant="primary"
 //               type="submit"
 //               form="receive-form"
-//               className="px-3 sm:px-4 py-1 sm:py-2 bg-primary text-white rounded hover:bg-primary-dark text-sm sm:text-base"
+//               className="px-3 sm:px-4 py-1 sm:py-2 bg-primary text-text rounded hover:bg-primary-dark text-sm sm:text-base"
 //             >
 //               <BiSave /> Save
 //             </Button>
@@ -865,7 +865,7 @@
 //               onChange={handleReceiveChange}
 //               type="text"
 //               required
-//               className="w-full border rounded p-2 bg-white text-black"
+//               className="w-full border rounded p-2 bg-background text-black"
 //             />
 //           </div>
 //           <div>
@@ -876,7 +876,7 @@
 //               onChange={handleReceiveChange}
 //               type="text"
 //               required
-//               className="w-full border rounded p-2 bg-white text-black"
+//               className="w-full border rounded p-2 bg-background text-black"
 //             />
 //           </div>
 //           <div>
@@ -887,7 +887,7 @@
 //               onChange={handleReceiveChange}
 //               type="number"
 //               required
-//               className="w-full border rounded p-2 bg-white text-black"
+//               className="w-full border rounded p-2 bg-background text-black"
 //             />
 //           </div>
 //           <div>
@@ -897,7 +897,7 @@
 //               value={receiveFormData.UnitofMeasure}
 //               onChange={handleReceiveChange}
 //               type="text"
-//               className="w-full border rounded p-2 bg-white text-black"
+//               className="w-full border rounded p-2 bg-background text-black"
 //             />
 //           </div>
 //           <div>
@@ -908,7 +908,7 @@
 //               onChange={handleReceiveChange}
 //               type="date"
 //               required
-//               className="w-full border rounded p-2 bg-white text-black"
+//               className="w-full border rounded p-2 bg-background text-black"
 //             />
 //           </div>
 //           <div>
@@ -919,7 +919,7 @@
 //               onChange={handleReceiveChange}
 //               type="date"
 //               required
-//               className="w-full border rounded p-2 bg-white text-black"
+//               className="w-full border rounded p-2 bg-background text-black"
 //             />
 //           </div>
 //           <div>
@@ -931,7 +931,7 @@
 //               type="number"
 //               required
 //               step="0.01"
-//               className="w-full border rounded p-2 bg-white text-black"
+//               className="w-full border rounded p-2 bg-background text-black"
 //             />
 //           </div>
 //         </form>
@@ -1162,7 +1162,7 @@ function Inventory() {
     <div className="grid grid-cols-1 gap-3 w-[95%] lg:ms-[70px] px-1 mx-auto ">
       {/* Header */}
 
-      <div className="sticky top-0 bg-white z-[90]">
+      <div className="sticky top-0 bg-background z-[10]">
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6 pb-3 ">
           <BackButton />
           <Heading>Inventory</Heading>
@@ -1172,7 +1172,7 @@ function Inventory() {
               variant="primary"
               className={`px-4 py-2 text-sm font-medium flex items-center justify-center gap-2 transition-colors ${activeTab === 'medicine'
                 ? 'border-b-2 border-primary text-primary'
-                : 'text-gray-600 hover:text-gray-800'
+                : 'text-text lg:hover:text-green-900'
                 }`}
               size="sm"
               onClick={() => setActiveTab('medicine')}
@@ -1183,7 +1183,7 @@ function Inventory() {
               variant="primary"
               className={`px-4 py-2 text-sm font-medium flex items-center justify-center gap-2 transition-colors ${activeTab === 'batch'
                 ? 'border-b-2 border-primary text-primary'
-                : 'text-gray-600 hover:text-gray-800'
+                : 'text-text lg:hover:text-green-900'
                 }`}
               size="sm"
               onClick={() => setActiveTab('batch')}
@@ -1204,7 +1204,7 @@ function Inventory() {
               variant="primary"
               size="sm"
               onClick={() => setIsReceiveModalOpen(true)}
-              className="bg-primary text-white"
+              className="bg-primary text-text"
             >
               <MdOutlineAdd size={24} /> Receive
             </Button>
@@ -1254,7 +1254,7 @@ function Inventory() {
               variant="secondary"
               type="button"
               onClick={() => setIsEditModalOpen(false)}
-              className="px-3 sm:px-4 py-1 sm:py-2 border rounded text-gray-600 hover:bg-gray-100 text-sm sm:text-base"
+              className="px-3 sm:px-4 py-1 sm:py-2 border rounded text-text hover:bg-gray-100 text-sm sm:text-base"
             >
               <MdOutlineClose /> Cancel
             </Button>
@@ -1262,7 +1262,7 @@ function Inventory() {
               variant="primary"
               type="submit"
               form="edit-form"
-              className="px-3 sm:px-4 py-1 sm:py-2 bg-primary text-white rounded hover:bg-primary-dark text-sm sm:text-base"
+              className="px-3 sm:px-4 py-1 sm:py-2 bg-primary text-text rounded hover:bg-primary-dark text-sm sm:text-base"
             >
               <BiSave /> Save Changes
             </Button>
@@ -1291,7 +1291,7 @@ function Inventory() {
                       name={key}
                       value={value}
                       onChange={handleEditChange}
-                      className="w-full border rounded p-2 bg-white text-black"
+                      className="w-full border rounded p-2 bg-background text-black"
                       step={key === 'Price' ? '0.01' : undefined}
                     />
                   </div>
@@ -1312,7 +1312,7 @@ function Inventory() {
             <Button
               variant="secondary"
               onClick={() => setIsReceiveModalOpen(false)}
-              className="px-3 sm:px-4 py-1 sm:py-2 border rounded text-gray-600 hover:bg-gray-100 text-sm sm:text-base"
+              className="px-3 sm:px-4 py-1 sm:py-2 border rounded text-text hover:bg-gray-100 text-sm sm:text-base"
             >
               <MdOutlineClose /> Cancel
             </Button>
@@ -1320,7 +1320,7 @@ function Inventory() {
               variant="primary"
               type="submit"
               form="receive-form"
-              className="px-3 sm:px-4 py-1 sm:py-2 bg-primary text-white rounded hover:bg-primary-dark text-sm sm:text-base"
+              className="px-3 sm:px-4 py-1 sm:py-2 bg-primary text-text rounded hover:bg-primary-dark text-sm sm:text-base"
             >
               <BiSave /> Save
             </Button>
@@ -1340,7 +1340,7 @@ function Inventory() {
               onChange={handleReceiveChange}
               type="text"
               required
-              className="w-full border rounded p-2 bg-white text-black"
+              className="w-full border rounded p-2 bg-background text-black"
             />
           </div>
           <div>
@@ -1351,7 +1351,7 @@ function Inventory() {
               onChange={handleReceiveChange}
               type="text"
               required
-              className="w-full border rounded p-2 bg-white text-black"
+              className="w-full border rounded p-2 bg-background text-black"
             />
           </div>
           <div>
@@ -1362,7 +1362,7 @@ function Inventory() {
               onChange={handleReceiveChange}
               type="number"
               required
-              className="w-full border rounded p-2 bg-white text-black"
+              className="w-full border rounded p-2 bg-background text-black"
             />
           </div>
           <div>
@@ -1372,7 +1372,7 @@ function Inventory() {
               value={receiveFormData.UnitofMeasure}
               onChange={handleReceiveChange}
               type="text"
-              className="w-full border rounded p-2 bg-white text-black"
+              className="w-full border rounded p-2 bg-background text-black"
             />
           </div>
           <div>
@@ -1383,7 +1383,7 @@ function Inventory() {
               onChange={handleReceiveChange}
               type="date"
               required
-              className="w-full border rounded p-2 bg-white text-black"
+              className="w-full border rounded p-2 bg-background text-black"
             />
           </div>
           <div>
@@ -1394,7 +1394,7 @@ function Inventory() {
               onChange={handleReceiveChange}
               type="date"
               required
-              className="w-full border rounded p-2 bg-white text-black"
+              className="w-full border rounded p-2 bg-background text-black"
             />
           </div>
           <div>
@@ -1406,7 +1406,7 @@ function Inventory() {
               type="number"
               required
               step="0.01"
-              className="w-full border rounded p-2 bg-white text-black"
+              className="w-full border rounded p-2 bg-background text-black"
             />
           </div>
         </form>
