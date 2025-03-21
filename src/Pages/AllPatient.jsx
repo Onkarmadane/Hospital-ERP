@@ -97,6 +97,7 @@ const AllPatient = () => {
       text: 'Patient details have been updated successfully.',
       icon: 'success',
       confirmButtonText: 'OK',
+      confirmButtonColor:'#77db8f',
       timer: 1500,
       timerProgressBar: true,
     });

@@ -45,7 +45,7 @@ const BookAppointmentForm = () => {
 
   return (
     <>
-      <div className=" w-[95%] lg:ms-[70px] text-text min-h-screen">
+      <div className=" w-[96%] lg:ms-[50px] text-text min-h-screen">
         {/* <div className="flex items-center justify-between p-4 border-b"> */}
           <Heading className='flex justify-start p-4'>Book Appointments</Heading>
         {/* </div> */}
