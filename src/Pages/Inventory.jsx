@@ -959,6 +959,7 @@ import inventoryStaticData from '../data.json'; // Adjust path as needed
 import Heading from '../Components/Heading';
 
 function Inventory() {
+  const [theme, setTheme] = useState('light');
   const [activeTab, setActiveTab] = useState('medicine');
   const [inventoryData, setInventoryData] = useState(inventoryStaticData.inventoryData);
   const [batchData, setBatchData] = useState(inventoryStaticData.batchData);
@@ -994,14 +995,14 @@ function Inventory() {
       accessor: 'Action',
       Cell: ({ row }) => (
         <div className="flex gap-1">
-          <button className="text-red-500 border border-red-500 rounded p-1 hover:bg-red-50" title="Delete" onClick={() => handleDelete(row.original)}>
-            <RiDeleteBinLine size={16} />
+          <button className="text-blue-500 border border-blue-500 rounded p-1 hover:bg-blue-50" title="View Details" onClick={() => handleView(row.original)}>
+            <RiEyeLine size={16} />
           </button>
           <button className="text-green-500 border border-green-500 rounded p-1 hover:bg-green-50" title="Edit Details" onClick={() => handleEdit(row.original)}>
             <RiEditBoxLine size={16} />
           </button>
-          <button className="text-blue-500 border border-blue-500 rounded p-1 hover:bg-blue-50" title="View Details" onClick={() => handleView(row.original)}>
-            <RiEyeLine size={16} />
+          <button className="text-red-500 border border-red-500 rounded p-1 hover:bg-red-50" title="Delete" onClick={() => handleDelete(row.original)}>
+            <RiDeleteBinLine size={16} />
           </button>
         </div>
       )
@@ -1035,24 +1036,62 @@ function Inventory() {
   ];
 
   // Handlers
+  // const handleDelete = (medicine) => {
+  //   Swal.fire({
+  //     title: 'Are you sure?',
+  //     text: `This action will permanently delete ${medicine.Medicine} (Batch: ${medicine.BatchNo}). You won’t be able to undo this!`,
+  //     icon: 'warning',
+  //     showCancelButton: true,
+  //     confirmButtonColor: '#d33',
+  //     cancelButtonColor: '#3085d6',
+  //     confirmButtonText: 'Yes, delete it!',
+  //     cancelButtonText: 'Cancel'
+  //   }).then((result) => {
+  //     if (result.isConfirmed) {
+  //       setInventoryData(inventoryData.filter(item => item.BatchNo !== medicine.BatchNo || item.ReceivedDate !== medicine.ReceivedDate));
+  //       Swal.fire('Deleted!', 'The inventory item has been deleted.', 'success');
+  //     }
+  //   });
+  // };
   const handleDelete = (medicine) => {
+    const isDarkMode = theme === 'dark'; // Replace with your theme logic
+  
     Swal.fire({
       title: 'Are you sure?',
       text: `This action will permanently delete ${medicine.Medicine} (Batch: ${medicine.BatchNo}). You won’t be able to undo this!`,
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonColor: '#d33',
-      cancelButtonColor: '#3085d6',
       confirmButtonText: 'Yes, delete it!',
-      cancelButtonText: 'Cancel'
+      cancelButtonText: 'Cancel',
+      customClass: {
+        popup: isDarkMode ? 'bg-gray-800 text-gray-100' : 'bg-white text-gray-900', // Replace with bg-background/text-text if dynamic
+        title: isDarkMode ? 'text-gray-100' : 'text-gray-900',
+        htmlContainer: isDarkMode ? 'text-gray-100' : 'text-gray-900',
+        confirmButton: 'bg-red-500 text-white', // Consistent with your UI
+        cancelButton: 'bg-blue-500 text-white',
+      },
     }).then((result) => {
       if (result.isConfirmed) {
-        setInventoryData(inventoryData.filter(item => item.BatchNo !== medicine.BatchNo || item.ReceivedDate !== medicine.ReceivedDate));
-        Swal.fire('Deleted!', 'The inventory item has been deleted.', 'success');
+        setInventoryData(
+          inventoryData.filter(
+            (item) =>
+              item.BatchNo !== medicine.BatchNo || item.ReceivedDate !== medicine.ReceivedDate
+          )
+        );
+        Swal.fire({
+          title: 'Deleted!',
+          text: 'The inventory item has been deleted.',
+          icon: 'success',
+          customClass: {
+            popup: isDarkMode ? 'bg-gray-800 text-gray-100' : 'bg-white text-gray-900',
+            title: isDarkMode ? 'text-gray-100' : 'text-gray-900',
+            htmlContainer: isDarkMode ? 'text-gray-100' : 'text-gray-900',
+            confirmButton: 'bg-green-500 text-white',
+          },
+        });
       }
     });
   };
-
   const handleBatchDelete = (batch) => {
     Swal.fire({
       title: 'Are you sure?',
@@ -1159,7 +1198,7 @@ function Inventory() {
   );
 
   return (
-    <div className="grid grid-cols-1 gap-3 w-[95%] lg:ms-[70px]">
+    <div className="grid grid-cols-1 mx-auto gap-3 w-[96%] lg:ml-[50px]">
       {/* Header */}
 
       <div className="sticky top-0 bg-background z-[10]">

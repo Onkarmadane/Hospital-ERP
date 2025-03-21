@@ -10,10 +10,10 @@ import BackButton from '../Components/BackButton';
 const Setup = () => {
     return (
         <div>
-            <div className="lg:ps-20">
+            <div className="lg:ps-[50px]">
                 <BackButton />
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-[95%] mx-auto lg:ps-10 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-[96%] mx-auto lg:ps-[50px] gap-6">
                 <Link to="/doctor/settings/inventory" className="no-underline">
                     <Cards
                         title="Inventory"

@@ -74,7 +74,7 @@ function Dashboard() {
     //         <ThemeToggle />
     //       </div>
     //     </div>
-    <div className="grid grid-cols-1 gap-3 w-[95%] lg:ms-[70px]">
+    <div className="grid grid-cols-1 mx-auto gap-3 w-[96%] lg:ml-[50px]">
       <div className="sticky top-0 z-[5] bg-background">
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-4 items-center mb-2">
           {/* Left: BackButton */}

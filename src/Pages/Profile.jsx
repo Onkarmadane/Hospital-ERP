@@ -65,7 +65,7 @@ const navigate = useNavigate();
     });
   };
   return (
-    <div className="h-screen w-[95%] lg:ms-[70px] text-text mx-auto">
+    <div className="h-screen w-[96%] lg:ms-[50px] text-text mx-auto">
       <ProfileHeader name={profileData.name} photoUrl={profileData.photoUrl} />
       <ProfileInfo
         profileData={profileData}

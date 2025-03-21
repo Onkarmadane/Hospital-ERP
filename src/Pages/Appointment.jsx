@@ -479,7 +479,7 @@ const Appointment = () => {
   };
 
   return (
-    <div className="grid grid-cols-1 gap-3 w-[95%] lg:ms-[70px] text-text">
+    <div className="grid grid-cols-1 mx-auto gap-3 w-[96%] lg:ml-[50px] text-text">
       <div className="rounded-lg flex flex-col min-h-0">
         {/* Sticky Header */}
         <div className="bg-background sticky top-0 z-[10]  pb-4">

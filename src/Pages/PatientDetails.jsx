@@ -188,7 +188,7 @@ const PatientDetails = () => {
     );
 
     return (
-        <div className="w-[95%] lg:ms-[70px] text-black px-2">
+        <div className="w-[96%] lg:ms-[50px] text-black px-2">
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between pb-4 border-b gap-4">
                 <div className="flex items-center gap-4">
                     <BackButton />

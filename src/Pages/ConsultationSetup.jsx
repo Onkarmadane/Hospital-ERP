@@ -386,7 +386,7 @@ const SetupTable = () => {
   };
 
   return (
-    <div className="grid grid-cols-1 gap-3 w-[95%] lg:ms-[70px]">
+    <div className="grid grid-cols-1 mx-auto gap-3 w-[96%] lg:ml-[50px]">
       {/* Tabs */}
       <div className=" justify-between flex flex-row items-center gap-2 sm:gap-3 md:gap-4 flex-wrap w-full sm:w-auto">
         <BackButton />
