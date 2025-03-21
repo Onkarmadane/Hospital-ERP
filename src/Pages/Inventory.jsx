@@ -1159,7 +1159,7 @@ function Inventory() {
   );
 
   return (
-    <div className="grid grid-cols-1 gap-3 w-[95%] lg:ms-[70px] px-1 mx-auto ">
+    <div className="grid grid-cols-1 gap-3 w-[95%] lg:ms-[70px]">
       {/* Header */}
 
       <div className="sticky top-0 bg-background z-[10]">

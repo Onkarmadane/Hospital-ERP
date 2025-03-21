@@ -175,7 +175,7 @@ const AllPatient = () => {
   ];
 
   return (
-    <div className="grid grid-cols-1 gap-3 w-[95%] lg:ms-[70px] bg-background mx-auto max-w-7xl">
+    <div className="grid grid-cols-1 gap-3 w-[95%] lg:ms-[70px]">
       <div>
         {/* Card Header */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between pb-4  gap-4">
