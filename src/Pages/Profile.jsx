@@ -65,7 +65,7 @@ const navigate = useNavigate();
     });
   };
   return (
-    <div className="h-screen w-[95%] lg:ms-[70px] text-black mx-auto">
+    <div className="h-screen w-[95%] lg:ms-[70px] text-text mx-auto">
       <ProfileHeader name={profileData.name} photoUrl={profileData.photoUrl} />
       <ProfileInfo
         profileData={profileData}
@@ -141,7 +141,7 @@ function ProfileInfo({ profileData, formData, isEditing, handleInputChange }) {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {personalFields.map((field) => (
             <div key={field.name}>
-              <label className="block text-sm font-medium text-gray-700">
+              <label className="block text-sm font-medium text-text">
                 {field.label}
               </label>
               {isEditing ? (
@@ -150,7 +150,7 @@ function ProfileInfo({ profileData, formData, isEditing, handleInputChange }) {
                   name={field.name}
                   value={formData[field.name]}
                   onChange={handleInputChange}
-                //   className="border-primary focus:border-primary focus:ring-2 focus:ring-primary bg-white"
+                //   className="border-primary focus:border-primary focus:ring-2 focus:ring-primary bg-background"
                 />
               ) : (
                 <p className="mt-1">{profileData[field.name]}</p>
@@ -164,7 +164,7 @@ function ProfileInfo({ profileData, formData, isEditing, handleInputChange }) {
         <div className="">
           {professionalFields.map((field) => (
             <div key={field.name}>
-              <label className="block text-sm font-medium text-gray-700">
+              <label className="block text-sm font-medium text-text">
                 {field.label}
               </label>
               {isEditing ? (
@@ -173,7 +173,7 @@ function ProfileInfo({ profileData, formData, isEditing, handleInputChange }) {
                   name={field.name}
                   value={formData[field.name]}
                   onChange={handleInputChange}
-                  className="border-primary focus:border-primary focus:ring-2 focus:ring-primary bg-white"
+                  className="border-primary focus:border-primary focus:ring-2 focus:ring-primary bg-background"
                 />
               ) : (
                 <p className="mt-1">{profileData[field.name]}</p>

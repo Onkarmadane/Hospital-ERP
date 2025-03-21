@@ -1334,7 +1334,7 @@ function Inventory() {
         >
           <div>
             <label className="block font-medium">Medicine</label>
-            <input
+            <Input
               name="Medicine"
               value={receiveFormData.Medicine}
               onChange={handleReceiveChange}
@@ -1345,7 +1345,7 @@ function Inventory() {
           </div>
           <div>
             <label className="block font-medium">Batch No</label>
-            <input
+            <Input
               name="BatchNo"
               value={receiveFormData.BatchNo}
               onChange={handleReceiveChange}
@@ -1356,7 +1356,7 @@ function Inventory() {
           </div>
           <div>
             <label className="block font-medium">Inward Quantity</label>
-            <input
+            <Input
               name="InwardQuantity"
               value={receiveFormData.InwardQuantity}
               onChange={handleReceiveChange}
@@ -1367,7 +1367,7 @@ function Inventory() {
           </div>
           <div>
             <label className="block font-medium">Unit of Measure</label>
-            <input
+            <Input
               name="UnitofMeasure"
               value={receiveFormData.UnitofMeasure}
               onChange={handleReceiveChange}
@@ -1377,7 +1377,7 @@ function Inventory() {
           </div>
           <div>
             <label className="block font-medium">Received Date</label>
-            <input
+            <Input
               name="ReceivedDate"
               value={receiveFormData.ReceivedDate}
               onChange={handleReceiveChange}
@@ -1388,7 +1388,7 @@ function Inventory() {
           </div>
           <div>
             <label className="block font-medium">Expiry</label>
-            <input
+            <Input
               name="ExpiryDate"
               value={receiveFormData.ExpiryDate}
               onChange={handleReceiveChange}
@@ -1399,7 +1399,7 @@ function Inventory() {
           </div>
           <div>
             <label className="block font-medium">Price</label>
-            <input
+            <Input
               name="Price"
               value={receiveFormData.Price}
               onChange={handleReceiveChange}

@@ -116,7 +116,7 @@ const AllPatient = () => {
       accessor: 'name',
       Cell: ({ row }) => (
         <div className="flex items-center">
-          <div className="w-8 h-8 rounded-full bg-blue-500 text-white flex items-center justify-center mr-2 shadow">
+          <div className="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center mr-2 shadow">
             {getInitials(row.original.name)}
           </div>
           {row.original.name}
@@ -149,25 +149,25 @@ const AllPatient = () => {
       Cell: ({ row }) => (
         <div className="flex gap-1">
           <button
-            className="text-red-500 border border-red-500 rounded p-1 lg:hover:bg-red-50"
-            title="Delete"
-            onClick={() => handleDelete(row.original.id)}
+            className="text-blue-500 border border-blue-500 rounded p-1 lg:hover:bg-blue-100"
+            title="View Dashboard"
+            onClick={() => handleView(row.original)}
           >
-            <RiDeleteBinLine />
+            <RiEyeLine />
           </button>
           <button
-            className="text-green-500 border border-green-500 rounded p-1 lg:hover:bg-green-50"
+            className="text-green-500 border border-green-500 rounded p-1 lg:hover:bg-green-100"
             title="Edit Patient Details"
             onClick={() => handleEdit(row.original)}
           >
             <RiEditBoxLine />
           </button>
           <button
-            className="text-blue-500 border border-blue-500 rounded p-1 lg:hover:bg-blue-50"
-            title="View Dashboard"
-            onClick={() => handleView(row.original)}
+            className="text-red-500 border border-red-500 rounded p-1 lg:hover:bg-red-100"
+            title="Delete"
+            onClick={() => handleDelete(row.original.id)}
           >
-            <RiEyeLine />
+            <RiDeleteBinLine />
           </button>
         </div>
       ),
@@ -247,7 +247,7 @@ const AllPatient = () => {
               {filteredPatients.slice(0, recordsPerPage).map((patient) => (
                 <div key={patient.id} className="bg-background rounded-lg shadow p-4 flex gap-2 border">
                   <div className="flex items-center gap-3 flex-1">
-                    <div className="w-12 h-12 rounded-full text-white bg-blue-500 flex items-center justify-center shadow">
+                    <div className="w-12 h-12 rounded-full text-white bg-primary flex items-center justify-center shadow">
                       {getInitials(patient.name)}
                     </div>
                     <div>
@@ -306,7 +306,7 @@ const AllPatient = () => {
         {selectedPatient && (
           <div className="space-y-2 text-sm sm:text-base overflow-x-hidden">
             <div className="flex items-center gap-2">
-              <div className="w-12 h-12 rounded-full bg-blue-500 text-white flex items-center justify-center shadow">
+              <div className="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center shadow">
                 {getInitials(selectedPatient.name)}
               </div>
               <h4 className="font-medium">{selectedPatient.name}</h4>
