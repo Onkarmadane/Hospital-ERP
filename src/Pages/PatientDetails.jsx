@@ -62,35 +62,35 @@ const PatientDetails = () => {
 
     const renderProfileContent = () => (
         <div className="grid grid-cols-1 sm:grid-cols-2">
-            <div>
-                <div className="font-semibold text-gray-700">Patient Name:</div>
+            <div className='flex  flex-wrap gap-2 items-center'>
+                <div className="font-semibold text-text">Patient Name:</div>
                 <div>{patientData.name}</div>
             </div>
-            <div>
-                <div className="font-semibold text-gray-700">Date of Birth:</div>
+            <div className='flex  flex-wrap gap-2 items-center'>
+                <div className="font-semibold text-text">Date of Birth:</div>
                 <div>{patientData.dob}</div>
             </div>
-            <div>
-                <div className="font-semibold text-gray-700">Age:</div>
+            <div className='flex  flex-wrap gap-2 items-center'>
+                <div className="font-semibold text-text">Age:</div>
                 <div>{calculateAge(patientData.dob)}</div>
             </div>
-            <div>
-                <div className="font-semibold text-gray-700">Contact Number:</div>
+            <div className='flex  flex-wrap gap-2 items-center'>
+                <div className="font-semibold text-text">Contact Number:</div>
                 <div>{patientData.phone}</div>
             </div>
-            <div>
-                <div className="font-semibold text-gray-700">Email:</div>
+            <div className='flex  flex-wrap gap-2 items-center'>
+                <div className="font-semibold text-text">Email:</div>
                 <div>{patientData.email || 'Not provided'}</div>
             </div>
-            <div>
-                <div className="font-semibold text-gray-700">Gender:</div>
+            <div className='flex  flex-wrap gap-2 items-center'>
+                <div className="font-semibold text-text">Gender:</div>
                 <div>{patientData.gender}</div>
             </div>
             <div className="col-span-1 sm:col-span-2">
-                <div className="font-semibold text-gray-700">Family Profiles:</div>
+                <div className="font-semibold text-text">Family Profiles:</div>
                 <div className="flex flex-wrap gap-2 mt-2">
                     {patientData.familyProfiles.map((family, index) => (
-                        <span key={index} className="bg-gray-100 px-2 py-1 rounded text-sm">
+                        <span key={index} className="bg-secondary px-2 py-1 rounded text-sm text-text">
                             {family}
                         </span>
                     ))}
@@ -110,20 +110,20 @@ const PatientDetails = () => {
         return (
             <div className="h-full w-full overflow-auto">
                 {/* Health Board Sub-Tabs */}
-                <div className="flex flex-wrap gap-2 border-b pb-2 mb-4">
+                <div className="flex flex-wrap gap-2  pb-2 mb-4">
                     {healthTabs.map((tab) => (
-                        <Button
+                        <button
                             key={tab.name}
-                            className={`flex items-center gap-2 px-3 py-1.5 text-black border-none outline-none rounded transition-colors ${activeHealthTab === tab.name
-                                ? 'bg-blue-500 text-white shadow-lg'
-                                : 'text-gray-800 bg-gray-200 hover:shadow-lg'
+                            className={`px-3 flex gap-2 items-center py-1 sm:px-4 sm:py-2 text-xs sm:text-sm font-medium ${activeHealthTab === tab.name
+                                ? 'border-b-2 border-primary text-primary'
+                                : 'text-text lg:hover:text-primary duration-300'
                                 }`}
                             onClick={() => setActiveHealthTab(tab.name)}
                             title={tab.name}
                         >
                             {tab.icon}
                             {tab.name}
-                        </Button>
+                        </button>
                     ))}
                 </div>
 
@@ -137,24 +137,24 @@ const PatientDetails = () => {
 
     const renderAppointmentsTab = () => (
         <div className="h-full">
-            <div className="flex flex-wrap items-center justify-between gap-4 p-4 border border-gray-200 rounded-lg bg-gray-50">
+            <div className="flex flex-wrap items-center justify-between gap-4 p-4 border border-gray-200 rounded-lg">
                 <div className="flex items-center gap-2">
-                    <span className="font-bold text-gray-700">Type:</span>
-                    <select className="h-9 w-32 border border-gray-300 px-2 rounded-md bg-white text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-400">
+                    <span className="font-bold text-text">Type:</span>
+                    <select className="h-9 w-32 border border-gray-300 px-2 rounded-md bg-background text-text focus:outline-none focus:ring-2 focus:ring-blue-400">
                         <option value="upcoming">Upcoming</option>
                         <option value="pending">Pending</option>
                         <option value="completed">Completed</option>
                     </select>
                 </div>
                 <div className="flex items-center gap-2">
-                    <label className="text-gray-700 font-bold">Doctor:</label>
+                    <label className="text-text font-bold">Doctor:</label>
                     <input type="checkbox" className="w-5 h-5 accent-blue-500 cursor-pointer" />
                 </div>
             </div>
             <div className="mt-3 flex items-center justify-center min-h-[50vh]">
                 <div className="text-center p-6 max-w-md">
-                    <h1 className="text-xl font-bold text-gray-800 mb-2">No Slots Available</h1>
-                    <p className="text-gray-600">Please check back later or try selecting a different appointment type.</p>
+                    <h1 className="text-xl font-bold text-text mb-2">No Slots Available</h1>
+                    <p className="text-text">Please check back later or try selecting a different appointment type.</p>
                 </div>
             </div>
         </div>
@@ -163,8 +163,8 @@ const PatientDetails = () => {
     const renderPrescriptionsTab = () => (
         <div className="h-full flex items-center justify-center min-h-[50vh]">
             <div className="text-center p-6 max-w-md">
-                <h1 className="text-xl font-bold text-gray-800 mb-2">You don’t have any prescription record</h1>
-                <p className="text-gray-600">Tap on "Upload New" to add a prescription.</p>
+                <h1 className="text-xl font-bold text-text mb-2">You don’t have any prescription record</h1>
+                <p className="text-text">Tap on "Upload New" to add a prescription.</p>
             </div>
         </div>
     );
@@ -172,8 +172,8 @@ const PatientDetails = () => {
     const renderCertificatesTab = () => (
         <div className="h-full flex items-center justify-center min-h-[50vh]">
             <div className="text-center p-6 max-w-md">
-                <h1 className="text-xl font-bold text-gray-800 mb-2">You don’t have any Certificate</h1>
-                <p className="text-gray-600 w-[70%] mx-auto">To add Certificates, Tap on the Upload New Button.</p>
+                <h1 className="text-xl font-bold text-text mb-2">You don’t have any Certificate</h1>
+                <p className="text-text w-[70%] mx-auto">To add Certificates, Tap on the Upload New Button.</p>
             </div>
         </div>
     );
@@ -181,16 +181,16 @@ const PatientDetails = () => {
     const renderLabTestsTab = () => (
         <div className="h-full flex items-center justify-center min-h-[50vh]">
             <div className="text-center p-6 max-w-md">
-                <h1 className="text-xl font-bold text-gray-800 mb-2">You don’t have any labtest</h1>
-                <p className="text-gray-600 w-[70%] mx-auto">Hey you don't have any labtests</p>
+                <h1 className="text-xl font-bold text-text mb-2">You don’t have any labtest</h1>
+                <p className="text-text w-[70%] mx-auto">Hey you don't have any labtests</p>
             </div>
         </div>
     );
 
     return (
-        <div className="w-[96%] lg:ms-[50px] text-black px-2">
-            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between pb-4 border-b gap-4">
-                <div className="flex items-center gap-4">
+        <div className="w-[96%] lg:ms-[50px] text-text px-2">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between  gap-4">
+                <div className="flex items-center gap-4 lg:py-2">
                     <BackButton />
                     <h5 className="text-lg font-semibold">Patients Details</h5>
                 </div>
@@ -200,8 +200,8 @@ const PatientDetails = () => {
             </div>
 
             <div className="flex items-center">
-                <div className="w-[50px] h-[50px] rounded-full overflow-hidden border flex-shrink-0">
-                    <div className="w-full h-full text-xl rounded-full flex justify-center items-center font-bold text-white" style={{ backgroundColor: '#4CAF50' }}>
+                <div className="w-[50px] h-[50px] rounded-full overflow-hidden border flex-shrink-0 my-1 ">
+                    <div className="w-full h-full text-xl rounded-full flex justify-center items-center font-bold text-white bg-primary border-none outline-none">
                         {getInitial(patientData.name)}
                     </div>
                 </div>
@@ -210,20 +210,20 @@ const PatientDetails = () => {
                         <span className="text-lg font-semibold">{patientData.name}</span>
                     </div>
                     <div className="flex flex-col">
-                        <span className="text-gray-700">{calculateAge(patientData.dob)} Yrs</span>
+                        <span className="text-text">{calculateAge(patientData.dob)} Yrs</span>
                     </div>
                     <div className="flex flex-col">
-                        <span className="text-gray-700">{patientData.gender}</span>
+                        <span className="text-text">{patientData.gender}</span>
                     </div>
                     <div className="flex flex-col">
-                        <span className="text-gray-700">{patientData.phone}</span>
+                        <span className="text-text">{patientData.phone}</span>
                     </div>
                 </div>
 
             </div>
-            <div className="flex my-3 gap-3">
-                <Button className={`flex items-center text-white gap-2 p-2 rounded cursor-pointer ${activeTab === 'Profile' ? 'bg-primary text-white shadow-lg' : 'hover:bg-gray-200 '}`} onClick={() => { setActiveTab('Profile'); }}><FaUser />Profile</Button>
-                <Button className={`flex items-center text-white gap-2 p-2 rounded cursor-pointer ${activeTab === 'Health Board' ? 'bg-primary text-white shadow-lg' : 'hover:bg-gray-200 '}`} onClick={() => { setActiveTab('Health Board'); }}><FaClipboardList />Health Board</Button>
+            <div className="flex my-3 gap-3 text-text">
+                <button className={`px-3 flex  gap-3 items-center py-1 sm:px-4 sm:py-2 text-xs sm:text-sm font-medium ${activeTab === 'Profile' ? 'border-b-2  border-primary text-primary' : 'text-text lg:hover:text-primary duration-300 '}whitespace-nowrap text-primary`} onClick={() => { setActiveTab('Profile'); }}><FaUser />Profile</button>
+                <button className={`px-3 flex items-center gap-2 py-1 sm:px-4 sm:py-2 text-xs sm:text-sm font-medium ${activeTab === 'Health Board' ? 'border-b-2 border-primary text-primary' : 'text-text lg:hover:text-primary duration-300 '}whitespace-nowrap text-primary`} onClick={() => { setActiveTab('Health Board'); }}><FaClipboardList />Health Board</button>
             </div>
             <div className="w-full">
                 {activeTab === 'Profile' && renderProfileContent()}

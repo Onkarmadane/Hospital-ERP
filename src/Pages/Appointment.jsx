@@ -279,7 +279,7 @@ const Appointment = () => {
                 className="inline-block"
               >
                 <button
-                  className="lg:text-sm xl:text-base xlarge:text-lg text-text hover:text-gray-500 transition-colors"
+                  className="lg:text-sm xl:text-base xlarge:text-lg text-white lg:hover:text-gray-500 transition-colors"
                   aria-describedby="popup-243"
                 >
                   <RiEditFill size={24} />
@@ -288,7 +288,7 @@ const Appointment = () => {
             </Tooltip>
             <Tooltip content="Start Consultation">
               <button
-                className="lg:text-sm xl:text-base xlarge:text-lg text-text hover:text-gray-500 transition-colors"
+                className="lg:text-sm xl:text-base xlarge:text-lg text-white lg:hover:text-gray-500 transition-colors"
                 aria-describedby="popup-240"
                 onClick={(e) => {
                   e.stopPropagation();
@@ -309,7 +309,7 @@ const Appointment = () => {
             </Tooltip>
             <Tooltip content="End Consultation">
               <button
-                className="lg:text-sm xl:text-base xlarge:text-lg text-text hover:text-gray-500 transition-colors"
+                className="lg:text-sm xl:text-base xlarge:text-lg text-white lg:hover:text-gray-500 transition-colors"
                 aria-describedby="popup-241"
                 onClick={(e) => {
                   e.stopPropagation();
@@ -330,7 +330,7 @@ const Appointment = () => {
             </Tooltip>
             <Tooltip content="View Details">
               <button
-                className="lg:text-sm xl:text-base xlarge:text-lg text-text hover:text-gray-500 transition-colors"
+                className="lg:text-sm xl:text-base xlarge:text-lg text-white lg:hover:text-gray-500 transition-colors"
                 aria-describedby="popup-242"
                 onClick={(e) => {
                   e.stopPropagation();
@@ -351,7 +351,7 @@ const Appointment = () => {
             </Tooltip>
             <Tooltip content="Reschedule">
               <button
-                className="lg:text-sm xl:text-base xlarge:text-lg text-text hover:text-gray-500 transition-colors"
+                className="lg:text-sm xl:text-base xlarge:text-lg text-white lg:hover:text-gray-500 transition-colors"
                 aria-describedby="popup-243"
                 onClick={(e) => {
                   e.stopPropagation();
@@ -373,7 +373,7 @@ const Appointment = () => {
             {event.phone && (
               <Tooltip content="Dial Now">
                 <button
-                  className="lg:text-sm xl:text-base xlarge:text-lg text-text hover:text-gray-500 transition-colors"
+                  className="lg:text-sm xl:text-base xlarge:text-lg text-white lg:hover:text-gray-500 transition-colors"
                   aria-describedby="popup-247"
                   onClick={(e) => {
                     e.stopPropagation();
@@ -388,7 +388,7 @@ const Appointment = () => {
             )}
             <Tooltip content="Contact Details">
               <button
-                className="lg:text-sm xl:text-base xlarge:text-lg text-text hover:text-gray-500 transition-colors"
+                className="lg:text-sm xl:text-base xlarge:text-lg text-white lg:hover:text-gray-500 transition-colors"
                 aria-describedby="popup-248"
                 style={{ cursor: 'pointer' }}
                 onClick={(e) => {

@@ -228,7 +228,7 @@ function Inventory() {
               variant="primary"
               className={`px-4 py-2 text-sm font-medium flex items-center justify-center gap-2 transition-colors ${activeTab === 'medicine'
                 ? 'border-b-2 border-primary text-primary'
-                : 'text-text lg:hover:text-green-900'
+                : 'text-text lg:hover:text-primary'
                 }`}
               size="sm"
               onClick={() => setActiveTab('medicine')}
@@ -239,7 +239,7 @@ function Inventory() {
               variant="primary"
               className={`px-4 py-2 text-sm font-medium flex items-center justify-center gap-2 transition-colors ${activeTab === 'batch'
                 ? 'border-b-2 border-primary text-primary'
-                : 'text-text lg:hover:text-green-900'
+                : 'text-text lg:hover:text-primary'
                 }`}
               size="sm"
               onClick={() => setActiveTab('batch')}
@@ -260,7 +260,7 @@ function Inventory() {
               variant="primary"
               size="sm"
               onClick={() => setIsReceiveModalOpen(true)}
-              className="bg-primary text-text"
+              className="bg-primary text-white"
             >
               <MdOutlineAdd size={24} /> Receive
             </Button>

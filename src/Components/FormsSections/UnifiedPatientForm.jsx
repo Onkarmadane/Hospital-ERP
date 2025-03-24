@@ -570,7 +570,7 @@ function UnifiedPatientForm() {
   const CurrentSection = tabs[activeTab].component;
 
   return (
-    <div className="w-[95%] lg:ms-[70px] bg-background mx-auto p-4 pb-20">
+    <div className="w-[96%] lg:ms-[50px] bg-background mx-auto p-4 pb-20">
       {/* Title */}
       <div className="lg:sticky lg:top-0 z-10 bg-background">
         <Heading className='flex justify-start py-4'> Patient Form</Heading>

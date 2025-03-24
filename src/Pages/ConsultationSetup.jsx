@@ -401,7 +401,7 @@ const SetupTable = () => {
               onChange={handleSearch}
             />
           </div>
-          <Button onClick={handleCreate} variant="primary" className='text-text'>
+          <Button onClick={handleCreate} variant="primary">
             <MdOutlineAdd /> Create
           </Button>
         </div>
@@ -412,7 +412,7 @@ const SetupTable = () => {
             key={tab}
             className={`px-3 py-1.5 text-sm font-medium flex items-center gap-2 transition-colors ${activeTab === tab
               ? 'border-b-2 border-primary text-primary'
-              : 'text-text duration-300 lg:hover:text-green-900'
+              : 'text-text duration-300 lg:hover:text-primary'
               }`}
             onClick={() => handleTabChange(tab)}
             title={tab}

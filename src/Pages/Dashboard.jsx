@@ -99,9 +99,6 @@ function Dashboard() {
             </div>
           </div>
         </div>
-        {/* </div> */}
-        {/* </div> */}
-
         {/* Tabs */}
         <div className="flex mb-4  overflow-x-auto">
           <button
