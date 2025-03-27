@@ -53,14 +53,24 @@ const AllPatient = () => {
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#d33',
-      cancelButtonColor: '#3085d6',
+      cancelButtonColor: '#77db8f',
       confirmButtonText: 'Yes, delete it!',
       cancelButtonText: 'Cancel'
     }).then((result) => {
       if (result.isConfirmed) {
         const updatedPatients = patientsList.filter(patient => patient.id !== patientId);
         setPatientsList(updatedPatients);
-        Swal.fire('Deleted!', 'The patient has been deleted.', 'success');
+        Swal.fire({
+          title: 'Deleted!',
+          text: 'The patient has been deleted.',
+          icon: 'success',
+          confirmButtonColor: '#77db8f', // Set background color
+          customClass: {
+            confirmButton: 'no-focus-border' // Custom class to remove border/focus
+          },
+          buttonsStyling: true, // Keep default styling, override only what we need
+          timer: 1500,
+        });
       }
     });
   };

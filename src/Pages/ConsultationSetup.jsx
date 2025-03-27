@@ -240,6 +240,59 @@ const SetupTable = () => {
   };
 
   // Handle form submission (create or update)
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   let newData;
+  //   if (activeTab === 'Vitals') {
+  //     newData = {
+  //       id: modalMode === 'create' ? Date.now() : editingItem.id,
+  //       label: formData.label,
+  //       fields: parseInt(formData.fields) || 1,
+  //       maxLength: parseInt(formData.maxLength) || '',
+  //       unit: formData.unit || '',
+  //       separator: formData.separator || '/',
+  //     };
+  //   } else if (activeTab === 'Advice and Direction') {
+  //     newData = {
+  //       id: modalMode === 'create' ? Date.now() : editingItem.id,
+  //       name: formData.name,
+  //       description: formData.description,
+  //     };
+  //   } else {
+  //     newData = {
+  //       id: modalMode === 'create' ? Date.now() : editingItem.id,
+  //       name: formData.name,
+  //     };
+  //   }
+
+  //   if (modalMode === 'create') {
+  //     setData(prevData => ({
+  //       ...prevData,
+  //       [activeTab]: [...prevData[activeTab], newData],
+  //     }));
+  //   } else if (modalMode === 'edit') {
+  //     setData(prevData => ({
+  //       ...prevData,
+  //       [activeTab]: prevData[activeTab].map(item =>
+  //         item.id === editingItem.id ? newData : item
+  //       ),
+  //     }));
+  //   }
+
+  //   setIsModalOpen(false);
+  //   setFormData({
+  //     id: Date.now(),
+  //     label: '',
+  //     name: '',
+  //     fields: 1,
+  //     maxLength: '',
+  //     unit: '',
+  //     separator: '/',
+  //     description: '',
+  //   });
+  //   setEditingItem(null);
+  // };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     let newData;
@@ -277,6 +330,15 @@ const SetupTable = () => {
           item.id === editingItem.id ? newData : item
         ),
       }));
+      Swal.fire({
+        title: 'Success!',
+        text: 'Details have been updated successfully.',
+        icon: 'success',
+        confirmButtonText: 'OK',
+        confirmButtonColor: '#77db8f', // Green OK button
+        timer: 1500,
+        timerProgressBar: true,
+      });
     }
 
     setIsModalOpen(false);
@@ -363,7 +425,7 @@ const SetupTable = () => {
       text: "You won't be able to revert this!",
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
+      confirmButtonColor: '#d33',
       cancelButtonColor: '#77db8f',
       confirmButtonText: 'Yes, delete it!',
     }).then((result) => {
@@ -372,11 +434,17 @@ const SetupTable = () => {
           ...prevData,
           [activeTab]: prevData[activeTab].filter(item => item.id !== id),
         }));
-        Swal.fire(
-          'Deleted!',
-          'The item has been deleted.',
-          'success'
-        );
+        Swal.fire({
+          title: 'Deleted!',
+          text: 'The item has been deleted.',
+          icon: 'success',
+          confirmButtonColor: '#77db8f', // Set background color
+          customClass: {
+            confirmButton: 'no-focus-border' // Custom class to remove border/focus
+          },
+          buttonsStyling: true, // Keep default styling, override only what we need
+          timer: 1500,
+        });
       }
     });
   };

@@ -73,6 +73,13 @@ function MedicineSetup() {
         Swal.fire({
             title: 'Medicine Added Successfully',
             icon: 'success',
+            timerProgressBar: true,
+            confirmButtonColor: '#77db8f', // Set background color
+            customClass: {
+                confirmButton: 'no-focus-border' // Custom class to remove border/focus
+            },
+            buttonsStyling: true, // Keep default styling, override only what we need
+            timer: 1500,
         });
     };
 
@@ -138,14 +145,14 @@ function MedicineSetup() {
             accessor: 'Action',
             Cell: ({ row }) => (
                 <div className="flex flex-col sm:flex-row gap-1">
-                    <button className="text-red-500 border border-red-500 rounded p-1 lg:hover:bg-red-50" title="Delete" onClick={() => handleDelete(row.original)}>
-                        <RiDeleteBinLine size={16} />
+                    <button className="text-blue-500 border border-blue-500 rounded p-1 lg:hover:bg-blue-50" title="View Details" onClick={() => handleView(row.original)}>
+                        <RiEyeLine size={16} />
                     </button>
                     <button className="text-green-500 border border-green-500 rounded p-1 lg:hover:bg-green-50" title="Edit Details" onClick={() => handleEdit(row.original)}>
                         <RiEditBoxLine size={16} />
                     </button>
-                    <button className="text-blue-500 border border-blue-500 rounded p-1 lg:hover:bg-blue-50" title="View Details" onClick={() => handleView(row.original)}>
-                        <RiEyeLine size={16} />
+                    <button className="text-red-500 border border-red-500 rounded p-1 lg:hover:bg-red-50" title="Delete" onClick={() => handleDelete(row.original)}>
+                        <RiDeleteBinLine size={16} />
                     </button>
                 </div>
             ),
@@ -163,14 +170,14 @@ function MedicineSetup() {
             accessor: 'Action',
             Cell: ({ row }) => (
                 <div className="flex flex-col sm:flex-row gap-1">
-                    <button className="text-red-500 border border-red-500 rounded p-1 lg:hover:bg-red-50" title="Delete" onClick={() => handleBatchDelete(row.original)}>
-                        <RiDeleteBinLine size={16} />
+                    <button className="text-blue-500 border border-blue-500 rounded p-1 lg:hover:bg-blue-50" title="View Details" onClick={() => handleView(row.original)}>
+                        <RiEyeLine size={16} />
                     </button>
                     <button className="text-green-500 border border-green-500 rounded p-1 lg:hover:bg-green-50" title="Edit Details" onClick={() => handleEdit(row.original)}>
                         <RiEditBoxLine size={16} />
                     </button>
-                    <button className="text-blue-500 border border-blue-500 rounded p-1 lg:hover:bg-blue-50" title="View Details" onClick={() => handleView(row.original)}>
-                        <RiEyeLine size={16} />
+                    <button className="text-red-500 border border-red-500 rounded p-1 lg:hover:bg-red-50" title="Delete" onClick={() => handleBatchDelete(row.original)}>
+                        <RiDeleteBinLine size={16} />
                     </button>
                 </div>
             ),
@@ -183,14 +190,23 @@ function MedicineSetup() {
             text: `This action will permanently delete ${medicine.MedicineName}. You won’t be able to undo this!`,
             icon: 'warning',
             showCancelButton: true,
-            confirmButtonColor: '#77db8f',
-            cancelButtonColor: '#3085d6',
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#77db8f',
             confirmButtonText: 'Yes, delete it!',
             cancelButtonText: 'Cancel',
         }).then((result) => {
             if (result.isConfirmed) {
                 setMedicineData(medicineData.filter(item => item.id !== medicine.id));
-                Swal.fire('Deleted!', 'The medicine has been deleted.', 'success');
+                Swal.fire({
+                    title: 'Deleted!', text: 'The medicine has been deleted.', icon: 'success',
+                    timerProgressBar: true,
+                    confirmButtonColor: '#77db8f', // Set background color
+                    customClass: {
+                        confirmButton: 'no-focus-border' // Custom class to remove border/focus
+                    },
+                    buttonsStyling: true, // Keep default styling, override only what we need
+                    timer: 1500,
+                });
             }
         });
     };
@@ -201,14 +217,24 @@ function MedicineSetup() {
             text: `This action will permanently delete ${batch.Medicine} (Batch: ${batch.BatchNo}). You won’t be able to undo this!`,
             icon: 'warning',
             showCancelButton: true,
-            confirmButtonColor: '#77db8f',
-            cancelButtonColor: '#3085d6',
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#77db8f',
             confirmButtonText: 'Yes, delete it!',
             cancelButtonText: 'Cancel',
         }).then((result) => {
             if (result.isConfirmed) {
                 setBatchData(batchData.filter(item => item.id !== batch.id));
-                Swal.fire('Deleted!', 'The batch has been deleted.', 'success');
+                Swal.fire({
+                    title: 'Deleted!',
+                    text: 'The item has been deleted.',
+                    icon: 'success',
+                    confirmButtonColor: '#77db8f', // Set background color
+                    customClass: {
+                        confirmButton: 'no-focus-border' // Custom class to remove border/focus
+                    },
+                    buttonsStyling: true, // Keep default styling, override only what we need
+                    timer: 1500,
+                });
             }
         });
     };

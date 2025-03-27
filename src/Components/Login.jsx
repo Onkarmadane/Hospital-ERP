@@ -36,15 +36,76 @@ function Login() {
         });
     };
 
+    // const handleSubmit = async (e) => {
+    //     e.preventDefault();
+    //     setError('');
+    //     setIsLoading(true);
+
+    //     try {
+    //         const data = await mockLogin();
+    //         const { access, doctorType } = data;
+    //         localStorage.setItem('accessToken', access);
+    //         localStorage.setItem('doctorType', doctorType);
+    //         login();
+    //         Swal.fire({
+    //             icon: 'success',
+    //             title: 'Success',
+    //             text: 'Login successful!',
+    //             buttonColor:'#77db8f',
+    //             timer: 1500,
+    //         }).then(() => navigate('/doctor/Dashboard'));
+    //     } catch (err) {
+    //         Swal.fire({
+    //             icon: 'error',
+    //             title: 'Error',
+    //             text: 'Invalid email or password',
+    //         });
+    //         setError('Invalid email or password');
+    //     } finally {
+    //         setIsLoading(false);
+    //     }
+    // };
+   
+   
+    // const handleSubmit = async (e) => {
+    //     e.preventDefault();
+    //     setError('');
+    //     setIsLoading(true);
+    
+    //     try {
+    //         const data = await mockLogin();
+    //         const { access, doctorType } = data;
+    //         localStorage.setItem('accessToken', access);
+    //         localStorage.setItem('doctorType', doctorType);
+    //         login();
+    //         Swal.fire({
+    //             icon: 'success',
+    //             title: 'Success',
+    //             text: 'Login successful!',
+    //             confirmButtonColor: '#77db8f', // Set the OK button color here
+    //             timer: 1500,
+    //         }).then(() => navigate('/doctor/Dashboard'));
+    //     } catch (err) {
+    //         Swal.fire({
+    //             icon: 'error',
+    //             title: 'Error',
+    //             text: 'Invalid email or password',
+    //             confirmButtonColor: '#77db8f', // Optionally set it here too
+    //         });
+    //         setError('Invalid email or password');
+    //     } finally {
+    //         setIsLoading(false);
+    //     }
+    // };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         setError('');
         setIsLoading(true);
-
+    
         try {
             const data = await mockLogin();
             const { access, doctorType } = data;
-
             localStorage.setItem('accessToken', access);
             localStorage.setItem('doctorType', doctorType);
             login();
@@ -52,6 +113,11 @@ function Login() {
                 icon: 'success',
                 title: 'Success',
                 text: 'Login successful!',
+                confirmButtonColor: '#77db8f', // Set background color
+                customClass: {
+                    confirmButton: 'no-focus-border' // Custom class to remove border/focus
+                },
+                buttonsStyling: true, // Keep default styling, override only what we need
                 timer: 1500,
             }).then(() => navigate('/doctor/Dashboard'));
         } catch (err) {
@@ -59,6 +125,11 @@ function Login() {
                 icon: 'error',
                 title: 'Error',
                 text: 'Invalid email or password',
+                confirmButtonColor: '#77db8f',
+                customClass: {
+                    confirmButton: 'no-focus-border' // Apply to error popup too
+                },
+                buttonsStyling: true,
             });
             setError('Invalid email or password');
         } finally {

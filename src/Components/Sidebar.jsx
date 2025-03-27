@@ -84,8 +84,8 @@ const Sidebar = () => {
       text: 'Do you want to log out?',
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#77db8f',
+      confirmButtonColor: '#77db8f',
+      cancelButtonColor: '#a5a8ac',
       confirmButtonText: 'Yes, log out!',
     }).then((result) => {
       if (result.isConfirmed) {

@@ -201,3 +201,12 @@ html {
   background-color: var(--events-container-bg) !important;
   border: white 1px solid;
 }
+
+.no-focus-border {
+  border: none !important; /* Remove any border */
+  outline: none !important; /* Remove the blue focus outline */
+}
+
+.no-focus-border:focus {
+  box-shadow: none !important; /* Remove any focus shadow */
+}

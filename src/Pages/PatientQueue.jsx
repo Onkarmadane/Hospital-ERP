@@ -67,10 +67,19 @@ function PatientQueue() {
       text: "You won't be able to revert this!",
       icon: 'warning',
       confirmButtonText: 'Yes, delete it!',
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#77db8e9c',
       onConfirm: () => {
         // Delete logic
         console.log('Item deleted');
-        Swal.fire('Deleted!', 'Your item has been deleted.', 'success');
+        Swal.fire({
+          title: 'Deleted!', text: 'Your item has been deleted.', icon: 'success', confirmButtonColor: '#77db8f', // Set background color
+          customClass: {
+            confirmButton: 'no-focus-border' // Custom class to remove border/focus
+          },
+          buttonsStyling: true, // Keep default styling, override only what we need
+          timer: 1500,
+        });
       },
       onCancel: () => {
         console.log('Delete canceled');
@@ -79,7 +88,14 @@ function PatientQueue() {
       if (result.isConfirmed) {
         const updatedPatients = patientsList.filter((patient) => patient.id !== patientId);
         setPatientsList(updatedPatients);
-        Swal.fire('Deleted!', 'The patient has been deleted.', 'success');
+        Swal.fire({
+          title: 'Deleted!', text: 'The patient has been deleted.', icon: 'success', confirmButtonColor: '#77db8f', // Set background color
+          customClass: {
+            confirmButton: 'no-focus-border' // Custom class to remove border/focus
+          },
+          buttonsStyling: true, // Keep default styling, override only what we need
+          timer: 1500
+        });
       }
     });
   };
@@ -112,6 +128,12 @@ function PatientQueue() {
       text: 'Patient details have been updated successfully.',
       icon: 'success',
       confirmButtonText: 'OK',
+      confirmButtonColor: '#77db8f', // Set background color
+      customClass: {
+        confirmButton: 'no-focus-border' // Custom class to remove border/focus
+      },
+      buttonsStyling: true, // Keep default styling, override only what we need
+      timer: 1500,
       timer: 1500,
       timerProgressBar: true,
     });

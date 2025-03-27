@@ -98,13 +98,20 @@ function Inventory() {
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#d33',
-      cancelButtonColor: '#3085d6',
+      cancelButtonColor: '#77db8f',
       confirmButtonText: 'Yes, delete it!',
       cancelButtonText: 'Cancel'
     }).then((result) => {
       if (result.isConfirmed) {
         setInventoryData(inventoryData.filter(item => item.BatchNo !== medicine.BatchNo || item.ReceivedDate !== medicine.ReceivedDate));
-        Swal.fire('Deleted!', 'The inventory item has been deleted.', 'success');
+        Swal.fire({
+          title: 'Deleted!', text: 'The batch has been deleted.', icon: 'success', confirmButtonColor: '#77db8f', // Set background color
+          customClass: {
+            confirmButton: 'no-focus-border' // Custom class to remove border/focus
+          },
+          buttonsStyling: true, // Keep default styling, override only what we need
+          timer: 1500,
+        });
       }
     });
   };
@@ -116,13 +123,23 @@ function Inventory() {
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#d33',
-      cancelButtonColor: '#3085d6',
+      cancelButtonColor: '#77db8f',
       confirmButtonText: 'Yes, delete it!',
       cancelButtonText: 'Cancel'
     }).then((result) => {
       if (result.isConfirmed) {
         setBatchData(batchData.filter(item => item.BatchNo !== batch.BatchNo));
-        Swal.fire('Deleted!', 'The batch has been deleted.', 'success');
+        Swal.fire({
+          title: 'Deleted!',
+          text: 'The batch has been deleted.',
+          icon: 'success',
+          confirmButtonColor: '#77db8f', // Set background color
+          customClass: {
+            confirmButton: 'no-focus-border' // Custom class to remove border/focus
+          },
+          buttonsStyling: true, // Keep default styling, override only what we need
+          timer: 1500,
+        });
       }
     });
   };
@@ -157,6 +174,7 @@ function Inventory() {
       text: 'Details have been updated successfully.',
       icon: 'success',
       confirmButtonText: 'OK',
+      confirmButtonColor: '#77db8f',
       timer: 1500,
       timerProgressBar: true,
     });
@@ -199,8 +217,13 @@ function Inventory() {
       title: 'Success!',
       text: 'New inventory item has been received.',
       icon: 'success',
-      timer: 1500,
       timerProgressBar: true,
+      confirmButtonColor: '#77db8f', // Set background color
+      customClass: {
+        confirmButton: 'no-focus-border' // Custom class to remove border/focus
+      },
+      buttonsStyling: true, // Keep default styling, override only what we need
+      timer: 1500,
     });
   };
 

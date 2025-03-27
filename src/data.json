@@ -24,18 +24,7 @@
       "AvailableBatchQty": 450,
       "TotalAvailableQty": 1200
     },
-    {
-      "id": 3,
-      "Medicine": "Ibuprofen",
-      "BatchNo": "IBU202302",
-      "InwardQuantity": 800,
-      "UnitofMeasure": "Tablets",
-      "ExpiryDate": "2025-06-30",
-      "Price": 0.50,
-      "ReceivedDate": "2024-03-01",
-      "AvailableBatchQty": 700,
-      "TotalAvailableQty": 700
-    },
+    
     {
       "id": 1,
       "Medicine": "Paracetamol",
