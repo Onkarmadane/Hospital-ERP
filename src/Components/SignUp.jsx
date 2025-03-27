@@ -61,7 +61,7 @@ function Signup() {
 
     return (
         <section className="bg-background text-text min-h-screen py-5 flex items-center justify-center">
-            <div className="flex flex-col w-[75%] max-w-4xl">
+            <div className="flex flex-col lg:w-[95%] max-w-4xl">
                 <div className="bg-background rounded-lg shadow dark:border">
                     <div className="p-6 space-y-4 md:space-y-6 sm:p-8 shadow-xl">
                         <h1 className="text-lg font-bold leading-tight tracking-tight text-text sm:text-xl md:text-2xl ">
