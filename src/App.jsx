@@ -108,6 +108,7 @@ import PatientFormAleoPathy from "./Components/PatientFormAleoPathy";
 import UnifiedPatientForm from "./Components/FormsSections/UnifiedPatientForm";
 import PatientDetails from "./Pages/PatientDetails";
 import Profile from "./Pages/Profile";
+import Signup from "./Components/SignUp";
 
 // Private Route Component
 const PrivateRoute = ({ element: Element, ...rest }) => {
@@ -142,6 +143,7 @@ function App() {
         <AuthProvider>
           <Routes>
             <Route path="/" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
             <Route path="/doctor/Dashboard" element={<PrivateRoute element={Dashboard} />} />
             <Route path="/doctor/Appointment" element={<PrivateRoute element={Appointment} />} />
             <Route path="/doctor/AllPatient" element={<PrivateRoute element={AllPatient} />} />

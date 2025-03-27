@@ -65,14 +65,17 @@ function Login() {
             setIsLoading(false);
         }
     };
+    function HandleSignup(){
+        navigate('/signup')
+    }
 
     return (
         <section className="bg-background text-text min-h-screen">
             <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
                 <div className="w-full bg-background rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 text-text">
-                    <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
+                    <div className="p-6 space-y-4 md:space-y-6 sm:p-8 shadow-xl">
                         <h1 className="text-xl font-bold leading-tight tracking-tight text-text md:text-2xl">
-                            Sign in to your account
+                            Login to your account
                         </h1>
                         {error && <p className="text-red-500 text-sm">{error}</p>}
                         <form className="space-y-4 md:space-y-6" onSubmit={handleSubmit}>
@@ -114,9 +117,19 @@ function Login() {
                                 loading={isLoading}
                                 loadingText="Signing in..." // Custom loading text
                             >
-                                <RiLoginBoxFill /> Sign in
+                                <RiLoginBoxFill /> Log in
                             </Button>
                         </form>
+                        <div className="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-2 mt-4">
+                        <p className='text-center'>Don't Have an Accout? </p>
+                        <button
+                              className="text-sm sm:text-base text-blue-600 hover:underline disabled:opacity-50"
+                              onClick={HandleSignup}
+                              disabled={isLoading}
+                            >
+                                 Sign up
+                            </button>
+                            </div>
                     </div>
                 </div>
             </div>
